@@ -86,13 +86,13 @@ class Navigation extends Component {
     console.log(window.scrollY);
     if (window.scrollY > 120) {
       document.querySelector('.navbar').classList.add('slide-in-top');
-      document.querySelector('.navbar').classList.remove('slide-out-top');
+      document
+        .querySelector('.navbar')
+        .classList.remove('slide-out-top', 'invisible');
       document.querySelector('.navbarCard').classList.add('slide-out-top');
       document.querySelector('.navbarCard').classList.remove('slide-in-top');
     } else {
-      document
-        .querySelector('.navbar')
-        .classList.remove('slide-in-top', 'invisible');
+      document.querySelector('.navbar').classList.remove('slide-in-top');
       document.querySelector('.navbar').classList.add('slide-out-top');
       document.querySelector('.navbarCard').classList.remove('slide-out-top');
       document.querySelector('.navbarCard').classList.add('slide-in-top');
@@ -117,7 +117,10 @@ class Navigation extends Component {
           </div>
         </div>
 
-        <div className="navbarCard bg-dark-o" css={this.styleNavCard}>
+        <div
+          className="navbarCard bg-dark-o slide-in-top"
+          css={this.styleNavCard}
+        >
           <div className="d-flex flex-row">
             <img src="./tengu.png" alt="" />
             <div className="d-flex flex-column justify-content-center m-5">
