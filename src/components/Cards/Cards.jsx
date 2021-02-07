@@ -35,7 +35,11 @@ class Cards extends Component {
 
       [this.mq[2]]: {
         width: '640px',
-        margin: '20px 20px',
+        margin: '20px auto',
+      },
+
+      [this.mq[0]]: {
+        minWidth: '390px',
       },
     };
 

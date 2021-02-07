@@ -37,15 +37,20 @@ class Navigation extends Component {
       },
 
       [this.mq[1]]: {
-        margin: '20px 20px',
+        width: '100%',
+        margin: '20px auto',
+      },
+
+      [this.mq[0]]: {
+        minWidth: '390px',
       },
 
       '& img': {
         width: '480px',
 
         [this.mq[2]]: {
-          width: '320px',
-          height: '250px',
+          width: '50%',
+          height: '30%',
         },
       },
 
@@ -107,12 +112,20 @@ class Navigation extends Component {
             fontSize: '36px',
             textAlign: 'center',
             color: 'rgba(191,191,191,1)',
+
+            [this.mq[0]]: {
+              fontSize: '24px',
+            },
           },
 
           '& h2': {
             fontSize: '18px',
             textAlign: 'center',
             color: 'rgba(191,191,191,1)',
+
+            [this.mq[0]]: {
+              display: 'none',
+            },
           },
         },
       },
@@ -155,7 +168,7 @@ class Navigation extends Component {
             <a href="http://www.tengu.fr" target="_blank" rel="noreferrer">
               <img src="./tengu.png" alt="" />
             </a>
-            <div className="center">
+            <div className="center d-flex flex-column justify-content-center">
               <h1>Ogura Dojo</h1>
               <h2>Tengu Ryu Karate-Do, PanZi Gong, TaiJi Quan, QiGong</h2>
             </div>

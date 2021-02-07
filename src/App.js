@@ -25,6 +25,8 @@ function App() {
     '& .Frame': {
       marginTop: '40px',
       marginBottom: '300px',
+      minWidth: '390px',
+
       '& .Content': {
         maxWidth: '1440px',
         margin: '0px auto',

@@ -39,7 +39,11 @@ class CardsKarate extends Component {
 
       [this.mq[2]]: {
         width: '640px',
-        margin: '20px 20px',
+        margin: '20px auto',
+      },
+
+      [this.mq[0]]: {
+        minWidth: '390px',
       },
 
       '& .img': {
@@ -54,6 +58,15 @@ class CardsKarate extends Component {
 
       '& h1': {
         padding: '20px',
+        fontSize: '40px',
+
+        [this.mq[1]]: {
+          fontSize: '36px',
+        },
+
+        [this.mq[0]]: {
+          fontSize: '24px',
+        },
       },
     };
 
