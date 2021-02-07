@@ -43,10 +43,10 @@ class CardsKarate extends Component {
       },
     };
 
-    this.styleModal = {
+    this.styleModalDialog = {
       width: '100vw',
       maxWidth: '1440px',
-      height: '80vh',
+      height: 'calc(100vh - 80px)',
       marginTop: '50px',
       zIndex: '1051',
       position: 'relative',
@@ -66,56 +66,51 @@ class CardsKarate extends Component {
         outline: 'none',
       },
 
-      '& .modal-dialog': {
-        zIndex: '1052',
-        position: 'relative',
+      '& .modal-content': {
+        height: '90vh',
+        backgroundColor: 'rgba(0,0,0,0)',
 
-        '& .modal-content': {
-          height: '80vh',
-          backgroundColor: 'rgba(0,0,0,0)',
+        '& h1': {
+          fontSize: '48px',
+          fontFamily: 'Ribeye, cursive',
+        },
 
-          '& h1': {
-            fontSize: '48px',
-            fontFamily: 'Ribeye, cursive',
-          },
+        '& h2': {
+          fontSize: '24px',
+          fontFamily: 'Ribeye, cursive',
+          color: 'rgba(83,0,0,1)',
+          margin: '15px 0px',
+        },
 
-          '& h2': {
-            fontSize: '24px',
-            fontFamily: 'Ribeye, cursive',
-            color: 'rgba(83,0,0,1)',
-            margin: '15px 0px',
-          },
+        '& p': {
+          fontSize: '22px',
+          margin: '15px 0px',
+          fontFamily: 'Roboto',
+          textAlign: 'justify',
+        },
 
-          '& p': {
-            fontSize: '22px',
-            margin: '15px 0px',
-            fontFamily: 'Roboto',
-            textAlign: 'justify',
-          },
+        '& .modal-up': {
+          height: '40%',
+          backgroundColor: 'white',
+          borderRadius: '5px',
+          boxShadow: '0px 0px 30px 0px white',
+          padding: '25px',
+        },
 
-          '& .modal-up': {
-            height: '408px',
-            backgroundColor: 'white',
-            borderRadius: '5px',
-            boxShadow: '0px 0px 30px 0px white',
-            padding: '25px',
-          },
+        '& .modal-strip': {
+          height: '20%',
+          backgroundColor: 'rgba(83,0,0,1)',
+          margin: '15px 0px 15px -250px',
+          boxShadow: '0px 0px 30px 0px white',
+          position: 'relative',
+        },
 
-          '& .modal-strip': {
-            height: '200px',
-            backgroundColor: 'rgba(83,0,0,1)',
-            margin: '15px 0px 15px -250px',
-            boxShadow: '0px 0px 30px 0px white',
-            position: 'relative',
-          },
-
-          '& .modal-down': {
-            height: '408px',
-            backgroundColor: 'white',
-            borderRadius: '5px',
-            boxShadow: '0px 0px 30px 0px white',
-            padding: '25px',
-          },
+        '& .modal-down': {
+          height: '40%',
+          backgroundColor: 'white',
+          borderRadius: '5px',
+          boxShadow: '0px 0px 30px 0px white',
+          padding: '25px',
         },
       },
     };
@@ -301,7 +296,7 @@ class CardsKarate extends Component {
               </div>
             </div>
           </div>
-          <div className="modal-dialog" css={this.styleModal}>
+          <div className="modal-dialog" css={this.styleModalDialog}>
             <div className="modal-content">
               <button
                 type="button"

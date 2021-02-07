@@ -14,14 +14,15 @@ function App() {
 
     '& .bg': {
       zIndex: '1030',
+      backgroundColor: 'white',
     },
 
     '& .fg': {
       zIndex: '1041',
+      backgroundColor: 'rgba(0,0,0,0)',
     },
 
     '& .Frame': {
-      backgroundColor: 'white',
       marginTop: '80px',
       marginBottom: '300px',
       '& .Content': {
