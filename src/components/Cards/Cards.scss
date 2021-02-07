@@ -4,25 +4,6 @@
 
 // use only the available space inside the 400x400 frame
 .frameC9 {
-  position: absolute;
-  top: 25vh;
-  right: 0px;
-  width: 400px;
-  height: 400px;
-  z-index: 1;
-  //background-color: rgba(255, 0, 0, 0.5);
-
-  .center {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    transform: perspective(180px);
-    transform-style: preserve-3d;
-    z-index: 0;
-  }
-
   $numberOfForms: 10;
   $time: 50;
   $delay: 0;
@@ -30,28 +11,6 @@
     $delay: $time/$numberOfForms * ($i - 1);
     #c9f#{$i} {
       animation: moveYourFormC9 $time + s ease-in-out $delay + s infinite both;
-    }
-  }
-
-  .form {
-    z-index: 100;
-    position: absolute;
-    top: 140px;
-    left: 125px;
-    height: 54px;
-    width: 200px;
-    background-color: rgba(255, 255, 255, 1);
-    box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 1);
-    color: rgba(100, 100, 100, 1);
-    cursor: pointer;
-
-    .heading {
-      //height: 15px;
-      //padding: 10px;
-      margin: 0px;
-      //font-weight: 900;
-      font-size: 36px;
-      text-align: center;
     }
   }
 

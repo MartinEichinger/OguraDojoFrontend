@@ -67,117 +67,159 @@ class CardsKarate extends Component {
       },
 
       '& .modal-content': {
+        width: '100%',
         height: '90vh',
         backgroundColor: 'rgba(0,0,0,0)',
 
-        '& h1': {
-          fontSize: '48px',
-          fontFamily: 'Ribeye, cursive',
+        '& .modal-row': {
+          width: '100%',
+
+          '& .modal-col': {
+            width: 'calc(100% - 220px)',
+
+            '& h1': {
+              fontSize: '48px',
+              fontFamily: 'Ribeye, cursive',
+            },
+
+            '& h2': {
+              fontSize: '24px',
+              fontFamily: 'Ribeye, cursive',
+              color: 'rgba(83,0,0,1)',
+              margin: '15px 0px',
+            },
+
+            '& p': {
+              fontSize: '22px',
+              margin: '15px 0px',
+              fontFamily: 'Roboto',
+              textAlign: 'justify',
+            },
+
+            '& .modal-up': {
+              height: '40%',
+              backgroundColor: 'white',
+              borderRadius: '5px',
+              boxShadow: '0px 0px 30px 0px white',
+              padding: '25px',
+            },
+
+            '& .modal-strip': {
+              height: '20%',
+              backgroundColor: 'rgba(83,0,0,1)',
+              margin: '15px 0px 15px -250px',
+              boxShadow: '0px 0px 30px 0px white',
+              position: 'relative',
+            },
+
+            '& .modal-down': {
+              height: '40%',
+              backgroundColor: 'white',
+              borderRadius: '5px',
+              boxShadow: '0px 0px 30px 0px white',
+              padding: '25px',
+            },
+          },
+
+          '& .frameC9': {
+            position: 'relative',
+            width: '220px',
+            height: '10vh',
+            zIndex: '1052',
+
+            '& .center': {
+              position: 'relative',
+              width: '100%',
+              height: '100%',
+              transform: 'perspective(180px)',
+              transformStyle: 'preserve-3d',
+              zIndex: '1053',
+
+              '& .form': {
+                zIndex: '1054',
+                position: 'absolute',
+                //top: '140px',
+                //left: '125px',
+                height: '54px',
+                width: '200px',
+                backgroundColor: 'rgba(255, 255, 255, 1)',
+                boxShadow: '0px 0px 15px 0px rgba(255, 255, 255, 1)',
+                color: 'rgba(100, 100, 100, 1)',
+                cursor: 'pointer',
+
+                '& .heading': {
+                  margin: '0px',
+                  fontSize: '36px',
+                  textAlign: 'center',
+                },
+              },
+            },
+
+            '& .form': {
+              transition: 'transform 0.5s ease-in-out',
+            },
+
+            '& .form1': {
+              transform: 'translate3d(0px, 0px, 0px)',
+              backgroundColor: 'rgba(255, 255, 255, 1)',
+              color: 'rgba(100, 100, 100, 1)',
+            },
+
+            '& .form2': {
+              transform: 'translate3d(0px, -120px, -20px)',
+              backgroundColor: 'rgba(175, 175, 175, 1)',
+              color: 'rgba(100, 100, 100, 1)',
+            },
+
+            '& .form3': {
+              transform: 'translate3d(0px, -180px, -40px)',
+              backgroundColor: 'rgba(175, 175, 175, 0.75)',
+              color: 'rgba(100, 100, 100, 1)',
+            },
+
+            '& .form4': {
+              transform: 'translate3d(0px, -120px, -60px)',
+              backgroundColor: 'rgba(175, 175, 175, 0.5)',
+              color: 'rgba(100, 100, 100, 1)',
+            },
+
+            '& .form5': {
+              transform: 'translate3d(0px, -60px, -80px)',
+              backgroundColor: 'rgba(175, 175, 175, 0.5)',
+              color: 'rgba(100, 100, 100, 1)',
+            },
+
+            '& .form6': {
+              transform: 'translate3d(0px, 0px, -100px)',
+              backgroundColor: 'rgba(175, 175, 175, 0.5)',
+              color: 'rgba(100, 100, 100, 1)',
+            },
+
+            '& .form7': {
+              transform: 'translate3d(0px, 60px, -80px)',
+              backgroundColor: 'rgba(175, 175, 175, 0.5)',
+              color: 'rgba(100, 100, 100, 1)',
+            },
+
+            '& .form8': {
+              transform: 'translate3d(0px, 120px, -60px)',
+              backgroundColor: 'rgba(175, 175, 175, 0.5)',
+              color: 'rgba(100, 100, 100, 1)',
+            },
+
+            '& .form9': {
+              transform: 'translate3d(0px, 180px, -40px)',
+              backgroundColor: 'rgba(175, 175, 175, 0.75)',
+              color: 'rgba(100, 100, 100, 1)',
+            },
+
+            '& .form10': {
+              transform: 'translate3d(0px, 120px, -20px)',
+              backgroundColor: 'rgba(175, 175, 175, 1)',
+              color: 'rgba(100, 100, 100, 1)',
+            },
+          },
         },
-
-        '& h2': {
-          fontSize: '24px',
-          fontFamily: 'Ribeye, cursive',
-          color: 'rgba(83,0,0,1)',
-          margin: '15px 0px',
-        },
-
-        '& p': {
-          fontSize: '22px',
-          margin: '15px 0px',
-          fontFamily: 'Roboto',
-          textAlign: 'justify',
-        },
-
-        '& .modal-up': {
-          height: '40%',
-          backgroundColor: 'white',
-          borderRadius: '5px',
-          boxShadow: '0px 0px 30px 0px white',
-          padding: '25px',
-        },
-
-        '& .modal-strip': {
-          height: '20%',
-          backgroundColor: 'rgba(83,0,0,1)',
-          margin: '15px 0px 15px -250px',
-          boxShadow: '0px 0px 30px 0px white',
-          position: 'relative',
-        },
-
-        '& .modal-down': {
-          height: '40%',
-          backgroundColor: 'white',
-          borderRadius: '5px',
-          boxShadow: '0px 0px 30px 0px white',
-          padding: '25px',
-        },
-      },
-    };
-
-    this.styleNavigation = {
-      '& .form': {
-        transition: 'transform 0.5s ease-in-out',
-      },
-
-      '& .form1': {
-        transform: 'translate3d(0px, 0px, 0px)',
-        backgroundColor: 'rgba(255, 255, 255, 1)',
-        color: 'rgba(100, 100, 100, 1)',
-      },
-
-      '& .form2': {
-        transform: 'translate3d(0px, -120px, -20px)',
-        backgroundColor: 'rgba(175, 175, 175, 1)',
-        color: 'rgba(100, 100, 100, 1)',
-      },
-
-      '& .form3': {
-        transform: 'translate3d(0px, -180px, -40px)',
-        backgroundColor: 'rgba(175, 175, 175, 0.75)',
-        color: 'rgba(100, 100, 100, 1)',
-      },
-
-      '& .form4': {
-        transform: 'translate3d(0px, -120px, -60px)',
-        backgroundColor: 'rgba(175, 175, 175, 0.5)',
-        color: 'rgba(100, 100, 100, 1)',
-      },
-
-      '& .form5': {
-        transform: 'translate3d(0px, -60px, -80px)',
-        backgroundColor: 'rgba(175, 175, 175, 0.5)',
-        color: 'rgba(100, 100, 100, 1)',
-      },
-
-      '& .form6': {
-        transform: 'translate3d(0px, 0px, -100px)',
-        backgroundColor: 'rgba(175, 175, 175, 0.5)',
-        color: 'rgba(100, 100, 100, 1)',
-      },
-
-      '& .form7': {
-        transform: 'translate3d(0px, 60px, -80px)',
-        backgroundColor: 'rgba(175, 175, 175, 0.5)',
-        color: 'rgba(100, 100, 100, 1)',
-      },
-
-      '& .form8': {
-        transform: 'translate3d(0px, 120px, -60px)',
-        backgroundColor: 'rgba(175, 175, 175, 0.5)',
-        color: 'rgba(100, 100, 100, 1)',
-      },
-
-      '& .form9': {
-        transform: 'translate3d(0px, 180px, -40px)',
-        backgroundColor: 'rgba(175, 175, 175, 0.75)',
-        color: 'rgba(100, 100, 100, 1)',
-      },
-
-      '& .form10': {
-        transform: 'translate3d(0px, 120px, -20px)',
-        backgroundColor: 'rgba(175, 175, 175, 1)',
-        color: 'rgba(100, 100, 100, 1)',
       },
     };
   }
@@ -233,9 +275,15 @@ class CardsKarate extends Component {
     if (tar === 'modalCard') {
       document.querySelector('.Frame').classList.remove('bg');
       document.querySelector('.Frame').classList.add('fg');
+      //document
+      //  .querySelector('.modal')
+      //  .classList.add('d-flex', 'flex-row-reverse', 'align-items-center');
     } else if (tar === 'modalCardEx') {
       document.querySelector('.Frame').classList.remove('fg');
       document.querySelector('.Frame').classList.add('bg');
+      //document
+      //  .querySelector('.modal')
+      //  .classList.remove('d-flex', 'flex-row-reverse', 'align-items-center');
     }
   };
 
@@ -262,41 +310,11 @@ class CardsKarate extends Component {
           aria-hidden="true"
           data-bs-backdrop="static"
         >
-          <div className="frameC9">
-            <div className="center" css={this.styleNavigation} ref={this.form}>
-              <div className="form form1" onClick={this.nextItem}>
-                <p className="heading">Home</p>
-              </div>
-              <div className="form form2" onClick={this.nextItem}>
-                <p className="heading">Training</p>
-              </div>
-              <div className="form form3" onClick={this.nextItem}>
-                <p className="heading">Seminare</p>
-              </div>
-              <div className="form form4" onClick={this.nextItem}>
-                <p className="heading">Aktuelles</p>
-              </div>
-              <div className="form form5" onClick={this.nextItem}>
-                <p className="heading">Kontakt</p>
-              </div>
-              <div className="form form6" onClick={this.nextItem}>
-                <p className="heading">Lehrer</p>
-              </div>
-              <div className="form form7" onClick={this.nextItem}>
-                <p className="heading">Trainer</p>
-              </div>
-              <div className="form form8" onClick={this.nextItem}>
-                <p className="heading">Bücher</p>
-              </div>
-              <div className="form form9" onClick={this.nextItem}>
-                <p className="heading">Publikationen</p>
-              </div>
-              <div className="form form10" onClick={this.nextItem}>
-                <p className="heading">Videos</p>
-              </div>
-            </div>
-          </div>
-          <div className="modal-dialog" css={this.styleModalDialog}>
+          <div
+            className="modal-dialog d-flex flex-row-reverse align-items-center"
+            id="modalDialog"
+            css={this.styleModalDialog}
+          >
             <div className="modal-content">
               <button
                 type="button"
@@ -306,47 +324,91 @@ class CardsKarate extends Component {
               >
                 <img src="./CancelButton.png" alt="" id="modalCardEx" />
               </button>
-              <div className="modal-up">
-                <h1>karate-do</h1>
-                <h2>„Es ablehnen zu kämpfen, es ablehnen zu unterliegen...“</h2>
-                <p>
-                  Ursprüngliches Ziel von Karate war es eine bedrohliche
-                  Situation zu überstehen. Dazu war es notwendig seine
-                  vorhandenen körperlichen und geistigen Fähigkeiten optimal zu
-                  nutzen. Von entscheidender Bedeutung war sicher ein gutes
-                  Selbstbewußtsein und die nötige Entschlossenheit. Bewegungen
-                  im Karate basieren auf physikalischen Grundgesetzen, dies
-                  sollte man bei seinen Techniken optimal für sich ausnutzen.
-                  Geistig sollte man konzentriert und trotzdem flexibel sein.
-                  Optimalen Erfolg verspricht wahrscheinlich nur das harmonische
-                  Zusammenspiel sehr vieler physischer, psychischer und mentaler
-                  Faktoren. Daher ist absolute Perfektion nicht zu erreichen.
-                </p>
-              </div>
+              <div className="modal-row d-flex flex-row h-100 align-items-center">
+                <div className="modal-col d-flex flex-column h-100">
+                  <div className="modal-up">
+                    <h1>karate-do</h1>
+                    <h2>
+                      „Es ablehnen zu kämpfen, es ablehnen zu unterliegen...“
+                    </h2>
+                    <p>
+                      Ursprüngliches Ziel von Karate war es eine bedrohliche
+                      Situation zu überstehen. Dazu war es notwendig seine
+                      vorhandenen körperlichen und geistigen Fähigkeiten optimal
+                      zu nutzen. Von entscheidender Bedeutung war sicher ein
+                      gutes Selbstbewußtsein und die nötige Entschlossenheit.
+                      Bewegungen im Karate basieren auf physikalischen
+                      Grundgesetzen, dies sollte man bei seinen Techniken
+                      optimal für sich ausnutzen. Geistig sollte man
+                      konzentriert und trotzdem flexibel sein. Optimalen Erfolg
+                      verspricht wahrscheinlich nur das harmonische
+                      Zusammenspiel sehr vieler physischer, psychischer und
+                      mentaler Faktoren. Daher ist absolute Perfektion nicht zu
+                      erreichen.
+                    </p>
+                  </div>
 
-              <div className="modal-strip">...</div>
-              <div className="modal-down">
-                <h1>tengu-ryu</h1>
-                <p>
-                  Im Karate gibt es unterschiedliche Schulen (ryu's). Tengu-Ryū
-                  oder Tengu-no-michi (wörtlich: „Weg des Tengu“) ist ein rein
-                  defensiver Stil der klassischen japanischen Kampfkünste
-                  (Budo). Initiiert wurde dieser Stil 1995 von dem französischen
-                  Kampfkunst- experten Roland Habersetzer. Er umfasst drei
-                  Kompetenzbereiche: Tengu-Ryū Karatedo (ohne Waffen), Tengu-Ryū
-                  Kobudo (traditionelle Waffen), Tengu-Ryū Hojutsu (moderne
-                  Waffen). 2006 wurde dieser Stil in Japan durch die japanische
-                  Karatemeister Ogura Tsuneyoshi und Ōtsuka Tadahiko anerkannt.
-                  Das heißt, Hanshi Habersetzer ist der erste Soke dieses Stils.
-                  Tengu-Ryū ist eine Synthese der traditionellen japanischen
-                  Kriegskünste, die auf kulturellen und nicht auf
-                  wettkämpferischen Kriterien beruhen, mit dem Ziel der
-                  persönlichen Verwirklichung im körperlichen Bereich
-                  (Techniken) wie im mentalen Bereich (Ethik). Dieser Stil der
-                  Kriegskunst integriert sowohl die klassischen als auch die
-                  modernen Entwicklungen mit oder ohne Waffen. Tengu-Ryū ist der
-                  Versuch, die Kampfkunst im 21. Jahrhundert neu zu definieren.
-                </p>
+                  <div className="modal-strip">...</div>
+                  <div className="modal-down">
+                    <h1>tengu-ryu</h1>
+                    <p>
+                      Im Karate gibt es unterschiedliche Schulen (ryu's).
+                      Tengu-Ryū oder Tengu-no-michi (wörtlich: „Weg des Tengu“)
+                      ist ein rein defensiver Stil der klassischen japanischen
+                      Kampfkünste (Budo). Initiiert wurde dieser Stil 1995 von
+                      dem französischen Kampfkunst- experten Roland Habersetzer.
+                      Er umfasst drei Kompetenzbereiche: Tengu-Ryū Karatedo
+                      (ohne Waffen), Tengu-Ryū Kobudo (traditionelle Waffen),
+                      Tengu-Ryū Hojutsu (moderne Waffen). 2006 wurde dieser Stil
+                      in Japan durch die japanische Karatemeister Ogura
+                      Tsuneyoshi und Ōtsuka Tadahiko anerkannt. Das heißt,
+                      Hanshi Habersetzer ist der erste Soke dieses Stils.
+                      Tengu-Ryū ist eine Synthese der traditionellen japanischen
+                      Kriegskünste, die auf kulturellen und nicht auf
+                      wettkämpferischen Kriterien beruhen, mit dem Ziel der
+                      persönlichen Verwirklichung im körperlichen Bereich
+                      (Techniken) wie im mentalen Bereich (Ethik). Dieser Stil
+                      der Kriegskunst integriert sowohl die klassischen als auch
+                      die modernen Entwicklungen mit oder ohne Waffen. Tengu-Ryū
+                      ist der Versuch, die Kampfkunst im 21. Jahrhundert neu zu
+                      definieren.
+                    </p>
+                  </div>
+                </div>
+                <div className="frameC9">
+                  <div className="center" ref={this.form}>
+                    <div className="form form1" onClick={this.nextItem}>
+                      <p className="heading">Home</p>
+                    </div>
+                    <div className="form form2" onClick={this.nextItem}>
+                      <p className="heading">Training</p>
+                    </div>
+                    <div className="form form3" onClick={this.nextItem}>
+                      <p className="heading">Seminare</p>
+                    </div>
+                    <div className="form form4" onClick={this.nextItem}>
+                      <p className="heading">Aktuelles</p>
+                    </div>
+                    <div className="form form5" onClick={this.nextItem}>
+                      <p className="heading">Kontakt</p>
+                    </div>
+                    <div className="form form6" onClick={this.nextItem}>
+                      <p className="heading">Lehrer</p>
+                    </div>
+                    <div className="form form7" onClick={this.nextItem}>
+                      <p className="heading">Trainer</p>
+                    </div>
+                    <div className="form form8" onClick={this.nextItem}>
+                      <p className="heading">Bücher</p>
+                    </div>
+                    <div className="form form9" onClick={this.nextItem}>
+                      <p className="heading">Publikationen</p>
+                    </div>
+                    <div className="form form10" onClick={this.nextItem}>
+                      <p className="heading">Videos</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
