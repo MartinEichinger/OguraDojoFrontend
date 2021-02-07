@@ -12,33 +12,38 @@ function App() {
     height: '100vh',
     marginBottom: '100px',
 
-    '& .Content': {
-      //maxWidth: "1440px",
-      //margin: "0px auto",
-      marginTop: '100px',
+    '& .Frame': {
       backgroundColor: 'white',
       zIndex: '1031',
-    },
+      marginBottom: '300px',
+      '& .Content': {
+        maxWidth: '1440px',
+        margin: '0px auto',
+        marginTop: '100px',
+      },
 
-    '& .Placeholder': {
-      height: '3px',
-      marginTop: '350px',
-      width: '100%',
+      //'& .Placeholder': {
+      //  height: '3px',
+      //  marginTop: '350px',
+      //  width: '100%',
+      //},
     },
   };
 
   return (
     <div className="App d-flex flex-column" css={styleApp}>
       <Navigation />
-      <div className="Content d-flex flex-row flex-wrap justify-content-center">
-        <CardsKarate />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
+      <div className="Frame">
+        <div className="Content d-flex flex-row flex-wrap justify-content-center">
+          <CardsKarate />
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
+        </div>
       </div>
       <div className="Placeholder">p</div>
       <Footer />

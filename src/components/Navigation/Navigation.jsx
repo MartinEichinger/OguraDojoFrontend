@@ -20,6 +20,7 @@ class Navigation extends Component {
       margin: '20px auto',
       backgroundColor: 'rgba(52,58,64,1)',
       fontFamily: 'Ribeye, cursive',
+      zIndex: '1032',
 
       '& img': {
         width: '480px',
