@@ -89,7 +89,9 @@ class Navigation extends Component {
       document.querySelector('.navbarCard').classList.add('slide-out-top');
       document.querySelector('.navbarCard').classList.remove('slide-in-top');
     } else {
-      document.querySelector('.navbar').classList.remove('slide-in-top');
+      document
+        .querySelector('.navbar')
+        .classList.remove('slide-in-top', 'invisible');
       document.querySelector('.navbar').classList.add('slide-out-top');
       document.querySelector('.navbarCard').classList.remove('slide-out-top');
       document.querySelector('.navbarCard').classList.add('slide-in-top');
@@ -100,7 +102,7 @@ class Navigation extends Component {
     return (
       <React.Fragment>
         <div
-          className="navbar navbar-dark fixed-top bg-dark-o"
+          className="navbar navbar-dark fixed-top bg-dark-o invisible"
           css={this.styleNav}
         >
           <div className="container-fluid">
