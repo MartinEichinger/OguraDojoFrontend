@@ -15,6 +15,10 @@ class Cards extends Component {
       status: 0,
     };
 
+    // BREAKPOINTS
+    this.breakpoints = [576, 678, 1023, 1280];
+    this.mq = this.breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
+
     // STYLES
     this.styleCard = {
       width: '640px',
@@ -23,6 +27,16 @@ class Cards extends Component {
       border: '1px solid black',
       borderRadius: '5px',
       margin: '20px 20px',
+
+      [this.mq[3]]: {
+        width: '500px',
+        margin: '10px 6px',
+      },
+
+      [this.mq[2]]: {
+        width: '640px',
+        margin: '20px 20px',
+      },
     };
 
     this.styleModal = {

@@ -23,7 +23,7 @@ function App() {
     },
 
     '& .Frame': {
-      marginTop: '80px',
+      marginTop: '40px',
       marginBottom: '300px',
       '& .Content': {
         maxWidth: '1440px',

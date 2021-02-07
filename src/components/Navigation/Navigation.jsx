@@ -8,9 +8,13 @@ class Navigation extends Component {
   constructor(props) {
     super(props);
 
+    // BREAKPOINTS
+    this.breakpoints = [576, 678, 1023, 1280];
+    this.mq = this.breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
+
     // STYLES
     this.styleNavCard = {
-      top: '75px',
+      top: '40px',
       position: 'relative',
       width: '1320px',
       minWidth: '340px',
@@ -22,20 +26,60 @@ class Navigation extends Component {
       fontFamily: 'Ribeye, cursive',
       zIndex: '1032',
 
+      [this.mq[3]]: {
+        width: '1012px',
+        margin: '10px auto',
+      },
+
+      [this.mq[2]]: {
+        width: '640px',
+        margin: '20px auto',
+      },
+
+      [this.mq[1]]: {
+        margin: '20px 20px',
+      },
+
       '& img': {
         width: '480px',
+
+        [this.mq[2]]: {
+          width: '320px',
+          height: '250px',
+        },
       },
 
-      '& h1': {
-        fontSize: '48px',
-        textAlign: 'center',
-        color: 'rgba(191,191,191,1)',
-      },
+      '& .text': {
+        margin: '48px',
 
-      '& h2': {
-        fontSize: '24px',
-        textAlign: 'left',
-        color: 'rgba(191,191,191,1)',
+        [this.mq[3]]: {
+          margin: '24px',
+        },
+
+        [this.mq[2]]: {
+          margin: '12px',
+        },
+
+        '& h1': {
+          fontSize: '48px',
+          textAlign: 'center',
+          color: 'rgba(191,191,191,1)',
+
+          [this.mq[2]]: {
+            fontSize: '24px',
+          },
+        },
+
+        '& h2': {
+          fontSize: '24px',
+          textAlign: 'left',
+          color: 'rgba(191,191,191,1)',
+
+          [this.mq[2]]: {
+            fontSize: '16px',
+            textAlign: 'center',
+          },
+        },
       },
     };
 
@@ -84,7 +128,7 @@ class Navigation extends Component {
 
   handleScroll = () => {
     console.log(window.scrollY);
-    if (window.scrollY > 120) {
+    if (window.scrollY > 150) {
       document.querySelector('.navbar').classList.add('slide-in-top');
       document
         .querySelector('.navbar')
@@ -123,7 +167,7 @@ class Navigation extends Component {
         >
           <div className="d-flex flex-row">
             <img src="./tengu.png" alt="" />
-            <div className="d-flex flex-column justify-content-center m-5">
+            <div className="text d-flex flex-column justify-content-center">
               <h1>Willommen im Ogura Dojo</h1>
               <h2>Tengu Ryu Karate-Do, PanZi Gong, TaiJi Quan, QiGong</h2>
             </div>
