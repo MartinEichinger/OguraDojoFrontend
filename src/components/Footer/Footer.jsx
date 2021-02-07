@@ -5,22 +5,52 @@ import { jsx } from '@emotion/react';
 import React from 'react';
 
 const Footer = () => {
+  // BREAKPOINTS
+  const breakpoints = [576, 678, 1023, 1280];
+  const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
+
+  // STYLE
   const styleFooter = {
     color: 'rgba(191,191,191,1)',
     fontFamily: 'Ribeye, cursive',
     padding: '20px',
     zIndex: '1000',
+    minWidth: '390px',
 
     '& h1': {
       fontSize: '28px',
+
+      [mq[1]]: {
+        fontSize: '18px',
+      },
+
+      [mq[0]]: {
+        fontSize: '16px',
+      },
     },
 
     '& h2': {
       fontSize: '18px',
+
+      [mq[1]]: {
+        fontSize: '16px',
+      },
+
+      [mq[0]]: {
+        fontSize: '14px',
+      },
     },
 
     '& h3': {
       fontSize: '14px',
+
+      [mq[1]]: {
+        fontSize: '12px',
+      },
+
+      [mq[0]]: {
+        fontSize: '10px',
+      },
     },
 
     '& .column': {
