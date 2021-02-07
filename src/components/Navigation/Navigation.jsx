@@ -10,7 +10,7 @@ class Navigation extends Component {
 
     // STYLES
     this.styleNavCard = {
-      top: '100px',
+      top: '75px',
       position: 'relative',
       width: '1320px',
       minWidth: '340px',

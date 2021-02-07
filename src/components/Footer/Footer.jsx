@@ -9,6 +9,7 @@ const Footer = () => {
     color: 'rgba(191,191,191,1)',
     fontFamily: 'Ribeye, cursive',
     padding: '20px',
+    zIndex: '1000',
 
     '& h1': {
       fontSize: '28px',

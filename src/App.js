@@ -12,14 +12,21 @@ function App() {
     height: '100vh',
     marginBottom: '100px',
 
+    '& .bg': {
+      zIndex: '1030',
+    },
+
+    '& .fg': {
+      zIndex: '1041',
+    },
+
     '& .Frame': {
       backgroundColor: 'white',
-      zIndex: '1031',
+      marginTop: '80px',
       marginBottom: '300px',
       '& .Content': {
         maxWidth: '1440px',
         margin: '0px auto',
-        marginTop: '100px',
       },
 
       //'& .Placeholder': {
@@ -33,7 +40,7 @@ function App() {
   return (
     <div className="App d-flex flex-column" css={styleApp}>
       <Navigation />
-      <div className="Frame">
+      <div className="Frame bg">
         <div className="Content d-flex flex-row flex-wrap justify-content-center">
           <CardsKarate />
           <Cards />

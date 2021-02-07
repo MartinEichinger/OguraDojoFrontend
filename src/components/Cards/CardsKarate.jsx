@@ -48,7 +48,7 @@ class CardsKarate extends Component {
       maxWidth: '1440px',
       height: '80vh',
       marginTop: '50px',
-      zIndex: '0',
+      zIndex: '1051',
       position: 'relative',
 
       '& .btn-close': {
@@ -66,55 +66,56 @@ class CardsKarate extends Component {
         outline: 'none',
       },
 
-      '& .modal-content': {
-        height: '80vh',
-        backgroundColor: 'rgba(0,0,0,0)',
-        zIndex: '0',
+      '& .modal-dialog': {
+        zIndex: '1052',
+        position: 'relative',
 
-        '& h1': {
-          fontSize: '48px',
-          fontFamily: 'Ribeye, cursive',
-        },
+        '& .modal-content': {
+          height: '80vh',
+          backgroundColor: 'rgba(0,0,0,0)',
 
-        '& h2': {
-          fontSize: '24px',
-          fontFamily: 'Ribeye, cursive',
-          color: 'rgba(83,0,0,1)',
-          margin: '15px 0px',
-        },
+          '& h1': {
+            fontSize: '48px',
+            fontFamily: 'Ribeye, cursive',
+          },
 
-        '& p': {
-          fontSize: '22px',
-          margin: '15px 0px',
-          fontFamily: 'Roboto',
-          textAlign: 'justify',
-        },
+          '& h2': {
+            fontSize: '24px',
+            fontFamily: 'Ribeye, cursive',
+            color: 'rgba(83,0,0,1)',
+            margin: '15px 0px',
+          },
 
-        '& .modal-up': {
-          height: '408px',
-          backgroundColor: 'white',
-          borderRadius: '5px',
-          boxShadow: '0px 0px 30px 0px white',
-          padding: '25px',
-          zIndex: '0',
-        },
+          '& p': {
+            fontSize: '22px',
+            margin: '15px 0px',
+            fontFamily: 'Roboto',
+            textAlign: 'justify',
+          },
 
-        '& .modal-strip': {
-          height: '200px',
-          backgroundColor: 'rgba(83,0,0,1)',
-          margin: '15px 0px 15px -250px',
-          boxShadow: '0px 0px 30px 0px white',
-          zIndex: '5',
-          position: 'relative',
-        },
+          '& .modal-up': {
+            height: '408px',
+            backgroundColor: 'white',
+            borderRadius: '5px',
+            boxShadow: '0px 0px 30px 0px white',
+            padding: '25px',
+          },
 
-        '& .modal-down': {
-          height: '408px',
-          backgroundColor: 'white',
-          borderRadius: '5px',
-          boxShadow: '0px 0px 30px 0px white',
-          padding: '25px',
-          zIndex: '0',
+          '& .modal-strip': {
+            height: '200px',
+            backgroundColor: 'rgba(83,0,0,1)',
+            margin: '15px 0px 15px -250px',
+            boxShadow: '0px 0px 30px 0px white',
+            position: 'relative',
+          },
+
+          '& .modal-down': {
+            height: '408px',
+            backgroundColor: 'white',
+            borderRadius: '5px',
+            boxShadow: '0px 0px 30px 0px white',
+            padding: '25px',
+          },
         },
       },
     };
@@ -187,7 +188,11 @@ class CardsKarate extends Component {
   }
 
   componentDidMount() {
-    console.log('did mount');
+    window.addEventListener('click', this.handleClick);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleClick);
   }
 
   componentDidUpdate() {
@@ -226,6 +231,19 @@ class CardsKarate extends Component {
     this.setState({ run: 1 });
   };
 
+  handleClick = (e) => {
+    var tar = e.target.attributes['id']?.value;
+    console.log('Cardskarate/handleClick', e.currentTarget, e.target, tar);
+
+    if (tar === 'modalCard') {
+      document.querySelector('.Frame').classList.remove('bg');
+      document.querySelector('.Frame').classList.add('fg');
+    } else if (tar === 'modalCardEx') {
+      document.querySelector('.Frame').classList.remove('fg');
+      document.querySelector('.Frame').classList.add('bg');
+    }
+  };
+
   render() {
     console.log('render');
     return (
@@ -235,9 +253,10 @@ class CardsKarate extends Component {
           data-bs-toggle="modal"
           data-bs-target="#exModal"
           css={this.styleCard}
+          id="modalCard"
         >
-          <div className="img"></div>
-          <h1>TenguRyu Karate-Do</h1>
+          <div className="img" id="modalCard"></div>
+          <h1 id="modalCard">TenguRyu Karate-Do</h1>
         </button>
 
         <div
@@ -288,8 +307,9 @@ class CardsKarate extends Component {
                 type="button"
                 className="btn-close"
                 data-bs-dismiss="modal"
+                id="modalCardEx"
               >
-                <img src="./CancelButton.png" alt="" />
+                <img src="./CancelButton.png" alt="" id="modalCardEx" />
               </button>
               <div className="modal-up">
                 <h1>karate-do</h1>
