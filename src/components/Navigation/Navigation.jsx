@@ -87,8 +87,9 @@ class Navigation extends Component {
       zIndex: '1032',
       boxShadow: '0px 0px 25px 0px rgba(255,255,255,1)',
 
-      '& .container-fluid': {
+      '& .block': {
         height: '100px',
+        width: '100vw',
 
         '& a': {
           '& img': {
@@ -98,9 +99,9 @@ class Navigation extends Component {
         },
 
         '& .center': {
-          width: '100%',
+          //width: 'calc(100% - 200px)',
           fontFamily: 'Ribeye, cursive',
-          position: 'absolute',
+          //position: 'absolute',
 
           '& h1': {
             fontSize: '36px',
@@ -147,10 +148,10 @@ class Navigation extends Component {
     return (
       <React.Fragment>
         <div
-          className="navbar navbar-dark fixed-top bg-dark-o invisible"
+          className="navbar navbar-dark fixed-top bg-dark-o invisible d-flex flex-column"
           css={this.styleNav}
         >
-          <div className="container-fluid">
+          <div className="block d-flex flex-row justify-content-between">
             <a href="http://www.tengu.fr" target="_blank" rel="noreferrer">
               <img src="./tengu.png" alt="" />
             </a>
@@ -158,6 +159,7 @@ class Navigation extends Component {
               <h1>Ogura Dojo</h1>
               <h2>Tengu Ryu Karate-Do, PanZi Gong, TaiJi Quan, QiGong</h2>
             </div>
+            <div></div>
           </div>
         </div>
 
