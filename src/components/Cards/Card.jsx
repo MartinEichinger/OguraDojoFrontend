@@ -2,7 +2,6 @@
 // eslint-disable-next-line
 import { jsx } from '@emotion/react';
 
-import $ from 'jquery';
 import React, { Component } from 'react';
 
 class Card extends Component {
