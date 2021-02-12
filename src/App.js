@@ -5,6 +5,9 @@ import { jsx } from '@emotion/react';
 import Navigation from './components/Navigation/Navigation';
 import Cards from './components/Cards/Cards';
 import CardsKarate from './components/Cards/CardsKarate';
+import CardsPanZiGong from './components/Cards/CardsPanZiGong';
+import CardsTaiJi from './components/Cards/CardsTaiJi';
+import CardsQiGong from './components/Cards/CardsQiGong';
 import Footer from './components/Footer/Footer';
 
 function App() {
@@ -31,12 +34,6 @@ function App() {
         maxWidth: '1440px',
         margin: '0px auto',
       },
-
-      //'& .Placeholder': {
-      //  height: '3px',
-      //  marginTop: '350px',
-      //  width: '100%',
-      //},
     },
   };
 
@@ -46,9 +43,9 @@ function App() {
       <div className="Frame bg">
         <div className="Content d-flex flex-row flex-wrap justify-content-center">
           <CardsKarate />
-          <Cards />
-          <Cards />
-          <Cards />
+          <CardsPanZiGong />
+          <CardsTaiJi />
+          <CardsQiGong />
           <Cards />
           <Cards />
           <Cards />

@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import Card from './Card';
 import './Cards.css';
 
-class CardsKarate extends Component {
+class CardsPanZiGong extends Component {
   constructor(props) {
     super(props);
     this.form = React.createRef();
@@ -21,9 +21,9 @@ class CardsKarate extends Component {
 
     // STYLES
     this.propsCard = {
-      img: 'main_karate.png',
-      modal: '#exModal',
-      heading: 'Tengu Ryu Karate-Do',
+      img: 'main_panzigong.png',
+      modal: '#exModalPanziGong',
+      heading: 'PanZi Gong',
       pos: '50% 20%',
     };
 
@@ -403,4 +403,4 @@ class CardsKarate extends Component {
   }
 }
 
-export default CardsKarate;
+export default CardsPanZiGong;
