@@ -4,10 +4,10 @@ import { jsx } from '@emotion/react';
 
 import $ from 'jquery';
 import React, { Component } from 'react';
-import Card from './Card';
+import CardContent from './CardContent';
 import './Cards.css';
 
-class CardsPanZiGong extends Component {
+class CardsTraining extends Component {
   constructor(props) {
     super(props);
     this.form = React.createRef();
@@ -21,10 +21,24 @@ class CardsPanZiGong extends Component {
 
     // STYLES
     this.propsCard = {
-      img: 'main_qigong.png',
-      modal: '#exModalQiGong',
-      heading: 'Qi Gong',
-      pos: '55% 40%',
+      img: 'main_training.png',
+      modal: '#exModalTraining',
+      heading: 'Training',
+      pos: '50% 20%',
+      cont1Heading: ['Karate', 'Taiji'],
+      cont1Body: [
+        {
+          cont: ['Montag', 'Mittwoch', 'Freitag'],
+          body: ['20.00 - 22.00', '17.00 - 18.30', '20.00 - 22.00'],
+        },
+        {
+          cont: ['Montag'],
+          body: ['18.30 - 20.00'],
+        },
+      ],
+      cont2Heading: [
+        'Sonnenschule Traunreut - Martin-Luther-Straße - 83301 Traunreut',
+      ],
     };
 
     this.styleModalDialog = {
@@ -288,10 +302,10 @@ class CardsPanZiGong extends Component {
     console.log('render');
     return (
       <React.Fragment>
-        <Card props={this.propsCard} />
+        <CardContent props={this.propsCard} />
       </React.Fragment>
     );
   }
 }
 
-export default CardsPanZiGong;
+export default CardsTraining;

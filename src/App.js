@@ -8,6 +8,8 @@ import CardsKarate from './components/Cards/CardsKarate';
 import CardsPanZiGong from './components/Cards/CardsPanZiGong';
 import CardsTaiJi from './components/Cards/CardsTaiJi';
 import CardsQiGong from './components/Cards/CardsQiGong';
+import CardsTraining from './components/Cards/CardsTraining';
+import CardsSeminare from './components/Cards/CardsSeminare';
 import Footer from './components/Footer/Footer';
 
 function App() {
@@ -46,10 +48,8 @@ function App() {
           <CardsPanZiGong />
           <CardsTaiJi />
           <CardsQiGong />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
+          <CardsTraining />
+          <CardsSeminare />
         </div>
       </div>
       <div className="Placeholder">p</div>

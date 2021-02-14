@@ -4,10 +4,10 @@ import { jsx } from '@emotion/react';
 
 import $ from 'jquery';
 import React, { Component } from 'react';
-import Card from './Card';
+import CardContent from './CardContent';
 import './Cards.css';
 
-class CardsPanZiGong extends Component {
+class CardsSeminare extends Component {
   constructor(props) {
     super(props);
     this.form = React.createRef();
@@ -21,10 +21,23 @@ class CardsPanZiGong extends Component {
 
     // STYLES
     this.propsCard = {
-      img: 'main_qigong.png',
-      modal: '#exModalQiGong',
-      heading: 'Qi Gong',
-      pos: '55% 40%',
+      img: 'main_publikationen.png',
+      modal: '#exModalTraining',
+      heading: 'Seminare / Publikationen',
+      pos: '50% 50%',
+      cont1Heading: ['Karate', 'Qi Gong'],
+      cont1Body: [
+        {
+          cont: [
+            'Bücher und Veröffent- lichungen von Soke Roland Habersetzer auf Palisander',
+          ],
+          body: [''],
+        },
+        {
+          cont: ['Bücher von Prof. Ding HongYu auf Lilium'],
+          body: [''],
+        },
+      ],
     };
 
     this.styleModalDialog = {
@@ -288,10 +301,10 @@ class CardsPanZiGong extends Component {
     console.log('render');
     return (
       <React.Fragment>
-        <Card props={this.propsCard} />
+        <CardContent props={this.propsCard} />
       </React.Fragment>
     );
   }
 }
 
-export default CardsPanZiGong;
+export default CardsSeminare;
