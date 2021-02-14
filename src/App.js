@@ -3,7 +3,6 @@
 import { jsx } from '@emotion/react';
 
 import Navigation from './components/Navigation/Navigation';
-import Cards from './components/Cards/Cards';
 import CardsKarate from './components/Cards/CardsKarate';
 import CardsPanZiGong from './components/Cards/CardsPanZiGong';
 import CardsTaiJi from './components/Cards/CardsTaiJi';
