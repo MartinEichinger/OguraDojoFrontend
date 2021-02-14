@@ -36,14 +36,15 @@ class CardsKarate extends Component {
       position: 'relative',
 
       '& .btn-close': {
-        width: '20px',
-        height: '20px',
+        width: '100%',
+        height: '1px',
         padding: '3px',
         margin: '0px',
         borderRadius: '25px',
         lineHeight: '0',
-        position: 'absolute',
-        right: 'calc(-1 * (100vw - 1440px) / 2 + 20px )',
+        position: 'relative',
+        right: '0px',
+        //right: 'calc(-1 * (100vw - 1440px) / 2 + 20px )',
         top: '0px',
         backgroundColor: 'rgba(0,0,0,0)',
         border: 'none',
@@ -54,6 +55,7 @@ class CardsKarate extends Component {
         width: '100%',
         height: '90vh',
         backgroundColor: 'rgba(0,0,0,0)',
+        border: 'none',
 
         '& .modal-row': {
           width: '100%',
@@ -62,19 +64,19 @@ class CardsKarate extends Component {
             width: 'calc(100% - 220px)',
 
             '& h1': {
-              fontSize: '48px',
+              fontSize: '4vh',
               fontFamily: 'Ribeye, cursive',
             },
 
             '& h2': {
-              fontSize: '24px',
+              fontSize: '2vh',
               fontFamily: 'Ribeye, cursive',
               color: 'rgba(83,0,0,1)',
               margin: '15px 0px',
             },
 
             '& p': {
-              fontSize: '22px',
+              fontSize: '1.8vh',
               margin: '15px 0px',
               fontFamily: 'Roboto',
               textAlign: 'justify',
@@ -306,7 +308,7 @@ class CardsKarate extends Component {
             <div className="modal-content">
               <button
                 type="button"
-                className="btn-close"
+                className="btn-close d-flex flex-row align-items-start justify-content-end"
                 data-bs-dismiss="modal"
                 id="modalCardEx"
               >
