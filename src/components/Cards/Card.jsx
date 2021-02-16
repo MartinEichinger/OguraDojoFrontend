@@ -41,7 +41,9 @@ class Card extends Component {
 
       '& .img': {
         top: '0px',
-        background: 'url(xxx) no-repeat 50% 20%',
+        backgroundImage: 'url(xxx)',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: '50% 20%',
         borderRadius: '5px 5px 0px 0px',
         width: '100%',
         height: '200px',
@@ -66,7 +68,8 @@ class Card extends Component {
 
   render() {
     var { img, modal, heading, pos } = this.props.props;
-    this.styleCard['& .img'].background = `url(${img}) no-repeat ${pos}`;
+    this.styleCard['& .img'].backgroundImage = `url(${img})`;
+    this.styleCard['& .img'].backgroundPosition = `${pos}`;
 
     return (
       <button
