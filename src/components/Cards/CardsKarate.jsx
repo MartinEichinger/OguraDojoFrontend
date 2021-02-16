@@ -23,7 +23,7 @@ class CardsKarate extends Component {
     this.propsCard = {
       img: 'main_karate.png',
       modal: '#exModal',
-      heading: 'Tengu Ryu Karate-Do',
+      heading: 'Tengu Ryu Karate',
       pos: '50% 20%',
     };
 
