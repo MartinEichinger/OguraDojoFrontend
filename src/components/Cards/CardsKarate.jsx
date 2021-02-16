@@ -31,7 +31,7 @@ class CardsKarate extends Component {
       width: '100vw',
       maxWidth: '1440px',
       height: 'calc(100vh - 80px)',
-      marginTop: '50px',
+      marginTop: '20px',
       zIndex: '1051',
       position: 'relative',
 
@@ -325,15 +325,9 @@ class CardsKarate extends Component {
     if (tar === 'modalCard') {
       document.querySelector('.Frame').classList.remove('bg');
       document.querySelector('.Frame').classList.add('fg');
-      //document
-      //  .querySelector('.modal')
-      //  .classList.add('d-flex', 'flex-row-reverse', 'align-items-center');
     } else if (tar === 'modalCardEx') {
       document.querySelector('.Frame').classList.remove('fg');
       document.querySelector('.Frame').classList.add('bg');
-      //document
-      //  .querySelector('.modal')
-      //  .classList.remove('d-flex', 'flex-row-reverse', 'align-items-center');
     }
   };
 

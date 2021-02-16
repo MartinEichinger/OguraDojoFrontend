@@ -266,6 +266,8 @@ class CardsPanZiGong extends Component {
   };
 
   handleClick = (e) => {
+    return 1;
+    // eslint-disable-next-line
     var tar = e.target.attributes['id']?.value;
     console.log('Cardskarate/handleClick', e.currentTarget, e.target, tar);
 
