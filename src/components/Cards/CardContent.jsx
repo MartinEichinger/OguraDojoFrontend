@@ -47,6 +47,18 @@ class CardContent extends Component {
         height: '300px',
         margin: '0px',
         padding: '0px',
+
+        [this.mq[3]]: {
+          width: '500px',
+        },
+
+        [this.mq[2]]: {
+          width: '640px',
+        },
+
+        [this.mq[0]]: {
+          minWidth: '390px',
+        },
       },
 
       '& .content': {

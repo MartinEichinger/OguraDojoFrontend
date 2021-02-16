@@ -45,10 +45,22 @@ class Card extends Component {
         backgroundRepeat: 'no-repeat',
         backgroundPosition: '50% 20%',
         borderRadius: '5px 5px 0px 0px',
-        width: '100%',
+        width: '640px',
         height: '200px',
         margin: '0px',
         padding: '0px',
+
+        [this.mq[3]]: {
+          width: '500px',
+        },
+
+        [this.mq[2]]: {
+          width: '640px',
+        },
+
+        [this.mq[0]]: {
+          minWidth: '390px',
+        },
       },
 
       '& h1': {
