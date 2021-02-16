@@ -37,7 +37,7 @@ class CardsKarate extends Component {
 
       '& .btn-close': {
         width: '100%',
-        height: '1px',
+        height: '46px',
         padding: '3px',
         margin: '0px',
         borderRadius: '25px',
@@ -83,7 +83,7 @@ class CardsKarate extends Component {
             },
 
             '& .modal-up': {
-              height: '40%',
+              height: '35vh',
               backgroundColor: 'white',
               borderRadius: '5px',
               boxShadow: '0px 0px 30px 0px white',
@@ -91,15 +91,66 @@ class CardsKarate extends Component {
             },
 
             '& .modal-strip': {
-              height: '20%',
+              height: '20vh',
               backgroundColor: 'rgba(83,0,0,1)',
               margin: '15px 0px 15px -250px',
               boxShadow: '0px 0px 30px 0px white',
               position: 'relative',
+              overflow: 'scroll',
+
+              '& .pics': {
+                height: '100%',
+                width: '2000px',
+                overflow: 'hidden',
+              },
+
+              '& .img': {
+                height: 'calc(100% - 10px)',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+                margin: '5px 2.5px',
+              },
+
+              '& .num1': {
+                backgroundImage: 'url(karate_pic_1.png)',
+                width: '240px',
+              },
+              '& .num2': {
+                backgroundImage: 'url(karate_pic_2.png)',
+                width: '190px',
+              },
+              '& .num3': {
+                backgroundImage: 'url(karate_pic_3.png)',
+                width: '275px',
+              },
+              '& .num4': {
+                backgroundImage: 'url(karate_pic_4.png)',
+                width: '240px',
+              },
+              '& .num5': {
+                backgroundImage: 'url(karate_pic_5.png)',
+                width: '270px',
+              },
+              '& .num6': {
+                backgroundImage: 'url(karate_pic_6.png)',
+                width: '240px',
+              },
+              '& .num7': {
+                backgroundImage: 'url(karate_pic_7.png)',
+                width: '240px',
+              },
+              '& .num8': {
+                backgroundImage: 'url(karate_pic_8.png)',
+                width: '270px',
+              },
+              '& .num9': {
+                backgroundImage: 'url(karate_pic_9.png)',
+                width: '270px',
+              },
             },
 
             '& .modal-down': {
-              height: '40%',
+              height: '35vh',
               backgroundColor: 'white',
               borderRadius: '5px',
               boxShadow: '0px 0px 30px 0px white',
@@ -337,8 +388,19 @@ class CardsKarate extends Component {
                       erreichen.
                     </p>
                   </div>
-
-                  <div className="modal-strip">...</div>
+                  <div className="modal-strip">
+                    <div className="pics d-flex flex-row">
+                      <div className="img num1"></div>
+                      <div className="img num2"></div>
+                      <div className="img num3"></div>
+                      <div className="img num4"></div>
+                      <div className="img num5"></div>
+                      <div className="img num6"></div>
+                      <div className="img num7"></div>
+                      <div className="img num8"></div>
+                      <div className="img num9"></div>
+                    </div>
+                  </div>
                   <div className="modal-down">
                     <h1>tengu-ryu</h1>
                     <p>

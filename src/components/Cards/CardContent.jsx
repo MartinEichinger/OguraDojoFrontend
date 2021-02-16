@@ -43,7 +43,7 @@ class CardContent extends Component {
         top: '0px',
         background: 'url(xxx) no-repeat 50% 20%',
         borderRadius: '5px',
-        width: '100%',
+        width: '640px',
         height: '300px',
         margin: '0px',
         padding: '0px',
