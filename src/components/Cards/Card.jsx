@@ -45,6 +45,7 @@ class Card extends Component {
       },
 
       [this.mq[0]]: {
+        height: '200px',
         minWidth: '390px',
       },
 
@@ -53,6 +54,7 @@ class Card extends Component {
         backgroundImage: 'url(xxx)',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: '50% 20%',
+        backgroundSize: 'cover',
         borderRadius: '5px 0px 0px 5px',
         minWidth: '420px',
         height: '340px',
@@ -67,6 +69,7 @@ class Card extends Component {
 
         [this.mq[0]]: {
           //minWidth: '390px',
+          height: '200px',
         },
       },
 
@@ -76,7 +79,6 @@ class Card extends Component {
       },
 
       '& h1': {
-        //padding: '20px',
         fontSize: '36px',
         fontWeight: 'bold',
         color: this.typoGrey,
@@ -122,6 +124,10 @@ class Card extends Component {
           overflow: 'hidden',
           paddingBottom: '5px',
         },
+
+        [this.mq[0]]: {
+          display: 'none',
+        },
       },
 
       '& h5': {
@@ -133,6 +139,10 @@ class Card extends Component {
 
         [this.mq[2]]: {
           fontSize: '14px',
+        },
+
+        [this.mq[0]]: {
+          display: 'none',
         },
       },
     };

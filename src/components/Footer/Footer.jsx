@@ -17,7 +17,10 @@ const Footer = ({ colors }) => {
     zIndex: '1000',
     minWidth: '390px',
     backgroundColor: colors.bgGrey,
-    //boxShadow: `0px 0px 25px 0px ${colors.shadowGrey}`,
+
+    [mq[0]]: {
+      display: 'none',
+    },
 
     '& h1': {
       fontSize: '28px',

@@ -35,16 +35,6 @@ class Navigation extends Component {
         margin: '20px 20px',
       },
 
-      [this.mq[2]]: {
-        //  width: '640px',
-        //  margin: '20px auto',
-      },
-
-      [this.mq[1]]: {
-        //width: '100%',
-        //margin: '20px auto',
-      },
-
       [this.mq[0]]: {
         minWidth: '390px',
       },
@@ -106,14 +96,11 @@ class Navigation extends Component {
         '& a': {
           '& img': {
             width: '200px',
-            //position: 'absolute',
           },
         },
 
         '& .center': {
-          //width: 'calc(100% - 200px)',
           fontFamily: 'Lato, cursive',
-          //position: 'absolute',
 
           '& h1': {
             fontSize: '36px',
