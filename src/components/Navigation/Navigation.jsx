@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 // eslint-disable-next-line
 import { jsx, keyframes } from '@emotion/react';
-import './navigation.css';
+import '../animation.css';
 import React, { Component } from 'react';
 
 class Navigation extends Component {
@@ -9,36 +9,40 @@ class Navigation extends Component {
     super(props);
 
     // BREAKPOINTS
-    this.breakpoints = [576, 678, 1023, 1280];
+    this.breakpoints = [576, 678, 1023, 1320];
     this.mq = this.breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
 
     // STYLES
+    this.colorCard = this.props.colors;
+
     this.styleNavCard = {
       top: '40px',
       position: 'relative',
-      width: '1320px',
+      width: '1280px',
       minWidth: '340px',
       height: '300px',
-      border: '1px solid black',
+      boxShadow: `10px 10px 25px 0px ${this.colorCard.shadowGrey}`,
+      border: 'none',
+      outline: 'none',
       borderRadius: '5px',
       margin: '20px auto',
-      backgroundColor: 'rgba(52,58,64,1)',
-      fontFamily: 'Ribeye, cursive',
+      backgroundColor: this.colorCard.bgGrey,
+      fontFamily: 'Lato, cursive',
       zIndex: '1032',
 
       [this.mq[3]]: {
-        width: '1012px',
-        margin: '10px auto',
+        width: 'calc(100vw - 40px)',
+        margin: '20px 20px',
       },
 
       [this.mq[2]]: {
-        width: '640px',
-        margin: '20px auto',
+        //  width: '640px',
+        //  margin: '20px auto',
       },
 
       [this.mq[1]]: {
-        width: '100%',
-        margin: '20px auto',
+        //width: '100%',
+        //margin: '20px auto',
       },
 
       [this.mq[0]]: {
@@ -67,8 +71,9 @@ class Navigation extends Component {
 
         '& h1': {
           fontSize: '48px',
-          textAlign: 'center',
-          color: 'rgba(191,191,191,1)',
+          fontWeight: 'bold',
+          textAlign: 'left',
+          color: this.colorCard.typoGrey,
 
           [this.mq[2]]: {
             fontSize: '24px',
@@ -76,9 +81,10 @@ class Navigation extends Component {
         },
 
         '& h2': {
-          fontSize: '24px',
+          fontSize: '36px',
+          fontWeight: 'bold',
           textAlign: 'left',
-          color: 'rgba(191,191,191,1)',
+          color: this.colorCard.typoGrey,
 
           [this.mq[2]]: {
             fontSize: '16px',
@@ -89,8 +95,9 @@ class Navigation extends Component {
     };
 
     this.styleNav = {
+      backgroundColor: this.colorCard.bgGrey,
+      boxShadow: `10px 10px 25px 0px ${this.colorCard.shadowGrey}`,
       zIndex: '1032',
-      boxShadow: '0px 0px 25px 0px rgba(255,255,255,1)',
 
       '& .block': {
         height: '100px',
@@ -105,13 +112,14 @@ class Navigation extends Component {
 
         '& .center': {
           //width: 'calc(100% - 200px)',
-          fontFamily: 'Ribeye, cursive',
+          fontFamily: 'Lato, cursive',
           //position: 'absolute',
 
           '& h1': {
             fontSize: '36px',
             textAlign: 'center',
-            color: 'rgba(191,191,191,1)',
+            fontWeight: 'bold',
+            color: this.colorCard.typoGrey,
 
             [this.mq[0]]: {
               fontSize: '24px',
@@ -120,8 +128,10 @@ class Navigation extends Component {
 
           '& h2': {
             fontSize: '18px',
+            fontWeight: 'bold',
+
             textAlign: 'center',
-            color: 'rgba(191,191,191,1)',
+            color: this.colorCard.typoGrey,
 
             [this.mq[0]]: {
               display: 'none',
@@ -161,7 +171,7 @@ class Navigation extends Component {
     return (
       <React.Fragment>
         <div
-          className="navbar navbar-dark fixed-top bg-dark-o invisible d-flex flex-column"
+          className="navbar navbar-dark fixed-top invisible d-flex flex-column"
           css={this.styleNav}
         >
           <div className="block d-flex flex-row justify-content-between">
@@ -176,10 +186,7 @@ class Navigation extends Component {
           </div>
         </div>
 
-        <div
-          className="navbarCard bg-dark-o slide-in-top"
-          css={this.styleNavCard}
-        >
+        <div className="navbarCard slide-in-top" css={this.styleNavCard}>
           <div className="d-flex flex-row">
             <img src="./tengu.png" alt="" />
             <div className="text d-flex flex-column justify-content-center">

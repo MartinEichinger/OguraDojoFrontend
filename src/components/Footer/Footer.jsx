@@ -4,18 +4,20 @@ import { jsx } from '@emotion/react';
 
 import React from 'react';
 
-const Footer = () => {
+const Footer = ({ colors }) => {
   // BREAKPOINTS
   const breakpoints = [576, 678, 1023, 1280];
   const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
 
   // STYLE
   const styleFooter = {
-    color: 'rgba(191,191,191,1)',
-    fontFamily: 'Ribeye, cursive',
+    color: colors.typoGrey,
+    fontFamiliy: 'Lato, cursive',
     padding: '20px',
     zIndex: '1000',
     minWidth: '390px',
+    backgroundColor: colors.bgGrey,
+    //boxShadow: `0px 0px 25px 0px ${colors.shadowGrey}`,
 
     '& h1': {
       fontSize: '28px',
@@ -60,10 +62,7 @@ const Footer = () => {
   };
 
   return (
-    <footer
-      className="Footer fixed-bottom mt-auto py-3 bg-dark-o"
-      css={styleFooter}
-    >
+    <footer className="Footer fixed-bottom mt-auto py-3" css={styleFooter}>
       <div className="container-fluid">
         <div className="d-flex flex-column align-items-center">
           <h1>
