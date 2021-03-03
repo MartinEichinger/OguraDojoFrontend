@@ -19,7 +19,7 @@ const Footer = ({ colors }) => {
     backgroundColor: colors.bgGrey,
 
     [mq[0]]: {
-      display: 'none',
+      //display: 'none',
     },
 
     '& h1': {

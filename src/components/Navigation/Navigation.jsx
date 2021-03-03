@@ -9,7 +9,7 @@ class Navigation extends Component {
     super(props);
 
     // BREAKPOINTS
-    this.breakpoints = [576, 678, 1023, 1320];
+    this.breakpoints = [430, 576, 678, 1023, 1320];
     this.mq = this.breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
 
     // STYLES
@@ -30,19 +30,21 @@ class Navigation extends Component {
       fontFamily: 'Lato, cursive',
       zIndex: '1032',
 
-      [this.mq[3]]: {
+      [this.mq[4]]: {
         width: 'calc(100vw - 40px)',
         margin: '20px 20px',
       },
 
       [this.mq[0]]: {
         minWidth: '390px',
+        marginLeft: 'calc((100vw - 390px) / 2)',
+        marginRight: 'calc((100vw - 390px) / 2)',
       },
 
       '& img': {
         width: '480px',
 
-        [this.mq[2]]: {
+        [this.mq[3]]: {
           width: '50%',
           height: '30%',
         },
@@ -51,11 +53,11 @@ class Navigation extends Component {
       '& .text': {
         margin: '48px',
 
-        [this.mq[3]]: {
+        [this.mq[4]]: {
           margin: '24px',
         },
 
-        [this.mq[2]]: {
+        [this.mq[3]]: {
           margin: '12px',
         },
 
@@ -65,7 +67,7 @@ class Navigation extends Component {
           textAlign: 'left',
           color: this.colorCard.typoGrey,
 
-          [this.mq[2]]: {
+          [this.mq[3]]: {
             fontSize: '24px',
           },
         },
@@ -76,7 +78,7 @@ class Navigation extends Component {
           textAlign: 'left',
           color: this.colorCard.typoGrey,
 
-          [this.mq[2]]: {
+          [this.mq[3]]: {
             fontSize: '16px',
             textAlign: 'center',
           },
@@ -108,7 +110,7 @@ class Navigation extends Component {
             fontWeight: 'bold',
             color: this.colorCard.typoGrey,
 
-            [this.mq[0]]: {
+            [this.mq[1]]: {
               fontSize: '24px',
             },
           },
@@ -120,7 +122,7 @@ class Navigation extends Component {
             textAlign: 'center',
             color: this.colorCard.typoGrey,
 
-            [this.mq[0]]: {
+            [this.mq[1]]: {
               display: 'none',
             },
           },

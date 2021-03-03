@@ -12,6 +12,11 @@ class Card extends Component {
     this.breakpoints = [576, 678, 1023, 1280];
     this.mq = this.breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
 
+    this.state = {
+      width: 1280,
+      height: 340,
+    };
+
     // STYLES
     this.bgGrey = this.props.color?.bgGrey;
     this.bgWhite = this.props.color?.bgWhite;
@@ -76,6 +81,14 @@ class Card extends Component {
       '& .cardBody': {
         padding: '20px',
         height: '100%',
+
+        [this.mq[2]]: {
+          padding: '15px',
+        },
+
+        [this.mq[0]]: {
+          padding: '10px',
+        },
       },
 
       '& h1': {
@@ -83,18 +96,6 @@ class Card extends Component {
         fontWeight: 'bold',
         color: this.typoGrey,
         textAlign: 'left',
-
-        [this.mq[2]]: {
-          fontSize: '32px',
-        },
-
-        [this.mq[1]]: {
-          fontSize: '32px',
-        },
-
-        [this.mq[0]]: {
-          fontSize: '24px',
-        },
       },
 
       '& h2': {
@@ -106,7 +107,6 @@ class Card extends Component {
         textAlign: 'left',
 
         [this.mq[2]]: {
-          fontSize: '18px',
           paddingBottom: '10px',
         },
       },
@@ -114,38 +114,68 @@ class Card extends Component {
       '& p': {
         margin: '0px',
         fontSize: '20px',
-        fontWeight: 'regular',
+        fontWeight: 'normal',
         color: this.typoGrey,
         textAlign: 'justify',
 
         [this.mq[2]]: {
-          fontSize: '18px',
           maxHeight: '135px',
           overflow: 'hidden',
           paddingBottom: '5px',
         },
 
         [this.mq[0]]: {
-          display: 'none',
+          maxHeight: '85px',
         },
       },
 
       '& h5': {
-        //padding: '20px',
         fontSize: '16px',
         fontWeight: 'bold',
         color: this.typoGreen,
         textAlign: 'left',
 
-        [this.mq[2]]: {
-          fontSize: '14px',
-        },
-
         [this.mq[0]]: {
-          display: 'none',
+          maxHeight: '16px',
+          overflow: 'hidden',
         },
       },
     };
+  }
+
+  updateHx = () => {
+    // H1
+    this.styleCard['& h1'].fontSize =
+      20 * (((this.state.width / 1280) * this.state.height) / 340) + 18 + 'px';
+
+    // H2
+    this.styleCard['& h2'].fontSize =
+      8 * (((this.state.width / 1280) * this.state.height) / 340) + 12 + 'px';
+
+    // p
+    this.styleCard['& p'].fontSize =
+      8 * (((this.state.width / 1280) * this.state.height) / 340) + 12 + 'px';
+
+    // H5
+    this.styleCard['& h5'].fontSize =
+      6 * (((this.state.width / 1280) * this.state.height) / 340) + 10 + 'px';
+  };
+
+  updateDimensions = () => {
+    this.setState({
+      width: document.querySelector('.Cards').offsetWidth,
+      height: document.querySelector('.Cards').offsetHeight,
+    });
+    console.log(
+      document.querySelector('.Cards').offsetWidth,
+      document.querySelector('.Cards').offsetHeight
+    );
+  };
+  componentDidMount() {
+    window.addEventListener('resize', this.updateDimensions);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimensions);
   }
 
   render() {
@@ -160,6 +190,8 @@ class Card extends Component {
     } = this.props.props;
     this.styleCard['& .img'].backgroundImage = `url(${img})`;
     this.styleCard['& .img'].backgroundPosition = `${pos}`;
+    this.updateHx();
+    console.log('Card/render');
 
     return (
       <button
