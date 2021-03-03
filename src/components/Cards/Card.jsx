@@ -122,10 +122,16 @@ class Card extends Component {
           maxHeight: '135px',
           overflow: 'hidden',
           paddingBottom: '5px',
+          textOverflow: 'ellipsis',
+          overflow: 'hidden',
+          //whiteSpace: 'nowrap',
         },
 
         [this.mq[0]]: {
           maxHeight: '85px',
+          textOverflow: 'ellipsis',
+          overflow: 'hidden',
+          //whiteSpace: 'nowrap',
         },
       },
 
@@ -137,7 +143,9 @@ class Card extends Component {
 
         [this.mq[0]]: {
           maxHeight: '16px',
+          textOverflow: 'ellipsis',
           overflow: 'hidden',
+          //whiteSpace: 'nowrap',
         },
       },
     };
@@ -173,6 +181,7 @@ class Card extends Component {
   };
   componentDidMount() {
     window.addEventListener('resize', this.updateDimensions);
+    this.updateDimensions();
   }
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateDimensions);
