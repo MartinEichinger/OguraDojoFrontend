@@ -103,7 +103,7 @@ class App extends Component {
     return (
       <div className="App d-flex flex-column" css={this.styleApp}>
         <Navigation colors={this.colors} />
-        <ModalKarate />
+        <ModalKarate colors={this.colors} />
         <div className="Frame bg">
           <div className="Content d-flex flex-row flex-wrap justify-content-center">
             {this.renderCards()}

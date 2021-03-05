@@ -28,7 +28,6 @@ class Card extends Component {
 
     this.styleCard = {
       width: '1280px',
-      //minWidth: '640px',
       height: '340px',
       boxShadow: `10px 10px 25px 0px ${this.shadowGrey}`,
       borderRadius: '5px',
@@ -123,14 +122,12 @@ class Card extends Component {
           paddingBottom: '5px',
           textOverflow: 'ellipsis',
           overflow: 'hidden',
-          //whiteSpace: 'nowrap',
         },
 
         [this.mq[0]]: {
           maxHeight: '85px',
           textOverflow: 'ellipsis',
           overflow: 'hidden',
-          //whiteSpace: 'nowrap',
         },
       },
 
@@ -144,7 +141,6 @@ class Card extends Component {
           maxHeight: '16px',
           textOverflow: 'ellipsis',
           overflow: 'hidden',
-          //whiteSpace: 'nowrap',
         },
       },
     };

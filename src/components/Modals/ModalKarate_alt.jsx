@@ -2,6 +2,7 @@
 // eslint-disable-next-line
 import { jsx } from '@emotion/react';
 
+import $ from 'jquery';
 import React, { Component } from 'react';
 import '../animation.css';
 
@@ -19,33 +20,26 @@ class ModalKarate extends Component {
     this.mq = this.breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
 
     // STYLES
-    this.bgGrey = this.props.colors?.bgGrey;
-    this.bgWhite = this.props.colors?.bgWhite;
-    this.bgRed = this.props.colors?.bgRed;
-    this.typoRed = this.props.colors?.typoRed;
-    this.typoGrey = this.props.colors?.typoGrey;
-    this.typoGreen = this.props.colors?.typoGreen;
-    this.shadowGrey = this.props.colors?.shadowGrey;
-
     this.styleModalDialog = {
       width: '100vw',
       maxWidth: '1440px',
-      height: 'calc(100vh - 3.5rem)',
-      //marginTop: '20px',
+      height: 'calc(100vh - 80px)',
+      marginTop: '20px',
       zIndex: '1051',
       position: 'relative',
-      overflow: 'hidden',
 
       '& .btn-close': {
-        width: '45px',
-        height: '45px',
-        margin: '1px',
-        borderRadius: '45px',
+        width: '100%',
+        height: '46px',
+        padding: '3px',
+        margin: '0px',
+        borderRadius: '25px',
         lineHeight: '0',
         position: 'relative',
         right: '0px',
+        //right: 'calc(-1 * (100vw - 1440px) / 2 + 20px )',
         top: '0px',
-        backgroundColor: this.typoGrey,
+        backgroundColor: 'rgba(0,0,0,0)',
         border: 'none',
         outline: 'none',
         zIndex: '1100',
@@ -53,7 +47,7 @@ class ModalKarate extends Component {
 
       '& .modal-content': {
         width: '100%',
-        height: '100vh',
+        height: '90vh',
         backgroundColor: 'rgba(0,0,0,0)',
         border: 'none',
 
@@ -65,7 +59,7 @@ class ModalKarate extends Component {
             position: 'absolute',
 
             '& .modal-col': {
-              width: 'calc(100% - 49px)',
+              width: 'calc(100% - 220px)',
 
               '& h1': {
                 fontSize: '4vh',
@@ -122,6 +116,7 @@ class ModalKarate extends Component {
 
                 '& .pics': {
                   height: '100%',
+                  //width: '2000px',
                   overflow: 'hidden',
                 },
 
@@ -175,47 +170,13 @@ class ModalKarate extends Component {
             },
           },
 
-          '& .inNavigation': {
+          '& .frameC9': {
             position: 'absolute',
-            width: '47px',
-            height: 'calc(90vh + 30px)',
+            width: '220px',
+            height: '10vh',
             zIndex: '1052',
             right: '0px',
-            backgroundColor: this.bgWhite,
-            borderRadius: '45px',
-
-            '& .navItem': {
-              width: '145px',
-              position: 'relative',
-              transform: 'rotate(90deg)',
-              color: this.bgGrey,
-              border: `1px solid ${this.bgWhite}`,
-              borderRadius: '25px',
-
-              '& h1': {
-                fontSize: '28px',
-                cursor: 'pointer',
-                fontWeight: 'normal',
-              },
-
-              '&.active': {
-                color: this.typoRed,
-                border: `1px solid ${this.bgRed}`,
-
-                '& h1': {
-                  fontWeight: 'bold',
-                },
-              },
-            },
-
-            '& .arrow': {
-              position: 'relative',
-              width: '45px',
-              height: '45px',
-              borderRadius: '45px',
-              backgroundColor: this.bgRed,
-              margin: '1px',
-            },
+            paddingLeft: '20px',
 
             '& .center': {
               position: 'relative',
@@ -244,6 +205,60 @@ class ModalKarate extends Component {
                 },
               },
             },
+
+            '& .form1': {
+              transform: 'translate3d(0px, 0px, 0px)',
+              backgroundColor: 'rgba(255, 255, 255, 1)',
+              color: 'rgba(83, 0, 0, 1)',
+            },
+
+            '& .form2': {
+              transform: 'translate3d(0px, -90px, -20px)',
+              backgroundColor: 'rgba(175, 175, 175, 1)',
+              color: 'rgba(100, 100, 100, 1)',
+            },
+
+            '& .form3': {
+              transform: 'translate3d(0px, -180px, -40px)',
+              backgroundColor: 'rgba(175, 175, 175, 1)',
+              color: 'rgba(100, 100, 100, 1)',
+            },
+
+            '& .form4': {
+              transform: 'translate3d(0px, -120px, -60px)',
+              backgroundColor: 'rgba(175, 175, 175, 1)',
+              color: 'rgba(100, 100, 100, 0)',
+            },
+
+            '& .form5': {
+              transform: 'translate3d(0px, -60px, -80px)',
+              backgroundColor: 'rgba(175, 175, 175, 1)',
+              color: 'rgba(100, 100, 100, 0)',
+            },
+
+            '& .form6': {
+              transform: 'translate3d(0px, 0px, -80px)',
+              backgroundColor: 'rgba(175, 175, 175, 1)',
+              color: 'rgba(100, 100, 100, 0)',
+            },
+
+            '& .form7': {
+              transform: 'translate3d(0px, 60px, -60px)',
+              backgroundColor: 'rgba(175, 175, 175, 1)',
+              color: 'rgba(100, 100, 100, 0)',
+            },
+
+            '& .form8': {
+              transform: 'translate3d(0px, 180px, -40px)',
+              backgroundColor: 'rgba(175, 175, 175, 1)',
+              color: 'rgba(100, 100, 100, 1)',
+            },
+
+            '& .form9': {
+              transform: 'translate3d(0px, 90px, -20px)',
+              backgroundColor: 'rgba(175, 175, 175, 1)',
+              color: 'rgba(100, 100, 100, 1)',
+            },
           },
         },
       },
@@ -271,28 +286,86 @@ class ModalKarate extends Component {
 
   nextItem = (e, button) => {
     console.log('CardsKarate/nextItem', e, button);
-    // identify the page to be shown
-    document
-      .querySelector(`.${this.stats.page}`)
-      .classList.remove('slide-in-bottom');
-    document.querySelector(`.${this.stats.page}Btn`).classList.remove('active');
-    document
-      .querySelector(`.${this.stats.page}`)
-      .classList.add('slide-out-top');
+    // check if there is a current run / if not, check number of necessary steps
+    if (this.stats.status === 0) {
+      // calculate how many steps to rotate
+      var step = parseInt(
+        e.target.parentElement.classList[1].replace('form', '')
+      );
 
-    this.stats.page = e.target.innerHTML;
+      if (step === 1) {
+        this.stats.status = 0;
+        this.stats.event = e;
+        return 0;
+      } else if (step === 2) {
+        this.stats.status = 4;
+        this.stats.event = e;
+      } else if (step === 3) {
+        this.stats.status = 3;
+        this.stats.event = e;
+      } else if (step === 4 || step === 5 || step === 6 || step === 7) {
+        return 0;
+      } else if (step === 8) {
+        this.stats.status = 2;
+        this.stats.event = e;
+      } else if (step === 9) {
+        this.stats.status = 1;
+        this.stats.event = e;
+      }
 
-    try {
-      document.querySelector(`.${this.stats.page}`).classList.remove('d-none');
-    } catch (e) {}
+      // identify the page to be shown
+      document
+        .querySelector(`.${this.stats.page}`)
+        .classList.remove('slide-in-bottom');
+      document
+        .querySelector(`.${this.stats.page}`)
+        .classList.add('slide-out-top');
 
-    document
-      .querySelector(`.${this.stats.page}`)
-      .classList.remove('slide-out-top');
-    document.querySelector(`.${this.stats.page}Btn`).classList.add('active');
-    document
-      .querySelector(`.${this.stats.page}`)
-      .classList.add('slide-in-bottom');
+      this.stats.page = e.target.innerHTML;
+
+      document
+        .querySelector(`.${this.stats.page}`)
+        .classList.remove('slide-out-top');
+      document
+        .querySelector(`.${this.stats.page}`)
+        .classList.add('slide-in-bottom');
+    }
+
+    // find all .form items and toggle class with next higher class
+    var f = this.form.current;
+    for (var x of [1, 2, 3, 4, 5, 6, 7, 8, 9]) {
+      this['f' + x] = $(f).children(`.form${x}`);
+    }
+
+    for (x of [1, 2, 3, 4, 5, 6, 7, 8, 9]) {
+      var num = x === 9 ? 0 : x;
+      this['f' + x].addClass(`form${num + 1}`).removeClass(`form${x}`);
+
+      // exchange top text with bottom text
+      if (x === 3) {
+        this.f7.children('p.heading')[0].innerText = this.f3.children(
+          'p.heading'
+        )[0].innerText;
+        this.f3.children('p.heading')[0].innerText = '.';
+      }
+    }
+
+    this.stats.status -= 1;
+    // set state to trigger re-render
+    this.setState({ run: 1 });
+  };
+
+  handleClick = (e) => {
+    var tar = e.target.attributes['id']?.value;
+    console.log('Cardskarate/handleClick', e.currentTarget, e.target, tar);
+
+    if (tar === 'modalCard') {
+      //document.querySelector('.Frame').classList.remove('bg');
+      //document.querySelector('.Frame').classList.add('fg');
+    } else if (tar === 'modalCardEx') {
+      //document.querySelector('.Frame').classList.remove('fg');
+      //document.querySelector('.Frame').classList.add('bg');
+    }
   };
 
   render() {
@@ -313,39 +386,74 @@ class ModalKarate extends Component {
             css={this.styleModalDialog}
           >
             <div className="modal-content">
+              <button
+                type="button"
+                className="btn-close d-flex flex-row align-items-start justify-content-end"
+                data-bs-dismiss="modal"
+                id="modalCardEx"
+              >
+                <img src="./CancelButton.png" alt="" id="modalCardEx" />
+              </button>
               <div className="modal-row d-flex flex-row h-100 align-items-center">
-                <div className="inNavigation d-flex flex-column justify-content-between align-items-center">
-                  <button
-                    type="button"
-                    className="btn-close d-flex flex-row align-items-center justify-content-center"
-                    data-bs-dismiss="modal"
-                    id="modalCardEx"
-                  >
-                    <img src="./clear_white.png" alt="" id="modalCardEx" />
-                  </button>
-                  <div
-                    className="arrow upArrow d-flex align-items-center justify-content-center"
-                    onClick={(e) => this.nextItem(e, '.page1')}
-                  >
-                    <img src="arrow_white_up.png" alt="" />
-                  </div>
-                  <div
-                    className="navItem TenguRyuBtn active d-flex align-items-center justify-content-center"
-                    onClick={(e) => this.nextItem(e, '.TenguRyu')}
-                  >
-                    <h1>TenguRyu</h1>
-                  </div>
-                  <div
-                    className="navItem LehrerBtn d-flex align-items-center justify-content-center"
-                    onClick={(e) => this.nextItem(e, '.Lehrer')}
-                  >
-                    <h1>Lehrer</h1>
-                  </div>
-                  <div className="arrow downArrow d-flex align-items-center justify-content-center">
-                    <img src="arrow_white_down.png" alt="" />
+                <div className="frameC9">
+                  <div className="center" ref={this.form}>
+                    <div
+                      className="form form1"
+                      onClick={(e) => this.nextItem(e, '.page1')}
+                    >
+                      <p className="heading">TenguRyu</p>
+                    </div>
+                    <div
+                      className="form form2"
+                      onClick={(e) => this.nextItem(e, '.page2')}
+                    >
+                      <p className="heading">Lehrer</p>
+                    </div>
+                    <div
+                      className="form form3"
+                      onClick={(e) => this.nextItem(e, '.page3')}
+                    >
+                      <p className="heading">Formen</p>
+                    </div>
+                    <div
+                      className="form form4"
+                      onClick={(e) => this.nextItem(e, '')}
+                    >
+                      <p className="heading">.</p>
+                    </div>
+                    <div
+                      className="form form5"
+                      onClick={(e) => this.nextItem(e, '')}
+                    >
+                      <p className="heading">.</p>
+                    </div>
+                    <div
+                      className="form form6"
+                      onClick={(e) => this.nextItem(e, '')}
+                    >
+                      <p className="heading">.</p>
+                    </div>
+                    <div
+                      className="form form7"
+                      onClick={(e) => this.nextItem(e, '')}
+                    >
+                      <p className="heading">.</p>
+                    </div>
+                    <div
+                      className="form form8"
+                      onClick={(e) => this.nextItem(e, '.page4')}
+                    >
+                      <p className="heading">Training</p>
+                    </div>
+                    <div
+                      className="form form9"
+                      onClick={(e) => this.nextItem(e, '.page5')}
+                    >
+                      <p className="heading">Blog</p>
+                    </div>
                   </div>
                 </div>
-                <div className="TenguRyu">
+                <div className="TenguRyu slide-in-bottom">
                   <div className="modal-col d-flex flex-column h-100">
                     <div className="modal-up">
                       <h1>karate-do</h1>
@@ -407,7 +515,7 @@ class ModalKarate extends Component {
                     </div>
                   </div>
                 </div>
-                <div className="Lehrer d-none">
+                <div className="Lehrer slide-out-top">
                   <div className="modal-col d-flex flex-column h-100">
                     <div className="modal-up">
                       <h1>Roland Habersetzer</h1>
