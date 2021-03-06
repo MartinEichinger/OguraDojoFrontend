@@ -8,9 +8,15 @@ import '../animation.css';
 class ModalKarate extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      width: 1340,
+      height: 300,
+    };
+
     this.form = React.createRef();
     this.stats = {
-      status: 0,
+      allPages: ['TenguRyu', 'Lehrer'],
       page: 'TenguRyu',
     };
 
@@ -31,7 +37,6 @@ class ModalKarate extends Component {
       width: '100vw',
       maxWidth: '1440px',
       height: 'calc(100vh - 3.5rem)',
-      //marginTop: '20px',
       zIndex: '1051',
       position: 'relative',
       overflow: 'hidden',
@@ -65,7 +70,7 @@ class ModalKarate extends Component {
             position: 'absolute',
 
             '& .modal-col': {
-              width: 'calc(100% - 49px)',
+              width: 'calc(100% - 51px)',
 
               '& h1': {
                 fontSize: '4vh',
@@ -87,7 +92,7 @@ class ModalKarate extends Component {
                 height: '35vh',
                 backgroundColor: 'white',
                 borderRadius: '5px',
-                boxShadow: '0px 0px 30px 0px white',
+                //boxShadow: '0px 0px 30px 0px white',
                 padding: '2vh',
 
                 '& .scroll': {
@@ -116,7 +121,7 @@ class ModalKarate extends Component {
                 height: '20vh',
                 backgroundColor: 'rgba(83,0,0,1)',
                 margin: '15px 0px',
-                boxShadow: '0px 0px 30px 0px white',
+                //boxShadow: '0px 0px 30px 0px white',
                 position: 'relative',
                 overflow: 'hidden',
 
@@ -148,7 +153,7 @@ class ModalKarate extends Component {
                 height: '35vh',
                 backgroundColor: 'white',
                 borderRadius: '5px',
-                boxShadow: '0px 0px 30px 0px white',
+                //boxShadow: '0px 0px 30px 0px white',
                 padding: '2vh',
 
                 '& .scroll': {
@@ -180,7 +185,7 @@ class ModalKarate extends Component {
             width: '47px',
             height: 'calc(90vh + 30px)',
             zIndex: '1052',
-            right: '0px',
+            right: '2px',
             backgroundColor: this.bgWhite,
             borderRadius: '45px',
 
@@ -213,8 +218,13 @@ class ModalKarate extends Component {
               width: '45px',
               height: '45px',
               borderRadius: '45px',
-              backgroundColor: this.bgRed,
+              backgroundColor: this.bgGrey,
               margin: '1px',
+
+              '&.active': {
+                backgroundColor: this.bgRed,
+                cursor: 'pointer',
+              },
             },
 
             '& .center': {
@@ -250,27 +260,32 @@ class ModalKarate extends Component {
     };
   }
 
-  componentDidMount() {
-    console.log('ModalKarate/compDidMount');
-    window.addEventListener('click', this.handleClick);
-  }
+  clickUpDown = (dir) => {
+    console.log('ModalKarate/clickUpDown', dir);
 
-  componentWillUnmount() {
-    console.log('ModalKarate/compWillUnmount');
-    window.removeEventListener('scroll', this.handleClick);
-  }
+    // find index of current page
+    var idx = this.stats.allPages.findIndex((item) => {
+      return item === this.stats.page;
+    });
 
-  componentDidUpdate() {
-    console.log('ModalKarate/did update');
-    if (this.stats.status !== 0) {
-      setTimeout(() => {
-        this.nextItem(this.stats.event);
-      }, 400);
+    // trigger nextItem with requested page
+    if (idx === 0 && dir === 'down') {
+      this.nextItem(this.stats.allPages[idx + 1]);
+    } else if (idx === 0 && dir === 'up') {
+      return 0;
+    } else if (idx === this.stats.allPages.length - 1 && dir === 'up') {
+      this.nextItem(this.stats.allPages[idx - 1]);
+    } else if (idx === this.stats.allPages.length - 1 && dir === 'down') {
+      return 0;
+    } else if (dir === 'up') {
+      this.nextItem(this.stats.allPages[idx - 1]);
+    } else if (dir === 'down') {
+      this.nextItem(this.stats.allPages[idx + 1]);
     }
-  }
+  };
 
-  nextItem = (e, button) => {
-    console.log('CardsKarate/nextItem', e, button);
+  nextItem = (button) => {
+    console.log('CardsKarate/nextItem', button);
     // identify the page to be shown
     document
       .querySelector(`.${this.stats.page}`)
@@ -280,7 +295,7 @@ class ModalKarate extends Component {
       .querySelector(`.${this.stats.page}`)
       .classList.add('slide-out-top');
 
-    this.stats.page = e.target.innerHTML;
+    this.stats.page = button;
 
     try {
       document.querySelector(`.${this.stats.page}`).classList.remove('d-none');
@@ -293,10 +308,67 @@ class ModalKarate extends Component {
     document
       .querySelector(`.${this.stats.page}`)
       .classList.add('slide-in-bottom');
+
+    // check if end of list start or end -> in case reset arrow from active
+    var idx = this.stats.allPages.findIndex((item) => {
+      return item === this.stats.page;
+    });
+
+    if (idx === 0) {
+      document.querySelector(`.upArrow`).classList.remove('active');
+      document.querySelector(`.downArrow`).classList.add('active');
+    } else if (idx === this.stats.allPages.length - 1) {
+      document.querySelector(`.upArrow`).classList.add('active');
+      document.querySelector(`.downArrow`).classList.remove('active');
+    } else {
+      document.querySelector(`.upArrow`).classList.add('active');
+      document.querySelector(`.downArrow`).classList.add('active');
+    }
   };
 
+  updateHx = () => {
+    // H1
+    this.styleModalDialog['& .modal-content']['& .modal-row'][
+      '& .TenguRyu, .Lehrer'
+    ]['& .modal-col']['& h1'].fontSize =
+      20 * (((this.state.width / 1340) * this.state.height) / 300) + 18 + 'px';
+
+    // H2
+    this.styleModalDialog['& .modal-content']['& .modal-row'][
+      '& .TenguRyu, .Lehrer'
+    ]['& .modal-col']['& h2'].fontSize =
+      8 * (((this.state.width / 1340) * this.state.height) / 300) + 12 + 'px';
+
+    // p
+    this.styleModalDialog['& .modal-content']['& .modal-row'][
+      '& .TenguRyu, .Lehrer'
+    ]['& .modal-col']['& p'].fontSize =
+      6 * (((this.state.width / 1340) * this.state.height) / 300) + 14 + 'px';
+  };
+
+  updateDimensions = () => {
+    var w = document.querySelector('.scroll').offsetWidth;
+    var h = document.querySelector('.scroll').offsetHeight;
+    if (w !== 0)
+      this.setState({
+        width: w,
+        height: h,
+      });
+    console.log(w, h);
+  };
+
+  componentDidMount() {
+    window.addEventListener('resize', this.updateDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimensions);
+  }
+
   render() {
-    console.log('render');
+    console.log('ModalKarate/render', this.state.width, this.state.height);
+    this.updateHx();
+
     return (
       <React.Fragment>
         <div
@@ -325,23 +397,26 @@ class ModalKarate extends Component {
                   </button>
                   <div
                     className="arrow upArrow d-flex align-items-center justify-content-center"
-                    onClick={(e) => this.nextItem(e, '.page1')}
+                    onClick={(e) => this.clickUpDown('up')}
                   >
                     <img src="arrow_white_up.png" alt="" />
                   </div>
                   <div
                     className="navItem TenguRyuBtn active d-flex align-items-center justify-content-center"
-                    onClick={(e) => this.nextItem(e, '.TenguRyu')}
+                    onClick={(e) => this.nextItem('TenguRyu')}
                   >
                     <h1>TenguRyu</h1>
                   </div>
                   <div
                     className="navItem LehrerBtn d-flex align-items-center justify-content-center"
-                    onClick={(e) => this.nextItem(e, '.Lehrer')}
+                    onClick={(e) => this.nextItem('Lehrer')}
                   >
                     <h1>Lehrer</h1>
                   </div>
-                  <div className="arrow downArrow d-flex align-items-center justify-content-center">
+                  <div
+                    className="arrow downArrow d-flex align-items-center justify-content-center active"
+                    onClick={(e) => this.clickUpDown('down')}
+                  >
                     <img src="arrow_white_down.png" alt="" />
                   </div>
                 </div>
