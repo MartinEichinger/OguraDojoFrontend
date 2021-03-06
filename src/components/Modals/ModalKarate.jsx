@@ -56,6 +56,14 @@ class ModalKarate extends Component {
         zIndex: '1100',
       },
 
+      '& .red': {
+        color: this.typoRed,
+      },
+
+      '& .center': {
+        textAlign: 'center',
+      },
+
       '& .modal-content': {
         width: '100%',
         height: '100vh',
@@ -74,11 +82,13 @@ class ModalKarate extends Component {
 
               '& h1': {
                 fontSize: '4vh',
+                fontWeight: 'bold',
               },
 
               '& h2': {
                 fontSize: '2vh',
-                color: 'rgba(83,0,0,1)',
+                fontWeight: 'bold',
+                color: this.typoRed,
                 margin: '15px 0px',
               },
 
@@ -503,7 +513,7 @@ class ModalKarate extends Component {
                 <div className="Lehrer d-none">
                   <div className="modal-col d-flex flex-column h-100">
                     <div className="modal-up">
-                      <h1>Roland Habersetzer</h1>
+                      <h1 className="red center">Roland Habersetzer</h1>
                       <div className="scroll">
                         <p>
                           <span>Roland Habersetzer</span> praktiziert seit 1957

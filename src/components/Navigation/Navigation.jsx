@@ -97,7 +97,7 @@ class Navigation extends Component {
 
         '& a': {
           '& img': {
-            width: '200px',
+            width: '170px',
           },
         },
 
@@ -165,7 +165,7 @@ class Navigation extends Component {
         >
           <div className="block d-flex flex-row justify-content-between">
             <a href="http://www.tengu.fr" target="_blank" rel="noreferrer">
-              <img src="./tengu.png" alt="" />
+              <img src="./OguraDojoLogo.png" alt="" />
             </a>
             <div className="center d-flex flex-column justify-content-center">
               <h1>Ogura Dojo</h1>
@@ -177,7 +177,7 @@ class Navigation extends Component {
 
         <div className="navbarCard slide-in-top" css={this.styleNavCard}>
           <div className="d-flex flex-row">
-            <img src="./tengu.png" alt="" />
+            <img src="./OguraDojoLogo.png" alt="" />
             <div className="text d-flex flex-column justify-content-center">
               <h1>Willommen im Ogura Dojo</h1>
               <h2>Tengu Ryu Karate-Do, PanZi Gong, TaiJi Quan, QiGong</h2>
