@@ -142,9 +142,27 @@ class ModalKarate extends Component {
                   backgroundImage: 'url(karate_pic_1.png)',
                 },
                 '& .num2': {
-                  backgroundImage: 'url(karate_pic_8.png)',
+                  backgroundImage: 'url(karate_pic_2.png)',
                 },
                 '& .num3': {
+                  backgroundImage: 'url(karate_pic_3.png)',
+                },
+                '& .num4': {
+                  backgroundImage: 'url(karate_pic_4.png)',
+                },
+                '& .num5': {
+                  backgroundImage: 'url(karate_pic_5.png)',
+                },
+                '& .num6': {
+                  backgroundImage: 'url(karate_pic_6.png)',
+                },
+                '& .num7': {
+                  backgroundImage: 'url(karate_pic_7.png)',
+                },
+                '& .num8': {
+                  backgroundImage: 'url(karate_pic_8.png)',
+                },
+                '& .num9': {
                   backgroundImage: 'url(karate_pic_9.png)',
                 },
               },
@@ -448,8 +466,8 @@ class ModalKarate extends Component {
                     <div className="modal-strip">
                       <div className="pics d-flex flex-row justify-content-center">
                         <div className="img num1"></div>
-                        <div className="img num2"></div>
-                        <div className="img num3"></div>
+                        <div className="img num8"></div>
+                        <div className="img num9"></div>
                       </div>
                     </div>
                     <div className="modal-down">
@@ -516,16 +534,10 @@ class ModalKarate extends Component {
                       </div>
                     </div>
                     <div className="modal-strip">
-                      <div className="pics d-flex flex-row">
-                        <div className="img num1"></div>
-                        <div className="img num2"></div>
-                        <div className="img num3"></div>
+                      <div className="pics d-flex flex-row justify-content-center">
                         <div className="img num4"></div>
                         <div className="img num5"></div>
                         <div className="img num6"></div>
-                        <div className="img num7"></div>
-                        <div className="img num8"></div>
-                        <div className="img num9"></div>
                       </div>
                     </div>
                     <div className="modal-down">
