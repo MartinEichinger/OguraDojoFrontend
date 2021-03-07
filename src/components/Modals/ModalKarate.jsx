@@ -36,10 +36,11 @@ class ModalKarate extends Component {
     this.styleModalDialog = {
       width: '100vw',
       maxWidth: '1440px',
-      height: 'calc(100vh - 3rem)', // 3.5rem
+      height: 'calc(100vh - 2vh)', // 3.5rem
       zIndex: '1051',
       position: 'relative',
       overflow: 'hidden',
+      margin: '3vh 0px',
 
       '& .btn-close': {
         width: '45px',
@@ -82,6 +83,7 @@ class ModalKarate extends Component {
 
               '& h1': {
                 fontSize: '4vh',
+                marginBottom: '1vh',
                 fontWeight: 'bold',
               },
 
@@ -89,12 +91,12 @@ class ModalKarate extends Component {
                 fontSize: '2vh',
                 fontWeight: 'bold',
                 color: this.typoRed,
-                margin: '15px 0px',
+                marginBottom: '2vh',
               },
 
               '& p': {
                 fontSize: '1.8vh',
-                margin: '15px 15px 15px 0px',
+                margin: '0vh 15px 0vh 0px',
                 textAlign: 'justify',
               },
 
@@ -107,7 +109,7 @@ class ModalKarate extends Component {
 
                 '& .scroll': {
                   overflowY: 'auto',
-                  height: '25vh',
+                  //height: '22vh',
 
                   '&::-webkit-scrollbar': {
                     width: '10px',
@@ -130,7 +132,7 @@ class ModalKarate extends Component {
               '& .modal-strip': {
                 height: '20vh',
                 backgroundColor: 'rgba(83,0,0,1)',
-                margin: '15px 0px',
+                margin: '2vh 0px',
                 //boxShadow: '0px 0px 30px 0px white',
                 position: 'relative',
                 overflow: 'hidden',
@@ -186,7 +188,7 @@ class ModalKarate extends Component {
 
                 '& .scroll': {
                   overflowY: 'auto',
-                  height: '27vh',
+                  //height: '26vh',
 
                   '&::-webkit-scrollbar': {
                     width: '10px',
@@ -204,6 +206,18 @@ class ModalKarate extends Component {
                     background: '#555',
                   },
                 },
+              },
+
+              '& .h22': {
+                height: '22vh',
+              },
+
+              '& .h26': {
+                height: '26vh',
+              },
+
+              '& .h31': {
+                height: '31vh',
               },
             },
           },
@@ -289,14 +303,25 @@ class ModalKarate extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll2);
+    window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('resize', this.updateDimensions);
+    document
+      .getElementById('exModal')
+      .addEventListener('shown.bs.modal', this.onShowModal);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll2);
+    window.removeEventListener('scroll', this.handleScroll);
     window.removeEventListener('resize', this.updateDimensions);
+    document
+      .getElementById('exModal')
+      .removeEventListener('shown.bs.modal', this.onShowModal);
   }
+
+  onShowModal = () => {
+    this.updateDimensions();
+    this.updateHx();
+  };
 
   handleScroll = () => {
     var st = document.querySelector('.modal').scrollTop;
@@ -377,6 +402,7 @@ class ModalKarate extends Component {
   };
 
   updateHx = () => {
+    console.log('ModalKarate/updateHx');
     // H1
     this.styleModalDialog['& .modal-content']['& .modal-row'][
       '& .TenguRyu, .Lehrer'
@@ -404,7 +430,7 @@ class ModalKarate extends Component {
         width: w,
         height: h,
       });
-    console.log(w, h);
+    console.log('ModalKarate/updateDimensions', w, h);
   };
 
   render() {
@@ -470,7 +496,7 @@ class ModalKarate extends Component {
                       <h2>
                         „Es ablehnen zu kämpfen, es ablehnen zu unterliegen...“
                       </h2>
-                      <div className="scroll">
+                      <div className="scroll h22">
                         <p>
                           Ursprüngliches Ziel von Karate war es eine bedrohliche
                           Situation zu überstehen. Dazu war es notwendig seine
@@ -497,7 +523,7 @@ class ModalKarate extends Component {
                     </div>
                     <div className="modal-down">
                       <h1>tengu-ryu</h1>
-                      <div className="scroll">
+                      <div className="scroll h26">
                         <p>
                           Im Karate gibt es unterschiedliche Schulen (ryu's).
                           Tengu-Ryū oder Tengu-no-michi (wörtlich: „Weg des
@@ -529,7 +555,7 @@ class ModalKarate extends Component {
                   <div className="modal-col d-flex flex-column h-100">
                     <div className="modal-up">
                       <h1 className="red center">Roland Habersetzer</h1>
-                      <div className="scroll">
+                      <div className="scroll h26">
                         <p>
                           <span>Roland Habersetzer</span> praktiziert seit 1957
                           die Kampfkünste und wurde 1961 einer der ersten
@@ -566,7 +592,7 @@ class ModalKarate extends Component {
                       </div>
                     </div>
                     <div className="modal-down">
-                      <div className="scroll">
+                      <div className="scroll h31">
                         <p>
                           Und damit wird, letztendlich, auch sein eigenes,
                           praktisches Konzept in den Kampfkünsten, sein
