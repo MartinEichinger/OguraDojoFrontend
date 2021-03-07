@@ -18,6 +18,7 @@ class ModalKarate extends Component {
     this.stats = {
       allPages: ['TenguRyu', 'Lehrer'],
       page: 'TenguRyu',
+      animated: 0,
     };
 
     // BREAKPOINTS
@@ -36,11 +37,11 @@ class ModalKarate extends Component {
     this.styleModalDialog = {
       width: '100vw',
       maxWidth: '1440px',
-      height: 'calc(100vh - 2vh)', // 3.5rem
+      height: 'calc(100vh - 3.5vh)', // 3.5rem
       zIndex: '1051',
       position: 'relative',
       overflow: 'hidden',
-      margin: '3vh 0px',
+      margin: '2vh auto',
 
       '& .btn-close': {
         width: '45px',
@@ -131,9 +132,8 @@ class ModalKarate extends Component {
 
               '& .modal-strip': {
                 height: '20vh',
-                backgroundColor: 'rgba(83,0,0,1)',
+                backgroundColor: this.bgRed,
                 margin: '2vh 0px',
-                //boxShadow: '0px 0px 30px 0px white',
                 position: 'relative',
                 overflow: 'hidden',
 
@@ -183,12 +183,10 @@ class ModalKarate extends Component {
                 height: '35vh',
                 backgroundColor: 'white',
                 borderRadius: '5px',
-                //boxShadow: '0px 0px 30px 0px white',
                 padding: '2vh',
 
                 '& .scroll': {
                   overflowY: 'auto',
-                  //height: '26vh',
 
                   '&::-webkit-scrollbar': {
                     width: '10px',
@@ -308,6 +306,15 @@ class ModalKarate extends Component {
     document
       .getElementById('exModal')
       .addEventListener('shown.bs.modal', this.onShowModal);
+    document
+      .getElementById('exModal')
+      .addEventListener('hidden.bs.modal', this.onHideModal);
+    document
+      .querySelector(`.TenguRyu`)
+      .addEventListener('animationend', this.onAnimationEnd);
+    document
+      .querySelector(`.Lehrer`)
+      .addEventListener('animationend', this.onAnimationEnd);
   }
 
   componentWillUnmount() {
@@ -316,22 +323,56 @@ class ModalKarate extends Component {
     document
       .getElementById('exModal')
       .removeEventListener('shown.bs.modal', this.onShowModal);
+    document
+      .getElementById('exModal')
+      .removeEventListener('hidden.bs.modal', this.onHideModal);
+    document
+      .querySelector(`.TenguRyu`)
+      .removeEventListener('animationend', this.onAnimationEnd);
+    document
+      .querySelector(`.Lehrer`)
+      .removeEventListener('animationend', this.onAnimationEnd);
   }
+
+  onAnimationEnd = () => {
+    this.stats.animated = 0;
+    document.querySelector('.modal').scrollTo(0, 2);
+    console.log('ModalKarate/onAnimationEnd', this.stats.animated);
+  };
 
   onShowModal = () => {
     this.updateDimensions();
     this.updateHx();
+    document.querySelector('.modal').scrollTo(0, 2);
+  };
+
+  onHideModal = () => {
+    // reset single pages
+    document.querySelector('.TenguRyu').classList.remove('slide-out-top');
+    document.querySelector('.TenguRyu').classList.remove('slide-in-bottom');
+    document.querySelector('.Lehrer').classList.remove('slide-out-top');
+    document.querySelector('.Lehrer').classList.remove('slide-in-bottom');
+    document.querySelector('.Lehrer').classList.add('d-none');
+
+    // reset stored value for active page
+    this.stats.page = 'TenguRyu';
+
+    // reset navigation
+    document.querySelector('.TenguRyuBtn').classList.add('active');
+    document.querySelector('.LehrerBtn').classList.remove('active');
   };
 
   handleScroll = () => {
     var st = document.querySelector('.modal').scrollTop;
-    //console.log('ModalKarate/scroll', st);
-    if (st < 4) {
+    console.log('ModalKarate/scroll', st, this.stats.animated);
+    if (st < 2 && this.stats.animated === 0) {
+      this.stats.animated = 1;
       this.clickUpDown('up');
-      document.querySelector('.modal').scrollTo(0, 4);
-    } else if (st > 4) {
+      document.querySelector('.modal').scrollTo(0, 2);
+    } else if (st > 2 && this.stats.animated === 0) {
+      this.stats.animated = 1;
       this.clickUpDown('down');
-      document.querySelector('.modal').scrollTo(0, 4);
+      document.querySelector('.modal').scrollTo(0, 2);
     }
   };
 
@@ -347,14 +388,19 @@ class ModalKarate extends Component {
     if (idx === 0 && dir === 'down') {
       this.nextItem(this.stats.allPages[idx + 1]);
     } else if (idx === 0 && dir === 'up') {
+      this.stats.animated = 0;
       return 0;
     } else if (idx === this.stats.allPages.length - 1 && dir === 'up') {
+      this.stats.animated = 1;
       this.nextItem(this.stats.allPages[idx - 1]);
     } else if (idx === this.stats.allPages.length - 1 && dir === 'down') {
+      this.stats.animated = 0;
       return 0;
     } else if (dir === 'up') {
+      this.stats.animated = 1;
       this.nextItem(this.stats.allPages[idx - 1]);
     } else if (dir === 'down') {
+      this.stats.animated = 1;
       this.nextItem(this.stats.allPages[idx + 1]);
     }
   };
