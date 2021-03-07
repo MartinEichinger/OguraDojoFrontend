@@ -365,11 +365,11 @@ class ModalKarate extends Component {
   handleScroll = () => {
     var st = document.querySelector('.modal').scrollTop;
     console.log('ModalKarate/scroll', st, this.stats.animated);
-    if (st < 4 && this.stats.animated === 0) {
+    if (st < 3 && this.stats.animated === 0) {
       this.stats.animated = 1;
       this.clickUpDown('up');
       document.querySelector('.modal').scrollTo(0, 4);
-    } else if (st > 4 && this.stats.animated === 0) {
+    } else if (st > 5 && this.stats.animated === 0) {
       this.stats.animated = 1;
       this.clickUpDown('down');
       document.querySelector('.modal').scrollTo(0, 4);
