@@ -79,13 +79,15 @@ class Card extends Component {
 
       '& .cardBody': {
         padding: '20px',
-        height: '100%',
+        height: '340px',
 
         [this.mq[2]]: {
+          height: '300px',
           padding: '15px',
         },
 
         [this.mq[0]]: {
+          height: '200px',
           padding: '10px',
         },
       },
