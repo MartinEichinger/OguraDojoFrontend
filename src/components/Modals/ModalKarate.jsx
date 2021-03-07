@@ -300,7 +300,7 @@ class ModalKarate extends Component {
 
   handleScroll = () => {
     var st = document.querySelector('.modal').scrollTop;
-    console.log('ModalKarate/scroll', st);
+    //console.log('ModalKarate/scroll', st);
     if (st < 4) {
       this.clickUpDown('up');
       document.querySelector('.modal').scrollTo(0, 4);
@@ -311,7 +311,7 @@ class ModalKarate extends Component {
   };
 
   clickUpDown = (dir) => {
-    console.log('ModalKarate/clickUpDown', dir);
+    //console.log('ModalKarate/clickUpDown', dir);
 
     // find index of current page
     var idx = this.stats.allPages.findIndex((item) => {
@@ -408,7 +408,7 @@ class ModalKarate extends Component {
   };
 
   render() {
-    console.log('ModalKarate/render', this.state.width, this.state.height);
+    //console.log('ModalKarate/render', this.state.width, this.state.height);
     this.updateHx();
 
     return (
