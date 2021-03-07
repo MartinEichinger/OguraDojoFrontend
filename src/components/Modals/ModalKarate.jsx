@@ -36,7 +36,7 @@ class ModalKarate extends Component {
     this.styleModalDialog = {
       width: '100vw',
       maxWidth: '1440px',
-      height: 'calc(100vh - 3.5rem)',
+      height: 'calc(100vh - 3rem)', // 3.5rem
       zIndex: '1051',
       position: 'relative',
       overflow: 'hidden',
@@ -288,6 +288,28 @@ class ModalKarate extends Component {
     };
   }
 
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll2);
+    window.addEventListener('resize', this.updateDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll2);
+    window.removeEventListener('resize', this.updateDimensions);
+  }
+
+  handleScroll = () => {
+    var st = document.querySelector('.modal').scrollTop;
+    console.log('ModalKarate/scroll', st);
+    if (st < 4) {
+      this.clickUpDown('up');
+      document.querySelector('.modal').scrollTo(0, 4);
+    } else if (st > 4) {
+      this.clickUpDown('down');
+      document.querySelector('.modal').scrollTo(0, 4);
+    }
+  };
+
   clickUpDown = (dir) => {
     console.log('ModalKarate/clickUpDown', dir);
 
@@ -385,14 +407,6 @@ class ModalKarate extends Component {
     console.log(w, h);
   };
 
-  componentDidMount() {
-    window.addEventListener('resize', this.updateDimensions);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateDimensions);
-  }
-
   render() {
     console.log('ModalKarate/render', this.state.width, this.state.height);
     this.updateHx();
@@ -406,6 +420,7 @@ class ModalKarate extends Component {
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
           data-bs-backdrop="static"
+          onScroll={() => this.handleScroll()}
         >
           <div
             className="modal-dialog d-flex flex-row-reverse align-items-center"
