@@ -37,11 +37,11 @@ class ModalKarate extends Component {
     this.styleModalDialog = {
       width: '100vw',
       maxWidth: '1440px',
-      height: 'calc(100vh - 3.5vh)', // 3.5rem
+      height: 'calc(100vh - 2vh)', // 3.5rem
       zIndex: '1051',
       position: 'relative',
       overflow: 'hidden',
-      margin: '2vh auto',
+      margin: '3vh auto',
 
       '& .btn-close': {
         width: '45px',
@@ -336,14 +336,14 @@ class ModalKarate extends Component {
 
   onAnimationEnd = () => {
     this.stats.animated = 0;
-    document.querySelector('.modal').scrollTo(0, 2);
+    document.querySelector('.modal').scrollTo(0, 4);
     console.log('ModalKarate/onAnimationEnd', this.stats.animated);
   };
 
   onShowModal = () => {
     this.updateDimensions();
     this.updateHx();
-    document.querySelector('.modal').scrollTo(0, 2);
+    document.querySelector('.modal').scrollTo(0, 4);
   };
 
   onHideModal = () => {
@@ -368,11 +368,11 @@ class ModalKarate extends Component {
     if (st < 2 && this.stats.animated === 0) {
       this.stats.animated = 1;
       this.clickUpDown('up');
-      document.querySelector('.modal').scrollTo(0, 2);
+      document.querySelector('.modal').scrollTo(0, 4);
     } else if (st > 2 && this.stats.animated === 0) {
       this.stats.animated = 1;
       this.clickUpDown('down');
-      document.querySelector('.modal').scrollTo(0, 2);
+      document.querySelector('.modal').scrollTo(0, 4);
     }
   };
 
