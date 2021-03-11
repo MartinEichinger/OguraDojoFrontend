@@ -26,7 +26,9 @@ class Navigation extends Component {
       outline: 'none',
       borderRadius: '5px',
       margin: '20px auto',
-      backgroundColor: this.colorCard.bgGrey,
+      //backgroundColor: this.colorCard.bgGrey,
+      backgroundImage: 'url(nav_bg.png)',
+      backgroundSize: 'cover',
       fontFamily: 'Lato, cursive',
       zIndex: '1032',
 
@@ -87,7 +89,8 @@ class Navigation extends Component {
     };
 
     this.styleNav = {
-      backgroundColor: this.colorCard.bgGrey,
+      //backgroundColor: this.colorCard.bgGrey,
+      backgroundImage: 'url(nav_bar_bg.png)',
       boxShadow: `10px 10px 25px 0px ${this.colorCard.shadowGrey}`,
       zIndex: '1032',
 
