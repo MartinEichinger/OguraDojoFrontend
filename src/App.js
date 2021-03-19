@@ -56,7 +56,7 @@ class App extends Component {
         para:
           'Ein vollständiger Weg der Kriegskunst oder der Geist einer Tradition. Lernen und Verbessern des Verhaltens eines freien Individuums unter Einhaltung der Achtung vor dem Leben, den Anderen, dem Gesetz ...',
         keywords:
-          'Roland Habersetzer - Kriegskunst - Koshiki Kata - Selbstverteidigung',
+          'Roland Habersetzer - Kampfkunst im 21.Jh. - Selbstverteidigung - Waffen - Koshiki Kata',
         pos: '50% 20%',
       },
       {
