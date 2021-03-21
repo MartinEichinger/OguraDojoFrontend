@@ -27,7 +27,7 @@ class Navigation extends Component {
       borderRadius: '5px',
       margin: '20px auto',
       //backgroundColor: this.colorCard.bgGrey,
-      backgroundImage: 'url(nav_bg.png)',
+      backgroundImage: 'url(nav_white_bg.png)',
       backgroundSize: 'cover',
       fontFamily: 'Lato, cursive',
       zIndex: '1032',
@@ -43,8 +43,29 @@ class Navigation extends Component {
         marginRight: 'calc((100vw - 390px) / 2)',
       },
 
+      '& button': {
+        width: '145px',
+        position: 'relative',
+        backgroundColor: this.colorCard.bgWhite,
+        color: this.colorCard.bgRed,
+        border: `1px solid ${this.colorCard.bgRed}`,
+        borderRadius: '25px',
+        fontSize: '1.75vh',
+
+        '&:hover': {
+          backgroundColor: 'rgba(121,0,0,0.5)',
+        },
+
+        '&:active': {
+          fontWeight: 'bold',
+          backgroundColor: this.colorCard.bgRed,
+          color: this.colorCard.bgWhite,
+          border: `1px solid ${this.colorCard.bgWhite}`,
+        },
+      },
+
       '& img': {
-        width: '480px',
+        width: '420px',
 
         [this.mq[3]]: {
           width: '50%',
@@ -53,7 +74,8 @@ class Navigation extends Component {
       },
 
       '& .text': {
-        margin: '48px',
+        margin: '0px 20px',
+        height: '265px',
 
         [this.mq[4]]: {
           margin: '24px',
@@ -181,9 +203,23 @@ class Navigation extends Component {
         <div className="navbarCard slide-in-top" css={this.styleNavCard}>
           <div className="d-flex flex-row">
             <img src="./OguraDojoLogo.png" alt="" />
-            <div className="text d-flex flex-column justify-content-center">
+            <div className="text d-flex flex-column justify-content-around">
               <h1>Willommen im Ogura Dojo</h1>
               <h2>Tengu Ryu Karate-Do, PanZi Gong, TaiJi Quan, QiGong</h2>
+              <div className="btnNav d-flex flex-row justify-content-around">
+                <button
+                  data-bs-toggle="modal"
+                  data-bs-target="#idModalTraining"
+                >
+                  Training
+                </button>
+                <button
+                  data-bs-toggle="modal"
+                  data-bs-target="#idModalTraining"
+                >
+                  Wir
+                </button>
+              </div>
             </div>
           </div>
         </div>

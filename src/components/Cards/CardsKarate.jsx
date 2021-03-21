@@ -26,6 +26,8 @@ class CardsKarate extends Component {
     this.colorCard = this.props.colors;
 
     this.propsCard = this.props?.para;
+
+    this.key = this.props.key;
   }
 
   handleClick = (e) => {
@@ -45,7 +47,7 @@ class CardsKarate extends Component {
     console.log('render');
     return (
       <React.Fragment>
-        <Card props={this.propsCard} color={this.colorCard} />
+        <Card props={this.propsCard} color={this.colorCard} key={this.key} />
       </React.Fragment>
     );
   }

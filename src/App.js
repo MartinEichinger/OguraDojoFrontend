@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import Navigation from './components/Navigation/Navigation';
 import CardsKarate from './components/Cards/CardsKarate';
 import ModalKarate from './components/Modals/ModalKarate';
+import ModalTraining from './components/Modals/ModalTraining';
 import Footer from './components/Footer/Footer';
 
 class App extends Component {
@@ -90,12 +91,27 @@ class App extends Component {
         keywords: 'Prof. Ding Hongyu',
         pos: '65% 40%',
       },
+      {
+        img: 'main_training.png',
+        modal: '#idModalTraining',
+        heading: 'Training',
+        headingTwo: '- Beginn / Probetraining jederzeit möglich -',
+        table: [
+          { head: 'Taiji', day: 'Montag', time: '18:20 - 20:00' },
+          { head: 'Karate', day: 'Montag', time: '20:00 - 22:00' },
+          { head: 'Karate', day: 'Mittwoch', time: '17:00 - 18:30' },
+          { head: 'Karate', day: 'Freitag', time: '20:00 - 22:00' },
+        ],
+        keywords:
+          'Sonnenschule Traunreut - Martin-Luther-Straße - 83301 Traunreut',
+        pos: '65% 40%',
+      },
     ];
   }
 
   renderCards = () => {
     return this.content.map((cont, i) => {
-      return <CardsKarate para={cont} colors={this.colors} />;
+      return <CardsKarate para={cont} colors={this.colors} key={i} />;
     });
   };
 
@@ -104,6 +120,7 @@ class App extends Component {
       <div className="App d-flex flex-column" css={this.styleApp}>
         <Navigation colors={this.colors} />
         <ModalKarate colors={this.colors} />
+        <ModalTraining colors={this.colors} />
         <div className="Frame bg">
           <div className="Content d-flex flex-row flex-wrap justify-content-center">
             {this.renderCards()}

@@ -26,6 +26,8 @@ class Card extends Component {
     this.typoGreen = this.props.color?.typoGreen;
     this.shadowGrey = this.props.color?.shadowGrey;
 
+    this.key = this.props.key;
+
     this.styleCard = {
       width: '1280px',
       height: '340px',
@@ -37,6 +39,10 @@ class Card extends Component {
       backgroundColor: this.bgWhite,
       border: 'none',
       outline: 'none',
+
+      '& .bold': {
+        fontWeight: 'bold',
+      },
 
       '&:active': {
         transform: 'scale(0.98)',
@@ -176,13 +182,31 @@ class Card extends Component {
       document.querySelector('.Cards').offsetHeight
     );
   };
+
   componentDidMount() {
     window.addEventListener('resize', this.updateDimensions);
     this.updateDimensions();
   }
+
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateDimensions);
   }
+
+  renderPara = (para, table) => {
+    if (para !== undefined) {
+      return <p>{para}</p>;
+    } else if (table !== undefined) {
+      return table.map((line, j) => {
+        return (
+          <div className="d-flex flex-row justify-content-between" key={j}>
+            <p className="bold">{line.head}</p>
+            <p>{line.day}</p>
+            <p>{line.time}</p>
+          </div>
+        );
+      });
+    }
+  };
 
   render() {
     var {
@@ -191,6 +215,7 @@ class Card extends Component {
       heading,
       headingTwo,
       para,
+      table,
       keywords,
       pos,
     } = this.props.props;
@@ -206,6 +231,7 @@ class Card extends Component {
         data-bs-target={modal}
         css={this.styleCard}
         id="modalCard"
+        key={this.key}
       >
         <div className="img" id="modalCard"></div>
         <div
@@ -215,7 +241,7 @@ class Card extends Component {
           <div>
             <h1>{heading}</h1>
             <h2>{headingTwo}</h2>
-            <p>{para}</p>
+            {this.renderPara(para, table)}
           </div>
           <h5>{keywords}</h5>
         </div>
