@@ -37,7 +37,7 @@ class ModalKarate extends Component {
     this.styleModalDialog = {
       width: '100vw',
       maxWidth: '1440px',
-      height: 'calc(100vh - 3.5rem)', // 2rem
+      height: 'calc(100vh - 3.5vh)', // 2rem
       zIndex: '1051',
       position: 'relative',
       overflow: 'hidden',
@@ -172,17 +172,21 @@ class ModalKarate extends Component {
 
                 '& .circle': {
                   position: 'relative',
-                  width: '125px',
-                  height: '125px',
+                  aspectRatio: '1 / 1',
+                  height: '100%',
                   backgroundColor: 'rgba(255,255,255,0.7)',
                   borderRadius: '125px',
+                },
+
+                '& .item': {
+                  height: '20%',
                 },
 
                 '& .rect': {
                   position: 'relative',
                   marginLeft: '2vh',
                   width: 'calc(100% - 125px - 2vh)',
-                  height: '140px',
+                  height: '100%', //'140px',
                   backgroundColor: 'rgba(255,255,255,0.7)',
                   borderRadius: '5px',
                   padding: '1vh',
@@ -487,7 +491,7 @@ class ModalKarate extends Component {
     this.styleModalDialog['& .modal-content']['& .modal-row'][
       '& .Training, .Wir'
     ]['& .modal-col']['& p'].fontSize =
-      6 * (this.state.width / 1440) * (this.state.height / 1200) + 14 + 'px';
+      8 * (this.state.width / 1440) * (this.state.height / 1200) + 12 + 'px';
   };
 
   updateDimensions = () => {
@@ -563,12 +567,12 @@ class ModalKarate extends Component {
                       <div className="bg-training"></div>
                       <h1 className="big">Training</h1>
                       <div className="table d-flex flex-column justify-content-between">
-                        <div className="item align-items-center d-flex flex-row">
+                        <div className="item align-items-center d-flex flex-md-row flex-column">
                           <div className="circle d-flex flex-row align-items-center justify-content-center">
                             <img src="wann_24px_outlined.svg" alt="" />
                             <p className="red bold">WANN?</p>
                           </div>
-                          <div className="rect">
+                          <div className="rect d-flex flex-column justify-content-around">
                             <div className="tab-row d-flex flex-row">
                               <div className="tab w33">
                                 <p>Montag</p>
@@ -613,13 +617,13 @@ class ModalKarate extends Component {
                             </div>
                           </div>
                         </div>
-                        <div className="item align-items-center d-flex flex-row">
+                        <div className="item align-items-center d-flex flex-md-row flex-column">
                           <div className="circle d-flex flex-row align-items-center justify-content-center">
                             <img src="wo_24px_outlined.svg" alt="" />
                             <p className="red bold">Wo?</p>
                           </div>
                           <div className="rect d-flex flex-row">
-                            <div className="tab w50">
+                            <div className="tab w50 d-flex align-items-center">
                               <p>
                                 Sonnenschule Traunreut - Martin-Luther-Straße -
                                 83301 Traunreut
@@ -630,14 +634,14 @@ class ModalKarate extends Component {
                                 title="training"
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1335.8346718413309!2d12.594938976177742!3d47.96211779084314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDU3JzQzLjYiTiAxMsKwMzUnNDUuNyJF!5e0!3m2!1sen!2sde!4v1616311641244!5m2!1sen!2sde"
                                 width="100%"
-                                height="150"
+                                height="100%"
                                 allowFullScreen=""
                                 loading="lazy"
                               ></iframe>
                             </div>
                           </div>
                         </div>
-                        <div className="item align-items-center d-flex flex-row">
+                        <div className="item align-items-center d-flex flex-md-row flex-column">
                           <div className="circle d-flex flex-row align-items-center justify-content-center">
                             <img src="was_24px_outlined.svg" alt="" />
                             <p className="red bold">WAS?</p>
@@ -652,7 +656,7 @@ class ModalKarate extends Component {
                             </p>
                           </div>
                         </div>
-                        <div className="item align-items-center d-flex flex-row">
+                        <div className="item align-items-center d-flex flex-md-row flex-column">
                           <div className="circle d-flex flex-row align-items-center justify-content-center">
                             <img src="geld_24px_outlined.svg" alt="" />
                             <p className="red bold">BEITRAG?</p>
@@ -677,26 +681,24 @@ class ModalKarate extends Component {
                             </div>
                             <div className="tab-row d-flex flex-row">
                               <div className="tab w33">
-                                <p>unter 18 Jahren: 60€ pro Jahr</p>
+                                <p>unter 18 Jahren: 60 €/Jahr</p>
                               </div>
                               <div className="tab w33">
-                                <p>Neuaufnahme: 31 € pro Jahr</p>
+                                <p>Neuaufnahme: 31 €/Jahr</p>
                               </div>
                               <div className="tab w33">
-                                <p>18 € pro Jahr für Kinder (bis 13)</p>
+                                <p>18 €/Jahr für Kinder (bis 13)</p>
                               </div>
                             </div>
                             <div className="tab-row d-flex flex-row">
                               <div className="tab w33">
-                                <p>über 18 Jahren: 120€ pro Jahr</p>
+                                <p>über 18 Jahren: 120 €/Jahr</p>
                               </div>
                               <div className="tab w33">
-                                <p>Verlängerung: 22 € pro Jahr</p>
+                                <p>Verlängerung: 22 €/Jahr</p>
                               </div>
                               <div className="tab w33">
-                                <p>
-                                  23 € pro Jahr für Jugendliche und Erwachsene
-                                </p>
+                                <p>23 €/Jahr für Jugendliche und Erwachsene</p>
                               </div>
                             </div>
                           </div>
