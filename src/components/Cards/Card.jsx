@@ -222,7 +222,7 @@ class Card extends Component {
     this.styleCard['& .img'].backgroundImage = `url(${img})`;
     this.styleCard['& .img'].backgroundPosition = `${pos}`;
     this.updateHx();
-    console.log('Card/render');
+    //console.log('Card/render');
 
     return (
       <button
