@@ -22,7 +22,7 @@ class ModalKarate extends Component {
     };
 
     // BREAKPOINTS
-    this.breakpoints = [576, 678, 1023, 1280];
+    this.breakpoints = [424, 767, 1023, 1280];
     this.mq = this.breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
 
     // STYLES
@@ -82,6 +82,14 @@ class ModalKarate extends Component {
         textDecoration: 'underline',
       },
 
+      '& .span_vis': {
+        display: 'block',
+
+        [this.mq[1]]: {
+          display: 'none',
+        },
+      },
+
       '& .modal-content': {
         width: '100%',
         height: '100vh',
@@ -105,7 +113,7 @@ class ModalKarate extends Component {
                 color: this.bgGrey,
               },
 
-              '& .big': {
+              '& big': {
                 fontSize: '10vh',
               },
 
@@ -168,6 +176,8 @@ class ModalKarate extends Component {
                 '& .table': {
                   padding: '2vh',
                   height: 'calc(90vh - 10vh - 6vh)',
+
+                  [this.mq[1]]: { padding: '0.5vh' },
                 },
 
                 '& .circle': {
@@ -176,42 +186,70 @@ class ModalKarate extends Component {
                   height: '100%',
                   backgroundColor: 'rgba(255,255,255,0.7)',
                   borderRadius: '125px',
+
+                  [this.mq[1]]: {
+                    height: '3vh',
+                    margin: '1vh 0vh',
+                    padding: '1vh',
+                  },
                 },
 
                 '& .item': {
-                  height: '20%',
+                  //height: '20%',
                 },
 
                 '& .rect': {
                   position: 'relative',
                   marginLeft: '2vh',
                   width: 'calc(100% - 125px - 2vh)',
-                  height: '100%', //'140px',
+                  //height: '100%', //'140px',
                   backgroundColor: 'rgba(255,255,255,0.7)',
                   borderRadius: '5px',
                   padding: '1vh',
 
+                  [this.mq[1]]: {
+                    width: 'calc(100% - 2vh)',
+                    padding: '1vh',
+                    margin: '0',
+                  },
+
                   '& .tab': { overflow: 'hidden' },
-
-                  '& .w33': {
-                    width: '33%',
-                  },
-
-                  '& .w50': {
-                    width: '50%',
-                  },
-
-                  '& .w66': {
-                    width: '66%',
-                  },
-
-                  '& .frameless': {
-                    marginTop: '-1vh',
-                    marginBottom: '-1vh',
-                  },
 
                   '& iframe': {
                     border: '0px',
+                  },
+                },
+
+                '& .rect_var2': {
+                  position: 'relative',
+                  marginLeft: '2vh',
+                  width: 'calc(100% - 2vh)',
+                  backgroundColor: 'rgba(255,255,255,0.7)',
+                  borderRadius: '5px',
+                  padding: '1vh',
+
+                  [this.mq[1]]: {
+                    width: 'calc(100% - 2vh)',
+                    padding: '1vh',
+                    margin: '0',
+                  },
+
+                  overflowY: 'auto',
+
+                  '&::-webkit-scrollbar': {
+                    width: '10px',
+                  },
+
+                  '&::-webkit-scrollbar-track': {
+                    background: '#f1f1f1',
+                  },
+
+                  '&::-webkit-scrollbar-thumb': {
+                    background: '#888',
+                  },
+
+                  '&::-webkit-scrollbar-thumb:hover': {
+                    background: '#555',
                   },
                 },
 
@@ -242,6 +280,10 @@ class ModalKarate extends Component {
                 },
               },
 
+              '& .h15': {
+                height: '15vh',
+              },
+
               '& .h22': {
                 height: '22vh',
               },
@@ -256,6 +298,35 @@ class ModalKarate extends Component {
 
               '& .h40': {
                 height: '40vh !important',
+              },
+
+              '& .w20': {
+                width: '20%',
+              },
+
+              '& .w25': {
+                width: '25%',
+              },
+
+              '& .w30': {
+                width: '30%',
+              },
+
+              '& .w33': {
+                width: '33%',
+              },
+
+              '& .w50': {
+                width: '50%',
+              },
+
+              '& .w66': {
+                width: '66%',
+              },
+
+              '& .frameless': {
+                marginTop: '-1vh',
+                marginBottom: '-1vh',
               },
             },
           },
@@ -479,7 +550,7 @@ class ModalKarate extends Component {
     this.styleModalDialog['& .modal-content']['& .modal-row'][
       '& .Training, .Wir'
     ]['& .modal-col']['& h1'].fontSize =
-      20 * (this.state.width / 1440) * (this.state.height / 1200) + 18 + 'px';
+      120 * (this.state.width / 1440) * (this.state.height / 1200) + 18 + 'px';
 
     // H2
     this.styleModalDialog['& .modal-content']['& .modal-row'][
@@ -572,46 +643,46 @@ class ModalKarate extends Component {
                             <img src="wann_24px_outlined.svg" alt="" />
                             <p className="red bold">WANN?</p>
                           </div>
-                          <div className="rect d-flex flex-column justify-content-around">
+                          <div className="rect d-flex flex-column justify-content-around h15">
                             <div className="tab-row d-flex flex-row">
-                              <div className="tab w33">
+                              <div className="tab w20">
                                 <p>Montag</p>
                               </div>
-                              <div className="tab w33">
+                              <div className="tab w30">
                                 <p>18.20 - 20.00</p>
                               </div>
-                              <div className="tab w33">
+                              <div className="tab w50">
                                 <p>Taiji</p>
                               </div>
                             </div>
                             <div className="tab-row d-flex flex-row">
-                              <div className="tab w33"> </div>
-                              <div className="tab w33">
+                              <div className="tab w20"> </div>
+                              <div className="tab w30">
                                 <p>20.00 - 22.00</p>
                               </div>
-                              <div className="tab w33">
+                              <div className="tab w50">
                                 <p>Karate (Erwachsene)</p>
                               </div>
                             </div>
                             <div className="tab-row d-flex flex-row">
-                              <div className="tab w33">
+                              <div className="tab w20">
                                 <p>Mittwoch</p>
                               </div>
-                              <div className="tab w33">
+                              <div className="tab w30">
                                 <p>17.00 - 18.30</p>
                               </div>
-                              <div className="tab3">
+                              <div className="tab w50">
                                 <p>Karate (Kinder / Jugendliche)</p>
                               </div>
                             </div>
                             <div className="tab-row d-flex flex-row">
-                              <div className="tab w33">
+                              <div className="tab w20">
                                 <p>Freitag</p>
                               </div>
-                              <div className="tab w33">
+                              <div className="tab w30">
                                 <p>20.00 - 22.00</p>
                               </div>
-                              <div className="tab w33">
+                              <div className="tab w50">
                                 <p>Karate (Erwachsene)</p>
                               </div>
                             </div>
@@ -622,7 +693,7 @@ class ModalKarate extends Component {
                             <img src="wo_24px_outlined.svg" alt="" />
                             <p className="red bold">Wo?</p>
                           </div>
-                          <div className="rect d-flex flex-row">
+                          <div className="rect d-flex flex-row h15">
                             <div className="tab w50 d-flex align-items-center">
                               <p>
                                 Sonnenschule Traunreut - Martin-Luther-Straße -
@@ -646,7 +717,7 @@ class ModalKarate extends Component {
                             <img src="was_24px_outlined.svg" alt="" />
                             <p className="red bold">WAS?</p>
                           </div>
-                          <div className="rect d-flex align-items-center">
+                          <div className="rect d-flex align-items-center h15">
                             <p>
                               Zum Kennenlernen gibt es natürlich die Möglichkeit
                               eines kostenlosen Probetrainings. Zum Training am
@@ -661,44 +732,49 @@ class ModalKarate extends Component {
                             <img src="geld_24px_outlined.svg" alt="" />
                             <p className="red bold">BEITRAG?</p>
                           </div>
-                          <div className="rect">
+                          <div className="rect h15">
                             <div className="tab-row d-flex flex-row">
                               <div className="tab w33">
                                 <p className="bold underline">
-                                  TuS Traunreut (Karate und Taiji)
+                                  TuS Traunreut
+                                  <span className="span_vis">
+                                    (Karate und Taiji)
+                                  </span>
                                 </p>
                               </div>
                               <div className="tab w33">
                                 <p className="bold underline">
-                                  Verband CRB (Tengu Ryu)
+                                  Verband CRB
+                                  <span className="span_vis"> (Tengu Ryu)</span>
                                 </p>
                               </div>
                               <div className="tab w33">
                                 <p className="bold underline">
-                                  Verband DKV (Karate)
+                                  Verband DKV
+                                  <span className="span_vis"> (Karate)</span>
                                 </p>
                               </div>
                             </div>
                             <div className="tab-row d-flex flex-row">
                               <div className="tab w33">
-                                <p>unter 18 Jahren: 60 €/Jahr</p>
+                                <p>unter 18 Jahren: 60€/Jahr</p>
                               </div>
                               <div className="tab w33">
-                                <p>Neuaufnahme: 31 €/Jahr</p>
+                                <p>Neuaufnahme: 31€/Jahr</p>
                               </div>
                               <div className="tab w33">
-                                <p>18 €/Jahr für Kinder (bis 13)</p>
+                                <p>18€/Jahr für Kinder (bis 13)</p>
                               </div>
                             </div>
                             <div className="tab-row d-flex flex-row">
                               <div className="tab w33">
-                                <p>über 18 Jahren: 120 €/Jahr</p>
+                                <p>über 18 Jahren: 120€/Jahr</p>
                               </div>
                               <div className="tab w33">
-                                <p>Verlängerung: 22 €/Jahr</p>
+                                <p>Verlängerung: 22€/Jahr</p>
                               </div>
                               <div className="tab w33">
-                                <p>23 €/Jahr für Jugendliche und Erwachsene</p>
+                                <p>23€/Jahr für Jugendl. & Erwachsene</p>
                               </div>
                             </div>
                           </div>
@@ -713,7 +789,7 @@ class ModalKarate extends Component {
                       <div className="bg-training"></div>
                       <h1 className="big">Wir</h1>
                       <div className="table d-flex flex-column justify-content-around">
-                        <div className="rect h31">
+                        <div className="rect_var2 h31">
                           <p className="mb-2">
                             Der Name unseres Dojo OGURA nimmt Bezug auf Ogura
                             Tsuneyoshi(* 1928; † 2007), japanischer
