@@ -17,9 +17,11 @@ class ModalKarate extends Component {
     this.form = React.createRef();
     this.stats = {
       allPages: ['Training', 'Wir'],
-      page: 'Training',
+      page: this.props.page,
       animated: 0,
     };
+
+    console.log('ModalTraining/constructor', this.stats);
 
     // BREAKPOINTS
     this.breakpoints = [424, 767, 1023, 1280];
@@ -428,32 +430,48 @@ class ModalKarate extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
     window.removeEventListener('resize', this.updateDimensions);
     document
-      .getElementById('exModal')
+      .getElementById('idModalTraining')
       .removeEventListener('shown.bs.modal', this.onShowModal);
     document
-      .getElementById('exModal')
+      .getElementById('idModalTraining')
       .removeEventListener('hidden.bs.modal', this.onHideModal);
     document
-      .querySelector(`.TenguRyu`)
+      .querySelector(`.Training`)
       .removeEventListener('animationend', this.onAnimationEnd);
     document
-      .querySelector(`.Lehrer`)
+      .querySelector(`.Wir`)
       .removeEventListener('animationend', this.onAnimationEnd);
   }
 
   onAnimationEnd = () => {
     this.stats.animated = 0;
-    document.querySelector('.modal').scrollTo(0, 4);
+    //document.querySelector('.modal').scrollTo(0, 4);
     console.log('ModalKarate/onAnimationEnd', this.stats.animated);
   };
 
   onShowModal = () => {
     this.updateDimensions();
     this.updateHx();
-    //document.querySelector('.modal').scrollTo(0, 4);
+    this.stats.page = this.props.page;
+    var page = this.stats.page;
+    console.log('ModalTraining/onShowModal', this.stats);
+    if (page === 'Wir') {
+      document.querySelector('.Training').classList.add('d-none');
+      document.querySelector('.Wir').classList.remove('d-none');
+      document.querySelector(`.upArrowTrain`).classList.add('active');
+      document.querySelector(`.downArrowTrain`).classList.remove('active');
+      document.querySelector(`.WirBtn`).classList.add('active');
+      document.querySelector(`.TrainingBtn`).classList.remove('active');
+    } else if (page === 'Training') {
+      document.querySelector('.Training').classList.remove('d-none');
+      document.querySelector('.Wir').classList.add('d-none');
+      document.querySelector(`.upArrowTrain`).classList.remove('active');
+      document.querySelector(`.downArrowTrain`).classList.add('active');
+      document.querySelector(`.WirBtn`).classList.remove('active');
+      document.querySelector(`.TrainingBtn`).classList.add('active');
+    }
   };
 
   onHideModal = () => {
@@ -577,8 +595,8 @@ class ModalKarate extends Component {
   };
 
   render() {
-    //console.log('ModalKarate/render', this.state.width, this.state.height);
-    this.updateHx();
+    console.log('ModalTraining/render', this.stats, this.props);
+    //this.updateHx();
 
     return (
       <React.Fragment>

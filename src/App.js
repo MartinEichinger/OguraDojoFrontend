@@ -12,6 +12,10 @@ import Footer from './components/Footer/Footer';
 class App extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      page: 'Training',
+    };
     this.styleApp = {
       height: '100vh',
       marginBottom: '100px',
@@ -109,6 +113,12 @@ class App extends Component {
     ];
   }
 
+  selectpage = (page) => {
+    console.log('Nav/selectpage', page);
+    console.log('App/selectpage', page);
+    this.setState({ page });
+  };
+
   renderCards = () => {
     return this.content.map((cont, i) => {
       return <CardsKarate para={cont} colors={this.colors} key={i} />;
@@ -118,9 +128,9 @@ class App extends Component {
   render() {
     return (
       <div className="App d-flex flex-column" css={this.styleApp}>
-        <Navigation colors={this.colors} />
+        <Navigation colors={this.colors} select={this.selectpage} />
         <ModalKarate colors={this.colors} />
-        <ModalTraining colors={this.colors} />
+        <ModalTraining colors={this.colors} page={this.state.page} />
         <div className="Frame bg">
           <div className="Content d-flex flex-row flex-wrap justify-content-center">
             {this.renderCards()}

@@ -181,6 +181,10 @@ class Navigation extends Component {
     }
   };
 
+  selectpage = (page) => {
+    console.log('Nav/selectpage', page);
+    this.props.select(page);
+  };
   render() {
     return (
       <React.Fragment>
@@ -210,12 +214,14 @@ class Navigation extends Component {
                 <button
                   data-bs-toggle="modal"
                   data-bs-target="#idModalTraining"
+                  onClick={() => this.selectpage('Training')}
                 >
                   Training
                 </button>
                 <button
                   data-bs-toggle="modal"
                   data-bs-target="#idModalTraining"
+                  onClick={() => this.selectpage('Wir')}
                 >
                   Wir
                 </button>

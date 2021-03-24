@@ -44,7 +44,7 @@ class CardsKarate extends Component {
   };
 
   render() {
-    console.log('render');
+    //console.log('render');
     return (
       <React.Fragment>
         <Card props={this.propsCard} color={this.colorCard} key={this.key} />
