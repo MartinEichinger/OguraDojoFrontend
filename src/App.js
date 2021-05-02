@@ -7,6 +7,7 @@ import Navigation from './components/Navigation/Navigation';
 import CardsKarate from './components/Cards/CardsKarate';
 import ModalKarate from './components/Modals/ModalKarate';
 import ModalTraining from './components/Modals/ModalTraining';
+import ModalBlog from './components/Modals/ModalBlog';
 import Footer from './components/Footer/Footer';
 
 class App extends Component {
@@ -131,6 +132,7 @@ class App extends Component {
         <Navigation colors={this.colors} select={this.selectpage} />
         <ModalKarate colors={this.colors} />
         <ModalTraining colors={this.colors} page={this.state.page} />
+        <ModalBlog colors={this.colors} />
         <div className="Frame bg">
           <div className="Content d-flex flex-row flex-wrap justify-content-center">
             {this.renderCards()}

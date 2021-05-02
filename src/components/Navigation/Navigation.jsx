@@ -225,6 +225,9 @@ class Navigation extends Component {
                 >
                   Wir
                 </button>
+                <button data-bs-toggle="modal" data-bs-target="#idModalBlog">
+                  Blog
+                </button>
               </div>
             </div>
           </div>
