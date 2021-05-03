@@ -342,6 +342,11 @@ class ModalKarate extends Component {
         },
       },
     };
+
+    this.contentNav = {
+      upDown: 1,
+      navItems: ['Training', 'Wir'],
+    };
   }
 
   componentDidMount() {
@@ -551,6 +556,7 @@ class ModalKarate extends Component {
                   clickUpDown={this.clickUpDown}
                   nextItem={this.nextItem}
                   colors={this.props.colors}
+                  config={this.contentNav}
                 />
                 <ModalCompTabRoundRect />
                 <ModalCompTextTabs

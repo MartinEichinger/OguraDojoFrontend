@@ -4,7 +4,7 @@ import { jsx } from '@emotion/react';
 
 import React from 'react';
 
-const ModalInNavigation = ({ clickUpDown, nextItem, colors }) => {
+const ModalInNavigation = ({ clickUpDown, nextItem, colors, config }) => {
   const styleInNav = {
     position: 'absolute',
     width: '47px',
@@ -80,30 +80,38 @@ const ModalInNavigation = ({ clickUpDown, nextItem, colors }) => {
       >
         <img src="./clear_white.png" alt="" />
       </button>
-      <div
-        className="arrow upArrowTrain d-flex align-items-center justify-content-center"
-        onClick={(e) => clickUpDown('up')}
-      >
-        <img src="arrow_white_up.png" alt="" />
-      </div>
-      <div
-        className="navItem TrainingBtn active d-flex align-items-center justify-content-center"
-        onClick={(e) => nextItem('Training')}
-      >
-        <h1>Training</h1>
-      </div>
-      <div
-        className="navItem WirBtn d-flex align-items-center justify-content-center"
-        onClick={(e) => nextItem('Wir')}
-      >
-        <h1>Wir</h1>
-      </div>
-      <div
-        className="arrow downArrowTrain d-flex align-items-center justify-content-center active"
-        onClick={(e) => clickUpDown('down')}
-      >
-        <img src="arrow_white_down.png" alt="" />
-      </div>
+      {config?.upDown ? (
+        <div
+          className="arrow upArrowTrain d-flex align-items-center justify-content-center"
+          onClick={(e) => clickUpDown('up')}
+        >
+          <img src="arrow_white_up.png" alt="" />
+        </div>
+      ) : (
+        ''
+      )}
+      {config?.navItems.map((link, i) => {
+        return (
+          <div
+            className={`navItem ${link}Btn ${
+              i === 0 ? 'active' : ''
+            } d-flex align-items-center justify-content-center`}
+            onClick={(e) => nextItem(link)}
+          >
+            <h1>{link}</h1>
+          </div>
+        );
+      })}
+      {config?.upDown ? (
+        <div
+          className="arrow downArrowTrain d-flex align-items-center justify-content-center active"
+          onClick={(e) => clickUpDown('down')}
+        >
+          <img src="arrow_white_down.png" alt="" />
+        </div>
+      ) : (
+        ''
+      )}
     </div>
   );
 };

@@ -141,6 +141,11 @@ class ModalBlog extends Component {
         },
       },
     };
+
+    this.contentNav = {
+      upDown: 0,
+      navItems: [],
+    };
   }
 
   componentDidMount() {
@@ -175,13 +180,13 @@ class ModalBlog extends Component {
       .removeEventListener('animationend', this.onAnimationEnd);
   }
 
-  onAnimationEnd = () => {
+  /*   onAnimationEnd = () => {
     this.stats.animated = 0;
     //document.querySelector('.modal').scrollTo(0, 4);
     console.log('ModalKarate/onAnimationEnd', this.stats.animated);
-  };
+  }; */
 
-  onShowModal = () => {
+  /*   onShowModal = () => {
     this.updateDimensions();
     this.updateHx();
     this.stats.page = this.props.page;
@@ -202,9 +207,9 @@ class ModalBlog extends Component {
       document.querySelector(`.WirBtn`).classList.remove('active');
       document.querySelector(`.TrainingBtn`).classList.add('active');
     }
-  };
+  }; */
 
-  onHideModal = () => {
+  /*   onHideModal = () => {
     // reset single pages
     document.querySelector('.Training').classList.remove('slide-out-top');
     document.querySelector('.Training').classList.remove('slide-in-bottom');
@@ -218,7 +223,7 @@ class ModalBlog extends Component {
     // reset navigation
     document.querySelector('.TrainingBtn').classList.add('active');
     document.querySelector('.WirBtn').classList.remove('active');
-  };
+  }; */
 
   clickUpDown = (dir) => {
     console.log('ModalTraining/clickUpDown', dir);
@@ -291,7 +296,7 @@ class ModalBlog extends Component {
     }
   };
 
-  updateHx = () => {
+  /*   updateHx = () => {
     //this.updateDimensions();
     console.log('ModalTraining/updateHx');
     // H1
@@ -322,7 +327,7 @@ class ModalBlog extends Component {
         height: h,
       });
     console.log('ModalTraining/updateDimensions', w, h);
-  };
+  }; */
 
   render() {
     console.log('ModalBlog/render', this.stats, this.props);
