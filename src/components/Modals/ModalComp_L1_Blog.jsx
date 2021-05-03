@@ -129,7 +129,7 @@ const ModalComp_L1_Blog = ({ blog, style, colors, mq, filter }) => {
           borderRadius: '5px',
 
           '& .table': {
-            marginTop: '30px',
+            marginTop: '15px',
             padding: '2vh',
             //height: 'calc(90vh - 10vh - 6vh)',
 
@@ -151,7 +151,7 @@ const ModalComp_L1_Blog = ({ blog, style, colors, mq, filter }) => {
         <div className="modal-up">
           <h1>{content.title}</h1>
           <BlogNav filterProps={content.filterProps} colors={colors} />
-          <div className="table d-flex flex-row flex-wrap justify-content-between">
+          <div className="table d-flex flex-row flex-wrap justify-content-around">
             <BlogEntry blog={content.blog} colors={colors} />
           </div>
         </div>

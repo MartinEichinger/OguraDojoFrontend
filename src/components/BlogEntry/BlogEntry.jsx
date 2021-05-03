@@ -13,8 +13,9 @@ const BlogEntry = ({ blog, colors }) => {
   const filterState = useSelector(selectFilter);
 
   const style = {
-    width: '600px',
+    width: '550px',
     fontFamily: 'Lato, sans-serif',
+    padding: '1vh',
 
     '& h2': {
       fontSize: '1.75vh',
@@ -25,13 +26,17 @@ const BlogEntry = ({ blog, colors }) => {
     },
 
     '& h5': {
-      fontSize: '1vh',
+      fontSize: '1.2vh',
+    },
+
+    '& p': {
+      fontSize: '1.4vh',
     },
 
     '& .body': {
       backgroundColor: colors.bgGrey,
       borderRadius: '5px',
-      height: '250px',
+      height: '225px',
     },
 
     '& .text': {
@@ -94,7 +99,7 @@ const BlogEntry = ({ blog, colors }) => {
     return filterState === 'Alle' || item.cat === filterState ? (
       <div className="d-flex flex-column" css={style} key={i}>
         <h5 className="text-center font-weight-bold">
-          {item.date} +++ {item.cat}
+          {item.date} +++ {item.cat} +++ {item.tags}
         </h5>
         <div className="body d-flex flex-row">
           <div
@@ -105,7 +110,7 @@ const BlogEntry = ({ blog, colors }) => {
             className="image w-50"
           ></div>
           <div className="text d-flex flex-column w-50 justify-content-center">
-            <h4 className="text-center">{item.cat}</h4>
+            <h4 className="text-center green">{item.cat}</h4>
             <p className="linie text-center"></p>
             <h2 className="text-center">{item.header}</h2>
             <p className="linie text-center"></p>
@@ -121,7 +126,6 @@ const BlogEntry = ({ blog, colors }) => {
             Artikel lesen
           </Button>
         </a>
-        <h5 className="green w-40 left mt_16">Tags: {item.tags}</h5>
       </div>
     ) : (
       ''
