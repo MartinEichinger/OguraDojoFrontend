@@ -13,7 +13,7 @@ const content = {
     {
       date: '07.04.2018',
       cat: 'Tengu.fr',
-      tags: 'Sensei Habersetzer, Centre de Recherche Budo, Tradition',
+      tags: 'Sensei Habersetzer, CRB, Tradition',
       header: 'Interview mit Sensei Habersetzer',
       detail:
         'Interview mit Sensei Habersetzer. Der französische Verlag BUDO Editions hat ein wahres Sammlerstück veröffentlicht.',
@@ -56,7 +56,7 @@ const content = {
   ],
 };
 
-const ModalComp_L1_Blog = ({ blog, style, colors, mq, filter }) => {
+const ModalComp_L1_Blog = ({ colors }) => {
   const styleMisc = {
     '& .h15': {
       height: '15vh',

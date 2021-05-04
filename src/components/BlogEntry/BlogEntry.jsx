@@ -22,7 +22,7 @@ const BlogEntry = ({ blog, colors }) => {
     },
 
     '& h4': {
-      fontSize: '1.25vh',
+      fontSize: '1.2vh',
     },
 
     '& h5': {
@@ -30,13 +30,14 @@ const BlogEntry = ({ blog, colors }) => {
     },
 
     '& p': {
-      fontSize: '1.4vh',
+      fontSize: '1.3vh',
     },
 
     '& .body': {
       backgroundColor: colors.bgGrey,
       borderRadius: '5px',
-      height: '225px',
+      height: '25vh',
+      maxHeight: '250px',
     },
 
     '& .text': {

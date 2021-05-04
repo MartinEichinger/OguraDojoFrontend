@@ -211,12 +211,7 @@ class ModalBlog extends Component {
                   colors={this.props.colors}
                 />
                 {/* eslint-disable-next-line */}
-                <ModalComp_L1_Blog
-                  blog={this.contentBlog}
-                  style={this.styleContentBlog}
-                  colors={this.props.colors}
-                  mq={this.mq}
-                />
+                <ModalComp_L1_Blog colors={this.props.colors} />
               </div>
             </div>
           </div>
