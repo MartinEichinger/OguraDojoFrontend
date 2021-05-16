@@ -170,7 +170,7 @@ class ModalKarate extends Component {
                   [this.mq[1]]: { padding: '0.5vh' },
                 },
 
-                '& .circle': {
+                /*                 '& .circle': {
                   position: 'relative',
                   aspectRatio: '1 / 1',
                   height: '100%',
@@ -204,7 +204,7 @@ class ModalKarate extends Component {
                   '& iframe': {
                     border: '0px',
                   },
-                },
+                }, */
 
                 '& .rect_var2': {
                   position: 'relative',
@@ -557,7 +557,7 @@ class ModalKarate extends Component {
                   colors={this.props.colors}
                   config={this.contentNav}
                 />
-                <ModalCompTabRoundRect />
+                <ModalCompTabRoundRect mq={this.mq} />
                 <ModalCompTextTabs
                   contentWir={this.contentWir}
                   style={this.styleContentWir}

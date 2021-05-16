@@ -1,13 +1,20 @@
+/** @jsxImportSource @emotion/react */
+// eslint-disable-next-line
+import { jsx } from '@emotion/react';
+
 import React from 'react';
 
-const CompRoundRectList = ({ list }) => {
+const CompRoundRectList = ({ list, style }) => {
   return (
-    <div className="item align-items-center d-flex flex-md-row flex-column">
+    <div
+      className="item align-items-center d-flex flex-md-row flex-column"
+      css={style}
+    >
       <div className="circle d-flex flex-row align-items-center justify-content-center">
         <img src="geld_24px_outlined.svg" alt="" />
         <p className="red bold">{list.title}</p>
       </div>
-      <div className="rect h15">
+      <div className="rect">
         <div className="tab-row d-flex flex-row">
           {list.items.map((item, i) => {
             return (
