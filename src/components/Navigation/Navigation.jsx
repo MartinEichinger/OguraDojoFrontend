@@ -86,6 +86,14 @@ class Navigation extends Component {
           width: '46%',
         },
 
+        [this.mq[2]]: {
+          height: '200px',
+        },
+
+        [this.mq[2]]: {
+          height: '160px',
+        },
+
         '& h1': {
           fontSize: '48px',
           fontWeight: 'bold',

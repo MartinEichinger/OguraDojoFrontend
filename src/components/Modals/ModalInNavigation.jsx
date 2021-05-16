@@ -4,7 +4,7 @@ import { jsx } from '@emotion/react';
 
 import React from 'react';
 
-const ModalInNavigation = ({ clickUpDown, nextItem, colors, config }) => {
+const ModalInNavigation = ({ clickUpDown, nextItem, colors, config, mq }) => {
   const styleInNav = {
     position: 'absolute',
     width: '47px',
@@ -13,6 +13,10 @@ const ModalInNavigation = ({ clickUpDown, nextItem, colors, config }) => {
     right: '2px',
     backgroundColor: colors.bgWhite,
     borderRadius: '45px',
+
+    [mq[0]]: {
+      width: '25px',
+    },
 
     '& .btn-close': {
       width: '45px',
@@ -27,6 +31,11 @@ const ModalInNavigation = ({ clickUpDown, nextItem, colors, config }) => {
       border: 'none',
       outline: 'none',
       zIndex: '1100',
+
+      [mq[0]]: {
+        width: '23px',
+        height: '23px',
+      },
     },
 
     '& .navItem': {
@@ -41,6 +50,11 @@ const ModalInNavigation = ({ clickUpDown, nextItem, colors, config }) => {
         fontSize: '28px',
         cursor: 'pointer',
         fontWeight: 'normal',
+
+        [mq[0]]: {
+          fontSize: '16px',
+          margin: '0',
+        },
       },
 
       '&.active': {
@@ -60,6 +74,11 @@ const ModalInNavigation = ({ clickUpDown, nextItem, colors, config }) => {
       borderRadius: '45px',
       backgroundColor: colors.bgGrey,
       margin: '1px',
+
+      [mq[0]]: {
+        width: '23px',
+        height: '23px',
+      },
 
       '&.active': {
         backgroundColor: colors.bgRed,

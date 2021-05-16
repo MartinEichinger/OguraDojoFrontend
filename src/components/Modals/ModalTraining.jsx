@@ -96,6 +96,10 @@ class ModalKarate extends Component {
             '& .modal-col': {
               width: 'calc(100% - 51px)',
 
+              [this.mq[0]]: {
+                width: 'calc(100% - 29px)',
+              },
+
               '& .bg-heading': {
                 position: 'absolute',
                 zIndex: '0',
@@ -110,11 +114,9 @@ class ModalKarate extends Component {
               '& h1': {
                 fontSize: '10vh',
                 marginBottom: '1vh',
-                //fontWeight: 'bold',
                 color: 'white',
                 textShadow: `0px 0px 5px ${this.bgRed}`,
                 position: 'relative',
-                //zIndex: '1',
                 paddingTop: '2vh',
                 paddingLeft: '2vh',
               },
@@ -161,6 +163,10 @@ class ModalKarate extends Component {
                   boxShadow: 'inset 0px 25px 30px 30px white',
                   filter: 'blur(4px)',
                   position: 'absolute',
+
+                  [this.mq[0]]: {
+                    width: 'calc(100% - 29px)',
+                  },
                 },
 
                 '& .table': {
@@ -169,42 +175,6 @@ class ModalKarate extends Component {
 
                   [this.mq[1]]: { padding: '0.5vh' },
                 },
-
-                /*                 '& .circle': {
-                  position: 'relative',
-                  aspectRatio: '1 / 1',
-                  height: '100%',
-                  backgroundColor: 'rgba(255,255,255,0.7)',
-                  borderRadius: '125px',
-
-                  [this.mq[1]]: {
-                    height: '3vh',
-                    margin: '1vh 0vh',
-                    padding: '1vh',
-                  },
-                },
-
-                '& .rect': {
-                  position: 'relative',
-                  marginLeft: '2vh',
-                  width: 'calc(100% - 125px - 2vh)',
-                  //height: '100%', //'140px',
-                  backgroundColor: 'rgba(255,255,255,0.7)',
-                  borderRadius: '5px',
-                  padding: '1vh',
-
-                  [this.mq[1]]: {
-                    width: 'calc(100% - 2vh)',
-                    padding: '1vh',
-                    margin: '0',
-                  },
-
-                  '& .tab': { overflow: 'hidden' },
-
-                  '& iframe': {
-                    border: '0px',
-                  },
-                }, */
 
                 '& .rect_var2': {
                   position: 'relative',
@@ -556,6 +526,7 @@ class ModalKarate extends Component {
                   nextItem={this.nextItem}
                   colors={this.props.colors}
                   config={this.contentNav}
+                  mq={this.mq}
                 />
                 <ModalCompTabRoundRect mq={this.mq} />
                 <ModalCompTextTabs

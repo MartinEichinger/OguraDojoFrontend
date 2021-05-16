@@ -68,7 +68,6 @@ const ModalCompTabRoundRect = ({ mq }) => {
   const styleTraining = {
     '& .circle': {
       position: 'relative',
-      //aspectRatio: '1 / 1',
       height: '15vh',
       width: '15vh',
       backgroundColor: 'rgba(255,255,255,0.7)',
@@ -95,6 +94,10 @@ const ModalCompTabRoundRect = ({ mq }) => {
         width: 'calc(100% - 2vh)',
         padding: '1vh',
         margin: '0',
+      },
+
+      [mq[0]]: {
+        width: '100%',
       },
 
       '& .tab': { overflow: 'hidden' },

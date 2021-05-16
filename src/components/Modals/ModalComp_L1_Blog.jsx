@@ -6,7 +6,7 @@ import React from 'react';
 import BlogNav from '../BlogNav/BlogNav';
 import BlogEntry from '../BlogEntry/BlogEntry';
 
-const ModalComp_L1_Blog = ({ colors, content }) => {
+const ModalComp_L1_Blog = ({ colors, content, mq }) => {
   const styleMisc = {
     '& .h15': {
       height: '15vh',
@@ -61,6 +61,10 @@ const ModalComp_L1_Blog = ({ colors, content }) => {
       '& .modal-col': {
         width: 'calc(100% - 51px)',
 
+        [mq[0]]: {
+          width: 'calc(100% - 29px)',
+        },
+
         '& h1': {
           fontSize: '10vh',
           marginBottom: '1vh',
@@ -69,6 +73,10 @@ const ModalComp_L1_Blog = ({ colors, content }) => {
           position: 'relative',
           paddingTop: '2vh',
           paddingLeft: '2vh',
+
+          [mq[0]]: {
+            fontSize: '8vh',
+          },
         },
 
         '& .modal-up': {
@@ -81,7 +89,11 @@ const ModalComp_L1_Blog = ({ colors, content }) => {
             marginTop: '1vh',
             height: '66vh',
             padding: '2vh',
-            overflowY: 'scroll',
+            overflowY: 'auto',
+
+            [mq[0]]: {
+              height: '62vh',
+            },
           },
         },
 

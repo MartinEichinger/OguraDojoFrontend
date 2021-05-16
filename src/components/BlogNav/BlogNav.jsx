@@ -12,9 +12,10 @@ const BlogNav = ({ filter, filterProps, colors }) => {
   const dispatch = useDispatch();
 
   const styleBlogNav = {
-    marginTop: '5vh',
+    marginTop: '3vh',
     '& .buttons': {
       padding: '0 15px',
+      margin: '1vh 0',
       borderRadius: '25px',
       fontSize: '2.5vh',
       border: `0px`,
@@ -27,7 +28,7 @@ const BlogNav = ({ filter, filterProps, colors }) => {
   };
 
   return (
-    <div className="d-flex justify-content-around" css={styleBlogNav}>
+    <div className="d-flex justify-content-around flex-wrap" css={styleBlogNav}>
       {filterProps.map((item, i) => {
         return item === filterState ? (
           <button
