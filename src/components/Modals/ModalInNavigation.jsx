@@ -97,6 +97,7 @@ const ModalInNavigation = ({ clickUpDown, nextItem, colors, config }) => {
               i === 0 ? 'active' : ''
             } d-flex align-items-center justify-content-center`}
             onClick={(e) => nextItem(link)}
+            key={i}
           >
             <h1>{link}</h1>
           </div>

@@ -82,7 +82,8 @@ class Navigation extends Component {
         },
 
         [this.mq[3]]: {
-          margin: '12px',
+          margin: '2% 2%',
+          width: '46%',
         },
 
         '& h1': {
