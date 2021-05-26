@@ -59,7 +59,7 @@ class App extends Component {
     this.content = [
       {
         img: 'main_karate.png',
-        modal: '#exModal',
+        modal: '#idModalKarate',
         heading: 'Tengu Ryu Karate',
         headingTwo: '„Es ablehnen zu kämpfen, es ablehnen zu unterliegen...“',
         para: 'Ein vollständiger Weg der Kriegskunst oder der Geist einer Tradition. Lernen und Verbessern des Verhaltens eines freien Individuums unter Einhaltung der Achtung vor dem Leben, den Anderen, dem Gesetz ...',
@@ -69,7 +69,7 @@ class App extends Component {
       },
       {
         img: 'main_panzigong.png',
-        modal: '#exModalPanziGong',
+        modal: '#idModalPanziGong',
         heading: 'Panzi Gong',
         headingTwo: '„Gesundheitsübung mit der Tellerdrehung“',
         para: 'Der menschliche Körper wird mit zunehmendem Alter immer schwächer und anfälliger. Dies ist ein Naturgesetz, das man nicht ändern kann. Aber man kann den Alterungsprozess nach hinten verschieben und somit die Geschwindigkeit des Alterns verlangsamen.',
@@ -78,7 +78,7 @@ class App extends Component {
       },
       {
         img: 'main_taiji.png',
-        modal: '#exModalTaiji',
+        modal: '#idModalTaiji',
         heading: 'Taiji Quan',
         headingTwo:
           '„Je höher der Grad  der Entspannung, desto höher ist die Kampfkunst“',
@@ -88,7 +88,7 @@ class App extends Component {
       },
       {
         img: 'main_qigong.png',
-        modal: '#exModalQigong',
+        modal: '#idModalQigong',
         heading: 'Qigong',
         headingTwo: '„Wenn man leben will, muss man sich auch bewegen.“',
         para: 'Nicht nur die Bewegung ist ein untrennbarer Teil des Lebens, sondern die Gesundheit überhaupt ist das Fundament unseres Lebens. Ohne Bewegung könnten wir nur schwer existieren und ohne Gesundheit hätten wir keine Lebensqualität.',
@@ -139,7 +139,7 @@ class App extends Component {
           </div>
         </div>
         <div className="Placeholder">p</div>
-        <Footer colors={this.colors} />
+        <Footer colors={this.colors} content={this.content} />
       </div>
     );
   }

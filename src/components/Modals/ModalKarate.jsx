@@ -360,10 +360,10 @@ class ModalKarate extends Component {
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('resize', this.updateDimensions);
     document
-      .getElementById('exModal')
+      .getElementById('idModalKarate')
       .addEventListener('shown.bs.modal', this.onShowModal);
     document
-      .getElementById('exModal')
+      .getElementById('idModalKarate')
       .addEventListener('hidden.bs.modal', this.onHideModal);
     document
       .querySelector(`.TenguRyu`)
@@ -377,10 +377,10 @@ class ModalKarate extends Component {
     window.removeEventListener('scroll', this.handleScroll);
     window.removeEventListener('resize', this.updateDimensions);
     document
-      .getElementById('exModal')
+      .getElementById('idModalKarate')
       .removeEventListener('shown.bs.modal', this.onShowModal);
     document
-      .getElementById('exModal')
+      .getElementById('idModalKarate')
       .removeEventListener('hidden.bs.modal', this.onHideModal);
     document
       .querySelector(`.TenguRyu`)
@@ -586,7 +586,7 @@ class ModalKarate extends Component {
       <React.Fragment>
         <div
           className="modal fade"
-          id="exModal"
+          id="idModalKarate"
           tabIndex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"

@@ -52,20 +52,35 @@ const Footer = ({ colors }) => {
     },
 
     '& h3': {
-      fontSize: '14px',
+      fontSize: '1.1vh',
 
       [mq[1]]: {
-        fontSize: '12px',
+        fontSize: '1vh',
       },
 
       [mq[0]]: {
-        fontSize: '10px',
+        fontSize: '0.9vh',
       },
     },
 
     '& .column': {
       marginTop: '20px',
       marginRight: '25px',
+    },
+
+    '& button': {
+      backgroundColor: 'rgba(0,0,0,0)',
+      fontSize: '1.1vh',
+      border: 'none',
+      outline: 'none',
+
+      [mq[1]]: {
+        fontSize: '1vh',
+      },
+
+      [mq[0]]: {
+        fontSize: '0.9vh',
+      },
     },
   };
 
@@ -79,32 +94,41 @@ const Footer = ({ colors }) => {
           </h1>
           <i className="bi bi-geo-alt-fill"></i>
           <div className="d-flex flex-row justify-content-around w-75">
-            <div className="column">
-              <h2>Tengu Ryu Karate-Do</h2>
-              <h3>Über Tengu Ryu</h3>
-              <h3>Lehrer</h3>
-              <h3>Publikationen</h3>
-              <h3>Formen</h3>
+            <div className="column d-flex flex-column align-items-start">
+              <h2>Allgemein</h2>
+              <button data-bs-toggle="modal" data-bs-target="#idModalTraining">
+                Training
+              </button>
+              <button data-bs-toggle="modal" data-bs-target="#idModalTraining">
+                Wir
+              </button>
+              <button data-bs-toggle="modal" data-bs-target="#idModalBlog">
+                Tengu Blog
+              </button>
+              <button data-bs-toggle="modal" data-bs-target="#idModalEvents">
+                Veranstaltungen
+              </button>
             </div>
-            <div className="column">
+            <div className="column d-flex flex-column align-items-start">
+              <h2>Tengu Ryu Karate-Do</h2>
+              <button data-bs-toggle="modal" data-bs-target="#idModalKarate">
+                Über Tengu-Ryu
+              </button>
+              <button data-bs-toggle="modal" data-bs-target="#idModalKarate">
+                Lehrer
+              </button>
+            </div>
+            <div className="column d-flex flex-column">
               <h2>PanZi Gong</h2>
-              <h3>Über PanZi Gong</h3>
-              <h3>Lehrer</h3>
-              <h3>Publikationen</h3>
-              <h3>Formen</h3>
+              <h3>- leer -</h3>
             </div>
             <div className="column">
               <h2>TaiJi Quan</h2>
-              <h3>Über Tengu Ryu</h3>
-              <h3>Lehrer</h3>
-              <h3>Publikationen</h3>
-              <h3>Formen</h3>
+              <h3>- leer -</h3>
             </div>
             <div className="column">
               <h2>QiGong</h2>
-              <h3>Lehrer</h3>
-              <h3>Publikationen</h3>
-              <h3>Formen</h3>
+              <h3>- leer -</h3>
             </div>
           </div>
         </div>
