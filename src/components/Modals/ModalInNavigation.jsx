@@ -22,6 +22,7 @@ const ModalInNavigation = ({ clickUpDown, nextItem, colors, config, mq }) => {
       width: '45px',
       height: '45px',
       margin: '1px',
+      padding: '0px',
       borderRadius: '45px',
       lineHeight: '0',
       position: 'relative',

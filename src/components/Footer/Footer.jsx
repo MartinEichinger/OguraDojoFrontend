@@ -18,6 +18,11 @@ const Footer = ({ colors }) => {
     minWidth: '390px',
     backgroundColor: colors.bgGrey,
 
+    '& i': {
+      width: '48px',
+      height: '48px',
+    },
+
     [mq[0]]: {
       //display: 'none',
     },
@@ -72,6 +77,7 @@ const Footer = ({ colors }) => {
             Ogura Dojo - Tengu Ryu Karate-Do, PanZi Gong, TaiJi Quan, QiGong im
             Herzen des Chiemgaus
           </h1>
+          <i className="bi bi-geo-alt-fill"></i>
           <div className="d-flex flex-row justify-content-around w-75">
             <div className="column">
               <h2>Tengu Ryu Karate-Do</h2>

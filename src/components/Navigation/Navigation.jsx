@@ -237,6 +237,9 @@ class Navigation extends Component {
                 <button data-bs-toggle="modal" data-bs-target="#idModalBlog">
                   Blog
                 </button>
+                <button data-bs-toggle="modal" data-bs-target="#idModalEvents">
+                  Events
+                </button>
               </div>
             </div>
           </div>
