@@ -8,7 +8,7 @@ import ModalCompTabRoundRect from './ModalCompTabRoundRect';
 import ModalCompTextTabs from './ModalCompTextTabs';
 import '../animation.css';
 
-class ModalKarate extends Component {
+class ModalTraining extends Component {
   constructor(props) {
     super(props);
 
@@ -24,11 +24,11 @@ class ModalKarate extends Component {
       animated: 0,
     };
 
-    console.log('ModalTraining/constructor', this.stats);
+    this.debug = false;
+    this.apdx = 'Train';
 
     // BREAKPOINTS
-    this.breakpoints = [424, 767, 1023, 1280];
-    this.mq = this.breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
+    this.mq = this.props.mq;
 
     // STYLES
     this.bgGrey = this.props.colors?.bgGrey;
@@ -319,6 +319,7 @@ class ModalKarate extends Component {
   }
 
   componentDidMount() {
+    if (this.debug) console.log('ModalTraining/compDidMount');
     window.addEventListener('resize', this.updateDimensions);
     document
       .getElementById('idModalTraining')
@@ -335,6 +336,7 @@ class ModalKarate extends Component {
   }
 
   componentWillUnmount() {
+    if (this.debug) console.log('ModalTraining/componentWillUnmount');
     window.removeEventListener('resize', this.updateDimensions);
     document
       .getElementById('idModalTraining')
@@ -352,8 +354,8 @@ class ModalKarate extends Component {
 
   onAnimationEnd = () => {
     this.stats.animated = 0;
-    //document.querySelector('.modal').scrollTo(0, 4);
-    console.log('ModalKarate/onAnimationEnd', this.stats.animated);
+    if (this.debug)
+      console.log('ModalTraining/onAnimationEnd', this.stats.animated);
   };
 
   onShowModal = () => {
@@ -361,25 +363,28 @@ class ModalKarate extends Component {
     this.updateHx();
     this.stats.page = this.props.page;
     var page = this.stats.page;
-    console.log('ModalTraining/onShowModal', this.stats);
+    if (this.debug) console.log('ModalTraining/onShowModal', this.stats);
     if (page === 'Wir') {
       document.querySelector('.Training').classList.add('d-none');
       document.querySelector('.Wir').classList.remove('d-none');
-      document.querySelector(`.upArrowTrain`).classList.add('active');
-      document.querySelector(`.downArrowTrain`).classList.remove('active');
+      document.querySelector(`.upArrow` + this.apdx).classList.add('active');
+      document
+        .querySelector(`.downArrow` + this.apdx)
+        .classList.remove('active');
       document.querySelector(`.WirBtn`).classList.add('active');
       document.querySelector(`.TrainingBtn`).classList.remove('active');
     } else if (page === 'Training') {
       document.querySelector('.Training').classList.remove('d-none');
       document.querySelector('.Wir').classList.add('d-none');
-      document.querySelector(`.upArrowTrain`).classList.remove('active');
-      document.querySelector(`.downArrowTrain`).classList.add('active');
+      document.querySelector(`.upArrow` + this.apdx).classList.remove('active');
+      document.querySelector(`.downArrow` + this.apdx).classList.add('active');
       document.querySelector(`.WirBtn`).classList.remove('active');
       document.querySelector(`.TrainingBtn`).classList.add('active');
     }
   };
 
   onHideModal = () => {
+    if (this.debug) console.log('ModalTraining/onHideModal');
     // reset single pages
     document.querySelector('.Training').classList.remove('slide-out-top');
     document.querySelector('.Training').classList.remove('slide-in-bottom');
@@ -396,7 +401,7 @@ class ModalKarate extends Component {
   };
 
   clickUpDown = (dir) => {
-    console.log('ModalTraining/clickUpDown', dir);
+    if (this.debug) console.log('ModalTraining/clickUpDown', dir);
 
     // find index of current page
     var idx = this.stats.allPages.findIndex((item) => {
@@ -425,7 +430,7 @@ class ModalKarate extends Component {
   };
 
   nextItem = (button) => {
-    console.log('CardsKarate/nextItem', button);
+    if (this.debug) console.log('ModalTraining/nextItem', button);
     // identify the page to be shown
     document
       .querySelector(`.${this.stats.page}`)
@@ -455,20 +460,22 @@ class ModalKarate extends Component {
     });
 
     if (idx === 0) {
-      document.querySelector(`.upArrowTrain`).classList.remove('active');
-      document.querySelector(`.downArrowTrain`).classList.add('active');
+      document.querySelector(`.upArrow${this.apdx}`).classList.remove('active');
+      document.querySelector(`.downArrow${this.apdx}`).classList.add('active');
     } else if (idx === this.stats.allPages.length - 1) {
-      document.querySelector(`.upArrowTrain`).classList.add('active');
-      document.querySelector(`.downArrowTrain`).classList.remove('active');
+      document.querySelector(`.upArrow${this.apdx}`).classList.add('active');
+      document
+        .querySelector(`.downArrow${this.apdx}`)
+        .classList.remove('active');
     } else {
-      document.querySelector(`.upArrowTrain`).classList.add('active');
-      document.querySelector(`.downArrowTrain`).classList.add('active');
+      document.querySelector(`.upArrow${this.apdx}`).classList.add('active');
+      document.querySelector(`.downArrow${this.apdx}`).classList.add('active');
     }
   };
 
   updateHx = () => {
     //this.updateDimensions();
-    console.log('ModalTraining/updateHx');
+    if (this.debug) console.log('ModalTraining/updateHx');
     // H1
     this.styleModalDialog['& .modal-content']['& .modal-row'][
       '& .Training, .Wir'
@@ -496,12 +503,11 @@ class ModalKarate extends Component {
         width: w,
         height: h,
       });
-    console.log('ModalTraining/updateDimensions', w, h);
+    if (this.debug) console.log('ModalTraining/updateDimensions', w, h);
   };
 
   render() {
-    console.log('ModalTraining/render', this.stats, this.props);
-    //this.updateHx();
+    if (this.debug) console.log('ModalTraining/render', this.stats, this.props);
 
     return (
       <React.Fragment>
@@ -512,7 +518,6 @@ class ModalKarate extends Component {
           aria-labelledby="ModalTrainingLabel"
           aria-hidden="true"
           data-bs-backdrop="static"
-          onScroll={() => this.handleScroll()}
         >
           <div
             className="modal-dialog d-flex flex-row-reverse align-items-center"
@@ -527,6 +532,7 @@ class ModalKarate extends Component {
                   colors={this.props.colors}
                   config={this.contentNav}
                   mq={this.mq}
+                  apdx={this.apdx}
                 />
                 <ModalCompTabRoundRect mq={this.mq} />
                 <ModalCompTextTabs
@@ -542,4 +548,4 @@ class ModalKarate extends Component {
   }
 }
 
-export default ModalKarate;
+export default ModalTraining;

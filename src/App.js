@@ -14,9 +14,15 @@ import Footer from './components/Footer/Footer';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.debug = false;
+
+    // BREAKPOINTS
+    this.breakpoints = [430, 576, 678, 1023, 1320];
+    this.mq = this.breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
 
     this.state = {
-      page: 'Training',
+      pageTraining: 'Training',
+      pageKarate: 'TenguRyu',
     };
     this.styleApp = {
       height: '100vh',
@@ -56,7 +62,7 @@ class App extends Component {
       shadowGrey: 'rgba(122,122,122,1)',
     };
 
-    this.content = [
+    this.contentCards = [
       {
         img: 'main_karate.png',
         modal: '#idModalKarate',
@@ -114,32 +120,46 @@ class App extends Component {
   }
 
   selectpage = (page) => {
-    console.log('Nav/selectpage', page);
+    if (this.debug) console.log('App/selectpage', page);
     console.log('App/selectpage', page);
     this.setState({ page });
   };
 
   renderCards = () => {
-    return this.content.map((cont, i) => {
+    if (this.debug) console.log('App/renderCards');
+    return this.contentCards.map((cont, i) => {
       return <CardsKarate para={cont} colors={this.colors} key={i} />;
     });
   };
 
   render() {
+    if (this.debug) console.log('App/render');
     return (
       <div className="App d-flex flex-column" css={this.styleApp}>
-        <Navigation colors={this.colors} select={this.selectpage} />
-        <ModalKarate colors={this.colors} />
-        <ModalTraining colors={this.colors} page={this.state.page} />
-        <ModalBlog colors={this.colors} />
-        <ModalEvents colors={this.colors} />
+        <Navigation
+          colors={this.colors}
+          select={this.selectpage}
+          mq={this.mq}
+        />
+        <ModalKarate
+          colors={this.colors}
+          page={this.state.pageKarate}
+          mq={this.mq}
+        />
+        <ModalTraining
+          colors={this.colors}
+          page={this.state.pageTraining}
+          mq={this.mq}
+        />
+        <ModalBlog colors={this.colors} mq={this.mq} />
+        <ModalEvents colors={this.colors} mq={this.mq} />
         <div className="Frame bg">
           <div className="Content d-flex flex-row flex-wrap justify-content-center">
             {this.renderCards()}
           </div>
         </div>
         <div className="Placeholder">p</div>
-        <Footer colors={this.colors} content={this.content} />
+        <Footer colors={this.colors} />
       </div>
     );
   }

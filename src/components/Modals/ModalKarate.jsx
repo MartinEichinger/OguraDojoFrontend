@@ -3,6 +3,8 @@
 import { jsx } from '@emotion/react';
 
 import React, { Component } from 'react';
+import ModalInNavigation from './ModalInNavigation';
+
 import '../animation.css';
 
 class ModalKarate extends Component {
@@ -14,18 +16,20 @@ class ModalKarate extends Component {
       height: 300,
     };
 
+    this.debug = false;
+    this.apdx = 'Karate';
+
     this.form = React.createRef();
     this.stats = {
       allPages: ['TenguRyu', 'Lehrer'],
-      page: 'TenguRyu',
+      page: this.props.page,
       allSubPages: ['Habersetzer', 'Ogura', 'Otsuka'],
       subPage: 'Habersetzer',
       animated: 0,
     };
 
     // BREAKPOINTS
-    this.breakpoints = [576, 678, 1023, 1280];
-    this.mq = this.breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
+    this.mq = this.props.mq;
 
     // STYLES
     this.bgGrey = this.props.colors?.bgGrey;
@@ -354,9 +358,15 @@ class ModalKarate extends Component {
         },
       },
     };
+
+    this.contentNav = {
+      upDown: 1,
+      navItems: ['TenguRyu', 'Lehrer'],
+    };
   }
 
   componentDidMount() {
+    if (this.debug) console.log('ModalKarate/compDidMount');
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('resize', this.updateDimensions);
     document
@@ -374,6 +384,7 @@ class ModalKarate extends Component {
   }
 
   componentWillUnmount() {
+    if (this.debug) console.log('ModalKarate/compDidMount');
     window.removeEventListener('scroll', this.handleScroll);
     window.removeEventListener('resize', this.updateDimensions);
     document
@@ -393,16 +404,38 @@ class ModalKarate extends Component {
   onAnimationEnd = () => {
     this.stats.animated = 0;
     document.querySelector('.modal').scrollTo(0, 4);
-    console.log('ModalKarate/onAnimationEnd', this.stats.animated);
+    if (this.debug)
+      console.log('ModalKarate/onAnimationEnd', this.stats.animated);
   };
 
   onShowModal = () => {
+    if (this.debug) console.log('ModalKarate/onShowModal');
     this.updateDimensions();
     this.updateHx();
-    document.querySelector('.modal').scrollTo(0, 4);
+    this.stats.page = this.props.page;
+    var page = this.stats.page;
+    if (this.debug) console.log('ModalTraining/onShowModal', this.stats);
+    if (page === 'Lehrer') {
+      document.querySelector('.TenguRyu').classList.add('d-none');
+      document.querySelector('.Lehrer').classList.remove('d-none');
+      document.querySelector(`.upArrow` + this.apdx).classList.add('active');
+      document
+        .querySelector(`.downArrow` + this.apdx)
+        .classList.remove('active');
+      document.querySelector(`.LehrerBtn`).classList.add('active');
+      document.querySelector(`.TenguRyuBtn`).classList.remove('active');
+    } else if (page === 'TenguRyu') {
+      document.querySelector('.TenguRyu').classList.remove('d-none');
+      document.querySelector('.Lehrer').classList.add('d-none');
+      document.querySelector(`.upArrow` + this.apdx).classList.remove('active');
+      document.querySelector(`.downArrow` + this.apdx).classList.add('active');
+      document.querySelector(`.LehrerBtn`).classList.remove('active');
+      document.querySelector(`.TenguRyuBtn`).classList.add('active');
+    }
   };
 
   onHideModal = () => {
+    if (this.debug) console.log('ModalKarate/onHideModal');
     // reset single pages
     document.querySelector('.TenguRyu').classList.remove('slide-out-top');
     document.querySelector('.TenguRyu').classList.remove('slide-in-bottom');
@@ -418,24 +451,8 @@ class ModalKarate extends Component {
     document.querySelector('.LehrerBtn').classList.remove('active');
   };
 
-  handleScroll = () => {
-    return 0;
-    /*     var st = document.querySelector('.modal').scrollTop;
-    console.log('ModalKarate/scroll', st, this.stats.animated);
-    if (st < 3 && this.stats.animated === 0) {
-      this.stats.animated = 1;
-      this.clickUpDown('up');
-      document.querySelector('.modal').scrollTo(0, 4);
-    } else if (st > 5 && this.stats.animated === 0) {
-      this.stats.animated = 1;
-      this.clickUpDown('down');
-      document.querySelector('.modal').scrollTo(0, 4);
-    }
- */
-  };
-
   clickUpDown = (dir) => {
-    //console.log('ModalKarate/clickUpDown', dir);
+    if (this.debug) console.log('ModalKarate/clickUpDown', dir);
 
     // find index of current page
     var idx = this.stats.allPages.findIndex((item) => {
@@ -464,7 +481,7 @@ class ModalKarate extends Component {
   };
 
   nextItem = (button) => {
-    console.log('CardsKarate/nextItem', button);
+    if (this.debug) console.log('ModalKarate/nextItem', button);
     // identify the page to be shown
     document
       .querySelector(`.${this.stats.page}`)
@@ -494,19 +511,21 @@ class ModalKarate extends Component {
     });
 
     if (idx === 0) {
-      document.querySelector(`.upArrow`).classList.remove('active');
-      document.querySelector(`.downArrow`).classList.add('active');
+      document.querySelector(`.upArrow` + this.apdx).classList.remove('active');
+      document.querySelector(`.downArrow` + this.apdx).classList.add('active');
     } else if (idx === this.stats.allPages.length - 1) {
-      document.querySelector(`.upArrow`).classList.add('active');
-      document.querySelector(`.downArrow`).classList.remove('active');
+      document.querySelector(`.upArrow` + this.apdx).classList.add('active');
+      document
+        .querySelector(`.downArrow` + this.apdx)
+        .classList.remove('active');
     } else {
-      document.querySelector(`.upArrow`).classList.add('active');
-      document.querySelector(`.downArrow`).classList.add('active');
+      document.querySelector(`.upArrow` + this.apdx).classList.add('active');
+      document.querySelector(`.downArrow` + this.apdx).classList.add('active');
     }
   };
 
   updateHx = () => {
-    console.log('ModalKarate/updateHx');
+    if (this.debug) console.log('ModalKarate/updateHx');
     // H1
     this.styleModalDialog['& .modal-content']['& .modal-row'][
       '& .TenguRyu, .Lehrer'
@@ -534,7 +553,7 @@ class ModalKarate extends Component {
         width: w,
         height: h,
       });
-    console.log('ModalKarate/updateDimensions', w, h);
+    if (this.debug) console.log('ModalKarate/updateDimensions', w, h);
   };
 
   clickLeftRight = (dir) => {
@@ -542,7 +561,7 @@ class ModalKarate extends Component {
     var idx = this.stats.allSubPages.findIndex((item) => {
       return item === this.stats.subPage;
     });
-    console.log('ModalKarate/clickLeftRight', dir, idx);
+    if (this.debug) console.log('ModalKarate/clickLeftRight', dir, idx);
 
     // trigger nextItem with requested page
     if (idx === 0 && dir === 'left') {
@@ -557,7 +576,8 @@ class ModalKarate extends Component {
   };
 
   nextSubItem = (button) => {
-    console.log('CardsKarate/nextSubItem', button, this.stats.subPage);
+    if (this.debug)
+      console.log('ModalKarate/nextSubItem', button, this.stats.subPage);
 
     // identify the page to be shown
     document
@@ -579,7 +599,8 @@ class ModalKarate extends Component {
   };
 
   render() {
-    //console.log('ModalKarate/render', this.state.width, this.state.height);
+    if (this.debug)
+      console.log('ModalKarate/render', this.state.width, this.state.height);
     this.updateHx();
 
     return (
@@ -588,10 +609,9 @@ class ModalKarate extends Component {
           className="modal fade"
           id="idModalKarate"
           tabIndex="-1"
-          aria-labelledby="exampleModalLabel"
+          aria-labelledby="ModalKarateLabel"
           aria-hidden="true"
           data-bs-backdrop="static"
-          onScroll={() => this.handleScroll()}
         >
           <div
             className="modal-dialog d-flex flex-row-reverse align-items-center"
@@ -600,40 +620,14 @@ class ModalKarate extends Component {
           >
             <div className="modal-content">
               <div className="modal-row d-flex flex-row h-100 align-items-center">
-                <div className="inNavigation d-flex flex-column justify-content-between align-items-center">
-                  <button
-                    type="button"
-                    className="btn-close d-flex flex-row align-items-center justify-content-center"
-                    data-bs-dismiss="modal"
-                    id="modalCardEx"
-                  >
-                    <img src="./clear_white.png" alt="" id="modalCardEx" />
-                  </button>
-                  <div
-                    className="arrow upArrow d-flex align-items-center justify-content-center"
-                    onClick={(e) => this.clickUpDown('up')}
-                  >
-                    <img src="arrow_white_up.png" alt="" />
-                  </div>
-                  <div
-                    className="navItem TenguRyuBtn active d-flex align-items-center justify-content-center"
-                    onClick={(e) => this.nextItem('TenguRyu')}
-                  >
-                    <h1>TenguRyu</h1>
-                  </div>
-                  <div
-                    className="navItem LehrerBtn d-flex align-items-center justify-content-center"
-                    onClick={(e) => this.nextItem('Lehrer')}
-                  >
-                    <h1>Lehrer</h1>
-                  </div>
-                  <div
-                    className="arrow downArrow d-flex align-items-center justify-content-center active"
-                    onClick={(e) => this.clickUpDown('down')}
-                  >
-                    <img src="arrow_white_down.png" alt="" />
-                  </div>
-                </div>
+                <ModalInNavigation
+                  clickUpDown={this.clickUpDown}
+                  nextItem={this.nextItem}
+                  colors={this.props.colors}
+                  config={this.contentNav}
+                  mq={this.mq}
+                  apdx="Karate"
+                />
                 <div className="TenguRyu">
                   <div className="modal-col d-flex flex-column h-100">
                     <div className="modal-up">

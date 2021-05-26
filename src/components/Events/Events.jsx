@@ -215,6 +215,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
                 InputProps={{
                   readOnly: true,
                 }}
+                key={i}
               />
             );
           })}
@@ -232,6 +233,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
                 InputProps={{
                   readOnly: true,
                 }}
+                key={i}
               />
             );
           })}
@@ -246,11 +248,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
                 id={'id_' + i}
                 label={entryData[x][0]}
                 placeholder={entryData[x][1]}
-                InputProps={
-                  {
-                    //readOnly: true,
-                  }
-                }
+                key={i}
               />
             );
           })}

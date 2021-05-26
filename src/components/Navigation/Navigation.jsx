@@ -7,10 +7,10 @@ import React, { Component } from 'react';
 class Navigation extends Component {
   constructor(props) {
     super(props);
+    this.debug = false;
 
     // BREAKPOINTS
-    this.breakpoints = [430, 576, 678, 1023, 1320];
-    this.mq = this.breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
+    this.mq = this.props.mq;
 
     // STYLES
     this.colorCard = this.props.colors;
@@ -166,15 +166,16 @@ class Navigation extends Component {
   }
 
   componentDidMount() {
+    if (this.debug) console.log('Navigation/compDidMount');
     window.addEventListener('scroll', this.handleScroll);
   }
 
   componentWillUnmount() {
+    if (this.debug) console.log('Navigation/componentWillUnmount');
     window.removeEventListener('scroll', this.handleScroll);
   }
 
   handleScroll = () => {
-    console.log(window.scrollY);
     if (window.scrollY > 150) {
       document.querySelector('.navbar').classList.add('slide-in-top');
       document
@@ -191,9 +192,10 @@ class Navigation extends Component {
   };
 
   selectpage = (page) => {
-    console.log('Nav/selectpage', page);
+    if (this.debug) console.log('Navigation/selectpage', page);
     this.props.select(page);
   };
+
   render() {
     return (
       <React.Fragment>

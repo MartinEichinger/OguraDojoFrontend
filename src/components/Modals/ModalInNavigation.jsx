@@ -4,7 +4,14 @@ import { jsx } from '@emotion/react';
 
 import React from 'react';
 
-const ModalInNavigation = ({ clickUpDown, nextItem, colors, config, mq }) => {
+const ModalInNavigation = ({
+  clickUpDown,
+  nextItem,
+  colors,
+  config,
+  mq,
+  apdx,
+}) => {
   const styleInNav = {
     position: 'absolute',
     width: '47px',
@@ -102,7 +109,10 @@ const ModalInNavigation = ({ clickUpDown, nextItem, colors, config, mq }) => {
       </button>
       {config?.upDown ? (
         <div
-          className="arrow upArrowTrain d-flex align-items-center justify-content-center"
+          className={
+            'arrow d-flex align-items-center justify-content-center ' +
+            `upArrow${apdx}`
+          }
           onClick={(e) => clickUpDown('up')}
         >
           <img src="arrow_white_up.png" alt="" />
@@ -125,7 +135,10 @@ const ModalInNavigation = ({ clickUpDown, nextItem, colors, config, mq }) => {
       })}
       {config?.upDown ? (
         <div
-          className="arrow downArrowTrain d-flex align-items-center justify-content-center active"
+          className={
+            'arrow d-flex align-items-center justify-content-center active ' +
+            `downArrow${apdx}`
+          }
           onClick={(e) => clickUpDown('down')}
         >
           <img src="arrow_white_down.png" alt="" />

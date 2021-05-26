@@ -8,9 +8,17 @@ import SubjectOutlinedIcon from '@material-ui/icons/SubjectOutlined';
 
 import { useSelector } from 'react-redux';
 import { selectFilter } from '../../features/filter/filterSlice';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: 'rgba(121, 0, 0, 1)',
+  },
+}));
 
 const BlogEntry = ({ blog, colors }) => {
   const filterState = useSelector(selectFilter);
+  const classes = useStyles();
 
   const style = {
     width: '550px',
@@ -120,8 +128,8 @@ const BlogEntry = ({ blog, colors }) => {
         </div>
         <a href={item.link} target="_blank" rel="noreferrer" className="button">
           <Button
+            className={classes.root}
             variant="contained"
-            color={colors.bgRed}
             startIcon={<SubjectOutlinedIcon />}
           >
             Artikel lesen
