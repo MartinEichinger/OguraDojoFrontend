@@ -5,7 +5,6 @@ import { jsx } from '@emotion/react';
 import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
-import { SignalWifi1BarLockSharp } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root1: {
