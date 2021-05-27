@@ -4,10 +4,13 @@ import { jsx } from '@emotion/react';
 
 import React from 'react';
 
-const Footer = ({ colors }) => {
+const Footer = ({ colors, select }) => {
   // BREAKPOINTS
   const breakpoints = [576, 678, 1023, 1280];
   const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
+
+  // DEBUG
+  const debug = false;
 
   // STYLE
   const styleFooter = {
@@ -84,6 +87,11 @@ const Footer = ({ colors }) => {
     },
   };
 
+  const selectpage = (page, param) => {
+    if (debug) console.log('Footer/selectpage', page);
+    select(page, param);
+  };
+
   return (
     <footer className="Footer fixed-bottom mt-auto py-3" css={styleFooter}>
       <div className="container-fluid">
@@ -92,14 +100,21 @@ const Footer = ({ colors }) => {
             Ogura Dojo - Tengu Ryu Karate-Do, PanZi Gong, TaiJi Quan, QiGong im
             Herzen des Chiemgaus
           </h1>
-          <i className="bi bi-geo-alt-fill"></i>
           <div className="d-flex flex-row justify-content-around w-75">
             <div className="column d-flex flex-column align-items-start">
               <h2>Allgemein</h2>
-              <button data-bs-toggle="modal" data-bs-target="#idModalTraining">
+              <button
+                data-bs-toggle="modal"
+                data-bs-target="#idModalTraining"
+                onClick={() => selectpage('Training', 'pageTraining')}
+              >
                 Training
               </button>
-              <button data-bs-toggle="modal" data-bs-target="#idModalTraining">
+              <button
+                data-bs-toggle="modal"
+                data-bs-target="#idModalTraining"
+                onClick={() => selectpage('Wir', 'pageTraining')}
+              >
                 Wir
               </button>
               <button data-bs-toggle="modal" data-bs-target="#idModalBlog">
@@ -111,10 +126,18 @@ const Footer = ({ colors }) => {
             </div>
             <div className="column d-flex flex-column align-items-start">
               <h2>Tengu Ryu Karate-Do</h2>
-              <button data-bs-toggle="modal" data-bs-target="#idModalKarate">
+              <button
+                data-bs-toggle="modal"
+                data-bs-target="#idModalKarate"
+                onClick={() => selectpage('TenguRyu', 'pageKarate')}
+              >
                 Über Tengu-Ryu
               </button>
-              <button data-bs-toggle="modal" data-bs-target="#idModalKarate">
+              <button
+                data-bs-toggle="modal"
+                data-bs-target="#idModalKarate"
+                onClick={() => selectpage('Lehrer', 'pageKarate')}
+              >
                 Lehrer
               </button>
             </div>

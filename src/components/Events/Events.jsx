@@ -4,6 +4,7 @@ import { jsx } from '@emotion/react';
 
 import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -48,6 +49,20 @@ const useStyles = makeStyles((theme) => ({
     '& .MuiFormLabel-root.Mui-error, & .Mui-error:after': {
       color: 'green',
       borderBottomColor: 'green',
+    },
+  },
+  root3: {
+    marginTop: '1vh',
+
+    '&.MuiButton-contained': {
+      backgroundColor: 'rgba(19, 73, 0, 1)',
+      color: 'rgba(255,255,255,0.87)',
+      fontSize: '1.25vh',
+      fontWeight: 'bold',
+    },
+    '&.MuiButton-root': {
+      padding: '0px',
+      maxWidth: '150px',
     },
   },
 }));
@@ -253,6 +268,9 @@ const Events = ({ events, colors, mq, styleMisc }) => {
             );
           })}
         </form>
+        <Button className={classes.root3} variant="contained">
+          Anmelden
+        </Button>
       </div>
     </React.Fragment>
   );

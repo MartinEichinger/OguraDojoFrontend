@@ -14,7 +14,7 @@ import Footer from './components/Footer/Footer';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.debug = false;
+    this.debug = true;
 
     // BREAKPOINTS
     this.breakpoints = [430, 576, 678, 1023, 1320];
@@ -119,10 +119,9 @@ class App extends Component {
     ];
   }
 
-  selectpage = (page) => {
-    if (this.debug) console.log('App/selectpage', page);
-    console.log('App/selectpage', page);
-    this.setState({ page });
+  selectpage = (page, param) => {
+    if (this.debug) console.log('App/selectpage', page, param);
+    this.setState({ [param]: page });
   };
 
   renderCards = () => {
@@ -159,7 +158,7 @@ class App extends Component {
           </div>
         </div>
         <div className="Placeholder">p</div>
-        <Footer colors={this.colors} />
+        <Footer colors={this.colors} select={this.selectpage} />
       </div>
     );
   }

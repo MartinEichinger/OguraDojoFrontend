@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 class Navigation extends Component {
   constructor(props) {
     super(props);
-    this.debug = false;
+    this.debug = true;
 
     // BREAKPOINTS
     this.mq = this.props.mq;
@@ -193,7 +193,7 @@ class Navigation extends Component {
 
   selectpage = (page) => {
     if (this.debug) console.log('Navigation/selectpage', page);
-    this.props.select(page);
+    this.props.select(page, 'pageTraining');
   };
 
   render() {
