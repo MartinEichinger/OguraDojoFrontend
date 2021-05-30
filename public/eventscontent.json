@@ -2,7 +2,7 @@
   "title": "Events",
   "events": [
     {
-      "title": ["Seminar", "Tengu-Ryu Karate"],
+      "title": ["Seminar", "Tengu-Ryu Karate JSON"],
       "date": ["Datum", "09.12.2021"],
       "location": ["Ort", "Strassburg"],
       "organisator": ["Ausrichter / Trainer", "Roland Habersetzer"],
