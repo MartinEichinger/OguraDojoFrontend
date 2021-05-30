@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import $ from 'jquery';
 
 // save function

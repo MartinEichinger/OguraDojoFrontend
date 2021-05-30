@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import ModalInNavigation from './ModalInNavigation';
 import ModalComp_L1_Events from './ModalComp_L1_Events';
 import '../animation.css';
-import { save, loadJSON } from '../../script/saveLoad.js';
+import { loadJSON } from '../../script/saveLoad.js';
 
 class ModalEvents extends Component {
   constructor(props) {
