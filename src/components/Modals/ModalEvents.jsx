@@ -6,14 +6,36 @@ import React, { Component } from 'react';
 import ModalInNavigation from './ModalInNavigation';
 import ModalComp_L1_Events from './ModalComp_L1_Events';
 import '../animation.css';
+import { save, loadJSON } from '../../script/saveLoad.js';
 
 class ModalEvents extends Component {
   constructor(props) {
     super(props);
 
+    this.content = {
+      title: '',
+      events: [
+        {
+          title: ['Seminar', 'Tengu-Ryu Karate'],
+          date: ['Datum', '09.12.2021'],
+          location: ['Ort', 'Strassburg'],
+          organisator: ['Ausrichter / Trainer', 'Roland Habersetzer'],
+          authorized: ['Berechtigt', 'nur CRB Mitglieder'],
+          time: ['Zeit', '12.09.21, 9:00 bis 13.09.21, 13:00'],
+          details: [
+            'Weitere Infos',
+            'Ausrüstung: Karate-Gi, Taschenlampe, Bokken',
+          ],
+          email: ['E-Mail', '...deine E-Mail...'],
+          name: ['Name', '...dein Name...'],
+        },
+      ],
+    };
+
     this.state = {
       width: 1440,
       height: 1200,
+      content: this.content,
     };
 
     this.form = React.createRef();
@@ -23,7 +45,8 @@ class ModalEvents extends Component {
       animated: 0,
     };
 
-    console.log('ModalEvents/constructor', this.stats);
+    // Debugging
+    this.debug = true;
 
     // BREAKPOINTS
     this.breakpoints = [424, 767, 1023, 1280];
@@ -165,7 +188,7 @@ class ModalEvents extends Component {
             width: '100%',
             height: '55%',
             borderRadius: '5px',
-            //backgroundImage: 'url(./training_pic_2.png)',
+            //backgroundImage: "url(./training_pic_2.png)",
           },
 
           '& .text': {
@@ -183,43 +206,15 @@ class ModalEvents extends Component {
       pagItems: 4,
       navItems: [],
     };
-
-    this.content = {
-      title: 'Events',
-      events: [
-        {
-          title: ['Seminar', 'Tengu-Ryu Karate'],
-          date: ['Datum', '09.12.2021'],
-          location: ['Ort', 'Strassburg'],
-          organisator: ['Ausrichter / Trainer', 'Roland Habersetzer'],
-          authorized: ['Berechtigt', 'nur CRB Mitglieder'],
-          time: ['Zeit', '12.09.21, 9:00 bis 13.09.21, 13:00'],
-          details: [
-            'Weitere Infos',
-            'Ausrüstung: Karate-Gi, Taschenlampe, Bokken',
-          ],
-          email: ['E-Mail', '...deine E-Mail...'],
-          name: ['Name', '...dein Name...'],
-        },
-        {
-          title: ['Seminar', 'Tengu-Ryu Karate-Do'],
-          date: ['Datum', '11.22.2021'],
-          location: ['Ort', 'Strassburg'],
-          organisator: ['Ausrichter / Trainer', 'Roland Habersetzer'],
-          authorized: ['Berechtigt', 'nur CRB Mitglieder'],
-          time: ['Zeit', '22.11.21, 9:00 bis 23.11.21, 13:00'],
-          details: [
-            'Weitere Infos',
-            'Ausrüstung: Karate-Gi, Taschenlampe, Bokken',
-          ],
-          email: ['E-Mail', '...deine E-Mail...'],
-          name: ['Name', '...dein Name...'],
-        },
-      ],
-    };
   }
 
-  componentDidMount() {}
+  async componentDidMount() {
+    if (this.debug) console.log('ModalEvents/compDidMount');
+    var content = await loadJSON();
+    this.setState({ content: content });
+    if (this.debug)
+      console.log('ModalEvents/compDidMount: ', this.state.content);
+  }
 
   componentWillUnmount() {}
 
@@ -228,7 +223,8 @@ class ModalEvents extends Component {
   nextItem = (button) => {};
 
   render() {
-    console.log('ModalEvents/render', this.stats, this.props);
+    if (this.debug)
+      console.log('ModalEvents/render', this.stats, this.props, this.content);
 
     return (
       <React.Fragment>
@@ -259,7 +255,7 @@ class ModalEvents extends Component {
                 <ModalComp_L1_Events
                   colors={this.props.colors}
                   styleMisc={this.styleMisc}
-                  content={this.content}
+                  content={this.state.content}
                   mq={this.mq}
                 />
               </div>

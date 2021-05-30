@@ -71,6 +71,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
   const [entryData, setEntryData] = useState(events[0]);
   const classes = useStyles();
 
+  console.log('Events: ', events);
   const style = {
     width: '45%',
     fontFamily: 'Lato, sans-serif',
