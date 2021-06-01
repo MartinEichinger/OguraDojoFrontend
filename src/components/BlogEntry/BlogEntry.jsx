@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import SubjectOutlinedIcon from '@material-ui/icons/SubjectOutlined';
 
 import { useSelector } from 'react-redux';
-import { selectFilter } from '../../features/filter/filterSlice';
+import { selectFilter } from '../../features/filter/filterSlice'; 
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({

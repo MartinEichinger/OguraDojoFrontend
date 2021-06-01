@@ -9,6 +9,7 @@ import ModalKarate from './components/Modals/ModalKarate';
 import ModalTraining from './components/Modals/ModalTraining';
 import ModalBlog from './components/Modals/ModalBlog';
 import ModalEvents from './components/Modals/ModalEvents';
+import ModalLogin from './components/Modals/ModalLogin';
 import Footer from './components/Footer/Footer';
 
 class App extends Component {
@@ -152,6 +153,7 @@ class App extends Component {
         />
         <ModalBlog colors={this.colors} mq={this.mq} />
         <ModalEvents colors={this.colors} mq={this.mq} />
+        <ModalLogin />
         <div className="Frame bg">
           <div className="Content d-flex flex-row flex-wrap justify-content-center">
             {this.renderCards()}

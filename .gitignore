@@ -2,17 +2,21 @@
 
 # dependencies
 /node_modules
+node_modules
 /.pnp
 .pnp.js
 
 # assets
 /_assets
+_assets
 
 # testing
 /coverage
 
 # production
 /build
+/.vscode
+.vscode
 
 # misc
 .DS_Store
@@ -26,3 +30,5 @@ yarn-debug.log*
 yarn-error.log*
 Fehler.xlsx
 ~$Fehler.xlsx
+
+
