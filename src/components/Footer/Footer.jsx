@@ -123,6 +123,9 @@ const Footer = ({ colors, select }) => {
               <button data-bs-toggle="modal" data-bs-target="#idModalEvents">
                 Veranstaltungen
               </button>
+              <button data-bs-toggle="modal" data-bs-target="#idModalLogin">
+                Login
+              </button>
             </div>
             <div className="column d-flex flex-column align-items-start">
               <h2>Tengu Ryu Karate-Do</h2>

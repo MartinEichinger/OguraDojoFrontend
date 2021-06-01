@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { switchfilter, selectFilter } from '../../features/filter/filterSlice';
 
 const BlogNav = ({ filter, filterProps, colors }) => {
-  const filterState = useSelector(selectFilter);
+  const filterState = useSelector(selectFilter); 
   const dispatch = useDispatch();
 
   const styleBlogNav = {
