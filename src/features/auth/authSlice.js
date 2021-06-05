@@ -1,14 +1,15 @@
 import axios from 'axios';
-//import * as actionTypes from './actionTypes';
+import { AUTH_SUCCESS } from './actionTypes';
 import { createSlice } from '@reduxjs/toolkit';
 
 const debug = true;
 
 const initialState = {
+  type: null,
   token: null,
   error: null,
   loading: false,
-  username: '',
+  username: null,
   isAuthenticated: false,
 };
 
@@ -20,17 +21,11 @@ export const authSlice = createSlice({
     login: (state, action) => {
       if (debug) console.log('authSlice/login');
       const { token, username } = action.payload;
-      //const config = JSON.parse(res.config.data);
       const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
 
       localStorage.setItem('token', token);
       localStorage.setItem('username', username);
       localStorage.setItem('expirationDate', expirationDate);
-
-      //dispatch(authSuccess(token, config.username));
-      //dispatch(checkAuthTimeout(3600));
-      if (debug) console.log('login - 2');
-      state.isAuthenticated = true;
     },
 
     logout: (state) => {
@@ -45,11 +40,30 @@ export const authSlice = createSlice({
       if (debug) console.log('authSlice/authStatus', state);
       if (localStorage.getItem('token') != null) state.isAuthenticated = 'true';
     },
+
+    authSuccess: (state, action) => {
+      if (debug) console.log('authSlice/authSuccess', state);
+      const { token, username } = action.payload;
+      state.type = AUTH_SUCCESS;
+      state.token = token;
+      state.username = username;
+      state.isAuthenticated = true;
+    },
+
+    checkAuthTimeout: (state, action) => (dispatch) => {
+      if (debug) console.log('authSlice/checkAuthTimeout', action);
+      const { expirationDate } = action.payload;
+      setTimeout(() => {
+        dispatch(logout());
+        console.log('Timeout');
+      }, expirationDate * 1000);
+    },
   },
   // extra reducer
 });
 
-export const { login, logout, authStatus } = authSlice.actions;
+export const { login, logout, authStatus, authSuccess, checkAuthTimeout } =
+  authSlice.actions;
 
 // Thunk
 export const authLoginAsync = (username, password) => (dispatch) => {
@@ -67,12 +81,22 @@ export const authLoginAsync = (username, password) => (dispatch) => {
     })
     .then((res) => {
       dispatch(login({ token: res.data.key, username: username }));
+      dispatch(authSuccess({ token: res.data.key, username: username }));
+      //dispatch(checkAuthTimeout(30));
     })
     .catch((err) => {
       //dispatch(authFail(err));
       if (debug) console.log('authLoginAsync - error: ', err);
     });
 };
+
+/* export const checkAuthTimeout = (expirationDate) => (dispatch) => {
+  console.log('Start timeout');
+  setTimeout(() => {
+    dispatch(logout());
+    console.log('Timeout');
+  }, expirationDate * 1000);
+}; */
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of

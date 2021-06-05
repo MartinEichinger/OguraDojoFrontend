@@ -210,7 +210,7 @@ class ModalEvents extends Component {
 
   async componentDidMount() {
     if (this.debug) console.log('ModalEvents/compDidMount');
-    var content = await loadJSON();
+    var content = await loadJSON('/eventscontent.json');
     this.setState({ content: content });
     if (this.debug)
       console.log('ModalEvents/compDidMount: ', this.state.content);

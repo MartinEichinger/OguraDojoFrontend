@@ -2,7 +2,7 @@
 import $ from 'jquery';
 
 // save function
-export async function save() {
+export async function saveJSON() {
   console.log('saveLoad/save');
 
   // init json object
@@ -56,13 +56,12 @@ export async function save() {
   //result = JSON.parse(result);
 }
 
-export async function loadJSON() {
+export async function loadJSON(path) {
   console.log('saveLoad/load');
 
   // Retrieve data from local file
-  const response = await fetch('/eventscontent.json', {});
+  const response = await fetch(path, {});
   var result = await response.json();
-  //result = JSON.parse(result);
 
   return result;
 }

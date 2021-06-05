@@ -124,6 +124,10 @@ class App extends Component {
     ];
   }
 
+  componentDidMount() {
+    this.authStatus();
+  }
+
   selectpage = (page, param) => {
     if (this.debug) console.log('App/selectpage', page, param);
     this.setState({ [param]: page });
@@ -139,7 +143,6 @@ class App extends Component {
   render() {
     if (this.debug) console.log('App/render');
     let { isAuthenticated } = this.props;
-    this.authStatus();
 
     return (
       <div className="App d-flex flex-column" css={this.styleApp}>
