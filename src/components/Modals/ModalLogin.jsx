@@ -2,7 +2,10 @@
 // eslint-disable-next-line
 import { jsx } from '@emotion/react';
 
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { authLoginAsync } from '../../features/auth/authSlice';
+
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -22,9 +25,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ModalLogin = () => {
+  const dispatch = useDispatch();
+  const [pwd, setPwd] = useState(0);
+  const [user, setUser] = useState(0);
+
   // Debugging
   const debug = true;
 
+  // Style
   const styleModalDialog = {
     width: '100vw',
     maxWidth: '1440px',
@@ -55,8 +63,10 @@ const ModalLogin = () => {
 
   const classes = useStyles();
 
-  const onlogin = () => {
-    console.log('try login');
+  // Methods
+  const onlogin = (username, password) => {
+    console.log('try login: ', username, password);
+    dispatch(authLoginAsync(username, password));
   };
 
   if (debug) console.log('ModalLogin/render');
@@ -80,13 +90,19 @@ const ModalLogin = () => {
             <div className="modal-row d-flex flex-row h-100 align-items-center">
               <div className="modal-up">
                 <form className={classes.root}>
-                  <TextField required id="id_login" label="Login" />
+                  <TextField
+                    required
+                    id="id_login"
+                    label="Login"
+                    onChange={(e) => setUser({ username: e.target.value })}
+                  />
                   <TextField
                     required
                     id="id_pwd"
                     label="Password"
                     type="password"
                     autoComplete="current-password"
+                    onChange={(e) => setPwd({ password: e.target.value })}
                   />
 
                   <Button
@@ -94,7 +110,7 @@ const ModalLogin = () => {
                     color="primary"
                     className="form__custom-button"
                     variant="contained"
-                    onClick={() => onlogin()}
+                    onClick={() => onlogin(user.username, pwd.password)}
                     data-bs-dismiss="modal"
                   >
                     Log in

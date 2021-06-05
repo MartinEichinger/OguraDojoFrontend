@@ -4,10 +4,15 @@ import { jsx, keyframes } from '@emotion/react';
 import '../animation.css';
 import React, { Component } from 'react';
 
+import { logout } from '../../features/auth/authSlice';
+import { connect } from 'react-redux';
+
 class Navigation extends Component {
   constructor(props) {
     super(props);
     this.debug = true;
+
+    this.logout = this.props.logout;
 
     // BREAKPOINTS
     this.mq = this.props.mq;
@@ -127,7 +132,13 @@ class Navigation extends Component {
 
       '& .block': {
         height: '100px',
-        width: '100vw',
+        width: 'calc(100vw - 40px)',
+
+        '& button': {
+          backgroundColor: 'rgba(0,0,0,0)',
+          border: 'none',
+          outline: 'none',
+        },
 
         '& a': {
           '& img': {
@@ -197,6 +208,9 @@ class Navigation extends Component {
   };
 
   render() {
+    this.isAuthenticated = this.props.isAuthenticated;
+    if (this.debug) console.log('Navigation/render: ', this.isAuthenticated);
+
     return (
       <React.Fragment>
         <div
@@ -211,7 +225,16 @@ class Navigation extends Component {
               <h1>Ogura Dojo</h1>
               <h2>Tengu Ryu Karate-Do, PanZi Gong, TaiJi Quan, QiGong</h2>
             </div>
-            <div></div>
+            {this.isAuthenticated && (
+              <button onClick={this.logout}>
+                <i className="fas fa-sign-out-alt"></i>
+              </button>
+            )}
+            {!this.isAuthenticated && (
+              <button data-bs-toggle="modal" data-bs-target="#idModalLogin">
+                <i className="fas fa-sign-in-alt"></i>
+              </button>
+            )}
           </div>
         </div>
 
@@ -251,4 +274,11 @@ class Navigation extends Component {
   }
 }
 
-export default Navigation;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logout: () => dispatch(logout()),
+    dispatch,
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Navigation);

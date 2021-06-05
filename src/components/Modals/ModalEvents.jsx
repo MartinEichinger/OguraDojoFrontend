@@ -223,8 +223,15 @@ class ModalEvents extends Component {
   nextItem = (button) => {};
 
   render() {
+    this.isAuthenticated = this.props.isAuthenticated;
     if (this.debug)
-      console.log('ModalEvents/render', this.stats, this.props, this.content);
+      console.log(
+        'ModalEvents/render',
+        this.stats,
+        this.props,
+        this.content,
+        this.isAuthenticated
+      );
 
     return (
       <React.Fragment>
@@ -257,6 +264,7 @@ class ModalEvents extends Component {
                   styleMisc={this.styleMisc}
                   content={this.state.content}
                   mq={this.mq}
+                  isAuthenticated={this.isAuthenticated}
                 />
               </div>
             </div>

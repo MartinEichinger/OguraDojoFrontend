@@ -5,7 +5,13 @@ import { jsx } from '@emotion/react';
 import React from 'react';
 import Events from '../Events/Events';
 
-const ModalComp_L1_Events = ({ colors, content, mq, styleMisc }) => {
+const ModalComp_L1_Events = ({
+  colors,
+  content,
+  mq,
+  styleMisc,
+  isAuthenticated,
+}) => {
   const styleCompL1 = {
     '&.comp_l1': {
       width: '100%',
@@ -73,7 +79,10 @@ const ModalComp_L1_Events = ({ colors, content, mq, styleMisc }) => {
     <div className="comp_l1" css={styleCompL1}>
       <div className="modal-col d-flex flex-column h-100" css={styleMisc}>
         <div className="modal-up">
-          <h1>{content.title}</h1>
+          <div className="d-flex flex-row justify-content-between align-items-center">
+            <h1>{content.title}</h1>
+            {isAuthenticated && <i className="fas fa-edit red mr-5"></i>}
+          </div>
           <div className="imageBg"></div>
           <div
             className="table d-flex flex-row flex-wrap justify-content-around"

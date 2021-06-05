@@ -3,6 +3,9 @@
 import { jsx } from '@emotion/react';
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { authStatus } from './features/auth/authSlice';
+
 import Navigation from './components/Navigation/Navigation';
 import CardsKarate from './components/Cards/CardsKarate';
 import ModalKarate from './components/Modals/ModalKarate';
@@ -16,6 +19,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.debug = true;
+    this.authStatus = this.props.authStatus;
 
     // BREAKPOINTS
     this.breakpoints = [430, 576, 678, 1023, 1320];
@@ -134,12 +138,16 @@ class App extends Component {
 
   render() {
     if (this.debug) console.log('App/render');
+    let { isAuthenticated } = this.props;
+    this.authStatus();
+
     return (
       <div className="App d-flex flex-column" css={this.styleApp}>
         <Navigation
           colors={this.colors}
           select={this.selectpage}
           mq={this.mq}
+          isAuthenticated={isAuthenticated}
         />
         <ModalKarate
           colors={this.colors}
@@ -152,7 +160,11 @@ class App extends Component {
           mq={this.mq}
         />
         <ModalBlog colors={this.colors} mq={this.mq} />
-        <ModalEvents colors={this.colors} mq={this.mq} />
+        <ModalEvents
+          colors={this.colors}
+          mq={this.mq}
+          isAuthenticated={isAuthenticated}
+        />
         <ModalLogin />
         <div className="Frame bg">
           <div className="Content d-flex flex-row flex-wrap justify-content-center">
@@ -166,4 +178,17 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    authStatus: () => dispatch(authStatus()),
+    dispatch,
+  };
+};
+
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.auth.isAuthenticated,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -11,7 +11,7 @@ const BlogNav = ({ filter, filterProps, colors }) => {
   const filterState = useSelector(selectFilter); 
   const dispatch = useDispatch();
 
-  const styleBlogNav = {
+  const styleBlogNav = { 
     marginTop: '3vh',
     '& .buttons': {
       padding: '0 15px',
