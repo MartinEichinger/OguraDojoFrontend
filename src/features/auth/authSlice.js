@@ -1,6 +1,6 @@
 import axios from 'axios';
-import * as actionTypes from './actionTypes';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+//import * as actionTypes from './actionTypes';
+import { createSlice } from '@reduxjs/toolkit';
 
 const debug = true;
 
