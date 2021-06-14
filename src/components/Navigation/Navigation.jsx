@@ -4,7 +4,7 @@ import { jsx, keyframes } from '@emotion/react';
 import '../animation.css';
 import React, { Component } from 'react';
 
-import { logout } from '../../features/auth/authSlice';
+import { logOut } from '../../store/auth';
 import { connect } from 'react-redux';
 
 class Navigation extends Component {
@@ -276,9 +276,15 @@ class Navigation extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    logout: () => dispatch(logout()),
+    logout: () => dispatch(logOut()),
     dispatch,
   };
 };
 
-export default connect(null, mapDispatchToProps)(Navigation);
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.auth.token !== null,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

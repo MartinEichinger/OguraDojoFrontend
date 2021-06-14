@@ -4,7 +4,7 @@ import { jsx } from '@emotion/react';
 
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { authLoginAsync } from '../../features/auth/authSlice';
+import { logIn } from '../../store/auth';
 
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -66,7 +66,7 @@ const ModalLogin = () => {
   // Methods
   const onlogin = (username, password) => {
     console.log('try login: ', username, password);
-    dispatch(authLoginAsync(username, password));
+    dispatch(logIn(username, password));
   };
 
   if (debug) console.log('ModalLogin/render');

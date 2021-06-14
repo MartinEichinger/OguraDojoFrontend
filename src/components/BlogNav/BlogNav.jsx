@@ -5,13 +5,13 @@ import { jsx } from '@emotion/react';
 import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { switchfilter, selectFilter } from '../../features/filter/filterSlice';
+import { switchfilter, selectFilter } from '../../store/filter';
 
 const BlogNav = ({ filter, filterProps, colors }) => {
-  const filterState = useSelector(selectFilter); 
+  const filterState = useSelector(selectFilter);
   const dispatch = useDispatch();
 
-  const styleBlogNav = { 
+  const styleBlogNav = {
     marginTop: '3vh',
     '& .buttons': {
       padding: '0 15px',

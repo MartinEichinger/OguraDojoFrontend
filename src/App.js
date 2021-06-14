@@ -4,15 +4,16 @@ import { jsx } from '@emotion/react';
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { authStatus } from './features/auth/authSlice';
-
+import { authStatus } from './store/auth';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Navigation from './components/Navigation/Navigation';
 import CardsKarate from './components/Cards/CardsKarate';
 import ModalKarate from './components/Modals/ModalKarate';
 import ModalTraining from './components/Modals/ModalTraining';
 import ModalBlog from './components/Modals/ModalBlog';
-import ModalEvents from './components/Modals/ModalEvents';
-import ModalLogin from './components/Modals/ModalLogin';
+import ModalEvents from './components/ModalEvents/ModalEvents';
+import ModalLogin from './components/ModalLogin/ModalLogin';
 import Footer from './components/Footer/Footer';
 
 class App extends Component {
@@ -142,15 +143,14 @@ class App extends Component {
 
   render() {
     if (this.debug) console.log('App/render');
-    let { isAuthenticated } = this.props;
 
     return (
       <div className="App d-flex flex-column" css={this.styleApp}>
+        <ToastContainer />
         <Navigation
           colors={this.colors}
           select={this.selectpage}
           mq={this.mq}
-          isAuthenticated={isAuthenticated}
         />
         <ModalKarate
           colors={this.colors}
@@ -163,11 +163,7 @@ class App extends Component {
           mq={this.mq}
         />
         <ModalBlog colors={this.colors} mq={this.mq} />
-        <ModalEvents
-          colors={this.colors}
-          mq={this.mq}
-          isAuthenticated={isAuthenticated}
-        />
+        <ModalEvents colors={this.colors} mq={this.mq} />
         <ModalLogin />
         <div className="Frame bg">
           <div className="Content d-flex flex-row flex-wrap justify-content-center">
@@ -188,10 +184,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const mapStateToProps = (state) => {
-  return {
-    isAuthenticated: state.auth.isAuthenticated,
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);

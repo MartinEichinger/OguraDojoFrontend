@@ -3,7 +3,8 @@
 import { jsx } from '@emotion/react';
 
 import React, { Component } from 'react';
-import ModalInNavigation from './ModalInNavigation';
+import { connect } from 'react-redux';
+import ModalInNavigation from '../Modals/ModalInNavigation';
 import ModalComp_L1_Events from './ModalComp_L1_Events';
 import '../animation.css';
 import { loadJSON } from '../../script/saveLoad.js';
@@ -275,4 +276,10 @@ class ModalEvents extends Component {
   }
 }
 
-export default ModalEvents;
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.auth.token !== null,
+  };
+};
+
+export default connect(mapStateToProps)(ModalEvents);
