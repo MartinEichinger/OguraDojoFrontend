@@ -91,7 +91,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
   // style
   const classes = useStyles();
 
-  console.log('Events: ', events);
+  console.log('Events : ', events);
   const style = {
     width: '45%',
     fontFamily: 'Lato, sans-serif',
