@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as actions from '../api';
 
 const debug = true;
-const baseURL = process.env.url;
+const baseURL = process.env.REACT_APP_BACKEND_PATH;
 
 const api =
   ({ dispatch }) =>
