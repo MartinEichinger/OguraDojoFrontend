@@ -2,6 +2,7 @@ import axios from 'axios';
 import * as actions from '../api';
 
 const debug = true;
+const baseURL = process.env.url;
 
 const api =
   ({ dispatch }) =>
@@ -18,7 +19,7 @@ const api =
 
     try {
       const response = await axios.request({
-        baseURL: 'http://localhost:8000',
+        baseURL,
         url,
         method,
         data,
