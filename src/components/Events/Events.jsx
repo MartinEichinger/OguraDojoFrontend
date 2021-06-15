@@ -3,12 +3,17 @@
 import { jsx } from '@emotion/react';
 
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root1: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+
     '& .MuiTextField-root': {
       width: '25ch',
 
@@ -31,6 +36,17 @@ const useStyles = makeStyles((theme) => ({
 
     '& .Mui-focused, & .Mui-focused:after': {
       color: 'black',
+    },
+    '& .active': {
+      '& .MuiInput-underline:after': {
+        borderBottomColor: 'green',
+      },
+      '& .MuiInputLabel-animated.Mui-focused': {
+        color: 'green',
+      },
+      '& .Mui-focused, & .Mui-focused:after': {
+        //color: 'green',
+      },
     },
   },
   root2: {
@@ -68,7 +84,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Events = ({ events, colors, mq, styleMisc }) => {
+  // state
   const [entryData, setEntryData] = useState(events[0]);
+  const isAuthenticated = useSelector((state) => state.auth.token !== null);
+
+  // style
   const classes = useStyles();
 
   console.log('Events: ', events);
@@ -143,8 +163,15 @@ const Events = ({ events, colors, mq, styleMisc }) => {
         textDecoration: 'underline',
         margin: '1vh 0vh',
       },
+
+      '& i': {
+        cursor: 'pointer',
+      },
     },
   };
+
+  // constants
+  const debug = false;
 
   const month = [
     'JAN',
@@ -166,7 +193,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
   const entries3 = ['email', 'name'];
 
   const selectEvent = (item) => {
-    console.log('Select: ', item.title[1]);
+    if (debug) console.log('Select: ', item.title[1]);
     setEntryData(item);
   };
 
@@ -219,10 +246,21 @@ const Events = ({ events, colors, mq, styleMisc }) => {
         })}
       </div>
       <div className="detail d-flex flex-column" css={style}>
-        <h3>SEMINAR</h3>
+        <div className="d-flex flex-row align-items-center justify-content-between">
+          <h3>SEMINAR</h3>
+          {isAuthenticated && <i className="fas fa-edit red mr-5"></i>}
+        </div>
         <form className={classes.root1}>
           {entries1.map((x, i) => {
-            return (
+            return isAuthenticated ? (
+              <TextField
+                className="active"
+                id={'id_' + i}
+                label={entryData[x][0]}
+                defaultValue={entryData[x][1]}
+                key={i}
+              />
+            ) : (
               <TextField
                 className={'id_' + i}
                 id={'id_' + i}
@@ -278,37 +316,3 @@ const Events = ({ events, colors, mq, styleMisc }) => {
 };
 
 export default Events;
-
-/* 
-events.map((item, i) => {
-  <div className="d-flex flex-column" css={style} key={i}>
-    <h5 className="text-center font-weight-bold">
-      {item.date} +++ {item.cat} +++ {item.tags}
-    </h5>
-    <div className="body d-flex flex-row">
-      <div
-        style={{
-          backgroundImage: `url(${item.img})`,
-          backgroundPosition: item.imgPos,
-        }}
-        className="image w-50"
-      ></div>
-      <div className="text d-flex flex-column w-50 justify-content-center">
-        <h4 className="text-center green">{item.cat}</h4>
-        <p className="linie text-center"></p>
-        <h2 className="text-center">{item.header}</h2>
-        <p className="linie text-center"></p>
-        <p className="text-center">{item.detail}</p>
-      </div>
-    </div>
-    <a href={item.link} target="_blank" rel="noreferrer" className="button">
-      <Button
-        variant="contained"
-        color={colors.bgRed}
-        startIcon={<SubjectOutlinedIcon />}
-      >
-        Artikel lesen
-      </Button>
-    </a>
-  </div>;
-}); */
