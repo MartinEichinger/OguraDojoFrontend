@@ -3,6 +3,7 @@
 import { jsx } from '@emotion/react';
 
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Events from '../Events/Events';
 
 const ModalComp_L1_Events = ({
@@ -75,6 +76,12 @@ const ModalComp_L1_Events = ({
     },
   };
 
+  const debug = true;
+
+  const events = useSelector((state) => state.events.events);
+
+  if (debug) console.log('ModalComp_L1_Events: ', events, events.length);
+
   return (
     <div className="comp_l1" css={styleCompL1}>
       <div className="modal-col d-flex flex-column h-100" css={styleMisc}>
@@ -88,12 +95,14 @@ const ModalComp_L1_Events = ({
             className="table d-flex flex-row flex-wrap justify-content-around"
             css={styleMisc}
           >
-            <Events
-              events={content.events}
-              colors={colors}
-              mq={mq}
-              styleMisc={styleMisc}
-            />
+            {events.length > 0 && (
+              <Events
+                events={events}
+                colors={colors}
+                mq={mq}
+                styleMisc={styleMisc}
+              />
+            )}
           </div>
         </div>
       </div>

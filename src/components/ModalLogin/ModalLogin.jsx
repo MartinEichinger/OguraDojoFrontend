@@ -30,7 +30,7 @@ const ModalLogin = () => {
   const [user, setUser] = useState(0);
 
   // Debugging
-  const debug = true;
+  const debug = false;
 
   // Style
   const styleModalDialog = {

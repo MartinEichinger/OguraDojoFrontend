@@ -16,7 +16,7 @@ class CardsKarate extends Component {
       page: 'TenguRyu',
     };
 
-    console.log('Cardskarate');
+    this.debug = false;
 
     // BREAKPOINTS
     this.breakpoints = [576, 678, 1023, 1280];
@@ -32,7 +32,8 @@ class CardsKarate extends Component {
 
   handleClick = (e) => {
     var tar = e.target.attributes['id']?.value;
-    console.log('Cardskarate/handleClick', e.currentTarget, e.target, tar);
+    if (this.debug)
+      console.log('Cardskarate/handleClick', e.currentTarget, e.target, tar);
 
     if (tar === 'modalCard') {
       //document.querySelector('.Frame').classList.remove('bg');

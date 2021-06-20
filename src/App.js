@@ -19,7 +19,7 @@ import Footer from './components/Footer/Footer';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.debug = true;
+    this.debug = false;
     this.authStatus = this.props.authStatus;
 
     // BREAKPOINTS

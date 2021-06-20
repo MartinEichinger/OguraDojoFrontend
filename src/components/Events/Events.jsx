@@ -3,49 +3,50 @@
 import { jsx } from '@emotion/react';
 
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import { updateEvent, createEvent, deleteEvent } from '../../store/events';
+//import { createMuiTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root1: {
     '& > *': {
-      margin: theme.spacing(1),
+      margin: theme.spacing(2),
     },
 
     '& .MuiTextField-root': {
       width: '25ch',
+      padding: 0,
+      //margin: '7.5px 7.5px',
 
-      '&.id_4, &.id_5': {
+      '&.id_1_4, &.id_2_5': {
         width: '50ch',
       },
     },
 
-    '& .MuiInputLabel-root': {
-      margin: '0px 0px 0px 7.5px',
-    },
-
-    '& .MuiInput-root': {
-      marginTop: '5px',
-    },
-
     '& .MuiInput-underline:after': {
-      borderBottomColor: 'black',
+      borderBottomColor: 'rgba(0,0,0,1)',
     },
 
-    '& .Mui-focused, & .Mui-focused:after': {
-      color: 'black',
+    '& label': {
+      color: 'rgba(0,0,0,1)',
+      '&.Mui-focused': {
+        color: 'rgba(0,0,0,1)',
+      },
     },
+
     '& .active': {
       '& .MuiInput-underline:after': {
-        borderBottomColor: 'green',
+        borderBottomColor: 'rgba(19,73,0,1)',
       },
-      '& .MuiInputLabel-animated.Mui-focused': {
-        color: 'green',
-      },
-      '& .Mui-focused, & .Mui-focused:after': {
-        //color: 'green',
+
+      '& label': {
+        color: 'rgba(19,73,0,1)',
+        '&.Mui-focused': {
+          color: 'rgba(19,73,0,1)',
+        },
       },
     },
   },
@@ -84,14 +85,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Events = ({ events, colors, mq, styleMisc }) => {
+  // constants
+  const debug = true;
+
   // state
-  const [entryData, setEntryData] = useState(events[0]);
   const isAuthenticated = useSelector((state) => state.auth.token !== null);
+  const [entryData, setEntryData] = useState(events[0]);
+  const [editData, setEditData] = useState(false);
+  const [changedData, setChangedData] = useState(events[0]);
+
+  const isAuthenticatedEdit = editData && isAuthenticated;
+  const isAuthenticatedNoEdit = !editData && isAuthenticated;
 
   // style
   const classes = useStyles();
 
-  console.log('Events : ', events);
+  if (debug) console.log('Events : ', events);
   const style = {
     width: '45%',
     fontFamily: 'Lato, sans-serif',
@@ -108,7 +117,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
         position: 'relative',
         cursor: 'pointer',
 
-        '&:hover, &:active, &:focus': {
+        '&:hover, &:active, &:focus, &.active': {
           backgroundColor: colors.bgGreen50,
         },
 
@@ -152,6 +161,12 @@ const Events = ({ events, colors, mq, styleMisc }) => {
           textAlign: 'center',
         },
       },
+
+      '& button': {
+        position: 'absolute',
+        bottom: '5vh',
+        left: '7.5vh',
+      },
     },
 
     '&.detail': {
@@ -167,12 +182,26 @@ const Events = ({ events, colors, mq, styleMisc }) => {
       '& i': {
         cursor: 'pointer',
       },
+
+      '& button': {
+        cursor: 'pointer',
+        borderRadius: '5px',
+        padding: '3px',
+        '&.red': {
+          border: `1px solid ${colors.bgRed}`,
+          backgroundColor: colors.bgRed,
+          color: 'white',
+        },
+        '&.green': {
+          border: `1px solid ${colors.bgGreen}`,
+          backgroundColor: colors.bgGreen,
+          color: 'white',
+        },
+      },
     },
   };
 
-  // constants
-  const debug = false;
-
+  // util data
   const month = [
     'JAN',
     'FEB',
@@ -188,129 +217,267 @@ const Events = ({ events, colors, mq, styleMisc }) => {
     'DEZ',
   ];
 
-  const entries1 = ['title', 'location', 'authorized', 'organisator', 'time'];
-  const entries2 = ['details'];
-  const entries3 = ['email', 'name'];
+  const entries1 = [
+    ['title', 'Seminar'],
+    ['location', 'Ort'],
+    ['authorized', 'Berechtigt'],
+    ['organisator', 'Ausrichter/Trainer'],
+    ['time', 'Zeit'],
+  ];
+  const entries2 = [['details', 'Weitere Infos']];
+  const entries3 = [
+    ['email', 'E-Mail'],
+    ['name', 'Name'],
+  ];
 
+  // methods
   const selectEvent = (item) => {
-    if (debug) console.log('Select: ', item.title[1]);
+    if (debug) console.log('Select event: ', item.title);
     setEntryData(item);
+    setChangedData(item);
   };
+
+  const newEvent = () => {
+    const item = {
+      authorized: 'z.B. nur CRB Mitglieder',
+      date: '2021-01-01',
+      details: 'z.B. was ist mitzubringen oder Details zum Seminar',
+      id: 'none',
+      location: 'z.B. Traunreut, Sonnenschule',
+      organisator: 'z.B. Uli Geuder',
+      time: 'z.B. welcher Tag Start und Ende',
+      title: 'Neuer Event',
+    };
+
+    if (debug) console.log('New event: ', item.title);
+    //setEntryData(item);
+    setChangedData(item);
+    setEditData(true);
+  };
+
+  const onChangeEvent = (id, attr, val) => {
+    if (debug) console.log('Events/onChangeEvent: ', id, attr, val);
+    //const [event2Change] = events.filter((item) => item.id === id);
+    const obj = {
+      ...changedData,
+      [attr]: val,
+    };
+
+    setChangedData(obj);
+  };
+
+  const dispatch = useDispatch();
+
+  const saveData = (save) => {
+    setEditData(false);
+    if (save) {
+      console.log('save data: ', changedData);
+      if (changedData['id'] === 'none') {
+        setEntryData(changedData);
+        dispatch(createEvent(changedData));
+      } else {
+        setEntryData(changedData);
+        dispatch(updateEvent(changedData));
+      }
+    } else {
+      console.log('dont save data: ', entryData);
+      setChangedData(entryData);
+    }
+  };
+
+  const delData = (item) => {
+    dispatch(deleteEvent(item));
+  };
+
+  /*   const renderClassContent = (idx) => {
+    if (idx === 0) return 'block active d-flex flex-row';
+    return 'block d-flex flex-row';
+  }; */
 
   return (
     <React.Fragment>
-      <div className="schedule d-flex flex-column" css={style}>
-        {events.map((item, i) => {
-          var d = new Date(item.date[1]);
-          return i % 2 === 0 ? (
-            <div
-              className="block d-flex flex-row"
-              key={i}
-              onClick={() => selectEvent(item)}
-            >
-              <div className="date bgRed">
-                <h1>{d.getDate()}</h1>
-                <h2>{month[d.getMonth()]}</h2>
-              </div>
-              <div className="details d-flex flex-column align-items-stretch justify-content-between">
-                <h3 className="align-self-stretch">{item.title[1]}</h3>
-                <div className="d-flex flex-row justify-content-start align-items-baseline">
-                  <i className="fas fa-map-marker-alt red"></i>
-                  <h4 className="red">{item.location[1]}</h4>
-                  <i className="fas fa-user"></i>
-                  <h4>{item.organisator[1]}</h4>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div
-              className="block d-flex flex-row"
-              key={i}
-              onClick={() => selectEvent(item)}
-            >
-              <div className="date bgGreen">
-                <h1>{d.getDate()}</h1>
-                <h2>{month[d.getMonth()]}</h2>
-              </div>
-              <div className="details d-flex flex-column align-items-stretch justify-content-between">
-                <h3 className="align-self-stretch">{item.title[1]}</h3>
-                <div className="d-flex flex-row justify-content-start align-items-baseline">
-                  <i className="fas fa-map-marker-alt green"></i>
-                  <h4 className="green">{item.location[1]}</h4>
-                  <i className="fas fa-user"></i>
-                  <h4>{item.organisator[1]}</h4>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      <div className="detail d-flex flex-column" css={style}>
-        <div className="d-flex flex-row align-items-center justify-content-between">
-          <h3>SEMINAR</h3>
-          {isAuthenticated && <i className="fas fa-edit red mr-5"></i>}
-        </div>
-        <form className={classes.root1}>
-          {entries1.map((x, i) => {
-            return isAuthenticated ? (
-              <TextField
-                className="active"
-                id={'id_' + i}
-                label={entryData[x][0]}
-                defaultValue={entryData[x][1]}
+      {events.length > 0 && (
+        <div className="schedule d-flex flex-column" css={style}>
+          {events.map((item, i) => {
+            var d = new Date(item.date);
+            return i % 2 === 0 ? (
+              <div
+                className="block d-flex flex-row"
                 key={i}
-              />
+                onClick={() => selectEvent(item)}
+              >
+                <div className="date bgRed">
+                  <h1>{d.getDate()}</h1>
+                  <h2>{month[d.getMonth()]}</h2>
+                </div>
+                <div className="details d-flex flex-column align-items-stretch justify-content-between">
+                  <div className="d-flex flex-row justify-content-between align-items-center">
+                    <h3 className="align-self-stretch">{item.title}</h3>
+                    {isAuthenticated && (
+                      <i
+                        className="far red fa-trash-alt  mr-3"
+                        onClick={() => delData(item)}
+                      ></i>
+                    )}
+                  </div>
+                  <div className="d-flex flex-row justify-content-start align-items-baseline">
+                    <i className="fas fa-map-marker-alt red"></i>
+                    <h4 className="red">{item.location}</h4>
+                    <i className="fas fa-user"></i>
+                    <h4>{item.organisator}</h4>
+                  </div>
+                </div>
+              </div>
             ) : (
-              <TextField
-                className={'id_' + i}
-                id={'id_' + i}
-                label={entryData[x][0]}
-                value={entryData[x][1]}
-                InputProps={{
-                  readOnly: true,
-                }}
+              <div
+                className="block d-flex flex-row"
                 key={i}
-              />
+                onClick={() => selectEvent(item)}
+              >
+                <div className="date bgGreen">
+                  <h1>{d.getDate()}</h1>
+                  <h2>{month[d.getMonth()]}</h2>
+                </div>
+                <div className="details d-flex flex-column align-items-stretch justify-content-between">
+                  <div className="d-flex flex-row justify-content-between align-items-center">
+                    <h3 className="align-self-stretch">{item.title}</h3>
+                    {isAuthenticated && (
+                      <i
+                        className="far red fa-trash-alt mr-3"
+                        onClick={() => delData(item)}
+                      ></i>
+                    )}
+                  </div>
+                  <div className="d-flex flex-row justify-content-start align-items-baseline">
+                    <i className="fas fa-map-marker-alt green"></i>
+                    <h4 className="green">{item.location}</h4>
+                    <i className="fas fa-user"></i>
+                    <h4>{item.organisator}</h4>
+                  </div>
+                </div>
+              </div>
             );
           })}
-        </form>
-        <h3>SONSTIGES</h3>
-        <form className={classes.root1}>
-          {entries2.map((x, i) => {
-            return (
-              <TextField
-                multiline
-                className={'id_' + (i + 5)}
-                id={'id_' + i}
-                label={entryData[x][0]}
-                defaultValue={entryData[x][1]}
-                InputProps={{
-                  readOnly: true,
-                }}
-                key={i}
-              />
-            );
-          })}
-        </form>
-        <h3>ANMELDUNG</h3>
-        <form className={classes.root2}>
-          {entries3.map((x, i) => {
-            return (
-              <TextField
-                error
-                className={'id_' + (i + 6)}
-                id={'id_' + i}
-                label={entryData[x][0]}
-                placeholder={entryData[x][1]}
-                key={i}
-              />
-            );
-          })}
-        </form>
-        <Button className={classes.root3} variant="contained">
-          Anmelden
-        </Button>
-      </div>
+          {isAuthenticated && (
+            <Button
+              className={classes.root3}
+              variant="contained"
+              onClick={() => newEvent()}
+            >
+              Neuer Event
+            </Button>
+          )}
+        </div>
+      )}
+      {events.length > 0 && (
+        <div className="detail d-flex flex-column" css={style}>
+          <div className="d-flex flex-row align-items-center justify-content-between">
+            <h3>SEMINAR</h3>
+            {isAuthenticatedNoEdit && (
+              <i
+                className="fas fa-edit red mr-5"
+                onClick={() => setEditData(true)}
+              ></i>
+            )}
+          </div>
+          <form className={classes.root1}>
+            {entries1.map((x, i) => {
+              return isAuthenticatedEdit ? (
+                <TextField
+                  // eslint-disable-next-line
+                  className={'active' + ' id_1_' + i}
+                  id={'id_1_' + i}
+                  label={x[1]}
+                  value={changedData[x[0]]}
+                  key={i}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  onChange={(event) =>
+                    onChangeEvent(entryData['id'], x[0], event.target.value)
+                  }
+                />
+              ) : (
+                <TextField
+                  className={'id_1_' + i}
+                  id={'id_1_' + i}
+                  label={x[1]}
+                  value={entryData[x[0]]}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                  key={i}
+                />
+              );
+            })}
+          </form>
+          <h3>SONSTIGES</h3>
+          <form className={classes.root1}>
+            {entries2.map((x, i) => {
+              return isAuthenticatedEdit ? (
+                <TextField
+                  multiline
+                  className={'id_2_' + (i + 5)}
+                  id={'id_2_' + i}
+                  label={x[1]}
+                  value={changedData[x[0]]}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  onChange={(event) =>
+                    onChangeEvent(entryData['id'], x[0], event.target.value)
+                  }
+                  key={i}
+                />
+              ) : (
+                <TextField
+                  multiline
+                  className={'id_2_' + (i + 5)}
+                  id={'id_2_' + i}
+                  label={x[1]}
+                  value={entryData[x[0]]}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                  key={i}
+                />
+              );
+            })}
+          </form>
+          {!isAuthenticatedEdit && <h3>ANMELDUNG</h3>}
+          {!isAuthenticatedEdit && (
+            <form className={classes.root2}>
+              {entries3.map((x, i) => {
+                return (
+                  <TextField
+                    error
+                    className={'id_3_' + (i + 6)}
+                    id={'id_3_' + i}
+                    label={x[1]}
+                    placeholder={entryData[x[0]]}
+                    key={i}
+                  />
+                );
+              })}
+            </form>
+          )}
+          {!isAuthenticatedEdit && (
+            <Button className={classes.root3} variant="contained">
+              Anmelden
+            </Button>
+          )}
+          {isAuthenticatedEdit && (
+            <div className="d-flex flex-row align-items-center mt-5">
+              <button className="green mr-1" onClick={() => saveData(true)}>
+                save
+              </button>
+              <button className="red mr-5" onClick={() => saveData(false)}>
+                delete
+              </button>
+            </div>
+          )}
+        </div>
+      )}
     </React.Fragment>
   );
 };

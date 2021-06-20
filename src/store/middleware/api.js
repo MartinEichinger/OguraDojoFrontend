@@ -28,7 +28,7 @@ const api =
       dispatch(actions.apiCallSuccess(response.data));
       // specific
       if (onSuccess) {
-        if (data.username) response.data.username = data.username;
+        if (data?.username) response.data.username = data.username;
         dispatch({
           type: onSuccess,
           payload: response.data,

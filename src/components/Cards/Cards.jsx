@@ -15,9 +15,11 @@ class Cards extends Component {
       status: 0,
     };
 
-    // BREAKPOINTS
+    // BREAKPOINTS, Debug
     this.breakpoints = [576, 678, 1023, 1280];
     this.mq = this.breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
+
+    this.debug = false;
 
     // STYLES
     this.styleCard = {
@@ -187,18 +189,19 @@ class Cards extends Component {
   }
 
   componentDidMount() {
-    console.log('did mount');
+    if (this.debug) console.log('did mount');
   }
 
   componentDidUpdate() {
-    console.log('did update');
+    if (this.debug) console.log('did update');
     if (this.stats.status !== 0) {
       this.nextItem(this.stats.event);
     }
   }
 
   nextItem = (e) => {
-    console.log('nextItem', e.target.parentElement.classList[1]);
+    if (this.debug)
+      console.log('nextItem', e.target.parentElement.classList[1]);
     if (this.stats.status === 0) {
       var step = parseInt(
         e.target.parentElement.classList[1].replace('form', '')
@@ -227,7 +230,7 @@ class Cards extends Component {
   };
 
   render() {
-    console.log('render');
+    if (this.debug) console.log('render');
     return (
       <React.Fragment>
         <button

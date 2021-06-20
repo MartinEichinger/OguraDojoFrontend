@@ -8,9 +8,11 @@ class Card extends Component {
   constructor(props) {
     super(props);
 
-    // BREAKPOINTS
+    // BREAKPOINTS, debug
     this.breakpoints = [576, 678, 1023, 1280];
     this.mq = this.breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
+
+    this.debug = false;
 
     this.state = {
       width: 1280,
@@ -177,10 +179,11 @@ class Card extends Component {
       width: document.querySelector('.Cards').offsetWidth,
       height: document.querySelector('.Cards').offsetHeight,
     });
-    console.log(
-      document.querySelector('.Cards').offsetWidth,
-      document.querySelector('.Cards').offsetHeight
-    );
+    if (this.debug)
+      console.log(
+        document.querySelector('.Cards').offsetWidth,
+        document.querySelector('.Cards').offsetHeight
+      );
   };
 
   componentDidMount() {
@@ -209,16 +212,8 @@ class Card extends Component {
   };
 
   render() {
-    var {
-      img,
-      modal,
-      heading,
-      headingTwo,
-      para,
-      table,
-      keywords,
-      pos,
-    } = this.props.props;
+    var { img, modal, heading, headingTwo, para, table, keywords, pos } =
+      this.props.props;
     this.styleCard['& .img'].backgroundImage = `url(${img})`;
     this.styleCard['& .img'].backgroundPosition = `${pos}`;
     this.updateHx();

@@ -4,10 +4,11 @@ import { jsx } from '@emotion/react';
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { getEvents } from '../../store/events';
 import ModalInNavigation from '../Modals/ModalInNavigation';
 import ModalComp_L1_Events from './ModalComp_L1_Events';
 import '../animation.css';
-import { loadJSON } from '../../script/saveLoad.js';
+//import { loadJSON } from '../../script/saveLoad.js';
 
 class ModalEvents extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class ModalEvents extends Component {
 
     this.content = {
       title: '',
-      events: [
+      /*       events: [
         {
           title: ['Seminar', 'Tengu-Ryu Karate'],
           date: ['Datum', '09.12.2021'],
@@ -30,7 +31,7 @@ class ModalEvents extends Component {
           email: ['E-Mail', '...deine E-Mail...'],
           name: ['Name', '...dein Name...'],
         },
-      ],
+      ], */
     };
 
     this.state = {
@@ -58,6 +59,7 @@ class ModalEvents extends Component {
     this.bgWhite = this.props.colors?.bgWhite;
     this.bgRed = this.props.colors?.bgRed;
     this.bgGreen = this.props.colors?.bgGreen;
+    this.bgGreen50 = this.props.colors?.bgGreen50;
     this.typoRed = this.props.colors?.typoRed;
     this.typoGrey = this.props.colors?.typoGrey;
     this.typoGreen = this.props.colors?.typoGreen;
@@ -211,17 +213,8 @@ class ModalEvents extends Component {
 
   async componentDidMount() {
     if (this.debug) console.log('ModalEvents/compDidMount');
-    var content = await loadJSON('/eventscontent.json');
-    this.setState({ content: content });
-    if (this.debug)
-      console.log('ModalEvents/compDidMount: ', this.state.content);
+    this.props.getEvents();
   }
-
-  componentWillUnmount() {}
-
-  clickUpDown = (dir) => {};
-
-  nextItem = (button) => {};
 
   render() {
     this.isAuthenticated = this.props.isAuthenticated;
@@ -282,4 +275,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(ModalEvents);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getEvents: () => dispatch(getEvents()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ModalEvents);
