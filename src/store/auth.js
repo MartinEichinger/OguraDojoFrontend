@@ -27,8 +27,16 @@ export const slice = createSlice({
     authStatus: (state) => {
       if (debug) console.log('auth/authStatus', state);
       if (localStorage.getItem('token') != null) {
-        state.token = localStorage.getItem('token');
-        state.username = localStorage.getItem('username');
+        const actTime = new Date(new Date().getTime());
+        const storTime = new Date(localStorage.getItem('expirationDate'));
+        if (storTime.getTime() > actTime.getTime()) {
+          state.token = localStorage.getItem('token');
+          state.username = localStorage.getItem('username');
+        } else {
+          localStorage.removeItem('token');
+          localStorage.removeItem('username');
+          localStorage.removeItem('expirationDate');
+        }
       }
     },
 

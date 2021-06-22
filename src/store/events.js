@@ -30,6 +30,9 @@ export const slice = createSlice({
     // onSuccess
     eventsReceived: (state, action) => {
       if (debug) console.log('events/eventsReceived: ', action.payload);
+      action.payload.sort((a, b) => {
+        return new Date(a.date) - new Date(b.date);
+      });
       state.events = action.payload;
     },
     eventsUpdated: (state, action) => {
@@ -39,11 +42,22 @@ export const slice = createSlice({
       );
       if (debug) console.log('events/eventsUpdated: ', index);
       state.events[index] = action.payload;
+      const evArr = state.events;
+      evArr.sort((a, b) => {
+        return new Date(a.date) - new Date(b.date);
+      });
+      state.events = evArr;
       state.loading = false;
     },
     eventCreated: (state, action) => {
       if (debug) console.log('events/eventCreated: ', action.payload);
-      state.events.push(action.payload);
+      const evArr = state.events;
+      evArr.push(action.payload);
+      //const evArr = state.events;
+      evArr.sort((a, b) => {
+        return new Date(a.date) - new Date(b.date);
+      });
+      state.events = evArr;
       state.loading = false;
     },
     eventDeleted: (state, action) => {
@@ -119,7 +133,6 @@ export const updateEvent = (data) => (dispatch) => {
       onError: eventsUpdateFailed.type,
     })
   );
-  //getEvents();
 };
 
 // CREATE

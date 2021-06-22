@@ -4,8 +4,15 @@ import { jsx } from '@emotion/react';
 
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
+//import 'date-fns';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+//import DateFnsUtils from '@date-io/date-fns';
+//import {
+//  MuiPickersUtilsProvider,
+//  KeyboardDatePicker,
+//} from '@material-ui/pickers';
 import { makeStyles } from '@material-ui/core/styles';
 import { updateEvent, createEvent, deleteEvent } from '../../store/events';
 //import { createMuiTheme } from '@material-ui/core/styles';
@@ -21,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
       padding: 0,
       //margin: '7.5px 7.5px',
 
-      '&.id_1_4, &.id_2_5': {
+      '&.id_1_4_, &.id_2_5': {
         width: '50ch',
       },
     },
@@ -223,6 +230,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
     ['authorized', 'Berechtigt'],
     ['organisator', 'Ausrichter/Trainer'],
     ['time', 'Zeit'],
+    ['date', 'Datum'],
   ];
   const entries2 = [['details', 'Weitere Infos']];
   const entries3 = [
@@ -389,7 +397,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
                   id={'id_1_' + i}
                   label={x[1]}
                   value={changedData[x[0]]}
-                  key={i}
+                  key={'tf_' + i}
                   InputLabelProps={{
                     shrink: true,
                   }}
@@ -406,7 +414,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
                   InputProps={{
                     readOnly: true,
                   }}
-                  key={i}
+                  key={'id_1_' + i}
                 />
               );
             })}
@@ -427,7 +435,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
                   onChange={(event) =>
                     onChangeEvent(entryData['id'], x[0], event.target.value)
                   }
-                  key={i}
+                  key={'id_2_' + i}
                 />
               ) : (
                 <TextField
@@ -439,7 +447,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
                   InputProps={{
                     readOnly: true,
                   }}
-                  key={i}
+                  key={'id_2_' + i}
                 />
               );
             })}
@@ -455,7 +463,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
                     id={'id_3_' + i}
                     label={x[1]}
                     placeholder={entryData[x[0]]}
-                    key={i}
+                    key={'id_3_' + i}
                   />
                 );
               })}
