@@ -143,20 +143,17 @@ class Card extends Component {
         [this.mq[2]]: {
           maxHeight: '135px',
           paddingBottom: '5px',
-          textOverflow: 'ellipsis',
-          overflow: 'hidden',
+          overflow: 'auto',
         },
 
         [this.mq[1]]: {
           maxHeight: '97px',
-          textOverflow: 'ellipsis',
-          overflow: 'hidden',
+          overflow: 'auto',
         },
 
         [this.mq[0]]: {
           maxHeight: '85px',
-          textOverflow: 'ellipsis',
-          overflow: 'hidden',
+          overflow: 'auto',
         },
       },
 
