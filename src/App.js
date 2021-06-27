@@ -33,7 +33,8 @@ class App extends Component {
     };
     this.styleApp = {
       height: '100vh',
-      marginBottom: '100px',
+      margin: '0px 0px 100px',
+      padding: '0px',
 
       '& .bg': {
         zIndex: '1030',

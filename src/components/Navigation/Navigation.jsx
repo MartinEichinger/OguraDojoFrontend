@@ -265,6 +265,8 @@ class Navigation extends Component {
     if (this.debug)
       console.log(
         document.querySelector('.App').offsetWidth,
+        document.querySelector('.App').clientWidth,
+        document.querySelector('.App').outerWidth,
         document.querySelector('.navbarCard').offsetWidth,
         document.querySelector('.navbarCard').offsetHeight
       );
