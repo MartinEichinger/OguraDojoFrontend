@@ -9,8 +9,7 @@ class Card extends Component {
     super(props);
 
     // BREAKPOINTS, debug
-    this.breakpoints = [576, 678, 1023, 1280];
-    this.mq = this.breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
+    this.mq = this.props.mq;
 
     this.debug = false;
 
@@ -28,7 +27,7 @@ class Card extends Component {
     this.typoGreen = this.props.color?.typoGreen;
     this.shadowGrey = this.props.color?.shadowGrey;
 
-    this.key = this.props.key;
+    this.keys = this.props.keys;
 
     this.styleCard = {
       width: '1280px',
@@ -42,15 +41,6 @@ class Card extends Component {
       border: 'none',
       outline: 'none',
 
-      '& .bold': {
-        fontWeight: 'bold',
-      },
-
-      '&:active': {
-        transform: 'scale(0.98)',
-        boxShadow: `0px 0px 5px 0px ${this.shadowGrey}`,
-      },
-
       [this.mq[2]]: {
         height: '300px',
         margin: '20px 20px',
@@ -59,6 +49,16 @@ class Card extends Component {
       [this.mq[0]]: {
         height: '200px',
         minWidth: '390px',
+        margin: '10px 0px',
+      },
+
+      '& .bold': {
+        fontWeight: 'bold',
+      },
+
+      '&:active': {
+        transform: 'scale(0.98)',
+        boxShadow: `0px 0px 5px 0px ${this.shadowGrey}`,
       },
 
       '& .img': {
@@ -80,7 +80,8 @@ class Card extends Component {
         },
 
         [this.mq[0]]: {
-          //minWidth: '390px',
+          width: '130px',
+          minWidth: '130px',
           height: '200px',
         },
       },
@@ -226,7 +227,7 @@ class Card extends Component {
         data-bs-target={modal}
         css={this.styleCard}
         id="modalCard"
-        key={this.key}
+        key={this.keys}
       >
         <div className="img" id="modalCard"></div>
         <div

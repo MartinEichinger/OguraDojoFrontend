@@ -17,38 +17,20 @@ class CardsKarate extends Component {
     };
 
     this.debug = false;
-
-    // BREAKPOINTS
-    this.breakpoints = [576, 678, 1023, 1280];
-    this.mq = this.breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
-
-    // STYLES
-    this.colorCard = this.props.colors;
-
-    this.propsCard = this.props?.para;
-
-    this.key = this.props.key;
   }
 
   handleClick = (e) => {
     var tar = e.target.attributes['id']?.value;
     if (this.debug)
       console.log('Cardskarate/handleClick', e.currentTarget, e.target, tar);
-
-    if (tar === 'modalCard') {
-      //document.querySelector('.Frame').classList.remove('bg');
-      //document.querySelector('.Frame').classList.add('fg');
-    } else if (tar === 'modalCardEx') {
-      //document.querySelector('.Frame').classList.remove('fg');
-      //document.querySelector('.Frame').classList.add('bg');
-    }
   };
 
   render() {
-    //console.log('render');
+    const { props, colors, mq, keys } = this.props;
+
     return (
       <React.Fragment>
-        <Card props={this.propsCard} color={this.colorCard} key={this.key} />
+        <Card props={props} color={colors} mq={mq} keys={keys} />
       </React.Fragment>
     );
   }

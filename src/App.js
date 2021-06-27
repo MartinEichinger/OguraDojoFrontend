@@ -23,7 +23,8 @@ class App extends Component {
     this.authStatus = this.props.authStatus;
 
     // BREAKPOINTS
-    this.breakpoints = [430, 576, 678, 1023, 1320];
+    this.breakpoints = [400, 600, 960, 1280, 1920];
+    //this.breakpoints = [430, 576, 678, 1023, 1320];
     this.mq = this.breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
 
     this.state = {
@@ -37,11 +38,6 @@ class App extends Component {
       '& .bg': {
         zIndex: '1030',
         backgroundColor: 'white',
-      },
-
-      '& .fg': {
-        //zIndex: '1041',
-        //backgroundColor: 'rgba(0,0,0,0)',
       },
 
       '& .Frame': {
@@ -136,8 +132,16 @@ class App extends Component {
 
   renderCards = () => {
     if (this.debug) console.log('App/renderCards');
-    return this.contentCards.map((cont, i) => {
-      return <CardsKarate para={cont} colors={this.colors} key={i} />;
+    return this.contentCards.map((content, i) => {
+      return (
+        <CardsKarate
+          props={content}
+          colors={this.colors}
+          mq={this.mq}
+          keys={i}
+          key={i}
+        />
+      );
     });
   };
 
