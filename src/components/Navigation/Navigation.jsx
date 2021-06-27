@@ -264,18 +264,18 @@ class Navigation extends Component {
 
   updateDimensions = () => {
     this.setState({
-      viewWidth: document.querySelector('.App').offsetWidth,
-      width: document.querySelector('.navbarCard').offsetWidth,
-      height: document.querySelector('.navbarCard').offsetHeight,
+      viewWidth: document.querySelector('.App')?.offsetWidth,
+      width: document.querySelector('.Cards')?.offsetWidth,
+      height: document.querySelector('.navbarCard')?.offsetHeight,
     });
     if (this.debug)
       console.log(
+        'Navigation/updateDimensions',
         this.state.viewWidth,
-        document.querySelector('.Content').offsetLeft,
-        document.querySelector('.Cards'),
-        document.querySelector('.navbarCard').offsetWidth,
-        document.querySelector('.navbarCard').offsetHeight
+        document.querySelector('.Cards')?.offsetWidth,
+        document.querySelector('.navbarCard')?.offsetHeight
       );
+    //this.updateHx();
   };
 
   updateHx = () => {
@@ -310,7 +310,7 @@ class Navigation extends Component {
     // Debug
     if (this.debug)
       console.log(
-        'h1: ',
+        'Navigation/updateHx - h1: ',
         this.styleNavCard['& .text']['& h1'].fontSize,
         ' h2: ',
         this.styleNavCard['& .text']['& h2'].fontSize,
