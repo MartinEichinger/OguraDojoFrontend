@@ -43,7 +43,11 @@ class Card extends Component {
 
       [this.mq[2]]: {
         height: '300px',
-        margin: '20px 20px',
+      },
+
+      [this.mq[1]]: {
+        height: '250px',
+        margin: '15px 10px',
       },
 
       [this.mq[0]]: {
@@ -79,6 +83,10 @@ class Card extends Component {
           height: '300px',
         },
 
+        [this.mq[1]]: {
+          height: '250px',
+        },
+
         [this.mq[0]]: {
           width: '130px',
           minWidth: '130px',
@@ -93,6 +101,10 @@ class Card extends Component {
         [this.mq[2]]: {
           height: '300px',
           padding: '15px',
+        },
+
+        [this.mq[1]]: {
+          height: '250px',
         },
 
         [this.mq[0]]: {

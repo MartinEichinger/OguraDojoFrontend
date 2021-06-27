@@ -17,7 +17,7 @@ class Navigation extends Component {
     // BREAKPOINTS
     this.mq = this.props.mq;
     this.state = {
-      viewWidth: 1920,
+      viewWidth: 1600,
       width: 1280,
       height: 300,
     };
@@ -37,8 +37,12 @@ class Navigation extends Component {
       outline: 'none',
       borderRadius: '5px',
       margin: '20px 20px',
+      //marginLeft:
+      //  this.state.viewWidth > 1340 ? `calc((100vw - 1280px) / 2)` : '20px',
       marginLeft:
-        this.state.viewWidth > 1340 ? `calc((100vw - 1280px) / 2)` : '20px',
+        this.state.viewWidth > 1340
+          ? `${(this.state.viewWidth - 1280) / 2}px`
+          : '20px',
       marginRight:
         this.state.viewWidth > 1340 ? `calc((100vw - 1280px) / 2)` : '20px',
       backgroundColor: 'white',
@@ -49,6 +53,11 @@ class Navigation extends Component {
       [this.mq[3]]: {
         height: '300px',
         margin: '20px 20px',
+      },
+
+      [this.mq[1]]: {
+        height: '250px',
+        margin: '15px 10px',
       },
 
       [this.mq[0]]: {
@@ -130,6 +139,10 @@ class Navigation extends Component {
         boxSizing: 'border-box',
         opacity: '1',
 
+        [this.mq[1]]: {
+          height: '250px',
+        },
+
         [this.mq[0]]: {
           height: '200px',
         },
@@ -144,6 +157,10 @@ class Navigation extends Component {
           padding: '15px',
         },
 
+        [this.mq[1]]: {
+          height: '250px',
+        },
+
         [this.mq[0]]: {
           height: '200px',
           padding: '10px',
@@ -154,10 +171,6 @@ class Navigation extends Component {
           fontWeight: 'bold',
           textAlign: 'left',
           color: this.colorCard.typoGrey,
-
-          //[this.mq[3]]: {
-          //  fontSize: '24px',
-          //},
         },
 
         '& h2': {
@@ -165,18 +178,11 @@ class Navigation extends Component {
           fontWeight: 'bold',
           textAlign: 'left',
           color: this.colorCard.typoGrey,
-
-          //[this.mq[3]]: {
-          //  fontSize: '16px',
-          //  textAlign: 'center',
-          //},
         },
       },
     };
 
     this.styleNav = {
-      //backgroundColor: this.colorCard.bgGrey,
-      //backgroundImage: 'url(nav_bar_bg.png)',
       backgroundColor: 'white',
       boxShadow: `10px 10px 25px 0px ${this.colorCard.shadowGrey}`,
       zIndex: '1032',
@@ -264,9 +270,9 @@ class Navigation extends Component {
     });
     if (this.debug)
       console.log(
-        document.querySelector('.App').offsetWidth,
-        document.querySelector('.App').clientWidth,
-        document.querySelector('.App').outerWidth,
+        this.state.viewWidth,
+        document.querySelector('.Content').offsetLeft,
+        document.querySelector('.Cards'),
         document.querySelector('.navbarCard').offsetWidth,
         document.querySelector('.navbarCard').offsetHeight
       );
@@ -276,15 +282,32 @@ class Navigation extends Component {
     // H1
     this.styleNavCard['& .text']['& h1'].fontSize =
       26 * (((this.state.width / 1280) * this.state.height) / 300) + 22 + 'px';
-
     // H2
     this.styleNavCard['& .text']['& h2'].fontSize =
       16 * (((this.state.width / 1280) * this.state.height) / 300) + 16 + 'px';
-
     // p
     this.styleNavCard['& button'].fontSize =
       12 * (((this.state.width / 1280) * this.state.height) / 300) + 10 + 'px';
+    // margin left/right // width
+    if (this.state.viewWidth > 1280) {
+      this.styleNavCard.width = `${this.state.viewWidth - 40}px`;
+    } else if (this.state.viewWidth > 600) {
+      this.styleNavCard.width = `${this.state.viewWidth - 40}px`;
+    } else if (this.state.viewWidth > 400) {
+      this.styleNavCard.width = `${this.state.viewWidth - 20}px`;
+    } else if (this.state.viewWidth <= 400) {
+      this.styleNavCard.width = `${this.state.viewWidth}px`;
+    }
 
+    this.styleNavCard.marginLeft =
+      this.state.viewWidth > 1320
+        ? `${(this.state.viewWidth - 1280) / 2}px`
+        : '20px';
+    this.styleNavCard.marginRight =
+      this.state.viewWidth > 1320
+        ? `${(this.state.viewWidth - 1280) / 2}px`
+        : '20px';
+    // Debug
     if (this.debug)
       console.log(
         'h1: ',
