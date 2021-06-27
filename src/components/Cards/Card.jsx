@@ -147,6 +147,12 @@ class Card extends Component {
           overflow: 'hidden',
         },
 
+        [this.mq[1]]: {
+          maxHeight: '97px',
+          textOverflow: 'ellipsis',
+          overflow: 'hidden',
+        },
+
         [this.mq[0]]: {
           maxHeight: '85px',
           textOverflow: 'ellipsis',
@@ -159,6 +165,12 @@ class Card extends Component {
         fontWeight: 'bold',
         color: this.typoGreen,
         textAlign: 'left',
+
+        [this.mq[1]]: {
+          maxHeight: '28px',
+          textOverflow: 'ellipsis',
+          overflow: 'hidden',
+        },
 
         [this.mq[0]]: {
           maxHeight: '16px',
