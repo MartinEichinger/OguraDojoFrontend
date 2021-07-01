@@ -4,66 +4,6 @@ import CompRoundRectMap from './CompRoundRectMap';
 import CompRoundRectText from './CompRoundRectText';
 import CompRoundRectList from './CompRoundRectList';
 
-/* const contentTraining = {
-  title: 'Training',
-  schedule: {
-    title: 'Wann?',
-    lesson: [
-      {
-        day: 'Montag',
-        time: '18:20 - 20:00',
-        topic: 'Taiji',
-      },
-      {
-        day: 'Montag',
-        time: '20:00 - 22:00',
-        topic: 'Karate (Erwachsene)',
-      },
-      {
-        day: 'Mittwoch',
-        time: '17:00 - 18:30',
-        topic: 'Karate (Kinder/Jugendliche)',
-      },
-      {
-        day: 'Freitag',
-        time: '20:00 - 22:00',
-        topic: 'Karate (Erwachsene)',
-      },
-    ],
-  },
-  map: {
-    title: 'Wo?',
-    address: 'Sonnenschule Traunreut - Martin-Luther-Straße - 83301 Traunreut',
-    src:
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d667.9166880710771!2d12.595441829286242!3d47.962167896732744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDU3JzQzLjgiTiAxMsKwMzUnNDUuNiJF!5e0!3m2!1sen!2sde!4v1619885924254!5m2!1sen!2sde',
-  },
-  text: {
-    title: 'Was?',
-    text:
-      'Zum Kennenlernen gibt es natürlich die Möglichkeit eines kostenlosen Probetrainings. Zum Training am Besten in lockerer Sportbekleidung erscheinen. Sportanzüge und Equipment kann bei Bedarf vor Ort bestellt werden.',
-  },
-  beitrag: {
-    title: 'Beitrag?',
-    items: [
-      {
-        heading: ['TuS Traunreut', '(Karate und Taiji)'],
-        listing: ['unter 18J: 60€/J', 'über 18J: 120€/J'],
-      },
-      {
-        heading: ['Verband CRB', '(Tengu Ryu)'],
-        listing: ['Neuaufnahme: 31€/J', 'Verlängerung: 22€/J'],
-      },
-      {
-        heading: ['Verband DKV', '(Karate)'],
-        listing: [
-          '18€/J für Kinder (bis 13J)',
-          '23€/J für Jugendl. & Erwachsene',
-        ],
-      },
-    ],
-  },
-}; */
-
 const ModalCompTabRoundRect = ({ contentTraining, mq }) => {
   const styleTraining = {
     '& .circle': {
@@ -89,12 +29,7 @@ const ModalCompTabRoundRect = ({ contentTraining, mq }) => {
       backgroundColor: 'rgba(255,255,255,0.7)',
       borderRadius: '5px',
       padding: '1vh',
-      /* 
-      [mq[1]]: {
-        width: 'calc(100% - 2vh)',
-        padding: '1vh',
-        margin: '0',
-      }, */
+      overflow: 'auto',
 
       [mq[1]]: {
         width: '100%',

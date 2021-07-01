@@ -48,30 +48,6 @@ class ModalTraining extends Component {
       overflow: 'hidden',
       margin: '1.75vh auto',
 
-      '& .red': {
-        color: this.typoRed,
-      },
-
-      '& .white': {
-        color: this.bgWhite,
-      },
-
-      '& .center': {
-        textAlign: 'center',
-      },
-
-      '& .small': {
-        fontSize: '1.5vh !important',
-      },
-
-      '& .bold': {
-        fontWeight: 'bold',
-      },
-
-      '& .underline': {
-        textDecoration: 'underline',
-      },
-
       '& .span_vis': {
         display: 'block',
 
@@ -183,50 +159,6 @@ class ModalTraining extends Component {
 
                   [this.mq[1]]: { padding: '0.5vh' },
                 },
-              },
-
-              '& .h15': {
-                height: '15vh',
-              },
-
-              '& .h22': {
-                height: '22vh',
-              },
-
-              '& .h26': {
-                height: '26vh',
-              },
-
-              '& .h31': {
-                height: '31vh !important',
-              },
-
-              '& .h40': {
-                height: '40vh !important',
-              },
-
-              '& .w20': {
-                width: '20%',
-              },
-
-              '& .w25': {
-                width: '25%',
-              },
-
-              '& .w30': {
-                width: '30%',
-              },
-
-              '& .w33': {
-                width: '33%',
-              },
-
-              '& .w50': {
-                width: '50%',
-              },
-
-              '& .w66': {
-                width: '66%',
               },
 
               '& .frameless': {
