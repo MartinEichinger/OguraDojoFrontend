@@ -4,7 +4,7 @@ import CompRoundRectMap from './CompRoundRectMap';
 import CompRoundRectText from './CompRoundRectText';
 import CompRoundRectList from './CompRoundRectList';
 
-const contentTraining = {
+/* const contentTraining = {
   title: 'Training',
   schedule: {
     title: 'Wann?',
@@ -62,9 +62,9 @@ const contentTraining = {
       },
     ],
   },
-};
+}; */
 
-const ModalCompTabRoundRect = ({ mq }) => {
+const ModalCompTabRoundRect = ({ contentTraining, mq }) => {
   const styleTraining = {
     '& .circle': {
       position: 'relative',
@@ -89,15 +89,16 @@ const ModalCompTabRoundRect = ({ mq }) => {
       backgroundColor: 'rgba(255,255,255,0.7)',
       borderRadius: '5px',
       padding: '1vh',
-
+      /* 
       [mq[1]]: {
         width: 'calc(100% - 2vh)',
         padding: '1vh',
         margin: '0',
-      },
+      }, */
 
-      [mq[0]]: {
+      [mq[1]]: {
         width: '100%',
+        margin: '0px',
       },
 
       '& .tab': { overflow: 'hidden' },

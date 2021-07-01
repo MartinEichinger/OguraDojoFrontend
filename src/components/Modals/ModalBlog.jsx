@@ -3,7 +3,7 @@
 import { jsx } from '@emotion/react';
 
 import React, { Component } from 'react';
-import ModalInNavigation from './ModalInNavigation';
+import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
 import ModalComp_L1_Blog from './ModalComp_L1_Blog';
 import '../animation.css';
 
@@ -147,12 +147,12 @@ class ModalBlog extends Component {
     };
 
     this.content = {
-      title: 'Tengu Blog',
-      filterProps: ['Alle', 'Tengu.fr', 'Taiji/Qigong', 'Bücher'],
+      title: 'Blog',
+      filterProps: ['Alle', 'Tengu', 'Taiji/Qigong', 'Bücher'],
       blog: [
         {
           date: '07.04.2018',
-          cat: 'Tengu.fr',
+          cat: 'Tengu',
           tags: 'Sensei Habersetzer, CRB, Tradition',
           header: 'Interview mit Sensei Habersetzer',
           detail:
@@ -184,7 +184,7 @@ class ModalBlog extends Component {
         },
         {
           date: '07.04.2018',
-          cat: 'Tengu.fr',
+          cat: 'Tengu',
           tags: 'Roland Habersetzer, Budo, Prinzipien',
           header: 'Ideen des Budos',
           detail:

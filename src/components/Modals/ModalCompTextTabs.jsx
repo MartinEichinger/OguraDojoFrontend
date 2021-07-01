@@ -3,9 +3,84 @@
 import { jsx } from '@emotion/react';
 import React from 'react';
 
-const ModalCompTextTabs = ({ contentWir, style }) => {
+const ModalCompTextTabs = ({ contentWir, mq, colors }) => {
+  const style = {
+    '&.Wir': {
+      '& .modal-col': {
+        '& .modal-up': {
+          '& .rect_var2': {
+            position: 'relative',
+            marginLeft: '2vh',
+            width: 'calc(100% - 2vh)',
+            backgroundColor: 'rgba(255,255,255,0.7)',
+            borderRadius: '5px',
+            padding: '1vh',
+
+            [mq[2]]: {
+              width: 'calc(100%)',
+              padding: '1vh',
+              margin: '0',
+            },
+
+            [mq[1]]: {
+              width: 'calc(100%)',
+              padding: '1vh',
+              margin: '0',
+            },
+
+            overflowY: 'auto',
+
+            '&::-webkit-scrollbar': {
+              width: '10px',
+            },
+
+            '&::-webkit-scrollbar-track': {
+              background: '#f1f1f1',
+              borderRadius: '5px',
+            },
+
+            '&::-webkit-scrollbar-thumb': {
+              borderRadius: '5px',
+              background: '#888',
+            },
+
+            '&::-webkit-scrollbar-thumb:hover': {
+              background: '#555',
+            },
+          },
+          '& .cards': {
+            marginLeft: '2vh',
+            padding: '1vh',
+
+            '& .body': {
+              height: '300px',
+              width: '250px',
+              borderRadius: '5px',
+              position: 'relative',
+              margin: '5px',
+
+              '& .image': {
+                width: '100%',
+                height: '55%',
+                borderRadius: '5px',
+                //backgroundImage: 'url(./training_pic_2.png)',
+              },
+
+              '& .text': {
+                width: '100%',
+                height: '40%',
+                borderRadius: '5px',
+                backgroundColor: 'rgba(0,0,0,0.7)',
+              },
+            },
+          },
+        },
+      },
+    },
+  };
+
   return (
-    <div className="Wir d-none">
+    <div className="Wir d-none" css={style}>
       <div className="modal-col d-flex flex-column h-100">
         <div className="modal-up">
           <div className="bg-training"></div>
@@ -17,7 +92,7 @@ const ModalCompTextTabs = ({ contentWir, style }) => {
             <div className="rect_var2 h31">
               <p className="mb-2">{contentWir.text}</p>
             </div>
-            <div className="cards d-flex flex-row">
+            <div className="cards d-flex flex-row flex-wrap justify-content-around">
               {contentWir.tabs.map((item, i) => {
                 return (
                   <div

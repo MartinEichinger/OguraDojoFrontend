@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { apiCallBegan } from './api';
 
-const debug = true;
+const debug = false;
 
 // initial state
 const initialState = {

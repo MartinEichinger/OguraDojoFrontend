@@ -3,7 +3,7 @@
 import { jsx } from '@emotion/react';
 
 import React, { Component } from 'react';
-import ModalInNavigation from './ModalInNavigation';
+import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
 
 import '../animation.css';
 

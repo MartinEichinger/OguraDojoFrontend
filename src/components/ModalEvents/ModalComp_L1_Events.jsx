@@ -76,7 +76,7 @@ const ModalComp_L1_Events = ({
     },
   };
 
-  const debug = true;
+  const debug = false;
 
   const events = useSelector((state) => state.events.events);
 

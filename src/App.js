@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Navigation from './components/Navigation/Navigation';
 import CardsKarate from './components/Cards/CardsKarate';
 import ModalKarate from './components/Modals/ModalKarate';
-import ModalTraining from './components/Modals/ModalTraining';
+import ModalTraining from './components/ModalTraining/ModalTraining';
 import ModalBlog from './components/Modals/ModalBlog';
 import ModalEvents from './components/ModalEvents/ModalEvents';
 import ModalLogin from './components/ModalLogin/ModalLogin';

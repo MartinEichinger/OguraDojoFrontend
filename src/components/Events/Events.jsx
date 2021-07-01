@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Events = ({ events, colors, mq, styleMisc }) => {
   // constants
-  const debug = true;
+  const debug = false;
 
   // state
   const isAuthenticated = useSelector((state) => state.auth.token !== null);

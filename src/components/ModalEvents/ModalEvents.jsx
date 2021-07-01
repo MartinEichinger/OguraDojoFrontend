@@ -5,7 +5,7 @@ import { jsx } from '@emotion/react';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getEvents } from '../../store/events';
-import ModalInNavigation from '../Modals/ModalInNavigation';
+import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
 import ModalComp_L1_Events from './ModalComp_L1_Events';
 import '../animation.css';
 //import { loadJSON } from '../../script/saveLoad.js';
@@ -48,7 +48,7 @@ class ModalEvents extends Component {
     };
 
     // Debugging
-    this.debug = true;
+    this.debug = false;
 
     // BREAKPOINTS
     this.breakpoints = [424, 767, 1023, 1280];

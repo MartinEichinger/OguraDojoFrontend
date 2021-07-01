@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 class Navigation extends Component {
   constructor(props) {
     super(props);
-    this.debug = true;
+    this.debug = false;
 
     this.logout = this.props.logout;
 

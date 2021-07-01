@@ -21,6 +21,14 @@ const ModalInNavigation = ({
     backgroundColor: colors.bgWhite,
     borderRadius: '45px',
 
+    [mq[2]]: {
+      width: '35px',
+    },
+
+    [mq[1]]: {
+      width: '30px',
+    },
+
     [mq[0]]: {
       width: '25px',
     },
@@ -40,6 +48,16 @@ const ModalInNavigation = ({
       outline: 'none',
       zIndex: '1100',
 
+      [mq[2]]: {
+        width: '33px',
+        height: '33px',
+      },
+
+      [mq[1]]: {
+        width: '28px',
+        height: '28px',
+      },
+
       [mq[0]]: {
         width: '23px',
         height: '23px',
@@ -58,6 +76,16 @@ const ModalInNavigation = ({
         fontSize: '28px',
         cursor: 'pointer',
         fontWeight: 'normal',
+
+        [mq[2]]: {
+          fontSize: '24px',
+          margin: '0',
+        },
+
+        [mq[1]]: {
+          fontSize: '20px',
+          margin: '0',
+        },
 
         [mq[0]]: {
           fontSize: '16px',
@@ -82,6 +110,16 @@ const ModalInNavigation = ({
       borderRadius: '45px',
       backgroundColor: colors.bgGrey,
       margin: '1px',
+
+      [mq[2]]: {
+        width: '33px',
+        height: '33px',
+      },
+
+      [mq[1]]: {
+        width: '28px',
+        height: '28px',
+      },
 
       [mq[0]]: {
         width: '23px',
