@@ -7,14 +7,35 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 .modal {
-  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
 }
 
 .bg-dark-o {
-  background-color: rgba(23, 23, 23, 1) !important;
+  background-color: #171717 !important;
 }
+
+.red {
+  color: #790000;
+}
+
+.center {
+  text-align: center;
+}
+
+.h22 {
+  height: 22vh;
+}
+
+.h26 {
+  height: 26vh;
+}
+
+.h31 {
+  height: 31vh;
+}
+/*# sourceMappingURL=index.css.map */

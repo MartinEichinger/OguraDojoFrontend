@@ -1,0 +1,54 @@
+// colors
+$bgGreen50: rgba(19, 73, 0, 0.5);
+$bgGreen: rgba(19, 73, 0, 1);
+$bgGrey: rgba(232, 232, 232, 1);
+$bgWhite: rgba(255, 255, 255, 1);
+$bgRed: rgba(121, 0, 0, 1);
+$typoGrey: rgba(64, 64, 64, 1);
+$typoGreen: rgba(19, 73, 0, 1);
+$typoRed: rgba(121, 0, 0, 1);
+$shadowGrey: rgba(122, 122, 122, 1);
+
+// body
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.modal {
+  backdrop-filter: blur(6px);
+}
+
+.bg-dark-o {
+  background-color: rgba(23, 23, 23, 1) !important;
+}
+
+// colors
+.red {
+  color: $typoRed;
+}
+
+.center {
+  text-align: center;
+}
+
+// heights
+.h22 {
+  height: 22vh;
+}
+
+.h26 {
+  height: 26vh;
+}
+
+.h31 {
+  height: 31vh;
+}

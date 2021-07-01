@@ -49,29 +49,6 @@ class ModalKarate extends Component {
       overflow: 'hidden',
       margin: '1.75vh auto',
 
-      '& .btn-close': {
-        width: '45px',
-        height: '45px',
-        margin: '1px',
-        borderRadius: '45px',
-        lineHeight: '0',
-        position: 'relative',
-        right: '0px',
-        top: '0px',
-        backgroundColor: this.typoGrey,
-        border: 'none',
-        outline: 'none',
-        zIndex: '1100',
-      },
-
-      '& .red': {
-        color: this.typoRed,
-      },
-
-      '& .center': {
-        textAlign: 'center',
-      },
-
       '& .modal-content': {
         width: '100%',
         height: '100vh',
@@ -110,6 +87,18 @@ class ModalKarate extends Component {
 
             '& .modal-col': {
               width: 'calc(100% - 51px)',
+
+              [this.mq[2]]: {
+                width: 'calc(100% - 39px)',
+              },
+
+              [this.mq[1]]: {
+                width: 'calc(100% - 34px)',
+              },
+
+              [this.mq[0]]: {
+                width: 'calc(100% - 29px)',
+              },
 
               '& .bg-heading': {
                 position: 'absolute',
@@ -263,94 +252,6 @@ class ModalKarate extends Component {
                   '&::-webkit-scrollbar-thumb:hover': {
                     background: '#555',
                   },
-                },
-              },
-
-              '& .h22': {
-                height: '22vh',
-              },
-
-              '& .h26': {
-                height: '26vh',
-              },
-
-              '& .h31': {
-                height: '31vh',
-              },
-            },
-          },
-
-          '& .inNavigation': {
-            position: 'absolute',
-            width: '47px',
-            height: 'calc(90vh + 30px)',
-            zIndex: '1052',
-            right: '2px',
-            backgroundColor: this.bgWhite,
-            borderRadius: '45px',
-
-            '& .navItem': {
-              width: '145px',
-              position: 'relative',
-              transform: 'rotate(90deg)',
-              color: this.bgGrey,
-              border: `1px solid ${this.bgWhite}`,
-              borderRadius: '25px',
-
-              '& h1': {
-                fontSize: '28px',
-                cursor: 'pointer',
-                fontWeight: 'normal',
-              },
-
-              '&.active': {
-                color: this.typoRed,
-                border: `1px solid ${this.bgRed}`,
-
-                '& h1': {
-                  fontWeight: 'bold',
-                },
-              },
-            },
-
-            '& .arrow': {
-              position: 'relative',
-              width: '45px',
-              height: '45px',
-              borderRadius: '45px',
-              backgroundColor: this.bgGrey,
-              margin: '1px',
-
-              '&.active': {
-                backgroundColor: this.bgRed,
-                cursor: 'pointer',
-              },
-            },
-
-            '& .center': {
-              position: 'relative',
-              width: '100%',
-              height: '100%',
-              transform: 'perspective(180px)',
-              transformStyle: 'preserve-3d',
-              zIndex: '1053',
-
-              '& .form': {
-                zIndex: '1054',
-                position: 'absolute',
-                height: '48px',
-                width: '200px',
-                boxShadow: '0px 0px 15px 0px rgba(0, 0, 0, 1)',
-                borderRadius: '5px',
-                border: '1px solid grey',
-                cursor: 'pointer',
-                transition: 'transform 0.4s linear',
-
-                '& .heading': {
-                  margin: '0px',
-                  fontSize: '36px',
-                  textAlign: 'center',
-                  lineHeight: '1.2',
                 },
               },
             },
