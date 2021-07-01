@@ -51,6 +51,7 @@ const ModalCompTextTabs = ({ contentWir, mq, colors }) => {
           '& .cards': {
             marginLeft: '2vh',
             padding: '1vh',
+            overflow: 'auto',
 
             '& .body': {
               height: '300px',
@@ -92,7 +93,7 @@ const ModalCompTextTabs = ({ contentWir, mq, colors }) => {
             <div className="rect_var2 h31">
               <p className="mb-2">{contentWir.text}</p>
             </div>
-            <div className="cards d-flex flex-row flex-wrap justify-content-around">
+            <div className="cards d-flex flex-row flex-wrap justify-content-around h40">
               {contentWir.tabs.map((item, i) => {
                 return (
                   <div

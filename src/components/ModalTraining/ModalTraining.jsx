@@ -155,7 +155,7 @@ class ModalTraining extends Component {
 
                 '& .table': {
                   padding: '2vh',
-                  height: 'calc(90vh - 10vh - 6vh)',
+                  height: 'calc(90vh - 10vh)',
 
                   [this.mq[1]]: { padding: '0.5vh' },
                 },
