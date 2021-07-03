@@ -9,7 +9,7 @@ const CompRoundRectSchedule = ({ schedule, style }) => {
 
   return (
     <div
-      className="item align-items-center d-flex flex-md-row flex-column"
+      className="item align-items-center d-flex flex-md-row flex-column justify-content-between"
       css={style}
     >
       <div className="circle d-flex flex-row align-items-center justify-content-center">

@@ -23,6 +23,18 @@ code {
   color: #790000;
 }
 
+.bgRed {
+  background-color: #790000;
+}
+
+.green {
+  color: #134900;
+}
+
+.bgGreen {
+  background-color: #134900;
+}
+
 .white {
   color: white;
 }

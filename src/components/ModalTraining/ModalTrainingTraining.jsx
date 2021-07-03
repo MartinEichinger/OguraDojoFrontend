@@ -64,8 +64,8 @@ const ModalTrainingTraining = ({ contentTraining, mq, colors }) => {
               borderRadius: '125px',
 
               [mq[2]]: {
-                height: '10vh',
-                width: '10vh',
+                height: '11vh',
+                width: '11vh',
                 '& img, p': {
                   padding: '3px',
                   margin: '0px',
@@ -89,6 +89,10 @@ const ModalTrainingTraining = ({ contentTraining, mq, colors }) => {
               borderRadius: '5px',
               padding: '1vh',
               overflow: 'auto',
+
+              [mq[2]]: {
+                width: 'calc(100% - 13vh)',
+              },
 
               [mq[1]]: {
                 width: '100%',
