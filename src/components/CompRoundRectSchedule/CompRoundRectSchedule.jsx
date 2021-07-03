@@ -16,7 +16,7 @@ const CompRoundRectSchedule = ({ schedule, style }) => {
         <img src="wann_24px_outlined.svg" alt="" />
         <p className="red bold">{schedule.title}</p>
       </div>
-      <div className="rect d-flex flex-column justify-content-around">
+      <div className="rect d-flex flex-column justify-content-between">
         {schedule.lesson.map((item, i) => {
           return (
             <div className="tab-row d-flex flex-row" key={i}>

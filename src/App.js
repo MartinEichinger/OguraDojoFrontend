@@ -43,7 +43,7 @@ class App extends Component {
 
       '& .Frame': {
         marginTop: '40px',
-        marginBottom: '300px',
+        marginBottom: '200px',
         minWidth: '390px',
 
         '& .Content': {

@@ -4,8 +4,8 @@ import { jsx } from '@emotion/react';
 
 import React, { Component } from 'react';
 import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
-import ModalCompTabRoundRect from '../Modals/ModalCompTabRoundRect';
-import ModalCompTextTabs from '../Modals/ModalCompTextTabs';
+import ModalTrainingTraining from './ModalTrainingTraining';
+import ModalTrainingWir from './ModalTrainingWir';
 import '../animation.css';
 
 class ModalTraining extends Component {
@@ -66,34 +66,34 @@ class ModalTraining extends Component {
           width: '100%',
 
           '& .Training, .Wir': {
-            width: '100%',
-            position: 'absolute',
+            //width: '100%',
+            //position: 'absolute',
 
             '& .modal-col': {
-              width: 'calc(100% - 51px)',
+              //width: 'calc(100% - 51px)',
 
-              [this.mq[2]]: {
-                width: 'calc(100% - 39px)',
-              },
+              //[this.mq[2]]: {
+              //  width: 'calc(100% - 39px)',
+              //},
 
-              [this.mq[1]]: {
-                width: 'calc(100% - 34px)',
-              },
+              //[this.mq[1]]: {
+              //  width: 'calc(100% - 34px)',
+              //},
 
-              [this.mq[0]]: {
-                width: 'calc(100% - 29px)',
-              },
+              //[this.mq[0]]: {
+              //  width: 'calc(100% - 29px)',
+              //},
 
-              '& .bg-heading': {
-                position: 'absolute',
-                zIndex: '0',
-                fontSize: '15vh',
-                color: this.bgGrey,
-              },
+              //'& .bg-heading': {
+              //  position: 'absolute',
+              //  zIndex: '0',
+              //  fontSize: '15vh',
+              //  color: this.bgGrey,
+              //},
 
-              '& big': {
-                fontSize: '10vh',
-              },
+              //'& big': {
+              //  fontSize: '10vh',
+              //},
 
               '& h1': {
                 fontSize: '10vh',
@@ -132,7 +132,7 @@ class ModalTraining extends Component {
                 zIndex: '1',
               },
 
-              '& .modal-up': {
+              /*               '& .modal-up': {
                 height: '90vh',
                 backgroundColor: 'white',
                 borderRadius: '5px',
@@ -159,12 +159,12 @@ class ModalTraining extends Component {
 
                   [this.mq[1]]: { padding: '0.5vh' },
                 },
-              },
+              }, */
 
-              '& .frameless': {
+              /*               '& .frameless': {
                 marginTop: '-1vh',
                 marginBottom: '-1vh',
-              },
+              }, */
             },
           },
         },
@@ -472,11 +472,12 @@ class ModalTraining extends Component {
                   mq={this.mq}
                   apdx={this.apdx}
                 />
-                <ModalCompTabRoundRect
+                <ModalTrainingTraining
                   contentTraining={this.contentTraining}
                   mq={this.mq}
+                  colors={this.props.colors}
                 />
-                <ModalCompTextTabs
+                <ModalTrainingWir
                   contentWir={this.contentWir}
                   mq={this.mq}
                   colors={this.props.colors}
