@@ -5,7 +5,10 @@ import { jsx } from '@emotion/react';
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-//import 'date-fns';
+import { format } from 'date-fns';
+//import { registerLocale } from 'react-datepicker';
+import { de } from 'date-fns/locale';
+//registerLocale('de', de);
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 //import DateFnsUtils from '@date-io/date-fns';
@@ -20,17 +23,12 @@ import { updateEvent, createEvent, deleteEvent } from '../../store/events';
 const useStyles = makeStyles((theme) => ({
   root1: {
     '& > *': {
-      margin: theme.spacing(2),
+      margin: theme.spacing(1),
     },
 
     '& .MuiTextField-root': {
-      width: '25ch',
+      width: '95%',
       padding: 0,
-      //margin: '7.5px 7.5px',
-
-      '&.id_1_4_, &.id_2_5': {
-        width: '50ch',
-      },
     },
 
     '& .MuiInput-underline:after': {
@@ -39,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
     '& label': {
       color: 'rgba(0,0,0,1)',
+      fontWeight: 'bold',
       '&.Mui-focused': {
         color: 'rgba(0,0,0,1)',
       },
@@ -59,15 +58,15 @@ const useStyles = makeStyles((theme) => ({
   },
   root2: {
     '& .MuiTextField-root': {
-      width: '25ch',
+      //width: '25ch',
     },
 
     '& .MuiInputLabel-root': {
-      margin: '0px 0px 0px 7.5px',
+      //margin: '0px 0px 0px 7.5px',
     },
 
     '& .MuiInput-root': {
-      marginTop: '5px',
+      //marginTop: '5px',
     },
 
     '& .MuiFormLabel-root.Mui-error, & .Mui-error:after': {
@@ -93,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Events = ({ events, colors, mq, styleMisc }) => {
   // constants
-  const debug = false;
+  const debug = true;
 
   // state
   const isAuthenticated = useSelector((state) => state.auth.token !== null);
@@ -107,11 +106,26 @@ const Events = ({ events, colors, mq, styleMisc }) => {
   // style
   const classes = useStyles();
 
-  if (debug) console.log('Events : ', events);
+  let datum = events[3]['date'];
+  if (debug)
+    console.log(
+      'Events : ',
+      events,
+      datum,
+      format(new Date(datum), 'eeee, dd.MM.yyyy', { locale: de })
+    );
   const style = {
     width: '45%',
+    height: '100%',
     fontFamily: 'Lato, sans-serif',
     paddingTop: '3vh',
+    overflow: 'auto',
+
+    [mq[2]]: {
+      width: '90%',
+      marginBottom: '1vh',
+      height: '50%',
+    },
 
     '&.schedule': {
       borderRadius: '5px',
@@ -137,6 +151,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
         '& .details': {
           height: '100%',
           width: '70%',
+          padding: '1vh',
 
           '& h3': {
             fontSize: '2.5vh',
@@ -196,12 +211,10 @@ const Events = ({ events, colors, mq, styleMisc }) => {
         padding: '3px',
         '&.red': {
           border: `1px solid ${colors.bgRed}`,
-          backgroundColor: colors.bgRed,
           color: 'white',
         },
         '&.green': {
           border: `1px solid ${colors.bgGreen}`,
-          backgroundColor: colors.bgGreen,
           color: 'white',
         },
       },
@@ -212,7 +225,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
   const month = [
     'JAN',
     'FEB',
-    'MÄR',
+    'MAR',
     'APR',
     'MAI',
     'JUN',
@@ -226,14 +239,19 @@ const Events = ({ events, colors, mq, styleMisc }) => {
 
   const entries1 = [
     ['title', 'Seminar'],
+    //['time', 'Zeit'],
+    ['date', 'Termin'],
     ['location', 'Ort'],
-    ['authorized', 'Berechtigt'],
+    //
     ['organisator', 'Ausrichter/Trainer'],
-    ['time', 'Zeit'],
-    ['date', 'Datum'],
   ];
-  const entries2 = [['details', 'Weitere Infos']];
-  const entries3 = [
+  const entries2 = [
+    ['details', 'Weitere Infos'],
+    ['authorized', 'Berechtigt'],
+    ['cost', 'Gebühr'],
+  ];
+  const entries3 = [['other', 'Sonstiges']];
+  const entries4 = [
     ['email', 'E-Mail'],
     ['name', 'Name'],
   ];
@@ -305,7 +323,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
   return (
     <React.Fragment>
       {events.length > 0 && (
-        <div className="schedule d-flex flex-column" css={style}>
+        <div className="schedule d-flex flex-column scroll_" css={style}>
           {events.map((item, i) => {
             var d = new Date(item.date);
             return i % 2 === 0 ? (
@@ -378,7 +396,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
         </div>
       )}
       {events.length > 0 && (
-        <div className="detail d-flex flex-column" css={style}>
+        <div className="detail d-flex flex-column scroll_" css={style}>
           <div className="d-flex flex-row align-items-center justify-content-between">
             <h3>SEMINAR</h3>
             {isAuthenticatedNoEdit && (
@@ -390,13 +408,20 @@ const Events = ({ events, colors, mq, styleMisc }) => {
           </div>
           <form className={classes.root1}>
             {entries1.map((x, i) => {
+              console.log('entries1: ', x, i, x[0], x[1]);
               return isAuthenticatedEdit ? (
                 <TextField
                   // eslint-disable-next-line
                   className={'active' + ' id_1_' + i}
                   id={'id_1_' + i}
                   label={x[1]}
-                  value={changedData[x[0]]}
+                  value={
+                    x[1] === 'Termin'
+                      ? format(new Date(changedData[x[0]]), 'dd.MM.yyyy', {
+                          locale: de,
+                        })
+                      : changedData[x[0]]
+                  }
                   key={'tf_' + i}
                   InputLabelProps={{
                     shrink: true,
@@ -410,7 +435,15 @@ const Events = ({ events, colors, mq, styleMisc }) => {
                   className={'id_1_' + i}
                   id={'id_1_' + i}
                   label={x[1]}
-                  value={entryData[x[0]]}
+                  value={
+                    x[1] === 'Termin'
+                      ? format(
+                          new Date(changedData[x[0]]),
+                          'eeee, dd.MM.yyyy',
+                          { locale: de }
+                        )
+                      : changedData[x[0]]
+                  }
                   InputProps={{
                     readOnly: true,
                   }}
@@ -419,7 +452,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
               );
             })}
           </form>
-          <h3>SONSTIGES</h3>
+          <h3>Infos</h3>
           <form className={classes.root1}>
             {entries2.map((x, i) => {
               return isAuthenticatedEdit ? (
@@ -452,22 +485,57 @@ const Events = ({ events, colors, mq, styleMisc }) => {
               );
             })}
           </form>
-          {!isAuthenticatedEdit && <h3>ANMELDUNG</h3>}
+          <h3>Sonstiges</h3>
+          <form className={classes.root1}>
+            {entries3.map((x, i) => {
+              return isAuthenticatedEdit ? (
+                <TextField
+                  multiline
+                  className={'id_2_' + (i + 5)}
+                  id={'id_2_' + i}
+                  label={x[1]}
+                  value={changedData[x[0]]}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  onChange={(event) =>
+                    onChangeEvent(entryData['id'], x[0], event.target.value)
+                  }
+                  key={'id_2_' + i}
+                />
+              ) : (
+                <TextField
+                  multiline
+                  className={'id_2_' + (i + 5)}
+                  id={'id_2_' + i}
+                  label={x[1]}
+                  value={entryData[x[0]]}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                  key={'id_2_' + i}
+                />
+              );
+            })}
+          </form>
           {!isAuthenticatedEdit && (
-            <form className={classes.root2}>
-              {entries3.map((x, i) => {
-                return (
-                  <TextField
-                    error
-                    className={'id_3_' + (i + 6)}
-                    id={'id_3_' + i}
-                    label={x[1]}
-                    placeholder={entryData[x[0]]}
-                    key={'id_3_' + i}
-                  />
-                );
-              })}
-            </form>
+            <React.Fragment>
+              <h3>ANMELDUNG</h3>
+              <form className={classes.root2}>
+                {entries4.map((x, i) => {
+                  return (
+                    <TextField
+                      error
+                      className={'id_3_' + (i + 6)}
+                      id={'id_3_' + i}
+                      label={x[1]}
+                      placeholder={entryData[x[0]]}
+                      key={'id_3_' + i}
+                    />
+                  );
+                })}
+              </form>
+            </React.Fragment>
           )}
           {!isAuthenticatedEdit && (
             <Button className={classes.root3} variant="contained">

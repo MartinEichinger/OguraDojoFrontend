@@ -14,7 +14,7 @@ const CompRoundRectMap = ({ map, style }) => {
         <img src="wo_24px_outlined.svg" alt="" />
         <p className="red bold">{map.title}</p>
       </div>
-      <div className="rect d-flex flex-row">
+      <div className="rect d-flex flex-row scroll_">
         <div className="tab w50 d-flex align-items-center">
           <p>{map.address}</p>
         </div>

@@ -97,7 +97,7 @@ const Footer = ({ colors, select }) => {
       <div className="container-fluid">
         <div className="d-flex flex-column align-items-center">
           <h1>
-            Ogura Dojo - Tengu Ryu Karate-Do, PanZi Gong, TaiJi Quan, QiGong im
+            Ogura Dojo - Tengu Ryu Karate-Do, Panzi Gong, Taiji Quan, Qigong im
             Herzen des Chiemgaus
           </h1>
           <div className="d-flex flex-row justify-content-around w-75">

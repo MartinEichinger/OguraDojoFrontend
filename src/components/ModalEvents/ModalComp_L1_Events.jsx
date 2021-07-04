@@ -21,6 +21,14 @@ const ModalComp_L1_Events = ({
       '& .modal-col': {
         width: 'calc(100% - 51px)',
 
+        [mq[2]]: {
+          width: 'calc(100% - 39px)',
+        },
+
+        [mq[1]]: {
+          width: 'calc(100% - 34px)',
+        },
+
         [mq[0]]: {
           width: 'calc(100% - 29px)',
         },
@@ -43,7 +51,9 @@ const ModalComp_L1_Events = ({
           height: '90vh',
           backgroundColor: 'white',
           borderRadius: '5px',
+
           '& .imageBg': {
+            marginTop: '-2vh',
             height: '75vh',
             width: 'calc(100% - 51px)',
             backgroundImage: 'url(./main_panzigong.png)',
@@ -55,15 +65,15 @@ const ModalComp_L1_Events = ({
             position: 'absolute',
           },
 
-          '& .table': {
-            marginTop: '1vh',
+          '& .tables': {
+            //marginTop: '1vh',
             height: '75vh',
-            padding: '2vh',
-            overflowY: 'auto',
+            //padding: '2vh',
+            //overflowY: 'auto',
             position: 'relative',
 
             [mq[0]]: {
-              height: '62vh',
+              //height: '62vh',
             },
           },
         },
@@ -92,7 +102,7 @@ const ModalComp_L1_Events = ({
           </div>
           <div className="imageBg"></div>
           <div
-            className="table d-flex flex-row flex-wrap justify-content-around"
+            className="tables d-flex flex-column flex-lg-row flex-lg-wrap align-items-center align-items-lg-stretch justify-content-lg-around "
             css={styleMisc}
           >
             {events.length > 0 && (

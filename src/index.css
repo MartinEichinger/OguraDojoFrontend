@@ -103,6 +103,24 @@ code {
   text-decoration: underline;
 }
 
+.scroll_::-webkit-scrollbar {
+  width: 10px;
+}
+
+.scroll_::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+.scroll_::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+.scroll_::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

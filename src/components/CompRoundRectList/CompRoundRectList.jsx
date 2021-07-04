@@ -14,7 +14,7 @@ const CompRoundRectList = ({ list, style }) => {
         <img src="geld_24px_outlined.svg" alt="" />
         <p className="red bold">{list.title}</p>
       </div>
-      <div className="rect">
+      <div className="rect scroll_">
         <div className="tab-row d-flex flex-row">
           {list.items.map((item, i) => {
             return (

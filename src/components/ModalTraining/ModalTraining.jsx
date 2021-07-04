@@ -97,11 +97,11 @@ class ModalTraining extends Component {
 
               '& h1': {
                 fontSize: '10vh',
-                marginBottom: '1vh',
+                //marginBottom: '1vh',
                 color: 'white',
                 textShadow: `0px 0px 5px ${this.bgRed}`,
                 position: 'relative',
-                paddingTop: '2vh',
+                //paddingTop: '2vh',
                 paddingLeft: '2vh',
               },
 

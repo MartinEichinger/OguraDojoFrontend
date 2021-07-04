@@ -40,14 +40,22 @@ const ModalTrainingWir = ({ contentWir, mq, colors }) => {
             filter: 'blur(4px)',
             position: 'absolute',
 
+            [mq[2]]: {
+              width: 'calc(100% - 39px)',
+            },
+
+            [mq[1]]: {
+              width: 'calc(100% - 34px)',
+            },
+
             [mq[0]]: {
               width: 'calc(100% - 29px)',
             },
           },
 
-          '& .table': {
-            padding: '2vh',
-            height: 'calc(90vh - 16vh)',
+          '& .table_': {
+            padding: '0 2vh 2vh',
+            height: 'calc(90vh - 12vh)',
 
             [mq[1]]: { padding: '0.5vh' },
 
@@ -58,6 +66,7 @@ const ModalTrainingWir = ({ contentWir, mq, colors }) => {
               backgroundColor: 'rgba(255,255,255,0.7)',
               borderRadius: '5px',
               padding: '1vh',
+              overflow: 'auto',
 
               [mq[2]]: {
                 width: 'calc(100%)',
@@ -70,31 +79,28 @@ const ModalTrainingWir = ({ contentWir, mq, colors }) => {
                 padding: '1vh',
                 margin: '0',
               },
-
-              overflowY: 'auto',
-
-              '&::-webkit-scrollbar': {
-                width: '10px',
-              },
-
-              '&::-webkit-scrollbar-track': {
-                background: '#f1f1f1',
-                borderRadius: '5px',
-              },
-
-              '&::-webkit-scrollbar-thumb': {
-                borderRadius: '5px',
-                background: '#888',
-              },
-
-              '&::-webkit-scrollbar-thumb:hover': {
-                background: '#555',
-              },
             },
+
             '& .cards': {
+              position: 'relative',
               marginLeft: '2vh',
+              width: 'calc(100% - 2vh)',
+              backgroundColor: 'rgba(255,255,255,0.7)',
+              borderRadius: '5px',
               padding: '1vh',
               overflow: 'auto',
+
+              [mq[2]]: {
+                width: 'calc(100%)',
+                padding: '1vh',
+                margin: '0',
+              },
+
+              [mq[1]]: {
+                width: 'calc(100%)',
+                padding: '1vh',
+                margin: '0',
+              },
 
               '& .body': {
                 height: '320px',
@@ -132,13 +138,13 @@ const ModalTrainingWir = ({ contentWir, mq, colors }) => {
           <div className="bg-training"></div>
           <h1 className="big">{contentWir.title}</h1>
           <div
-            className="table d-flex flex-column justify-content-around"
+            className="table_ d-flex flex-column justify-content-around"
             css={style}
           >
-            <div className="rect h31">
+            <div className="rect h31 scroll_">
               <p className="mb-2">{contentWir.text}</p>
             </div>
-            <div className="cards d-flex flex-row flex-wrap justify-content-around h40">
+            <div className="cards d-flex flex-row flex-wrap justify-content-around h40 scroll_">
               {contentWir.tabs.map((item, i) => {
                 return (
                   <div

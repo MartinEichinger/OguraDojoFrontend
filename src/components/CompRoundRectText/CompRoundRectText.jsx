@@ -14,7 +14,7 @@ const CompRoundRectText = ({ text, style }) => {
         <img src="was_24px_outlined.svg" alt="" />
         <p className="red bold">{text.title}</p>
       </div>
-      <div className="rect d-flex align-items-center">
+      <div className="rect d-flex align-items-center scroll_">
         <p>{text.text}</p>
       </div>
     </div>

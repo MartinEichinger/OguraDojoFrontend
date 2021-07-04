@@ -15,7 +15,7 @@ class ModalEvents extends Component {
     super(props);
 
     this.content = {
-      title: '',
+      title: 'Termine',
     };
 
     this.state = {
@@ -35,8 +35,7 @@ class ModalEvents extends Component {
     this.debug = false;
 
     // BREAKPOINTS
-    this.breakpoints = [424, 767, 1023, 1280];
-    this.mq = this.breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
+    this.mq = this.props.mq;
 
     // STYLES
     this.bgGrey = this.props.colors?.bgGrey;
@@ -49,7 +48,7 @@ class ModalEvents extends Component {
     this.typoGreen = this.props.colors?.typoGreen;
     this.shadowGrey = this.props.colors?.shadowGrey;
 
-    this.styleMisc = {
+    /*     this.styleMisc = {
       '& .span_vis': {
         display: 'block',
 
@@ -57,7 +56,7 @@ class ModalEvents extends Component {
           display: 'none',
         },
       },
-    };
+    }; */
 
     this.styleModalDialog = {
       width: '100vw',
