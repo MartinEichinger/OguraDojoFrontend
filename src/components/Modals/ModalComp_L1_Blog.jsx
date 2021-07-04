@@ -7,52 +7,6 @@ import BlogNav from '../BlogNav/BlogNav';
 import BlogEntry from '../BlogEntry/BlogEntry';
 
 const ModalComp_L1_Blog = ({ colors, content, mq }) => {
-  const styleMisc = {
-    '& .h15': {
-      height: '15vh',
-    },
-
-    '& .h22': {
-      height: '22vh',
-    },
-
-    '& .h26': {
-      height: '26vh',
-    },
-
-    '& .h31': {
-      height: '31vh !important',
-    },
-
-    '& .h40': {
-      height: '40vh !important',
-    },
-
-    '& .w20': {
-      width: '20%',
-    },
-
-    '& .w25': {
-      width: '25%',
-    },
-
-    '& .w30': {
-      width: '30%',
-    },
-
-    '& .w33': {
-      width: '33%',
-    },
-
-    '& .w50': {
-      width: '50%',
-    },
-
-    '& .w66': {
-      width: '66%',
-    },
-  };
-
   const styleCompL1 = {
     '&.comp_l1': {
       width: '100%',
@@ -60,6 +14,14 @@ const ModalComp_L1_Blog = ({ colors, content, mq }) => {
 
       '& .modal-col': {
         width: 'calc(100% - 51px)',
+
+        [mq[2]]: {
+          width: 'calc(100% - 39px)',
+        },
+
+        [mq[1]]: {
+          width: 'calc(100% - 34px)',
+        },
 
         [mq[0]]: {
           width: 'calc(100% - 29px)',
@@ -107,7 +69,7 @@ const ModalComp_L1_Blog = ({ colors, content, mq }) => {
 
   return (
     <div className="comp_l1" css={styleCompL1}>
-      <div className="modal-col d-flex flex-column h-100" css={styleMisc}>
+      <div className="modal-col d-flex flex-column h-100">
         <div className="modal-up">
           <h1>{content.title}</h1>
           <BlogNav filterProps={content.filterProps} colors={colors} />

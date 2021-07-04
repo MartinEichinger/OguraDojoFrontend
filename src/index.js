@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 //import 'bootstrap/dist/css/bootstrap.css';
+// eslint-disable-next-line
 import bootstrap from 'bootstrap';
 import App from './App';
 import { store } from './store/configureStore';

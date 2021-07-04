@@ -97,7 +97,7 @@ const ModalTrainingWir = ({ contentWir, mq, colors }) => {
               overflow: 'auto',
 
               '& .body': {
-                height: '300px',
+                height: '320px',
                 width: '250px',
                 borderRadius: '5px',
                 position: 'relative',
@@ -107,6 +107,7 @@ const ModalTrainingWir = ({ contentWir, mq, colors }) => {
                   width: '100%',
                   height: '55%',
                   borderRadius: '5px',
+                  backgroundSize: 'cover',
                   //backgroundImage: 'url(./training_pic_2.png)',
                 },
 
@@ -146,7 +147,10 @@ const ModalTrainingWir = ({ contentWir, mq, colors }) => {
                   >
                     <div
                       className="image"
-                      style={{ backgroundImage: item.img }}
+                      style={{
+                        backgroundImage: item.img,
+                        backgroundPosition: item.img_pos,
+                      }}
                     ></div>
                     <div className="text d-flex flex-column align-items-center">
                       <h2>{item.head1}</h2>

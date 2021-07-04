@@ -37,40 +37,6 @@ class ModalBlog extends Component {
     this.typoGreen = this.props.colors?.typoGreen;
     this.shadowGrey = this.props.colors?.shadowGrey;
 
-    this.styleMisc = {
-      '& .red': {
-        color: this.typoRed,
-      },
-
-      '& .white': {
-        color: this.bgWhite,
-      },
-
-      '& .center': {
-        textAlign: 'center',
-      },
-
-      '& .small': {
-        fontSize: '1.5vh !important',
-      },
-
-      '& .bold': {
-        fontWeight: 'bold',
-      },
-
-      '& .underline': {
-        textDecoration: 'underline',
-      },
-
-      '& .span_vis': {
-        display: 'block',
-
-        [this.mq[1]]: {
-          display: 'none',
-        },
-      },
-    };
-
     this.styleModalDialog = {
       width: '100vw',
       maxWidth: '1440px',
@@ -88,54 +54,6 @@ class ModalBlog extends Component {
 
         '& .modal-row': {
           width: '100%',
-        },
-      },
-    };
-
-    this.contentBlog = {
-      title: 'Wir',
-      text: 'Der Name unseres Dojo OGURA nimmt Bezug auf Ogura Tsuneyoshi(* 1928; † 2007), japanischer Karatemeister (Shotokan, Goju ryu) aus Kofu, 10. Dan. Dieser war ab dem Jahr 1973 der Lehrer des französischen Kampfkunstexperten Roland Habersetzer. Der Name unseres Dojo soll die Wertschätzung für den Menschen Ogura und seinen „Schüler“ Habersetzer zum Ausdruck bringen. Die Karateka des OGURA DOJO sind Mitglied im Budoforschungszentrum Tengu Institut von Shihan Roland Habersetzer und betreiben die Stilrichtung Tengu ryu. Neben dem Karate bieten wir in unserem Dojo TaiJi und QiGong an. Im TaiJi trainieren wir Faust, Fächer und Schwertformen – Schwerpunktmäßig aus dem Yang-Stil. Die Formen die wir im QiGong üben stammen überwiegend von dem chinesichen Professor Ding HongYu. Das OGURA DOJO ist organisatorisch beim Turn- und Sportverein Traunreut angegliedert. Unsere Abteilungsleiter ist Hans-Jürgen Groiß.',
-      tabs: [
-        {
-          head1: 'Alex Callegari',
-          head2: 'Trainer Karate.Taiji.Qigong',
-          head3: '6. DAN Tengu Ryu',
-          img: 'url(./training_pic_2.png)',
-        },
-        {
-          head1: 'Ulrike Geuder',
-          head2: 'Trainerin Karate',
-          head3: '5. DAN Tengu Ryu',
-          img: 'url(./training_pic_3.png)',
-        },
-      ],
-    };
-
-    this.styleContentBlog = {
-      '& .cards': {
-        marginLeft: '2vh',
-        padding: '1vh',
-
-        '& .body': {
-          height: '300px',
-          width: '250px',
-          borderRadius: '5px',
-          position: 'relative',
-          margin: '5px',
-
-          '& .image': {
-            width: '100%',
-            height: '55%',
-            borderRadius: '5px',
-            //backgroundImage: 'url(./training_pic_2.png)',
-          },
-
-          '& .text': {
-            width: '100%',
-            height: '40%',
-            borderRadius: '5px',
-            backgroundColor: 'rgba(0,0,0,0.7)',
-          },
         },
       },
     };
