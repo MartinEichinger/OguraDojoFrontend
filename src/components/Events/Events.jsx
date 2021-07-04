@@ -337,8 +337,6 @@ const Events = ({ events, colors, mq, styleMisc }) => {
                   <div className="d-flex flex-row justify-content-start align-items-baseline">
                     <i className="fas fa-map-marker-alt red"></i>
                     <h4 className="red">{item.location}</h4>
-                  </div>
-                  <div className="d-flex flex-row justify-content-start align-items-baseline">
                     <i className="fas fa-user"></i>
                     <h4>{item.organisator}</h4>
                   </div>
@@ -367,8 +365,6 @@ const Events = ({ events, colors, mq, styleMisc }) => {
                   <div className="d-flex flex-row justify-content-start align-items-baseline">
                     <i className="fas fa-map-marker-alt green"></i>
                     <h4 className="green">{item.location}</h4>
-                  </div>
-                  <div className="d-flex flex-row justify-content-start align-items-baseline">
                     <i className="fas fa-user"></i>
                     <h4>{item.organisator}</h4>
                   </div>
