@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Events = ({ events, colors, mq, styleMisc }) => {
   // constants
-  const debug = true;
+  const debug = false;
 
   // state
   const isAuthenticated = useSelector((state) => state.auth.token !== null);
@@ -107,13 +107,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
   const classes = useStyles();
 
   let datum = events[3]['date'];
-  if (debug)
-    console.log(
-      'Events : ',
-      events,
-      datum,
-      format(new Date(datum), 'eeee, dd.MM.yyyy', { locale: de })
-    );
+  if (debug) console.log('Events : ', events);
   const style = {
     width: '45%',
     height: '100%',
@@ -166,18 +160,18 @@ const Events = ({ events, colors, mq, styleMisc }) => {
         },
 
         '& h1': {
-          fontSize: '5vh',
+          fontSize: '7vh',
           color: 'rgba(255,255,255,1)',
-          lineHeight: '4vh',
+          lineHeight: '5vh',
           marginBottom: '0px',
           padding: '1vh 1vh 0.25vh 1vh',
           textAlign: 'center',
           textShadow: 'none',
         },
         '& h2': {
-          fontSize: '3vh',
+          fontSize: '5vh',
           color: 'rgba(255,255,255,1)',
-          lineHeight: '2vh',
+          lineHeight: '3.5vh',
           marginBottom: '0px',
           padding: '0.25vh 1vh 1vh 1vh',
           textAlign: 'center',
@@ -315,11 +309,6 @@ const Events = ({ events, colors, mq, styleMisc }) => {
     dispatch(deleteEvent(item));
   };
 
-  /*   const renderClassContent = (idx) => {
-    if (idx === 0) return 'block active d-flex flex-row';
-    return 'block d-flex flex-row';
-  }; */
-
   return (
     <React.Fragment>
       {events.length > 0 && (
@@ -332,7 +321,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
                 key={i}
                 onClick={() => selectEvent(item)}
               >
-                <div className="date bgRed">
+                <div className="date bgRed d-flex flex-column justify-content-center align-items-center">
                   <h1>{d.getDate()}</h1>
                   <h2>{month[d.getMonth()]}</h2>
                 </div>
@@ -349,6 +338,8 @@ const Events = ({ events, colors, mq, styleMisc }) => {
                   <div className="d-flex flex-row justify-content-start align-items-baseline">
                     <i className="fas fa-map-marker-alt red"></i>
                     <h4 className="red">{item.location}</h4>
+                  </div>
+                  <div className="d-flex flex-row justify-content-start align-items-baseline">
                     <i className="fas fa-user"></i>
                     <h4>{item.organisator}</h4>
                   </div>
@@ -360,7 +351,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
                 key={i}
                 onClick={() => selectEvent(item)}
               >
-                <div className="date bgGreen">
+                <div className="date bgGreen d-flex flex-column justify-content-center align-items-center">
                   <h1>{d.getDate()}</h1>
                   <h2>{month[d.getMonth()]}</h2>
                 </div>
@@ -377,6 +368,8 @@ const Events = ({ events, colors, mq, styleMisc }) => {
                   <div className="d-flex flex-row justify-content-start align-items-baseline">
                     <i className="fas fa-map-marker-alt green"></i>
                     <h4 className="green">{item.location}</h4>
+                  </div>
+                  <div className="d-flex flex-row justify-content-start align-items-baseline">
                     <i className="fas fa-user"></i>
                     <h4>{item.organisator}</h4>
                   </div>
@@ -408,7 +401,6 @@ const Events = ({ events, colors, mq, styleMisc }) => {
           </div>
           <form className={classes.root1}>
             {entries1.map((x, i) => {
-              console.log('entries1: ', x, i, x[0], x[1]);
               return isAuthenticatedEdit ? (
                 <TextField
                   // eslint-disable-next-line

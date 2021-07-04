@@ -70,38 +70,11 @@ class ModalTraining extends Component {
             //position: 'absolute',
 
             '& .modal-col': {
-              //width: 'calc(100% - 51px)',
-
-              //[this.mq[2]]: {
-              //  width: 'calc(100% - 39px)',
-              //},
-
-              //[this.mq[1]]: {
-              //  width: 'calc(100% - 34px)',
-              //},
-
-              //[this.mq[0]]: {
-              //  width: 'calc(100% - 29px)',
-              //},
-
-              //'& .bg-heading': {
-              //  position: 'absolute',
-              //  zIndex: '0',
-              //  fontSize: '15vh',
-              //  color: this.bgGrey,
-              //},
-
-              //'& big': {
-              //  fontSize: '10vh',
-              //},
-
               '& h1': {
                 fontSize: '10vh',
-                //marginBottom: '1vh',
                 color: 'white',
                 textShadow: `0px 0px 5px ${this.bgRed}`,
                 position: 'relative',
-                //paddingTop: '2vh',
                 paddingLeft: '2vh',
               },
 
@@ -131,40 +104,6 @@ class ModalTraining extends Component {
                 position: 'relative',
                 zIndex: '1',
               },
-
-              /*               '& .modal-up': {
-                height: '90vh',
-                backgroundColor: 'white',
-                borderRadius: '5px',
-
-                '& .bg-training': {
-                  height: '90vh',
-                  width: 'calc(100% - 51px)',
-                  backgroundImage: 'url(./training_pic_1.png)',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'cover',
-                  borderRadius: '5px',
-                  boxShadow: 'inset 0px 25px 30px 30px white',
-                  filter: 'blur(4px)',
-                  position: 'absolute',
-
-                  [this.mq[0]]: {
-                    width: 'calc(100% - 29px)',
-                  },
-                },
-
-                '& .table': {
-                  padding: '2vh',
-                  height: 'calc(90vh - 10vh)',
-
-                  [this.mq[1]]: { padding: '0.5vh' },
-                },
-              }, */
-
-              /*               '& .frameless': {
-                marginTop: '-1vh',
-                marginBottom: '-1vh',
-              }, */
             },
           },
         },
@@ -191,7 +130,7 @@ class ModalTraining extends Component {
         },
         {
           head1: 'Ulrike Geuder',
-          head2: 'Trainerin Karate.2ter Vorstand',
+          head2: '2ter Vorstand.Trainerin Karate',
           head3: '5. DAN Tengu Ryu',
           img: 'url(./training_pic_3.png)',
           img_pos: '50% 10%',
@@ -219,7 +158,7 @@ class ModalTraining extends Component {
         },
         {
           head1: 'Erika Rudl',
-          head2: 'Trainerin Karate Kinder.Jugendliche',
+          head2: 'Trainerin Karate.Kinder.Jugendliche',
           head3: '1. DAN Tengu Ryu',
           img: 'url(./avatar_nopic.png)',
           img_pos: '50% 30%',
