@@ -159,18 +159,18 @@ const Events = ({ events, colors, mq, styleMisc }) => {
         },
 
         '& h1': {
-          fontSize: '7vh',
+          fontSize: '6vh',
           color: 'rgba(255,255,255,1)',
-          lineHeight: '5vh',
+          lineHeight: '4vh',
           marginBottom: '0px',
           padding: '1vh 1vh 0.25vh 1vh',
           textAlign: 'center',
           textShadow: 'none',
         },
         '& h2': {
-          fontSize: '5vh',
+          fontSize: '4vh',
           color: 'rgba(255,255,255,1)',
-          lineHeight: '3.5vh',
+          lineHeight: '3vh',
           marginBottom: '0px',
           padding: '0.25vh 1vh 1vh 1vh',
           textAlign: 'center',
