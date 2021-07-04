@@ -106,7 +106,6 @@ const Events = ({ events, colors, mq, styleMisc }) => {
   // style
   const classes = useStyles();
 
-  let datum = events[3]['date'];
   if (debug) console.log('Events : ', events);
   const style = {
     width: '45%',
