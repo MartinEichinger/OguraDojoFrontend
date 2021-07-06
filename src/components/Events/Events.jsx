@@ -6,19 +6,12 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { format } from 'date-fns';
-//import { registerLocale } from 'react-datepicker';
 import { de } from 'date-fns/locale';
-//registerLocale('de', de);
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-//import DateFnsUtils from '@date-io/date-fns';
-//import {
-//  MuiPickersUtilsProvider,
-//  KeyboardDatePicker,
-//} from '@material-ui/pickers';
 import { makeStyles } from '@material-ui/core/styles';
 import { updateEvent, createEvent, deleteEvent } from '../../store/events';
-//import { createMuiTheme } from '@material-ui/core/styles';
+import { sendEmail } from '../../store/email';
 
 const useStyles = makeStyles((theme) => ({
   root1: {
@@ -57,16 +50,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   root2: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+
     '& .MuiTextField-root': {
-      //width: '25ch',
-    },
-
-    '& .MuiInputLabel-root': {
-      //margin: '0px 0px 0px 7.5px',
-    },
-
-    '& .MuiInput-root': {
-      //marginTop: '5px',
+      width: '40%',
     },
 
     '& .MuiFormLabel-root.Mui-error, & .Mui-error:after': {
@@ -75,30 +64,38 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   root3: {
-    marginTop: '1vh',
+    '& > *': {
+      margin: theme.spacing(1),
+      //padding: theme.spacing(1),
+    },
+    //marginTop: '1vh',
 
     '&.MuiButton-contained': {
       backgroundColor: 'rgba(19, 73, 0, 1)',
       color: 'rgba(255,255,255,0.87)',
-      fontSize: '1.25vh',
-      fontWeight: 'bold',
+      fontSize: '1.75vh',
+      //fontWeight: 'bold',
     },
     '&.MuiButton-root': {
-      padding: '0px',
+      paddingRight: '1vh',
       maxWidth: '150px',
+      //paddingLeft
+      marginLeft: '7.5px',
     },
   },
 }));
 
-const Events = ({ events, colors, mq, styleMisc }) => {
+const Events = ({ events, colors, mq }) => {
   // constants
-  const debug = false;
+  const debug = true;
 
   // state
   const isAuthenticated = useSelector((state) => state.auth.token !== null);
   const [entryData, setEntryData] = useState(events[0]);
   const [editData, setEditData] = useState(false);
   const [changedData, setChangedData] = useState(events[0]);
+  const [email, setEmail] = useState('');
+  const [sender, setSender] = useState('');
 
   const isAuthenticatedEdit = editData && isAuthenticated;
   const isAuthenticatedNoEdit = !editData && isAuthenticated;
@@ -290,7 +287,7 @@ const Events = ({ events, colors, mq, styleMisc }) => {
   const saveData = (save) => {
     setEditData(false);
     if (save) {
-      console.log('save data: ', changedData);
+      if (debug) console.log('save data: ', changedData);
       if (changedData['id'] === 'none') {
         setEntryData(changedData);
         dispatch(createEvent(changedData));
@@ -299,9 +296,16 @@ const Events = ({ events, colors, mq, styleMisc }) => {
         dispatch(updateEvent(changedData));
       }
     } else {
-      console.log('dont save data: ', entryData);
+      if (debug) console.log('dont save data: ', entryData);
       setChangedData(entryData);
     }
+  };
+
+  const sendEmailOnClick = (seminar) => {
+    if (debug) console.log('Events/sendEmail: ', email, sender, seminar);
+    dispatch(sendEmail({ email, sender, seminar }));
+    setEmail('');
+    setSender('');
   };
 
   const delData = (item) => {
@@ -518,16 +522,23 @@ const Events = ({ events, colors, mq, styleMisc }) => {
                       label={x[1]}
                       placeholder={entryData[x[0]]}
                       key={'id_3_' + i}
+                      onInput={
+                        i === 0
+                          ? (e) => setEmail(e.target.value)
+                          : (e) => setSender(e.target.value)
+                      }
                     />
                   );
                 })}
+                <Button
+                  className={classes.root3}
+                  variant="contained"
+                  onClick={() => sendEmailOnClick(entryData['title'])}
+                >
+                  Anmelden
+                </Button>
               </form>
             </React.Fragment>
-          )}
-          {!isAuthenticatedEdit && (
-            <Button className={classes.root3} variant="contained">
-              Anmelden
-            </Button>
           )}
           {isAuthenticatedEdit && (
             <div className="d-flex flex-row align-items-center mt-5">

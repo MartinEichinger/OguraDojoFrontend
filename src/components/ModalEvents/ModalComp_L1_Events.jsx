@@ -6,13 +6,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Events from '../Events/Events';
 
-const ModalComp_L1_Events = ({
-  colors,
-  content,
-  mq,
-  styleMisc,
-  isAuthenticated,
-}) => {
+const ModalComp_L1_Events = ({ colors, content, mq, isAuthenticated }) => {
   const styleCompL1 = {
     '&.comp_l1': {
       width: '100%',
@@ -53,8 +47,8 @@ const ModalComp_L1_Events = ({
           borderRadius: '5px',
 
           '& .imageBg': {
-            marginTop: '-2vh',
-            height: '75vh',
+            marginTop: '2vh',
+            height: '86vh',
             width: 'calc(100% - 51px)',
             backgroundImage: 'url(./main_panzigong.png)',
             backgroundRepeat: 'no-repeat',
@@ -66,22 +60,16 @@ const ModalComp_L1_Events = ({
           },
 
           '& .tables': {
-            //marginTop: '1vh',
             height: '75vh',
-            //padding: '2vh',
-            //overflowY: 'auto',
+            paddingBottom: '3vh',
             position: 'relative',
-
-            [mq[0]]: {
-              //height: '62vh',
-            },
           },
         },
 
-        '& .frameless': {
+        /*         '& .frameless': {
           marginTop: '-1vh',
           marginBottom: '-1vh',
-        },
+        }, */
       },
     },
   };
@@ -94,24 +82,16 @@ const ModalComp_L1_Events = ({
 
   return (
     <div className="comp_l1" css={styleCompL1}>
-      <div className="modal-col d-flex flex-column h-100" css={styleMisc}>
+      <div className="modal-col d-flex flex-column h-100">
         <div className="modal-up">
+          <div className="imageBg"></div>
           <div className="d-flex flex-row justify-content-between align-items-center">
             <h1>{content.title}</h1>
             {isAuthenticated && <i className="fas fa-edit red mr-5"></i>}
           </div>
-          <div className="imageBg"></div>
-          <div
-            className="tables d-flex flex-column flex-lg-row flex-lg-wrap align-items-center align-items-lg-stretch justify-content-lg-around "
-            css={styleMisc}
-          >
+          <div className="tables d-flex flex-column flex-lg-row flex-lg-wrap align-items-center align-items-lg-stretch justify-content-lg-around ">
             {events.length > 0 && (
-              <Events
-                events={events}
-                colors={colors}
-                mq={mq}
-                styleMisc={styleMisc}
-              />
+              <Events events={events} colors={colors} mq={mq} />
             )}
           </div>
         </div>

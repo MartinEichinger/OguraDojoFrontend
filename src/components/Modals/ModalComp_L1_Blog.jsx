@@ -73,7 +73,7 @@ const ModalComp_L1_Blog = ({ colors, content, mq }) => {
         <div className="modal-up">
           <h1>{content.title}</h1>
           <BlogNav filterProps={content.filterProps} colors={colors} />
-          <div className="table d-flex flex-row flex-wrap justify-content-around">
+          <div className="table d-flex flex-row flex-wrap justify-content-around scroll_">
             <BlogEntry blog={content.blog} colors={colors} />
           </div>
         </div>

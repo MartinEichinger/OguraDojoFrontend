@@ -136,29 +136,7 @@ class ModalKarate extends Component {
                 height: '35vh',
                 backgroundColor: 'white',
                 borderRadius: '5px',
-                //boxShadow: '0px 0px 30px 0px white',
                 padding: '2vh',
-
-                '& .scroll': {
-                  overflowY: 'auto',
-                  //height: '22vh',
-
-                  '&::-webkit-scrollbar': {
-                    width: '10px',
-                  },
-
-                  '&::-webkit-scrollbar-track': {
-                    background: '#f1f1f1',
-                  },
-
-                  '&::-webkit-scrollbar-thumb': {
-                    background: '#888',
-                  },
-
-                  '&::-webkit-scrollbar-thumb:hover': {
-                    background: '#555',
-                  },
-                },
               },
 
               '& .modal-strip': {
@@ -233,26 +211,6 @@ class ModalKarate extends Component {
                 backgroundColor: 'white',
                 borderRadius: '5px',
                 padding: '2vh',
-
-                '& .scroll': {
-                  overflowY: 'auto',
-
-                  '&::-webkit-scrollbar': {
-                    width: '10px',
-                  },
-
-                  '&::-webkit-scrollbar-track': {
-                    background: '#f1f1f1',
-                  },
-
-                  '&::-webkit-scrollbar-thumb': {
-                    background: '#888',
-                  },
-
-                  '&::-webkit-scrollbar-thumb:hover': {
-                    background: '#555',
-                  },
-                },
               },
             },
           },
@@ -536,7 +494,7 @@ class ModalKarate extends Component {
                       <h2>
                         „Es ablehnen zu kämpfen, es ablehnen zu unterliegen...“
                       </h2>
-                      <div className="scroll h22">
+                      <div className="scroll_ h22">
                         <p>
                           Ursprüngliches Ziel von Karate war es eine bedrohliche
                           Situation zu überstehen. Dazu war es notwendig seine
@@ -563,7 +521,7 @@ class ModalKarate extends Component {
                     </div>
                     <div className="modal-down">
                       <h1>tengu-ryu</h1>
-                      <div className="scroll h26">
+                      <div className="scroll_ h26">
                         <p>
                           Im Karate gibt es unterschiedliche Schulen (ryu's).
                           Tengu-Ryū oder Tengu-no-michi (wörtlich: „Weg des

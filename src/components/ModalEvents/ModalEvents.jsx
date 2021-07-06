@@ -38,25 +38,7 @@ class ModalEvents extends Component {
     this.mq = this.props.mq;
 
     // STYLES
-    this.bgGrey = this.props.colors?.bgGrey;
-    this.bgWhite = this.props.colors?.bgWhite;
-    this.bgRed = this.props.colors?.bgRed;
-    this.bgGreen = this.props.colors?.bgGreen;
-    this.bgGreen50 = this.props.colors?.bgGreen50;
-    this.typoRed = this.props.colors?.typoRed;
-    this.typoGrey = this.props.colors?.typoGrey;
-    this.typoGreen = this.props.colors?.typoGreen;
-    this.shadowGrey = this.props.colors?.shadowGrey;
-
-    /*     this.styleMisc = {
-      '& .span_vis': {
-        display: 'block',
-
-        [this.mq[1]]: {
-          display: 'none',
-        },
-      },
-    }; */
+    this.colors = this.props.colors;
 
     this.styleModalDialog = {
       width: '100vw',
@@ -79,7 +61,7 @@ class ModalEvents extends Component {
       },
     };
 
-    this.styleContent = {
+    /* this.styleContent = {
       '& .cards': {
         marginLeft: '2vh',
         padding: '1vh',
@@ -106,7 +88,7 @@ class ModalEvents extends Component {
           },
         },
       },
-    };
+    }; */
 
     this.configNav = {
       upDown: 0,
@@ -159,7 +141,6 @@ class ModalEvents extends Component {
                 {/* eslint-disable-next-line */}
                 <ModalComp_L1_Events
                   colors={this.props.colors}
-                  styleMisc={this.styleMisc}
                   content={this.state.content}
                   mq={this.mq}
                   isAuthenticated={this.isAuthenticated}

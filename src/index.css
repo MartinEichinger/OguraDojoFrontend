@@ -103,6 +103,10 @@ code {
   text-decoration: underline;
 }
 
+.scroll_ {
+  overflow: auto;
+}
+
 .scroll_::-webkit-scrollbar {
   width: 10px;
 }
