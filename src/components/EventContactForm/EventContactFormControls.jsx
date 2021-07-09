@@ -51,6 +51,10 @@ export const useFormControls = () => {
     validate({ [name]: value });
   };
 
+  const getInputValue = (name) => {
+    return values[name];
+  };
+
   const handleSuccess = () => {
     setValues({
       ...initialFormValues,
@@ -95,5 +99,6 @@ export const useFormControls = () => {
     handleInputValue,
     handleFormSubmit,
     formIsValid,
+    getInputValue,
   };
 };
