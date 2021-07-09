@@ -54,13 +54,13 @@ class App extends Component {
     };
 
     this.colors = {
-      bgGreen50: 'rgba(19, 73, 0, 0.5)',
-      bgGreen: 'rgba(19, 73, 0, 1)',
+      bgGreen50: 'rgba(10, 121, 0, 0.5)',
+      bgGreen: 'rgba(10, 121, 0, 1)', //HSL: 115, 100, 24 //#0A7900
       bgGrey: 'rgba(232, 232, 232, 1)',
       bgWhite: 'rgba(255,255,255,1)',
-      bgRed: 'rgba(121, 0, 0, 1)',
+      bgRed: 'rgba(121, 0, 0, 1)', //HSL: 0, 100, 24 //#790000
       typoGrey: 'rgba(64, 64, 64, 1)',
-      typoGreen: 'rgba(19, 73, 0, 1)',
+      typoGreen: 'rgba(10, 121, 0, 1)',
       typoRed: 'rgba(121, 0, 0, 1)',
       shadowGrey: 'rgba(122,122,122,1)',
     };

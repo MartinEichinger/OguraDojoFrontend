@@ -4,15 +4,32 @@ import './index.css';
 //import 'bootstrap/dist/css/bootstrap.css';
 // eslint-disable-next-line
 import bootstrap from 'bootstrap';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+//import blue from '@material-ui/core/colors/blue';
 import App from './App';
 import { store } from './store/configureStore';
 import { Provider } from 'react-redux';
+
 import * as serviceWorker from './serviceWorker';
+
+const od_theme = createMuiTheme({
+  palette: {
+    primary: {
+      // green
+      main: '#0A7900',
+    },
+    secondary: {
+      main: '#790000',
+    },
+  },
+});
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <ThemeProvider theme={od_theme}>
+        <App />
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

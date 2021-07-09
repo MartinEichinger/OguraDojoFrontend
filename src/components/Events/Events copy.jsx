@@ -9,10 +9,9 @@ import { format } from 'date-fns';
 import { de } from 'date-fns/locale';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { EventContactForm } from '../EventContactForm/EventContactForm';
 import { makeStyles } from '@material-ui/core/styles';
 import { updateEvent, createEvent, deleteEvent } from '../../store/events';
-//import { sendEmail } from '../../store/email';
+import { sendEmail } from '../../store/email';
 
 const useStyles = makeStyles((theme) => ({
   root1: {
@@ -55,8 +54,8 @@ const useStyles = makeStyles((theme) => ({
     },
 
     '& .MuiFormLabel-root.Mui-error, & .Mui-error:after': {
-      //color: 'green',
-      //borderBottomColor: 'green',
+      color: 'green',
+      borderBottomColor: 'green',
     },
   },
   root3: {
@@ -90,6 +89,8 @@ const Events = ({ events, colors, mq }) => {
   const [entryData, setEntryData] = useState(events[0]);
   const [editData, setEditData] = useState(false);
   const [changedData, setChangedData] = useState(events[0]);
+  const [email, setEmail] = useState('');
+  const [sender, setSender] = useState('');
 
   const isAuthenticatedEdit = editData && isAuthenticated;
   const isAuthenticatedNoEdit = !editData && isAuthenticated;
@@ -236,8 +237,8 @@ const Events = ({ events, colors, mq }) => {
   ];
   const entries3 = [['other', 'Sonstiges']];
   const entries4 = [
-    { name: 'email', label: 'E-Mail', id: '#email' },
-    { name: 'fullName', label: 'Name', id: '#fullName' },
+    ['email', 'E-Mail'],
+    ['name', 'Name'],
   ];
 
   // methods
@@ -295,14 +296,19 @@ const Events = ({ events, colors, mq }) => {
     }
   };
 
+  const sendEmailOnClick = (seminar) => {
+    if (debug) console.log('Events/sendEmail: ', email, sender, seminar);
+    dispatch(sendEmail({ email, sender, seminar }));
+    setEmail('');
+    setSender('');
+  };
+
   const delData = (item) => {
     dispatch(deleteEvent(item));
   };
 
   return (
     <React.Fragment>
-      {debug ? console.log('Events: ', entries4) : ''}
-
       {events.length > 0 && (
         <div className="schedule d-flex flex-column scroll_" css={style}>
           {events.map((item, i) => {
@@ -505,11 +511,33 @@ const Events = ({ events, colors, mq }) => {
             })}
           </form>
           {!isAuthenticatedEdit && (
-            <EventContactForm
-              inputFieldValues={entries4}
-              style={classes.root2}
-              event={changedData['title']}
-            />
+            <React.Fragment>
+              <h3>ANMELDUNG</h3>
+              <form className={classes.root2}>
+                {entries4.map((x, i) => {
+                  return (
+                    <TextField
+                      error
+                      label={x[1]}
+                      value={i === 0 ? email : sender}
+                      onInput={
+                        i === 0
+                          ? (e) => setEmail(e.target.value)
+                          : (e) => setSender(e.target.value)
+                      }
+                      key={'id_4_' + i}
+                    />
+                  );
+                })}
+                <Button
+                  className={classes.root3}
+                  variant="contained"
+                  onClick={() => sendEmailOnClick(entryData['title'])}
+                >
+                  Anmelden
+                </Button>
+              </form>
+            </React.Fragment>
           )}
           {isAuthenticatedEdit && (
             <div className="d-flex flex-row align-items-center mt-5">
