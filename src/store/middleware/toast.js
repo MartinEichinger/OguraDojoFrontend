@@ -31,6 +31,12 @@ const toasty = (store) => (next) => (action) => {
   } else if (action.type === 'events/eventDeleteFailed') {
     toast.error(`Termin nicht gelöscht - ${action.payload}`);
   }
+  // email sent
+  else if (action.type === 'email/emailSended') {
+    toast.success(`E-Mail erfolgreich gesendet`);
+  } else if (action.type === 'email/emailSentFailed') {
+    toast.error(`E-Mail nicht gesendet - ${action.payload}`);
+  }
   return next(action);
 };
 

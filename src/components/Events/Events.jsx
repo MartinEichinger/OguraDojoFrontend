@@ -2,48 +2,24 @@
 // eslint-disable-next-line
 import { jsx } from '@emotion/react';
 
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
-import { format } from 'date-fns';
-import { de } from 'date-fns/locale';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { EventContactForm } from '../EventContactForm/EventContactForm';
 import EventFormEditSave from '../EventFormEditSave/EventFormEditSave';
+import EventFormInfos from '../EventFormInfos/EventFormInfos';
 import { makeStyles } from '@material-ui/core/styles';
-import { updateEvent, createEvent, deleteEvent } from '../../store/events';
-//import { sendEmail } from '../../store/email';
+import { useCustomStyles } from './Events.style';
+import { useFormControls } from './Events.controls';
 
 const useStyles = makeStyles((theme) => ({
   root1: {
     '& > *': {
       margin: theme.spacing(1),
     },
-
-    '& .MuiInput-underline:after': {
-      borderBottomColor: 'rgba(0,0,0,1)',
-    },
-
     '& label': {
-      color: 'rgba(0,0,0,1)',
       fontWeight: 'bold',
-      '&.Mui-focused': {
-        color: 'rgba(0,0,0,1)',
-      },
-    },
-
-    '& .active': {
-      '& .MuiInput-underline:after': {
-        borderBottomColor: 'rgba(19,73,0,1)',
-      },
-
-      '& label': {
-        color: 'rgba(19,73,0,1)',
-        '&.Mui-focused': {
-          color: 'rgba(19,73,0,1)',
-        },
-      },
     },
   },
   root2: {
@@ -53,11 +29,6 @@ const useStyles = makeStyles((theme) => ({
 
     '& .MuiTextField-root': {
       width: '45%',
-    },
-
-    '& .MuiFormLabel-root.Mui-error, & .Mui-error:after': {
-      //color: 'green',
-      //borderBottomColor: 'green',
     },
   },
   root3: {
@@ -85,211 +56,59 @@ const useStyles = makeStyles((theme) => ({
 const Events = ({ events, colors, mq }) => {
   // constants
   const debug = true;
+  if (debug) console.log('Events : ', events, colors, mq);
 
   // state
   const isAuthenticated = useSelector((state) => state.auth.token !== null);
-  const [entryData, setEntryData] = useState(events[0]);
-  const [editData, setEditData] = useState(false);
-  const [changedData, setChangedData] = useState(events[0]);
-
-  const isAuthEdit = editData && isAuthenticated;
-  const isAuthenticatedNoEdit = !editData && isAuthenticated;
 
   // style
   const classes = useStyles();
-
-  if (debug) console.log('Events : ', events);
-  const style = {
-    width: '45%',
-    height: '100%',
-    fontFamily: 'Lato, sans-serif',
-    paddingTop: '3vh',
-    overflow: 'auto',
-
-    [mq[2]]: {
-      width: '90%',
-      marginBottom: '1vh',
-      height: '50%',
-    },
-
-    '&.schedule': {
-      borderRadius: '5px',
-      backgroundColor: 'rgba(255,255,255,0.5)',
-
-      '& .block': {
-        backgroundColor: 'rgba(255,255,255,0.5)',
-        marginBottom: '2vh',
-        borderRadius: '5px',
-        position: 'relative',
-        cursor: 'pointer',
-
-        '&:hover, &:active, &:focus, &.active': {
-          backgroundColor: colors.bgGreen50,
-        },
-
-        '& .date': {
-          marginLeft: '5%',
-          width: '25%',
-          //backgroundColor: colors.bgRed,
-        },
-
-        '& .details': {
-          height: '100%',
-          width: '70%',
-          padding: '1vh',
-
-          '& h3': {
-            fontSize: '2.5vh',
-            fontWeight: 'bold',
-          },
-
-          '& h4': {
-            fontSize: '1vh',
-            fontWeight: 'bold',
-            margin: '1vh',
-          },
-        },
-
-        '& h1': {
-          fontSize: '6vh',
-          color: 'rgba(255,255,255,1)',
-          lineHeight: '4vh',
-          marginBottom: '0px',
-          padding: '1vh 1vh 0.25vh 1vh',
-          textAlign: 'center',
-          textShadow: 'none',
-        },
-        '& h2': {
-          fontSize: '4vh',
-          color: 'rgba(255,255,255,1)',
-          lineHeight: '3vh',
-          marginBottom: '0px',
-          padding: '0.25vh 1vh 1vh 1vh',
-          textAlign: 'center',
-        },
-      },
-
-      '& button': {
-        position: 'absolute',
-        bottom: '5vh',
-        left: '7.5vh',
-      },
-    },
-
-    '&.detail': {
-      borderRadius: '5px',
-      backgroundColor: 'rgba(255,255,255,0.5)',
-      padding: '2vh',
-
-      '& h3': {
-        textDecoration: 'underline',
-        margin: '1vh 0vh',
-      },
-
-      '& i': {
-        cursor: 'pointer',
-      },
-
-      '& button': {
-        cursor: 'pointer',
-        borderRadius: '5px',
-        padding: '3px',
-        '&.red': {
-          border: `1px solid ${colors.bgRed}`,
-          color: 'white',
-        },
-        '&.green': {
-          border: `1px solid ${colors.bgGreen}`,
-          color: 'white',
-        },
-      },
-    },
-  };
+  const style = useCustomStyles({ mq, colors });
 
   // util data
   const month = ['JAN', 'FEB', 'MAR', 'APR', 'MAI', 'JUN', 'JUL', 'AUG', 'SEP', 'OKT', 'NOV', 'DEZ'];
 
-  const entries1 = [
-    ['title', 'Seminar'],
-    //['time', 'Zeit'],
-    ['date', 'Termin'],
-    ['location', 'Ort'],
-    //
-    ['organisator', 'Ausrichter/Trainer'],
-  ];
-  const entries2 = [
-    ['details', 'Weitere Infos'],
-    ['authorized', 'Berechtigt'],
-    ['cost', 'Gebühr'],
-  ];
-  const entries3 = [['other', 'Sonstiges']];
-  const entries4 = [
-    { name: 'email', label: 'E-Mail', id: '#email' },
-    { name: 'fullName', label: 'Name', id: '#fullName' },
+  const entries = [
+    // part I
+    { name: 'title', label: 'Seminar', id: '#title', val_length: 80 },
+    { name: 'date', label: 'Termin', id: '#date' },
+    { name: 'location', label: 'Ort', id: '#location', val_length: 80 },
+    { name: 'organisator', label: 'Ausrichter/Trainer', id: '#organisator', val_length: 80 },
+    // part II
+    { name: 'details', label: 'Weitere Infos', id: '#details', multiline: true, val_length: 511 },
+    { name: 'authorized', label: 'Berechtigt', id: '#authorized', val_length: 40 },
+    { name: 'cost', label: 'Gebühr', id: '#cost', val_length: 80 },
+    { name: 'other', label: 'Sonstiges', id: '#other', multiline: true, val_length: 511 },
+    // part III
+    { name: 'email', label: 'E-Mail', id: '#email', val_email: true },
+    { name: 'fullName', label: 'Name', id: '#fullName', val_length: 40 },
   ];
 
   // methods
-  const selectEvent = (item) => {
-    if (debug) console.log('Select event: ', item.title);
-    setEntryData(item);
-    setChangedData(item);
-  };
+  const {
+    newEvent,
+    selectEvent,
+    delEvent,
+    saveFormData,
+    onChangeEvent,
+    onChangeDate,
+    setEditData,
+    formIsValid,
+    handleFormSubmit,
+    editData,
+    entryData,
+    changedData,
+    errors,
+  } = useFormControls({
+    events,
+    entries,
+  });
 
-  const newEvent = () => {
-    const item = {
-      authorized: 'z.B. nur CRB Mitglieder',
-      date: '2021-01-01',
-      details: 'z.B. was ist mitzubringen oder Details zum Seminar',
-      id: 'none',
-      location: 'z.B. Traunreut, Sonnenschule',
-      organisator: 'z.B. Uli Geuder',
-      time: 'z.B. welcher Tag Start und Ende',
-      title: 'Neuer Event',
-    };
+  const isAuthEdit = editData && isAuthenticated;
+  const isAuthNoEdit = !editData && isAuthenticated;
 
-    if (debug) console.log('New event: ', item.title);
-    //setEntryData(item);
-    setChangedData(item);
-    setEditData(true);
-  };
-
-  const onChangeEvent = (id, attr, val) => {
-    if (debug) console.log('Events/onChangeEvent: ', id, attr, val);
-    //const [event2Change] = events.filter((item) => item.id === id);
-    const obj = {
-      ...changedData,
-      [attr]: val,
-    };
-
-    setChangedData(obj);
-  };
-
-  const dispatch = useDispatch();
-
-  const delData = (item) => {
-    dispatch(deleteEvent(item));
-  };
-
-  const saveFormData = (save) => {
-    setEditData(false);
-    if (save) {
-      if (debug) console.log('save data: ', changedData);
-      if (changedData['id'] === 'none') {
-        setEntryData(changedData);
-        dispatch(createEvent(changedData));
-      } else {
-        setEntryData(changedData);
-        dispatch(updateEvent(changedData));
-      }
-    } else {
-      if (debug) console.log('dont save data: ', entryData);
-      setChangedData(entryData);
-    }
-  };
   return (
     <React.Fragment>
-      {debug ? console.log('Events: ', entries4) : ''}
-
       {events.length > 0 && (
         <div className="schedule d-flex flex-column scroll_" css={style}>
           {events.map((item, i) => {
@@ -303,7 +122,9 @@ const Events = ({ events, colors, mq }) => {
                 <div className="details d-flex flex-column align-items-stretch justify-content-between">
                   <div className="d-flex flex-row justify-content-between align-items-center">
                     <h3 className="align-self-stretch">{item.title}</h3>
-                    {isAuthenticated && <i className="far red fa-trash-alt  mr-3" onClick={() => delData(item)}></i>}
+                    {isAuthenticated && (
+                      <i className="far red fa-trash-alt  mr-3" onClick={() => delEvent(item)}></i>
+                    )}
                   </div>
                   <div className="d-flex flex-row justify-content-start align-items-baseline">
                     <i className="fas fa-map-marker-alt red"></i>
@@ -322,7 +143,9 @@ const Events = ({ events, colors, mq }) => {
                 <div className="details d-flex flex-column align-items-stretch justify-content-between">
                   <div className="d-flex flex-row justify-content-between align-items-center">
                     <h3 className="align-self-stretch">{item.title}</h3>
-                    {isAuthenticated && <i className="far red fa-trash-alt mr-3" onClick={() => delData(item)}></i>}
+                    {isAuthenticated && (
+                      <i className="far red fa-trash-alt mr-3" onClick={() => delEvent(item)}></i>
+                    )}
                   </div>
                   <div className="d-flex flex-row justify-content-start align-items-baseline">
                     <i className="fas fa-map-marker-alt green"></i>
@@ -343,119 +166,38 @@ const Events = ({ events, colors, mq }) => {
       )}
       {events.length > 0 && (
         <div className="detail d-flex flex-column scroll_" css={style}>
-          <div className="d-flex flex-row align-items-center justify-content-between">
-            <h3>SEMINAR</h3>
-            {isAuthenticatedNoEdit && <i className="fas fa-edit red mr-5" onClick={() => setEditData(true)}></i>}
-          </div>
-          <form className={classes.root1}>
-            {entries1.map((x, i) => {
-              return isAuthEdit ? (
-                <TextField
-                  // eslint-disable-next-line
-                  className={'active' + ' id_1_' + i}
-                  id={'id_1_' + i}
-                  label={x[1]}
-                  value={
-                    x[1] === 'Termin'
-                      ? format(new Date(changedData[x[0]]), 'dd.MM.yyyy', {
-                          locale: de,
-                        })
-                      : changedData[x[0]]
-                  }
-                  key={'tf_' + i}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  onChange={(event) => onChangeEvent(entryData['id'], x[0], event.target.value)}
-                  fullWidth
-                />
-              ) : (
-                <TextField
-                  className={'id_1_' + i}
-                  id={'id_1_' + i}
-                  label={x[1]}
-                  value={
-                    x[1] === 'Termin'
-                      ? format(new Date(changedData[x[0]]), 'eeee, dd.MM.yyyy', { locale: de })
-                      : changedData[x[0]]
-                  }
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  key={'id_1_' + i}
-                  fullWidth
-                />
-              );
-            })}
-          </form>
-          <h3>Infos</h3>
-          <form className={classes.root1}>
-            {entries2.map((x, i) => {
-              return isAuthEdit ? (
-                <TextField
-                  multiline
-                  className={'id_2_' + (i + 5)}
-                  id={'id_2_' + i}
-                  label={x[1]}
-                  value={changedData[x[0]]}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  onChange={(event) => onChangeEvent(entryData['id'], x[0], event.target.value)}
-                  key={'id_2_' + i}
-                  fullWidth
-                />
-              ) : (
-                <TextField
-                  multiline
-                  className={'id_2_' + (i + 5)}
-                  id={'id_2_' + i}
-                  label={x[1]}
-                  value={entryData[x[0]]}
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  key={'id_2_' + i}
-                  fullWidth
-                />
-              );
-            })}
-          </form>
-          <h3>Sonstiges</h3>
-          <form className={classes.root1}>
-            {entries3.map((x, i) => {
-              return isAuthEdit ? (
-                <TextField
-                  multiline
-                  fullWidth
-                  className={'id_2_' + (i + 5)}
-                  id={'id_2_' + i}
-                  label={x[1]}
-                  value={changedData[x[0]]}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  onChange={(event) => onChangeEvent(entryData['id'], x[0], event.target.value)}
-                  key={'id_2_' + i}
-                />
-              ) : (
-                <TextField
-                  multiline
-                  fullWidth
-                  className={'id_2_' + (i + 5)}
-                  id={'id_2_' + i}
-                  label={x[1]}
-                  value={entryData[x[0]]}
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  key={'id_2_' + i}
-                />
-              );
-            })}
-          </form>
-          {!isAuthEdit && <EventContactForm style={classes.root2} inFieldVal={entries4} event={changedData['title']} />}
-          {isAuthEdit && <EventFormEditSave style={classes.root2} saveFormData={saveFormData} />}
+          <EventFormInfos
+            style={classes.root1}
+            inFieldVal={entries.slice(0, 8)}
+            isAuthEdit={isAuthEdit}
+            isAuthNoEdit={isAuthNoEdit}
+            setEditData={setEditData}
+            onChangeEvent={onChangeEvent}
+            onChangeDate={onChangeDate}
+            entryData={entryData}
+            changedData={changedData}
+            errors={errors}
+          />
+
+          {!isAuthEdit && (
+            <EventContactForm
+              style={classes.root2}
+              inFieldVal={entries.slice(8, 10)}
+              event={changedData.title}
+              value={changedData}
+              onChangeEvent={onChangeEvent}
+              errors={errors}
+              formIsValid={formIsValid}
+              handleFormSubmit={handleFormSubmit}
+            />
+          )}
+          {isAuthEdit && (
+            <EventFormEditSave
+              style={classes.root2}
+              saveFormData={saveFormData}
+              formIsValid={formIsValid}
+            />
+          )}
         </div>
       )}
     </React.Fragment>

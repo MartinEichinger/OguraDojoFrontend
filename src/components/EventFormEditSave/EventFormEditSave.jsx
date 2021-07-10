@@ -1,20 +1,25 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
 
-const EventFormEditSave = ({ saveFormData }) => {
-  const debug = false;
+const EventFormEditSave = ({ saveFormData, style, formIsValid }) => {
+  const debug = true;
 
-  if (debug) console.log('EventFromEditSave: ', saveFormData);
+  if (debug) console.log('EventFromEditSave: ', style);
 
   return (
-    <div className="d-flex flex-row align-items-center mt-5">
-      <Button variant="contained" color="primary" onClick={() => saveFormData(true)}>
+    <form className={style}>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => saveFormData(true)}
+        disabled={!formIsValid()}
+      >
         save
       </Button>
       <Button variant="contained" color="secondary" onClick={() => saveFormData(false)}>
         delete
       </Button>
-    </div>
+    </form>
   );
 };
 

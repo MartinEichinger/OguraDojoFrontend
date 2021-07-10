@@ -1,16 +1,16 @@
 import { Button, TextField } from '@material-ui/core';
 import React from 'react';
-import { useFormControls } from '../EventFormControls/EventFormControls';
 
-export const EventContactForm = ({ inFieldVal, style, event }) => {
-  const {
-    handleInputValue,
-    handleFormSubmit,
-    formIsValid,
-    getInputValue,
-    errors,
-  } = useFormControls();
-
+export const EventContactForm = ({
+  inFieldVal,
+  style,
+  event,
+  value,
+  onChangeEvent,
+  errors,
+  formIsValid,
+  handleFormSubmit,
+}) => {
   const debug = true;
 
   return (
@@ -22,16 +22,17 @@ export const EventContactForm = ({ inFieldVal, style, event }) => {
           return (
             <TextField
               key={index}
+              id={inputFieldValue.id}
               color="primary"
-              onChange={handleInputValue}
-              onBlur={handleInputValue}
+              onChange={(event) => onChangeEvent(inputFieldValue.name, event.target.value)}
+              onBlur={(event) => onChangeEvent(inputFieldValue.name, event.target.value)}
               name={inputFieldValue.name}
               label={inputFieldValue.label}
               error={errors[inputFieldValue.name]}
               multiline={inputFieldValue.multiline ?? false}
               fullWidth
               rows={inputFieldValue.rows ?? 1}
-              value={getInputValue(inputFieldValue.name)}
+              value={value[inputFieldValue.name]}
               {...(errors[inputFieldValue.name] && {
                 error: true,
                 helperText: errors[inputFieldValue.name],
