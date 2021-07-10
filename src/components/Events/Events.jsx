@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import { EventContactForm } from '../EventContactForm/EventContactForm';
 import EventFormEditSave from '../EventFormEditSave/EventFormEditSave';
 import EventFormInfos from '../EventFormInfos/EventFormInfos';
+import EventFormSchedule from '../EventFormSchedule/EventFormSchedule';
 import { makeStyles } from '@material-ui/core/styles';
 import { useCustomStyles } from './Events.style';
 import { useFormControls } from './Events.controls';
@@ -29,26 +30,6 @@ const useStyles = makeStyles((theme) => ({
 
     '& .MuiTextField-root': {
       width: '45%',
-    },
-  },
-  root3: {
-    '& > *': {
-      margin: theme.spacing(1),
-      //padding: theme.spacing(1),
-    },
-    //marginTop: '1vh',
-
-    '&.MuiButton-contained': {
-      backgroundColor: 'rgba(19, 73, 0, 1)',
-      color: 'rgba(255,255,255,0.87)',
-      fontSize: '1.75vh',
-      //fontWeight: 'bold',
-    },
-    '&.MuiButton-root': {
-      paddingRight: '1vh',
-      maxWidth: '150px',
-      //paddingLeft
-      marginLeft: '7.5px',
     },
   },
 }));
@@ -111,54 +92,20 @@ const Events = ({ events, colors, mq }) => {
     <React.Fragment>
       {events.length > 0 && (
         <div className="schedule d-flex flex-column scroll_" css={style}>
-          {events.map((item, i) => {
-            var d = new Date(item.date);
-            return i % 2 === 0 ? (
-              <div className="block d-flex flex-row" key={i} onClick={() => selectEvent(item)}>
-                <div className="date bgRed d-flex flex-column justify-content-center align-items-center">
-                  <h1>{d.getDate()}</h1>
-                  <h2>{month[d.getMonth()]}</h2>
-                </div>
-                <div className="details d-flex flex-column align-items-stretch justify-content-between">
-                  <div className="d-flex flex-row justify-content-between align-items-center">
-                    <h3 className="align-self-stretch">{item.title}</h3>
-                    {isAuthenticated && (
-                      <i className="far red fa-trash-alt  mr-3" onClick={() => delEvent(item)}></i>
-                    )}
-                  </div>
-                  <div className="d-flex flex-row justify-content-start align-items-baseline">
-                    <i className="fas fa-map-marker-alt red"></i>
-                    <h4 className="red">{item.location}</h4>
-                    <i className="fas fa-user"></i>
-                    <h4>{item.organisator}</h4>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div className="block d-flex flex-row" key={i} onClick={() => selectEvent(item)}>
-                <div className="date bgGreen d-flex flex-column justify-content-center align-items-center">
-                  <h1>{d.getDate()}</h1>
-                  <h2>{month[d.getMonth()]}</h2>
-                </div>
-                <div className="details d-flex flex-column align-items-stretch justify-content-between">
-                  <div className="d-flex flex-row justify-content-between align-items-center">
-                    <h3 className="align-self-stretch">{item.title}</h3>
-                    {isAuthenticated && (
-                      <i className="far red fa-trash-alt mr-3" onClick={() => delEvent(item)}></i>
-                    )}
-                  </div>
-                  <div className="d-flex flex-row justify-content-start align-items-baseline">
-                    <i className="fas fa-map-marker-alt green"></i>
-                    <h4 className="green">{item.location}</h4>
-                    <i className="fas fa-user"></i>
-                    <h4>{item.organisator}</h4>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          <EventFormSchedule
+            events={events}
+            month={month}
+            selectEvent={selectEvent}
+            delEvent={delEvent}
+            isAuthenticated={isAuthenticated}
+          />
           {isAuthenticated && (
-            <Button className={classes.root3} variant="contained" onClick={() => newEvent()}>
+            <Button
+              className={classes.root2}
+              variant="contained"
+              color="primary"
+              onClick={() => newEvent()}
+            >
               Neuer Event
             </Button>
           )}
