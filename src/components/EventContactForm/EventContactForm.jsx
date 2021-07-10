@@ -1,8 +1,8 @@
 import { Button, TextField } from '@material-ui/core';
 import React from 'react';
-import { useFormControls } from './EventContactFormControls';
+import { useFormControls } from '../EventFormControls/EventFormControls';
 
-export const EventContactForm = ({ inputFieldValues, style, event }) => {
+export const EventContactForm = ({ inFieldVal, style, event }) => {
   const {
     handleInputValue,
     handleFormSubmit,
@@ -15,10 +15,10 @@ export const EventContactForm = ({ inputFieldValues, style, event }) => {
 
   return (
     <React.Fragment>
-      {debug ? console.log('ContactForm: ', inputFieldValues) : ''}
+      {debug ? console.log('ContactForm: ', inFieldVal) : ''}
       <h3>ANMELDUNG</h3>
       <form autoComplete="off" className={style}>
-        {inputFieldValues.map((inputFieldValue, index) => {
+        {inFieldVal.map((inputFieldValue, index) => {
           return (
             <TextField
               key={index}

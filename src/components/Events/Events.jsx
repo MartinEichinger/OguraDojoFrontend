@@ -10,6 +10,7 @@ import { de } from 'date-fns/locale';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { EventContactForm } from '../EventContactForm/EventContactForm';
+import EventFormEditSave from '../EventFormEditSave/EventFormEditSave';
 import { makeStyles } from '@material-ui/core/styles';
 import { updateEvent, createEvent, deleteEvent } from '../../store/events';
 //import { sendEmail } from '../../store/email';
@@ -91,7 +92,7 @@ const Events = ({ events, colors, mq }) => {
   const [editData, setEditData] = useState(false);
   const [changedData, setChangedData] = useState(events[0]);
 
-  const isAuthenticatedEdit = editData && isAuthenticated;
+  const isAuthEdit = editData && isAuthenticated;
   const isAuthenticatedNoEdit = !editData && isAuthenticated;
 
   // style
@@ -206,20 +207,7 @@ const Events = ({ events, colors, mq }) => {
   };
 
   // util data
-  const month = [
-    'JAN',
-    'FEB',
-    'MAR',
-    'APR',
-    'MAI',
-    'JUN',
-    'JUL',
-    'AUG',
-    'SEP',
-    'OKT',
-    'NOV',
-    'DEZ',
-  ];
+  const month = ['JAN', 'FEB', 'MAR', 'APR', 'MAI', 'JUN', 'JUL', 'AUG', 'SEP', 'OKT', 'NOV', 'DEZ'];
 
   const entries1 = [
     ['title', 'Seminar'],
@@ -278,7 +266,11 @@ const Events = ({ events, colors, mq }) => {
 
   const dispatch = useDispatch();
 
-  const saveData = (save) => {
+  const delData = (item) => {
+    dispatch(deleteEvent(item));
+  };
+
+  const saveFormData = (save) => {
     setEditData(false);
     if (save) {
       if (debug) console.log('save data: ', changedData);
@@ -294,11 +286,6 @@ const Events = ({ events, colors, mq }) => {
       setChangedData(entryData);
     }
   };
-
-  const delData = (item) => {
-    dispatch(deleteEvent(item));
-  };
-
   return (
     <React.Fragment>
       {debug ? console.log('Events: ', entries4) : ''}
@@ -308,11 +295,7 @@ const Events = ({ events, colors, mq }) => {
           {events.map((item, i) => {
             var d = new Date(item.date);
             return i % 2 === 0 ? (
-              <div
-                className="block d-flex flex-row"
-                key={i}
-                onClick={() => selectEvent(item)}
-              >
+              <div className="block d-flex flex-row" key={i} onClick={() => selectEvent(item)}>
                 <div className="date bgRed d-flex flex-column justify-content-center align-items-center">
                   <h1>{d.getDate()}</h1>
                   <h2>{month[d.getMonth()]}</h2>
@@ -320,12 +303,7 @@ const Events = ({ events, colors, mq }) => {
                 <div className="details d-flex flex-column align-items-stretch justify-content-between">
                   <div className="d-flex flex-row justify-content-between align-items-center">
                     <h3 className="align-self-stretch">{item.title}</h3>
-                    {isAuthenticated && (
-                      <i
-                        className="far red fa-trash-alt  mr-3"
-                        onClick={() => delData(item)}
-                      ></i>
-                    )}
+                    {isAuthenticated && <i className="far red fa-trash-alt  mr-3" onClick={() => delData(item)}></i>}
                   </div>
                   <div className="d-flex flex-row justify-content-start align-items-baseline">
                     <i className="fas fa-map-marker-alt red"></i>
@@ -336,11 +314,7 @@ const Events = ({ events, colors, mq }) => {
                 </div>
               </div>
             ) : (
-              <div
-                className="block d-flex flex-row"
-                key={i}
-                onClick={() => selectEvent(item)}
-              >
+              <div className="block d-flex flex-row" key={i} onClick={() => selectEvent(item)}>
                 <div className="date bgGreen d-flex flex-column justify-content-center align-items-center">
                   <h1>{d.getDate()}</h1>
                   <h2>{month[d.getMonth()]}</h2>
@@ -348,12 +322,7 @@ const Events = ({ events, colors, mq }) => {
                 <div className="details d-flex flex-column align-items-stretch justify-content-between">
                   <div className="d-flex flex-row justify-content-between align-items-center">
                     <h3 className="align-self-stretch">{item.title}</h3>
-                    {isAuthenticated && (
-                      <i
-                        className="far red fa-trash-alt mr-3"
-                        onClick={() => delData(item)}
-                      ></i>
-                    )}
+                    {isAuthenticated && <i className="far red fa-trash-alt mr-3" onClick={() => delData(item)}></i>}
                   </div>
                   <div className="d-flex flex-row justify-content-start align-items-baseline">
                     <i className="fas fa-map-marker-alt green"></i>
@@ -366,11 +335,7 @@ const Events = ({ events, colors, mq }) => {
             );
           })}
           {isAuthenticated && (
-            <Button
-              className={classes.root3}
-              variant="contained"
-              onClick={() => newEvent()}
-            >
+            <Button className={classes.root3} variant="contained" onClick={() => newEvent()}>
               Neuer Event
             </Button>
           )}
@@ -380,16 +345,11 @@ const Events = ({ events, colors, mq }) => {
         <div className="detail d-flex flex-column scroll_" css={style}>
           <div className="d-flex flex-row align-items-center justify-content-between">
             <h3>SEMINAR</h3>
-            {isAuthenticatedNoEdit && (
-              <i
-                className="fas fa-edit red mr-5"
-                onClick={() => setEditData(true)}
-              ></i>
-            )}
+            {isAuthenticatedNoEdit && <i className="fas fa-edit red mr-5" onClick={() => setEditData(true)}></i>}
           </div>
           <form className={classes.root1}>
             {entries1.map((x, i) => {
-              return isAuthenticatedEdit ? (
+              return isAuthEdit ? (
                 <TextField
                   // eslint-disable-next-line
                   className={'active' + ' id_1_' + i}
@@ -406,9 +366,7 @@ const Events = ({ events, colors, mq }) => {
                   InputLabelProps={{
                     shrink: true,
                   }}
-                  onChange={(event) =>
-                    onChangeEvent(entryData['id'], x[0], event.target.value)
-                  }
+                  onChange={(event) => onChangeEvent(entryData['id'], x[0], event.target.value)}
                   fullWidth
                 />
               ) : (
@@ -418,11 +376,7 @@ const Events = ({ events, colors, mq }) => {
                   label={x[1]}
                   value={
                     x[1] === 'Termin'
-                      ? format(
-                          new Date(changedData[x[0]]),
-                          'eeee, dd.MM.yyyy',
-                          { locale: de }
-                        )
+                      ? format(new Date(changedData[x[0]]), 'eeee, dd.MM.yyyy', { locale: de })
                       : changedData[x[0]]
                   }
                   InputProps={{
@@ -437,7 +391,7 @@ const Events = ({ events, colors, mq }) => {
           <h3>Infos</h3>
           <form className={classes.root1}>
             {entries2.map((x, i) => {
-              return isAuthenticatedEdit ? (
+              return isAuthEdit ? (
                 <TextField
                   multiline
                   className={'id_2_' + (i + 5)}
@@ -447,9 +401,7 @@ const Events = ({ events, colors, mq }) => {
                   InputLabelProps={{
                     shrink: true,
                   }}
-                  onChange={(event) =>
-                    onChangeEvent(entryData['id'], x[0], event.target.value)
-                  }
+                  onChange={(event) => onChangeEvent(entryData['id'], x[0], event.target.value)}
                   key={'id_2_' + i}
                   fullWidth
                 />
@@ -472,7 +424,7 @@ const Events = ({ events, colors, mq }) => {
           <h3>Sonstiges</h3>
           <form className={classes.root1}>
             {entries3.map((x, i) => {
-              return isAuthenticatedEdit ? (
+              return isAuthEdit ? (
                 <TextField
                   multiline
                   fullWidth
@@ -483,9 +435,7 @@ const Events = ({ events, colors, mq }) => {
                   InputLabelProps={{
                     shrink: true,
                   }}
-                  onChange={(event) =>
-                    onChangeEvent(entryData['id'], x[0], event.target.value)
-                  }
+                  onChange={(event) => onChangeEvent(entryData['id'], x[0], event.target.value)}
                   key={'id_2_' + i}
                 />
               ) : (
@@ -504,23 +454,8 @@ const Events = ({ events, colors, mq }) => {
               );
             })}
           </form>
-          {!isAuthenticatedEdit && (
-            <EventContactForm
-              inputFieldValues={entries4}
-              style={classes.root2}
-              event={changedData['title']}
-            />
-          )}
-          {isAuthenticatedEdit && (
-            <div className="d-flex flex-row align-items-center mt-5">
-              <button className="green mr-1" onClick={() => saveData(true)}>
-                save
-              </button>
-              <button className="red mr-5" onClick={() => saveData(false)}>
-                delete
-              </button>
-            </div>
-          )}
+          {!isAuthEdit && <EventContactForm style={classes.root2} inFieldVal={entries4} event={changedData['title']} />}
+          {isAuthEdit && <EventFormEditSave style={classes.root2} saveFormData={saveFormData} />}
         </div>
       )}
     </React.Fragment>
