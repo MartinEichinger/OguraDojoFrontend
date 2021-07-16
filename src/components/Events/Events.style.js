@@ -43,7 +43,7 @@ export const useCustomStyles = ({ mq, colors }) => {
           padding: '1vh',
 
           '& h3': {
-            fontSize: '2.5vh',
+            fontSize: '2.1vh',
             fontWeight: 'bold',
           },
 
@@ -75,8 +75,8 @@ export const useCustomStyles = ({ mq, colors }) => {
 
       '& button': {
         position: 'absolute',
-        bottom: '5vh',
-        left: '7.5vh',
+        bottom: '3.5vh',
+        left: '3.5vh',
       },
     },
 

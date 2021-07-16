@@ -56,10 +56,10 @@ const Events = ({ events, colors, mq }) => {
     { name: 'location', label: 'Ort', id: '#location', val_length: 80 },
     { name: 'organisator', label: 'Ausrichter/Trainer', id: '#organisator', val_length: 80 },
     // part II
-    { name: 'details', label: 'Weitere Infos', id: '#details', multiline: true, val_length: 511 },
+    { name: 'details', label: 'Weitere Infos', id: '#details', multiline: true, val_length: 2047 },
     { name: 'authorized', label: 'Berechtigt', id: '#authorized', val_length: 40 },
     { name: 'cost', label: 'Gebühr', id: '#cost', val_length: 80 },
-    { name: 'other', label: 'Sonstiges', id: '#other', multiline: true, val_length: 511 },
+    { name: 'other', label: 'Sonstiges', id: '#other', multiline: true, val_length: 1023 },
     // part III
     { name: 'email', label: 'E-Mail', id: '#email', val_email: true },
     { name: 'fullName', label: 'Name', id: '#fullName', val_length: 40 },

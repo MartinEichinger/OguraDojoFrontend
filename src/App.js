@@ -57,6 +57,8 @@ class App extends Component {
       bgGreen50: 'rgba(10, 121, 0, 0.5)',
       bgGreen: 'rgba(10, 121, 0, 1)', //HSL: 115, 100, 24 //#0A7900
       bgGrey: 'rgba(232, 232, 232, 1)',
+      bgWhite50: 'rgba(255,255,255,0.5)',
+      bgWhite75: 'rgba(255,255,255,0.75)',
       bgWhite: 'rgba(255,255,255,1)',
       bgRed: 'rgba(121, 0, 0, 1)', //HSL: 0, 100, 24 //#790000
       typoGrey: 'rgba(64, 64, 64, 1)',
@@ -89,8 +91,7 @@ class App extends Component {
         img: 'main_taiji.png',
         modal: '#idModalTaiji',
         heading: 'Taiji Quan',
-        headingTwo:
-          '„Je höher der Grad  der Entspannung, desto höher ist die Kampfkunst“',
+        headingTwo: '„Je höher der Grad  der Entspannung, desto höher ist die Kampfkunst“',
         para: 'Aus sanften und weichen Übungen entsteht Härte; aus langsamen Übungen entsteht Schnelligkeit; aus Entspannung entsteht Kraft. Das kann nicht jeder so akzeptieren. Mit anderen Worten: Sanft zähmt hart; aus langsam entsteht schnell; mit Schwäche das Stärkere bewältigen.',
         keywords: 'Yang Taiji - Chen Taiji - Faust - Schwert - Fächer',
         pos: '50% 20%',
@@ -115,8 +116,7 @@ class App extends Component {
           { head: 'Karate', day: 'Mittwoch', time: '17:00 - 18:30' },
           { head: 'Karate', day: 'Freitag', time: '20:00 - 22:00' },
         ],
-        keywords:
-          'Sonnenschule Traunreut - Martin-Luther-Straße - 83301 Traunreut',
+        keywords: 'Sonnenschule Traunreut - Martin-Luther-Straße - 83301 Traunreut',
         pos: '65% 40%',
       },
     ];
@@ -134,15 +134,7 @@ class App extends Component {
   renderCards = () => {
     if (this.debug) console.log('App/renderCards');
     return this.contentCards.map((content, i) => {
-      return (
-        <CardsKarate
-          props={content}
-          colors={this.colors}
-          mq={this.mq}
-          keys={i}
-          key={i}
-        />
-      );
+      return <CardsKarate props={content} colors={this.colors} mq={this.mq} keys={i} key={i} />;
     });
   };
 
@@ -152,21 +144,9 @@ class App extends Component {
     return (
       <div className="App d-flex flex-column" css={this.styleApp}>
         <ToastContainer />
-        <Navigation
-          colors={this.colors}
-          select={this.selectpage}
-          mq={this.mq}
-        />
-        <ModalKarate
-          colors={this.colors}
-          page={this.state.pageKarate}
-          mq={this.mq}
-        />
-        <ModalTraining
-          colors={this.colors}
-          page={this.state.pageTraining}
-          mq={this.mq}
-        />
+        <Navigation colors={this.colors} select={this.selectpage} mq={this.mq} />
+        <ModalKarate colors={this.colors} page={this.state.pageKarate} mq={this.mq} />
+        <ModalTraining colors={this.colors} page={this.state.pageTraining} mq={this.mq} />
         <ModalBlog colors={this.colors} mq={this.mq} />
         <ModalEvents colors={this.colors} mq={this.mq} />
         <ModalLogin />

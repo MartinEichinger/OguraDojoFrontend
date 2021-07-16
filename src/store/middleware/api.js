@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as actions from '../api';
 
-const debug = false;
+const debug = true;
 const baseURL = process.env.REACT_APP_BACKEND_PATH;
 
 const api =
