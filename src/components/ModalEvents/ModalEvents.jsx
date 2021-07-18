@@ -61,35 +61,6 @@ class ModalEvents extends Component {
       },
     };
 
-    /* this.styleContent = {
-      '& .cards': {
-        marginLeft: '2vh',
-        padding: '1vh',
-
-        '& .body': {
-          height: '300px',
-          width: '250px',
-          borderRadius: '5px',
-          position: 'relative',
-          margin: '5px',
-
-          '& .image': {
-            width: '100%',
-            height: '55%',
-            borderRadius: '5px',
-            //backgroundImage: "url(./training_pic_2.png)",
-          },
-
-          '& .text': {
-            width: '100%',
-            height: '40%',
-            borderRadius: '5px',
-            backgroundColor: 'rgba(0,0,0,0.7)',
-          },
-        },
-      },
-    }; */
-
     this.configNav = {
       upDown: 0,
       pagItems: 4,
@@ -105,13 +76,7 @@ class ModalEvents extends Component {
   render() {
     this.isAuthenticated = this.props.isAuthenticated;
     if (this.debug)
-      console.log(
-        'ModalEvents/render',
-        this.stats,
-        this.props,
-        this.content,
-        this.isAuthenticated
-      );
+      console.log('ModalEvents/render', this.stats, this.props, this.content, this.isAuthenticated);
 
     return (
       <React.Fragment>
