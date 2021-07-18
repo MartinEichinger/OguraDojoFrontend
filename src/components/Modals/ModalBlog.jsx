@@ -85,7 +85,7 @@ class ModalBlog extends Component {
           tags: 'Prof. Ding, Panzi Gong, Gesundheitsübung',
           header: 'Rezension Gesundheitsübung mit der Tellerdrehung',
           detail: 'Rezension erschienen im TAIJIQUAN & QIGONG JOURNAL.',
-          img: 'main_panzigong.png',
+          img: 'main_panzigong.jpg',
           imgPos: '10% 0%',
           link: '/blog/Rep_Rezension_PanZiGong.pdf',
         },
@@ -144,11 +144,7 @@ class ModalBlog extends Component {
                   mq={this.mq}
                 />
                 {/* eslint-disable-next-line */}
-                <ModalComp_L1_Blog
-                  colors={this.props.colors}
-                  content={this.content}
-                  mq={this.mq}
-                />
+                <ModalComp_L1_Blog colors={this.props.colors} content={this.content} mq={this.mq} />
               </div>
             </div>
           </div>

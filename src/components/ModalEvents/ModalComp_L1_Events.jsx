@@ -50,7 +50,7 @@ const ModalComp_L1_Events = ({ colors, content, mq, isAuthenticated }) => {
             marginTop: '2vh',
             height: '86vh',
             width: 'calc(100% - 51px)',
-            backgroundImage: 'url(./main_panzigong.png)',
+            backgroundImage: 'url(./main_panzigong.jpg)',
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             borderRadius: '5px',
@@ -90,9 +90,7 @@ const ModalComp_L1_Events = ({ colors, content, mq, isAuthenticated }) => {
             {isAuthenticated && <i className="fas fa-edit red mr-5"></i>}
           </div>
           <div className="tables d-flex flex-column flex-lg-row flex-lg-wrap align-items-center align-items-lg-stretch justify-content-lg-around ">
-            {events.length > 0 && (
-              <Events events={events} colors={colors} mq={mq} />
-            )}
+            {events.length > 0 && <Events events={events} colors={colors} mq={mq} />}
           </div>
         </div>
       </div>

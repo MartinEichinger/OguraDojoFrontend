@@ -69,7 +69,7 @@ class App extends Component {
 
     this.contentCards = [
       {
-        img: 'main_karate.png',
+        img: 'main_karate.jpg',
         modal: '#idModalKarate',
         heading: 'Tengu Ryu Karate',
         headingTwo: '„Es ablehnen zu kämpfen, es ablehnen zu unterliegen...“',
@@ -79,7 +79,7 @@ class App extends Component {
         pos: '50% 20%',
       },
       {
-        img: 'main_panzigong.png',
+        img: 'main_panzigong.jpg',
         modal: '#idModalPanziGong',
         heading: 'Panzi Gong',
         headingTwo: '„Gesundheitsübung mit der Tellerdrehung“',
@@ -88,7 +88,7 @@ class App extends Component {
         pos: '50% 20%',
       },
       {
-        img: 'main_taiji.png',
+        img: 'main_taiji.jpg',
         modal: '#idModalTaiji',
         heading: 'Taiji Quan',
         headingTwo: '„Je höher der Grad  der Entspannung, desto höher ist die Kampfkunst“',
@@ -97,7 +97,7 @@ class App extends Component {
         pos: '50% 20%',
       },
       {
-        img: 'main_qigong.png',
+        img: 'main_qigong.jpg',
         modal: '#idModalQigong',
         heading: 'Qigong',
         headingTwo: '„Wenn man leben will, muss man sich auch bewegen.“',
@@ -106,7 +106,7 @@ class App extends Component {
         pos: '65% 40%',
       },
       {
-        img: 'main_training.png',
+        img: 'main_training.jpg',
         modal: '#idModalTraining',
         heading: 'Training',
         headingTwo: '- Beginn / Probetraining jederzeit möglich -',

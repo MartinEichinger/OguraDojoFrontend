@@ -32,7 +32,7 @@ const ModalTrainingWir = ({ contentWir, mq, colors }) => {
           '& .bg-training': {
             height: '90vh',
             width: 'calc(100% - 51px)',
-            backgroundImage: 'url(./training_pic_1.png)',
+            backgroundImage: 'url(./training_pic_1.jpg)',
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             borderRadius: '5px',
@@ -137,20 +137,14 @@ const ModalTrainingWir = ({ contentWir, mq, colors }) => {
         <div className="modal-up">
           <div className="bg-training"></div>
           <h1 className="big">{contentWir.title}</h1>
-          <div
-            className="table_ d-flex flex-column justify-content-around"
-            css={style}
-          >
+          <div className="table_ d-flex flex-column justify-content-around" css={style}>
             <div className="rect h31 scroll_">
               <p className="mb-2">{contentWir.text}</p>
             </div>
             <div className="cards d-flex flex-row flex-wrap justify-content-around h40 scroll_">
               {contentWir.tabs.map((item, i) => {
                 return (
-                  <div
-                    className="body d-flex flex-column justify-content-between"
-                    key={i}
-                  >
+                  <div className="body d-flex flex-column justify-content-between" key={i}>
                     <div
                       className="image"
                       style={{
@@ -161,9 +155,7 @@ const ModalTrainingWir = ({ contentWir, mq, colors }) => {
                     <div className="text d-flex flex-column align-items-center">
                       <h2>{item.head1}</h2>
                       <h5>{item.head2}</h5>
-                      <p className="white text-center mb-2 small">
-                        {item.head3}
-                      </p>
+                      <p className="white text-center mb-2 small">{item.head3}</p>
                       <img src="email_24px_outlined.png" alt="" />
                     </div>
                   </div>

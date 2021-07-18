@@ -37,7 +37,7 @@ const ModalTrainingTraining = ({ contentTraining, mq, colors }) => {
           '& .bg-training': {
             height: '90vh',
             width: 'calc(100% - 51px)',
-            backgroundImage: 'url(./training_pic_1.png)',
+            backgroundImage: 'url(./training_pic_1.jpg)',
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             borderRadius: '5px',
@@ -127,14 +127,8 @@ const ModalTrainingTraining = ({ contentTraining, mq, colors }) => {
           <div className="table d-flex flex-column justify-content-between">
             <CompRoundRectSchedule schedule={contentTraining.schedule} />
             <CompRoundRectMap map={contentTraining.map} style={styleTraining} />
-            <CompRoundRectText
-              text={contentTraining.text}
-              style={styleTraining}
-            />
-            <CompRoundRectList
-              list={contentTraining.beitrag}
-              style={styleTraining}
-            />
+            <CompRoundRectText text={contentTraining.text} style={styleTraining} />
+            <CompRoundRectList list={contentTraining.beitrag} style={styleTraining} />
           </div>
         </div>
       </div>
