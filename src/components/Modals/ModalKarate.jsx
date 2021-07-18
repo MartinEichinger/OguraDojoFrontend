@@ -160,49 +160,49 @@ class ModalKarate extends Component {
                 },
 
                 '& .num1': {
-                  backgroundImage: 'url(karate_pic_1.png)',
+                  backgroundImage: 'url(karate_pic_1.jpg)',
                 },
                 '& .num2': {
-                  backgroundImage: 'url(karate_pic_2.png)',
+                  backgroundImage: 'url(karate_pic_2.jpg)',
                 },
                 '& .num3': {
-                  backgroundImage: 'url(karate_pic_3.png)',
+                  backgroundImage: 'url(karate_pic_3.jpg)',
                 },
                 '& .num4': {
-                  backgroundImage: 'url(karate_pic_4.png)',
+                  backgroundImage: 'url(karate_pic_4.jpg)',
                 },
                 '& .num5': {
-                  backgroundImage: 'url(karate_pic_5.png)',
+                  backgroundImage: 'url(karate_pic_5.jpg)',
                 },
                 '& .num6': {
-                  backgroundImage: 'url(karate_pic_6.png)',
+                  backgroundImage: 'url(karate_pic_6.jpg)',
                 },
                 '& .num7': {
-                  backgroundImage: 'url(karate_pic_7.png)',
+                  backgroundImage: 'url(karate_pic_7.jpg)',
                 },
                 '& .num8': {
-                  backgroundImage: 'url(karate_pic_8.png)',
+                  backgroundImage: 'url(karate_pic_8.jpg)',
                 },
                 '& .num9': {
-                  backgroundImage: 'url(karate_pic_9.png)',
+                  backgroundImage: 'url(karate_pic_9.jpg)',
                 },
                 '& .num10': {
-                  backgroundImage: 'url(karate_pic_10.png)',
+                  backgroundImage: 'url(karate_pic_10.jpg)',
                 },
                 '& .num11': {
-                  backgroundImage: 'url(karate_pic_11.png)',
+                  backgroundImage: 'url(karate_pic_11.jpg)',
                 },
                 '& .num12': {
-                  backgroundImage: 'url(karate_pic_12.png)',
+                  backgroundImage: 'url(karate_pic_12.jpg)',
                 },
                 '& .num13': {
-                  backgroundImage: 'url(karate_pic_13.png)',
+                  backgroundImage: 'url(karate_pic_13.jpg)',
                 },
                 '& .num14': {
-                  backgroundImage: 'url(karate_pic_14.png)',
+                  backgroundImage: 'url(karate_pic_14.jpg)',
                 },
                 '& .num15': {
-                  backgroundImage: 'url(karate_pic_15.png)',
+                  backgroundImage: 'url(karate_pic_15.jpg)',
                 },
               },
 
