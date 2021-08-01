@@ -164,9 +164,7 @@ const ModalInNavigation = ({ clickUpDown, nextItem, colors, config, mq, apdx }) 
       })}
       {config?.upDown ? (
         <div
-          className={
-            'arrow d-flex align-items-center justify-content-center active ' + `downArrow${apdx}`
-          }
+          className={'arrow d-flex align-items-center justify-content-center active downArrow' + apdx}
           onClick={(e) => clickUpDown('down')}
         >
           <img src="arrow_white_down.png" alt="" />
