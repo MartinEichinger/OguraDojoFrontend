@@ -11,7 +11,7 @@ export const EventContactForm = ({
   formIsValid,
   handleFormSubmit,
 }) => {
-  const debug = true;
+  const debug = false;
 
   return (
     <React.Fragment>

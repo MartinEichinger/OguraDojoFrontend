@@ -1,8 +1,6 @@
-import React from 'react';
-
 const CompRoundRectMap = ({ map }) => {
   return (
-    <React.Fragment>
+    <div className={'item align-items-center d-flex flex-md-row flex-column justify-content-between'}>
       <div className="circle d-flex flex-row align-items-center justify-content-center">
         <img src="wo_24px_outlined.svg" alt="" />
         <p className="red bold">{map.title}</p>
@@ -22,7 +20,7 @@ const CompRoundRectMap = ({ map }) => {
           ></iframe>
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

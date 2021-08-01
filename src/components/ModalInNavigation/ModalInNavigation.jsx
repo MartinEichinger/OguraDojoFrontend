@@ -4,33 +4,27 @@ import { jsx } from '@emotion/react';
 
 import React from 'react';
 
-const ModalInNavigation = ({
-  clickUpDown,
-  nextItem,
-  colors,
-  config,
-  mq,
-  apdx,
-}) => {
+const ModalInNavigation = ({ clickUpDown, nextItem, colors, config, mq, apdx }) => {
   const styleInNav = {
-    position: 'absolute',
-    width: '47px',
-    height: 'calc(90vh + 30px)',
+    //position: 'absolute',
+    //width: '47px',
+    //top: '5vh',
+    //height: '90vh',
     zIndex: '1052',
-    right: '2px',
+    //right: '2px',
     backgroundColor: colors.bgWhite,
     borderRadius: '45px',
 
     [mq[2]]: {
-      width: '35px',
+      //width: '35px',
     },
 
     [mq[1]]: {
-      width: '30px',
+      //width: '30px',
     },
 
     [mq[0]]: {
-      width: '25px',
+      //width: '25px',
     },
 
     '& .btn-close': {
@@ -147,10 +141,7 @@ const ModalInNavigation = ({
       </button>
       {config?.upDown ? (
         <div
-          className={
-            'arrow d-flex align-items-center justify-content-center ' +
-            `upArrow${apdx}`
-          }
+          className={'arrow d-flex align-items-center justify-content-center upArrow' + apdx}
           onClick={(e) => clickUpDown('up')}
         >
           <img src="arrow_white_up.png" alt="" />
@@ -174,8 +165,7 @@ const ModalInNavigation = ({
       {config?.upDown ? (
         <div
           className={
-            'arrow d-flex align-items-center justify-content-center active ' +
-            `downArrow${apdx}`
+            'arrow d-flex align-items-center justify-content-center active ' + `downArrow${apdx}`
           }
           onClick={(e) => clickUpDown('down')}
         >

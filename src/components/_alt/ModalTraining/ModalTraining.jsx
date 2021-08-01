@@ -37,35 +37,35 @@ class ModalTraining extends ModalClassBasis {
           head1: 'Johann Boxler',
           head2: '1ter Kassier',
           head3: '3. KYU Tengu Ryu',
-          img: 'url(./wir_pic_jb_2.jpg)',
+          img: 'url(./avatar_nopic.jpg)',
           img_pos: '50% 30%',
         },
         {
           head1: 'Alex Callegari',
           head2: 'Trainer Karate.Taiji.Qigong',
           head3: '6. DAN Tengu Ryu',
-          img: 'url(./wir_pic_ac_2.jpg)',
+          img: 'url(./training_pic_2.png)',
           img_pos: '50% 30%',
         },
         {
           head1: 'Ulrike Geuder',
           head2: '2ter Vorstand.Trainerin Karate',
           head3: '5. DAN Tengu Ryu',
-          img: 'url(./wir_pic_ug_2.jpg)',
+          img: 'url(./training_pic_3.png)',
           img_pos: '50% 10%',
         },
         {
           head1: 'Hans-Jürgen Groiß',
           head2: '1ter Vorstand',
           head3: '2. KYU Tengu Ryu',
-          img: 'url(./wir_pic_hjg_2.jpg)',
+          img: 'url(./avatar_nopic.jpg)',
           img_pos: '50% 30%',
         },
         {
           head1: 'Alex Hetzner',
           head2: 'Schriftführer',
           head3: '1. KYU Tengu Ryu',
-          img: 'url(./wir_pic_ah_2.jpg)',
+          img: 'url(./avatar_nopic.jpg)',
           img_pos: '50% 30%',
         },
         {
@@ -79,7 +79,7 @@ class ModalTraining extends ModalClassBasis {
           head1: 'Erika Rudl',
           head2: 'Trainerin Karate.Kinder.Jugendliche',
           head3: '1. DAN Tengu Ryu',
-          img: 'url(./wir_pic_er_2.jpg)',
+          img: 'url(./avatar_nopic.jpg)',
           img_pos: '50% 30%',
         },
       ],
@@ -147,8 +147,8 @@ class ModalTraining extends ModalClassBasis {
   }
 
   render() {
-    if (this.debug) console.log('ModalTraining/render', this.state.width, this.state.height);
-    this.updateHxMT();
+    if (this.debug) console.log('ModalTraining/render', this.stats, this.props);
+    this.updateHx();
 
     return (
       <React.Fragment>

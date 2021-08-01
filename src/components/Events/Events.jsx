@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Events = ({ events, colors, mq }) => {
   // constants
-  const debug = true;
+  const debug = false;
   if (debug) console.log('Events : ', events, colors, mq);
 
   // state

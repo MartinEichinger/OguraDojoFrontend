@@ -1,8 +1,6 @@
-import React from 'react';
-
 const CompRoundRectList = ({ list }) => {
   return (
-    <React.Fragment>
+    <div className={'item align-items-center d-flex flex-md-row flex-column justify-content-between'}>
       <div className="circle d-flex flex-row align-items-center justify-content-center">
         <img src="geld_24px_outlined.svg" alt="" />
         <p className="red bold">{list.title}</p>
@@ -24,7 +22,7 @@ const CompRoundRectList = ({ list }) => {
           })}
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

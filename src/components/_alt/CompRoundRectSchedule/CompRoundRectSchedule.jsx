@@ -1,8 +1,6 @@
-import React from 'react';
-
 const CompRoundRectSchedule = ({ schedule }) => {
   return (
-    <React.Fragment>
+    <div className={'item align-items-center d-flex flex-md-row flex-column justify-content-between'}>
       <div className="circle d-flex flex-row align-items-center justify-content-center">
         <img src="wann_24px_outlined.svg" alt="" />
         <p className="red bold">{schedule.title}</p>
@@ -24,7 +22,7 @@ const CompRoundRectSchedule = ({ schedule }) => {
           );
         })}
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

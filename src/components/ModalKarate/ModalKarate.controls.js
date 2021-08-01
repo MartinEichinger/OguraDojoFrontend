@@ -4,9 +4,9 @@ class ModalClassBasis extends ModalClassStyle {
   componentDidMount() {
     if (this.debug) console.log('ModalKarate/compDidMount');
     //window.addEventListener('scroll', this.handleScroll);
-    window.addEventListener('resize', this.updateDimensions);
-    document.getElementById('idModalKarate').addEventListener('shown.bs.modal', this.onShowModal);
-    document.getElementById('idModalKarate').addEventListener('hidden.bs.modal', this.onHideModal);
+    window.addEventListener('resize', this.updateDimensionsMK);
+    document.getElementById('idModalKarate').addEventListener('shown.bs.modal', this.onShowModalMK);
+    document.getElementById('idModalKarate').addEventListener('hidden.bs.modal', this.onHideModalMK);
     document.querySelector(`.TenguRyu`).addEventListener('animationend', this.onAnimationEnd);
     document.querySelector(`.Lehrer`).addEventListener('animationend', this.onAnimationEnd);
   }
@@ -14,9 +14,9 @@ class ModalClassBasis extends ModalClassStyle {
   componentWillUnmount() {
     if (this.debug) console.log('ModalKarate/compDidMount');
     //window.removeEventListener('scroll', this.handleScroll);
-    window.removeEventListener('resize', this.updateDimensions);
-    document.getElementById('idModalKarate').removeEventListener('shown.bs.modal', this.onShowModal);
-    document.getElementById('idModalKarate').removeEventListener('hidden.bs.modal', this.onHideModal);
+    window.removeEventListener('resize', this.updateDimensionsMK);
+    document.getElementById('idModalKarate').removeEventListener('shown.bs.modal', this.onShowModalMK);
+    document.getElementById('idModalKarate').removeEventListener('hidden.bs.modal', this.onHideModalMK);
     document.querySelector(`.TenguRyu`).removeEventListener('animationend', this.onAnimationEnd);
     document.querySelector(`.Lehrer`).removeEventListener('animationend', this.onAnimationEnd);
   }
@@ -27,13 +27,13 @@ class ModalClassBasis extends ModalClassStyle {
     if (this.debug) console.log('ModalKarate/onAnimationEnd', this.stats.animated);
   };
 
-  onShowModal = () => {
+  onShowModalMK = () => {
     if (this.debug) console.log('ModalKarate/onShowModal');
-    this.updateDimensions();
-    this.updateHx();
+    this.updateDimensionsMK();
+    this.updateHxMK();
     this.stats.page = this.props.page;
     var page = this.stats.page;
-    if (this.debug) console.log('ModalTraining/onShowModal', this.stats);
+    if (this.debug) console.log('ModalKarate/onShowModal', this.stats);
     if (page === 'Lehrer') {
       document.querySelector('.TenguRyu').classList.add('d-none');
       document.querySelector('.Lehrer').classList.remove('d-none');
@@ -51,7 +51,7 @@ class ModalClassBasis extends ModalClassStyle {
     }
   };
 
-  onHideModal = () => {
+  onHideModalMK = () => {
     if (this.debug) console.log('ModalKarate/onHideModal');
     // reset single pages
     document.querySelector('.TenguRyu').classList.remove('slide-out-top');
@@ -131,33 +131,40 @@ class ModalClassBasis extends ModalClassStyle {
     }
   };
 
-  updateHx = () => {
-    if (this.debug) console.log('ModalKarate/updateHx');
+  updateHxMK = () => {
+    //return 0;
     // H1
-    this.style['& .modal-content']['& .modal-row']['& .TenguRyu, .Lehrer']['& .modal-col'][
+    const h1 = 20 * (((this.state.width / 1340) * this.state.height) / 300) + 18 + 'px';
+    this.style['& .modal-content']['& .modal-row']['& .content']['& .TenguRyu, .Lehrer']['& .modal-col'][
       '& h1'
-    ].fontSize = 20 * (((this.state.width / 1340) * this.state.height) / 300) + 18 + 'px';
+    ].fontSize = h1;
 
     // H2
-    this.style['& .modal-content']['& .modal-row']['& .TenguRyu, .Lehrer']['& .modal-col'][
+    const h2 = 8 * (((this.state.width / 1340) * this.state.height) / 300) + 12 + 'px';
+    this.style['& .modal-content']['& .modal-row']['& .content']['& .TenguRyu, .Lehrer']['& .modal-col'][
       '& h2'
-    ].fontSize = 8 * (((this.state.width / 1340) * this.state.height) / 300) + 12 + 'px';
+    ].fontSize = h2;
 
     // p
-    this.style['& .modal-content']['& .modal-row']['& .TenguRyu, .Lehrer']['& .modal-col'][
+    const p = 6 * (((this.state.width / 1340) * this.state.height) / 300) + 14 + 'px';
+    this.style['& .modal-content']['& .modal-row']['& .content']['& .TenguRyu, .Lehrer']['& .modal-col'][
       '& p'
-    ].fontSize = 6 * (((this.state.width / 1340) * this.state.height) / 300) + 14 + 'px';
+    ].fontSize = p;
+
+    if (this.debug) console.log('ModalKarate/updateHxMK: ', h1, h2, p);
   };
 
-  updateDimensions = () => {
-    var w = document.querySelector('.scroll_').offsetWidth;
-    var h = document.querySelector('.scroll_').offsetHeight;
+  updateDimensionsMK = () => {
+    var w = document.querySelector('.modal-up').offsetWidth; //.scroll_
+    var h = document.querySelector('.modal-up').offsetHeight; //.scroll_
+    var top = document.querySelector('.modal-up').offsetTop;
     if (w !== 0)
       this.setState({
         width: w,
         height: h,
+        top,
       });
-    if (this.debug) console.log('ModalKarate/updateDimensions', w, h);
+    if (this.debug) console.log('ModalKarate/updateDimensionsMK', w, h);
   };
 
   clickLeftRight = (dir) => {

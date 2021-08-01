@@ -9,189 +9,210 @@ class ModalClassStyle extends Component {
     this.style = {
       width: '100vw',
       maxWidth: '1440px',
-      height: 'calc(100vh - 3.5rem)', // 2rem
+      height: '100vh',
       zIndex: '1051',
-      position: 'relative',
       overflow: 'hidden',
-      margin: '1.75vh auto',
+      margin: '0 auto',
 
       '& .modal-content': {
-        width: '100%',
-        height: '100vh',
+        //width: '100%',
         backgroundColor: 'rgba(0,0,0,0)',
         border: 'none',
 
         '& .modal-row': {
-          width: '100%',
+          height: 'calc(100vh - 4px)',
+          margin: '2px',
+          display: 'grid',
+          gridColumnGap: '2px',
+          gridTemplateColumns: '1fr 50px',
+          gridTemplateRows: '1fr 7fr 1fr',
 
-          '& .TenguRyu, .Lehrer': {
-            width: '100%',
-            position: 'absolute',
+          [this.mq[2]]: {
+            // bis 960 px
+            gridTemplateColumns: '1fr 39px',
+          },
 
-            '& .Habersetzer': {
-              top: 'calc( 96vh - 1.75rem)',
-              position: 'relative',
-            },
+          [this.mq[1]]: {
+            // bis 600 px
+            gridTemplateColumns: '1fr 34px',
+          },
 
-            '& .Ogura': {
-              top: '0vh',
-              position: 'relative',
-            },
+          [this.mq[0]]: {
+            // bis 400px
+            gridTemplateColumns: '1fr 29px',
+          },
 
-            '& .Otsuka': {
-              top: 'calc( -1 * (96vh - 1.75rem))',
-              position: 'relative',
-            },
+          '& .inNavigation': {
+            gridColumn: '2',
+            gridRow: '2',
+          },
 
-            '& .d-out': {
-              transform: 'translateX(-2000px)',
-            },
+          '& .content': {
+            //position: 'relative',
+            height: '100%',
+            gridColumn: '1',
+            gridRow: '2',
+            display: 'grid',
+            gridTemplateColumns: 'auto',
+            gridTemplateRows: '6fr',
 
-            '& .navLeft, .navRight': {
-              cursor: 'pointer',
-            },
+            '& .TenguRyu, .Lehrer': {
+              //position: 'absolute',
+              gridRow: '1',
+              gridColumn: '1',
+              //height: '100%',
+              display: 'grid',
+              gridTemplateColumns: 'auto',
+              gridTemplateRows: '6fr',
 
-            '& .modal-col': {
-              width: 'calc(100% - 51px)',
-
-              [this.mq[2]]: {
-                width: 'calc(100% - 39px)',
+              '& .navLeft, .navRight': {
+                cursor: 'pointer',
               },
 
-              [this.mq[1]]: {
-                width: 'calc(100% - 34px)',
-              },
+              '& .modal-col': {
+                gridRow: '1',
+                gridColumn: '1',
+                height: '100%',
+                display: 'grid',
+                gridTemplateColumns: 'auto',
+                gridTemplateRows: 'auto 1.5vh minmax(17vh, 1fr) 1.5vh auto',
 
-              [this.mq[0]]: {
-                width: 'calc(100% - 29px)',
-              },
+                '&.d-out': {
+                  transform: 'translateX(-2000px)',
+                  opacity: '0',
+                },
 
-              '& .bg-heading': {
-                position: 'absolute',
-                zIndex: '0',
-                fontSize: '15vh',
-                color: this.colors.bgGrey,
-              },
+                '& .bg-heading': {
+                  position: 'absolute',
+                  zIndex: '0',
+                  fontSize: '15vh',
+                  color: this.colors.bgGrey,
+                },
 
-              '& h1': {
-                fontSize: '4vh',
-                marginBottom: '1vh',
-                fontWeight: 'bold',
-                position: 'relative',
-                zIndex: '1',
-              },
+                '& h1': {
+                  fontSize: '4vh',
+                  marginBottom: '1vh',
+                  fontWeight: 'bold',
+                  position: 'relative',
+                  zIndex: '1',
+                },
 
-              '& h2': {
-                fontSize: '2vh',
-                fontWeight: 'bold',
-                color: this.colors.typoRed,
-                marginBottom: '2vh',
-                position: 'relative',
-                zIndex: '1',
-              },
+                '& h2': {
+                  fontSize: '2vh',
+                  fontWeight: 'bold',
+                  color: this.colors.typoRed,
+                  marginBottom: '2vh',
+                  position: 'relative',
+                  zIndex: '1',
+                },
 
-              '& p': {
-                fontSize: '1.8vh',
-                margin: '0vh 15px 0vh 0px',
-                textAlign: 'justify',
-                position: 'relative',
-                zIndex: '1',
-              },
+                '& p': {
+                  fontSize: '1.8vh',
+                  margin: '0vh 15px 0vh 0px',
+                  textAlign: 'justify',
+                  position: 'relative',
+                  zIndex: '1',
+                },
 
-              '& .modal-up': {
-                height: '35vh',
-                backgroundColor: 'white',
-                borderRadius: '5px',
-                padding: '2vh',
-              },
+                '& .modal-up': {
+                  boxSizing: 'border-box',
+                  maxHeight: 'calc(40vh - 2px)',
+                  backgroundColor: 'white',
+                  borderRadius: '5px',
+                  padding: '2vh 0.5vh 2vh 2vh',
+                  gridRow: '1',
+                },
 
-              '& .modal-strip': {
-                height: '20vh',
-                backgroundColor: this.colors.bgRed,
-                margin: '2vh 0px',
-                position: 'relative',
-                overflow: 'hidden',
-
-                '& .pics': {
-                  height: '100%',
+                '& .modal-strip': {
+                  boxSizing: 'border-box',
+                  backgroundColor: this.colors.bgRed,
+                  margin: '5px 0px',
+                  gridRow: '3',
                   overflow: 'hidden',
+
+                  '& .pics': {
+                    height: '100%',
+                    overflow: 'hidden',
+
+                    '& .img': {
+                      height: 'calc(100% - 2vh)',
+                      backgroundRepeat: 'no-repeat',
+                      backgroundSize: 'cover',
+                      margin: '0px 0.5vh',
+                      width: '330px',
+                    },
+
+                    '& .num1': {
+                      backgroundImage: 'url(karate_pic_1.jpg)',
+                      backgroundPosition: '77% 10%',
+                    },
+                    '& .num2': {
+                      backgroundImage: 'url(karate_pic_2.jpg)',
+                      backgroundPosition: '50% 50%',
+                    },
+                    '& .num3': {
+                      backgroundImage: 'url(karate_pic_3.jpg)',
+                      backgroundPosition: '50% 50%',
+                    },
+                    '& .num4': {
+                      backgroundImage: 'url(karate_pic_4.jpg)',
+                      backgroundPosition: '12% 5%',
+                    },
+                    '& .num5': {
+                      backgroundImage: 'url(karate_pic_5.jpg)',
+                      backgroundPosition: '50% 25%',
+                    },
+                    '& .num6': {
+                      backgroundImage: 'url(karate_pic_6.jpg)',
+                      backgroundPosition: '50% 5%',
+                    },
+                    '& .num7': {
+                      backgroundImage: 'url(karate_pic_7.jpg)',
+                      backgroundPosition: '50% 50%',
+                    },
+                    '& .num8': {
+                      backgroundImage: 'url(karate_pic_8.jpg)',
+                      backgroundPosition: '50% 30%',
+                    },
+                    '& .num9': {
+                      backgroundImage: 'url(karate_pic_9.jpg)',
+                      backgroundPosition: '29% 40%',
+                    },
+                    '& .num10': {
+                      backgroundImage: 'url(karate_pic_10.jpg)',
+                      backgroundPosition: '50% 50%',
+                    },
+                    '& .num11': {
+                      backgroundImage: 'url(karate_pic_11.jpg)',
+                      backgroundPosition: '50% 31%',
+                    },
+                    '& .num12': {
+                      backgroundImage: 'url(karate_pic_12.jpg)',
+                      backgroundPosition: '50% 10%',
+                    },
+                    '& .num13': {
+                      backgroundImage: 'url(karate_pic_13.jpg)',
+                      backgroundPosition: '65% 27%',
+                    },
+                    '& .num14': {
+                      backgroundImage: 'url(karate_pic_14.jpg)',
+                      backgroundPosition: '30% 15%',
+                    },
+                    '& .num15': {
+                      backgroundImage: 'url(karate_pic_15.jpg)',
+                      backgroundPosition: '50% 10%',
+                    },
+                  },
                 },
 
-                '& .img': {
-                  height: 'calc(100% - 10px)',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'cover',
-                  margin: '5px 2.5px',
-                  width: '330px',
+                '& .modal-down': {
+                  boxSizing: 'border-box',
+                  maxHeight: 'calc(40vh - 2px)',
+                  backgroundColor: 'white',
+                  borderRadius: '5px',
+                  padding: '2vh 0.5vh 2vh 2vh',
+                  gridRow: '5',
                 },
-
-                '& .num1': {
-                  backgroundImage: 'url(karate_pic_1.jpg)',
-                  backgroundPosition: '50% 50%',
-                },
-                '& .num2': {
-                  backgroundImage: 'url(karate_pic_2.jpg)',
-                  backgroundPosition: '50% 50%',
-                },
-                '& .num3': {
-                  backgroundImage: 'url(karate_pic_3.jpg)',
-                  backgroundPosition: '50% 50%',
-                },
-                '& .num4': {
-                  backgroundImage: 'url(karate_pic_4.jpg)',
-                  backgroundPosition: '50% 50%',
-                },
-                '& .num5': {
-                  backgroundImage: 'url(karate_pic_5.jpg)',
-                  backgroundPosition: '50% 50%',
-                },
-                '& .num6': {
-                  backgroundImage: 'url(karate_pic_6.jpg)',
-                  backgroundPosition: '50% 50%',
-                },
-                '& .num7': {
-                  backgroundImage: 'url(karate_pic_7.jpg)',
-                  backgroundPosition: '50% 50%',
-                },
-                '& .num8': {
-                  backgroundImage: 'url(karate_pic_8.jpg)',
-                  backgroundPosition: '50% 50%',
-                },
-                '& .num9': {
-                  backgroundImage: 'url(karate_pic_9.jpg)',
-                  backgroundPosition: '50% 50%',
-                },
-                '& .num10': {
-                  backgroundImage: 'url(karate_pic_10.jpg)',
-                  backgroundPosition: '50% 50%',
-                },
-                '& .num11': {
-                  backgroundImage: 'url(karate_pic_11.jpg)',
-                  backgroundPosition: '50% 50%',
-                },
-                '& .num12': {
-                  backgroundImage: 'url(karate_pic_12.jpg)',
-                  backgroundPosition: '50% 50%',
-                },
-                '& .num13': {
-                  backgroundImage: 'url(karate_pic_13.jpg)',
-                  backgroundPosition: '65% 50%',
-                },
-                '& .num14': {
-                  backgroundImage: 'url(karate_pic_14.jpg)',
-                  backgroundPosition: '30% 50%',
-                },
-                '& .num15': {
-                  backgroundImage: 'url(karate_pic_15.jpg)',
-                  backgroundPosition: '50% 10%',
-                },
-              },
-
-              '& .modal-down': {
-                height: '35vh',
-                backgroundColor: 'white',
-                borderRadius: '5px',
-                padding: '2vh',
               },
             },
           },

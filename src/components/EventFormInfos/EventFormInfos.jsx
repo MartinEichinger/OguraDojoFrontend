@@ -20,7 +20,7 @@ const EventFormInfos = ({
   changedData,
   errors,
 }) => {
-  const debug = true;
+  const debug = false;
 
   if (debug) console.log('EventFormInfos: ', inFieldVal);
 
