@@ -78,7 +78,7 @@ class ModalTraining extends ModalClassBasis {
         {
           head1: 'Erika Rudl',
           head2: 'Trainerin Karate.Kinder.Jugendliche',
-          head3: '1. DAN Tengu Ryu',
+          head3: '2. DAN Tengu Ryu',
           img: 'url(./wir_pic_er_2.jpg)',
           img_pos: '50% 30%',
         },
