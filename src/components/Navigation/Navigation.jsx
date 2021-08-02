@@ -39,12 +39,8 @@ class Navigation extends Component {
       margin: '20px 20px',
       //marginLeft:
       //  this.state.viewWidth > 1340 ? `calc((100vw - 1280px) / 2)` : '20px',
-      marginLeft:
-        this.state.viewWidth > 1340
-          ? `${(this.state.viewWidth - 1280) / 2}px`
-          : '20px',
-      marginRight:
-        this.state.viewWidth > 1340 ? `calc((100vw - 1280px) / 2)` : '20px',
+      marginLeft: this.state.viewWidth > 1340 ? `${(this.state.viewWidth - 1280) / 2}px` : '20px',
+      marginRight: this.state.viewWidth > 1340 ? `calc((100vw - 1280px) / 2)` : '20px',
       backgroundColor: 'white',
       backgroundSize: 'cover',
       fontFamily: 'Lato, cursive',
@@ -249,9 +245,7 @@ class Navigation extends Component {
   handleScroll = () => {
     if (window.scrollY > 150) {
       document.querySelector('.navbar').classList.add('slide-in-top');
-      document
-        .querySelector('.navbar')
-        .classList.remove('slide-out-top', 'invisible');
+      document.querySelector('.navbar').classList.remove('slide-out-top', 'invisible');
       document.querySelector('.navbarCard').classList.add('slide-out-top');
       document.querySelector('.navbarCard').classList.remove('slide-in-top');
     } else {
@@ -300,13 +294,9 @@ class Navigation extends Component {
     }
 
     this.styleNavCard.marginLeft =
-      this.state.viewWidth > 1320
-        ? `${(this.state.viewWidth - 1280) / 2}px`
-        : '20px';
+      this.state.viewWidth > 1320 ? `${(this.state.viewWidth - 1280) / 2}px` : '20px';
     this.styleNavCard.marginRight =
-      this.state.viewWidth > 1320
-        ? `${(this.state.viewWidth - 1280) / 2}px`
-        : '20px';
+      this.state.viewWidth > 1320 ? `${(this.state.viewWidth - 1280) / 2}px` : '20px';
     // Debug
     if (this.debug)
       console.log(
@@ -331,10 +321,7 @@ class Navigation extends Component {
 
     return (
       <React.Fragment>
-        <div
-          className="navbar navbar-dark fixed-top invisible d-flex flex-column"
-          css={this.styleNav}
-        >
+        <div className="navbar navbar-dark fixed-top invisible d-flex flex-column" css={this.styleNav}>
           <div className="block d-flex flex-row justify-content-between">
             <a href="http://www.tengu.fr" target="_blank" rel="noreferrer">
               {/* <img src="./OguraDojoLogo.png" alt="" /> */}
@@ -359,14 +346,10 @@ class Navigation extends Component {
 
         <div className="navbarCard slide-in-top" css={this.styleNavCard}>
           <div className="d-flex flex-row ">
-            <img
-              className="align-self-center"
-              src="./OguraDojoLogo.png"
-              alt=""
-            />
+            <img className="align-self-center" src="./OguraDojoLogo.png" alt="" />
             <hr />
             <div className="text d-flex flex-column justify-content-around">
-              <h1>Willommen im Ogura Dojo</h1>
+              <h1>Willkommen im Ogura Dojo</h1>
               <h2>Tengu Ryu Karate-Do, Panzi Gong, Taiji Quan, Qigong</h2>
               <div className="btnNav d-flex flex-row justify-content-around flex-wrap">
                 <button
