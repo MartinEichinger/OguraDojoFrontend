@@ -11,11 +11,10 @@ class ModalClassStyle extends Component {
     this.styleAll = {
       width: '100vw',
       maxWidth: '1440px',
-      height: '100vh', //'calc(100vh - 3.5vh)', // 2rem
+      height: '100vh',
       zIndex: '1051',
-      //position: 'relative',
       overflow: 'hidden',
-      margin: '0 auto', //'1.75vh auto',
+      margin: '0 auto',
 
       '& .span_vis': {
         display: 'block',
@@ -26,8 +25,6 @@ class ModalClassStyle extends Component {
       },
 
       '& .modal-content': {
-        //width: '100%',
-        //height: '100vh',
         backgroundColor: 'rgba(0,0,0,0)',
         border: 'none',
 
@@ -58,7 +55,7 @@ class ModalClassStyle extends Component {
           '& .inNavigation': {
             gridColumn: '2',
             gridRow: '2',
-            maxHeight: '100vh',
+            //maxHeight: '100vh',
           },
 
           '& .content': {

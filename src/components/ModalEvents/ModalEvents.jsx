@@ -2,15 +2,16 @@
 // eslint-disable-next-line
 import { jsx } from '@emotion/react';
 
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { getEvents } from '../../store/events';
 import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
 import ModalComp_L1_Events from './ModalComp_L1_Events';
+import ModalClassBasis from './ModalEvents.style';
 import '../animation.css';
 //import { loadJSON } from '../../script/saveLoad.js';
 
-class ModalEvents extends Component {
+class ModalEvents extends ModalClassBasis {
   constructor(props) {
     super(props);
 
@@ -22,6 +23,7 @@ class ModalEvents extends Component {
       width: 1440,
       height: 1200,
       content: this.content,
+      rerender: false,
     };
 
     this.form = React.createRef();
@@ -32,34 +34,7 @@ class ModalEvents extends Component {
     };
 
     // Debugging
-    this.debug = false;
-
-    // BREAKPOINTS
-    this.mq = this.props.mq;
-
-    // STYLES
-    this.colors = this.props.colors;
-
-    this.styleModalDialog = {
-      width: '100vw',
-      maxWidth: '1440px',
-      height: 'calc(100vh - 3.5vh)', // 2rem
-      zIndex: '1051',
-      position: 'relative',
-      overflow: 'hidden',
-      margin: '1.75vh auto',
-
-      '& .modal-content': {
-        width: '100%',
-        height: '100vh',
-        backgroundColor: 'rgba(0,0,0,0)',
-        border: 'none',
-
-        '& .modal-row': {
-          width: '100%',
-        },
-      },
-    };
+    this.debug = true;
 
     this.configNav = {
       upDown: 0,
@@ -70,8 +45,21 @@ class ModalEvents extends Component {
 
   async componentDidMount() {
     if (this.debug) console.log('ModalEvents/compDidMount');
+    document.getElementById('idModalEvents').addEventListener('shown.bs.modal', this.onShowModalME);
+    document.getElementById('idModalEvents').addEventListener('hidden.bs.modal', this.onHideModalME);
     this.props.getEvents();
   }
+
+  componentWillUnmount() {
+    if (this.debug) console.log('ModalEvents/compWillUnMount');
+    document.getElementById('idModalEvents').removeEventListener('shown.bs.modal', this.onShowModalME);
+    document.getElementById('idModalEvents').removeEventListener('hidden.bs.modal', this.onHideModalME);
+  }
+
+  onShowModalME = () => {
+    if (this.debug) console.log('ModalEvents/onShowModal');
+    this.setState({ rerender: true });
+  };
 
   render() {
     this.isAuthenticated = this.props.isAuthenticated;
@@ -92,10 +80,10 @@ class ModalEvents extends Component {
           <div
             className="modal-dialog d-flex flex-row-reverse align-items-center"
             id="modalDialog"
-            css={this.styleModalDialog}
+            css={this.style}
           >
             <div className="modal-content">
-              <div className="modal-row d-flex flex-row h-100 align-items-center">
+              <div className="modal-row">
                 <ModalInNavigation
                   clickUpDown={this.clickUpDown}
                   nextItem={this.nextItem}

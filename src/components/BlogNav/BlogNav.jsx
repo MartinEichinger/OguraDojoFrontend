@@ -11,39 +11,15 @@ const BlogNav = ({ filter, filterProps, colors }) => {
   const filterState = useSelector(selectFilter);
   const dispatch = useDispatch();
 
-  const styleBlogNav = {
-    marginTop: '3vh',
-    '& .buttons': {
-      padding: '0 15px',
-      margin: '1vh 0',
-      borderRadius: '25px',
-      fontSize: '2.5vh',
-      border: `0px`,
-
-      '&.active': {
-        backgroundColor: colors.bgRed,
-        color: colors.bgWhite,
-      },
-    },
-  };
-
   return (
-    <div className="d-flex justify-content-around flex-wrap" css={styleBlogNav}>
+    <div className="modal-in-nav d-flex justify-content-around flex-wrap">
       {filterProps.map((item, i) => {
         return item === filterState ? (
-          <button
-            className="buttons active"
-            onClick={() => dispatch(switchfilter(item))}
-            key={i}
-          >
+          <button className="buttons active" onClick={() => dispatch(switchfilter(item))} key={i}>
             {item}
           </button>
         ) : (
-          <button
-            className="buttons"
-            onClick={() => dispatch(switchfilter(item))}
-            key={i}
-          >
+          <button className="buttons" onClick={() => dispatch(switchfilter(item))} key={i}>
             {item}
           </button>
         );

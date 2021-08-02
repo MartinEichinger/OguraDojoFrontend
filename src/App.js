@@ -11,7 +11,7 @@ import Navigation from './components/Navigation/Navigation';
 import CardsKarate from './components/Cards/CardsKarate';
 import ModalKarate from './components/ModalKarate/ModalKarate';
 import ModalTraining from './components/ModalTraining/ModalTraining';
-import ModalBlog from './components/Modals/ModalBlog';
+import ModalBlog from './components/ModalBlog/ModalBlog';
 import ModalEvents from './components/ModalEvents/ModalEvents';
 import ModalLogin from './components/ModalLogin/ModalLogin';
 import Footer from './components/Footer/Footer';

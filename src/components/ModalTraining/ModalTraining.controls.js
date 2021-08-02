@@ -1,11 +1,6 @@
 import ModalClassStyle from './ModalTraining.style';
 
 class ModalClassBasis extends ModalClassStyle {
-  constructor(props) {
-    super(props);
-    this.resize = false;
-  }
-
   componentDidMount() {
     if (this.debug) console.log('ModalTraining/compDidMount');
 
