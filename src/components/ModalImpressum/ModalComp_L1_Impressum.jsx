@@ -16,13 +16,14 @@ const ModalComp_L1_Impressum = ({ colors, content, mq, isAuthenticated }) => {
         <p>Martin Eichinger</p>
         <p>Aichstraße 17</p>
         <p>84163 Marklkofen</p>
+        <p>Mail: info@karate-tustraunreut.de</p>
 
         <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
         <p>Alexander Callegari</p>
         <p>Daxerau 3</p>
         <p>83278 Traunstein</p>
         <p>Tel. (08 61) 1 56 47</p>
-        <p>E-Mail: Alexander.Callegari@t-online.de</p>
+        <p>Mail: Alexander.Callegari@t-online.de</p>
 
         <h3>Quellenangaben für die verwendeten Bilder und Grafiken</h3>
         <p>

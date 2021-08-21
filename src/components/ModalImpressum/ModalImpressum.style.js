@@ -86,7 +86,7 @@ class ModalClassBasis extends Component {
               gridColumn: '1/-1',
               maxHeight: 'calc(20vh - 4px)',
               boxSizing: 'border-box',
-              fontSize: '9rem',
+              fontSize: '144px',
               margin: '0',
               color: this.colors.bgGrey,
               textShadow: `2px 0 0 ${this.colors.bgRed}, 0 2px 0 ${this.colors.bgRed}, -2px 0 0 ${this.colors.bgRed}, 0 -2px 0 ${this.colors.bgRed}`,
@@ -98,15 +98,15 @@ class ModalClassBasis extends Component {
 
               [this.mq[2]]: {
                 // bis 960 px
-                fontSize: '7rem',
+                fontSize: 'calc(15vw)',
               },
               [this.mq[1]]: {
                 // bis 600 px
-                fontSize: '5rem',
+                fontSize: 'calc(-30px + 20vw)',
               },
               [this.mq[0]]: {
                 // bis 400px
-                fontSize: '4rem',
+                fontSize: '56px',
               },
             },
 
@@ -123,25 +123,52 @@ class ModalClassBasis extends Component {
 
               '& h2': {
                 marginTop: '1vh',
-                fontSize: '3vh',
+                fontSize: '36px',
                 [this.mq[2]]: {
                   // bis 960 px
-                  fontSize: '2.75vh',
+                  fontSize: '34px',
+                },
+                [this.mq[1]]: {
+                  // bis 600 px
+                  fontSize: '32px',
+                },
+                [this.mq[0]]: {
+                  // bis 400px
+                  fontSize: '28px',
                 },
               },
+
               '& h3': {
-                fontSize: '2.5vh',
+                fontSize: '30px',
+                margin: '1vh 0vh',
                 [this.mq[2]]: {
                   // bis 960 px
-                  fontSize: '2.25vh',
+                  fontSize: '28px',
+                },
+                [this.mq[1]]: {
+                  // bis 600 px
+                  fontSize: '26px',
+                },
+                [this.mq[0]]: {
+                  // bis 400px
+                  fontSize: '24px',
                 },
               },
+
               '& p': {
                 margin: 0,
-                fontSize: '1.5vh',
+                fontSize: '20px',
                 [this.mq[2]]: {
                   // bis 960 px
-                  fontSize: '1.5vh',
+                  fontSize: '18px',
+                },
+                [this.mq[1]]: {
+                  // bis 600 px
+                  fontSize: '16px',
+                },
+                [this.mq[0]]: {
+                  // bis 400px
+                  fontSize: '16px',
                 },
               },
             },
