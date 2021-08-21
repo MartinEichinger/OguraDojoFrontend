@@ -29,7 +29,6 @@ class ModalClassStyle extends Component {
         border: 'none',
 
         '& .modal-row': {
-          //width: '100%',
           height: 'calc(100vh - 4px)',
           margin: '2px',
           display: 'grid',
@@ -55,7 +54,6 @@ class ModalClassStyle extends Component {
           '& .inNavigation': {
             gridColumn: '2',
             gridRow: '2',
-            //maxHeight: '100vh',
           },
 
           '& .content': {

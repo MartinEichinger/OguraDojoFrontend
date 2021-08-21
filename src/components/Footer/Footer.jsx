@@ -87,6 +87,55 @@ const Footer = ({ colors, select }) => {
     },
   };
 
+  const contentFooter = {
+    heading: 'Ogura Dojo - Tenug Ryu Karate-Do, Panzi Gong, Taiji Quan, Qigong im Herzen des Chiemgaus',
+    'link-group': [
+      {
+        heading: 'Ogura Dojo',
+        items: [
+          {
+            title: 'Training',
+            target: '#idModalTraining',
+            link: () => selectpage('Training', 'pageTraining'),
+          },
+          { title: 'Wir', target: '#idModalTraining', link: () => selectpage('Wir', 'pageTraining') },
+          { title: 'Blog', target: '#idModalBlog' },
+          { title: 'Veranstaltungen', target: '#idModalEvents' },
+        ],
+      },
+      {
+        heading: 'Tengu Ryu Karate-Do',
+        items: [
+          {
+            title: 'Über Tengu-Ryu',
+            target: '#idModalKarate',
+            link: () => selectpage('TenguRyu', 'pageKarate'),
+          },
+          { title: 'Lehrer', target: '#idModalKarate', link: () => selectpage('Lehrer', 'pageKarate') },
+        ],
+      },
+      {
+        heading: 'Panzi Gong',
+        items: [{ title: '- leer -' }],
+      },
+      /*       {
+        heading: 'Taiji Quan',
+        items: [{ title: '- leer -' }],
+      }, */
+      /*       {
+        heading: 'Qigong',
+        items: [{ title: '- leer -' }],
+      }, */
+      {
+        heading: 'Allgemein',
+        items: [
+          { title: 'Impressum', target: '#idModalImpressum' },
+          { title: 'Login', target: '#idModalLogin' },
+        ],
+      },
+    ],
+  };
+
   const selectpage = (page, param) => {
     if (debug) console.log('Footer/selectpage', page);
     select(page, param);
@@ -96,66 +145,22 @@ const Footer = ({ colors, select }) => {
     <footer className="Footer fixed-bottom mt-auto py-3" css={styleFooter}>
       <div className="container-fluid">
         <div className="d-flex flex-column align-items-center">
-          <h1>
-            Ogura Dojo - Tengu Ryu Karate-Do, Panzi Gong, Taiji Quan, Qigong im
-            Herzen des Chiemgaus
-          </h1>
+          <h1>{contentFooter.heading}</h1>
           <div className="d-flex flex-row justify-content-around w-75">
-            <div className="column d-flex flex-column align-items-start">
-              <h2>Allgemein</h2>
-              <button
-                data-bs-toggle="modal"
-                data-bs-target="#idModalTraining"
-                onClick={() => selectpage('Training', 'pageTraining')}
-              >
-                Training
-              </button>
-              <button
-                data-bs-toggle="modal"
-                data-bs-target="#idModalTraining"
-                onClick={() => selectpage('Wir', 'pageTraining')}
-              >
-                Wir
-              </button>
-              <button data-bs-toggle="modal" data-bs-target="#idModalBlog">
-                Tengu Blog
-              </button>
-              <button data-bs-toggle="modal" data-bs-target="#idModalEvents">
-                Veranstaltungen
-              </button>
-              <button data-bs-toggle="modal" data-bs-target="#idModalLogin">
-                Login
-              </button>
-            </div>
-            <div className="column d-flex flex-column align-items-start">
-              <h2>Tengu Ryu Karate-Do</h2>
-              <button
-                data-bs-toggle="modal"
-                data-bs-target="#idModalKarate"
-                onClick={() => selectpage('TenguRyu', 'pageKarate')}
-              >
-                Über Tengu-Ryu
-              </button>
-              <button
-                data-bs-toggle="modal"
-                data-bs-target="#idModalKarate"
-                onClick={() => selectpage('Lehrer', 'pageKarate')}
-              >
-                Lehrer
-              </button>
-            </div>
-            <div className="column d-flex flex-column">
-              <h2>PanZi Gong</h2>
-              <h3>- leer -</h3>
-            </div>
-            <div className="column">
-              <h2>TaiJi Quan</h2>
-              <h3>- leer -</h3>
-            </div>
-            <div className="column">
-              <h2>QiGong</h2>
-              <h3>- leer -</h3>
-            </div>
+            {contentFooter['link-group'].map((entry) => {
+              return (
+                <div className="column d-flex flex-column align-items-start">
+                  <h2>{entry.heading}</h2>
+                  {entry.items.map((item) => {
+                    return (
+                      <button data-bs-toggle="modal" data-bs-target={item.target} onClick={item.link}>
+                        {item.title}
+                      </button>
+                    );
+                  })}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

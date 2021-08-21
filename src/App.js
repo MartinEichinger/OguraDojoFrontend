@@ -15,6 +15,7 @@ import ModalBlog from './components/ModalBlog/ModalBlog';
 import ModalEvents from './components/ModalEvents/ModalEvents';
 import ModalLogin from './components/ModalLogin/ModalLogin';
 import Footer from './components/Footer/Footer';
+import ModalImpressum from './components/ModalImpressum/ModalImpressum';
 
 class App extends Component {
   constructor(props) {
@@ -87,7 +88,7 @@ class App extends Component {
         keywords: 'Prof. Ding Hongyu - Tellerdrehung - Gesundheitsübung',
         pos: '50% 20%',
       },
-      {
+      /* {
         img: 'main_taiji.jpg',
         modal: '#idModalTaiji',
         heading: 'Taiji Quan',
@@ -95,8 +96,8 @@ class App extends Component {
         para: 'Aus sanften und weichen Übungen entsteht Härte; aus langsamen Übungen entsteht Schnelligkeit; aus Entspannung entsteht Kraft. Das kann nicht jeder so akzeptieren. Mit anderen Worten: Sanft zähmt hart; aus langsam entsteht schnell; mit Schwäche das Stärkere bewältigen.',
         keywords: 'Yang Taiji - Chen Taiji - Faust - Schwert - Fächer',
         pos: '50% 20%',
-      },
-      {
+      }, */
+      /* {
         img: 'main_qigong.jpg',
         modal: '#idModalQigong',
         heading: 'Qigong',
@@ -104,7 +105,7 @@ class App extends Component {
         para: 'Nicht nur die Bewegung ist ein untrennbarer Teil des Lebens, sondern die Gesundheit überhaupt ist das Fundament unseres Lebens. Ohne Bewegung könnten wir nur schwer existieren und ohne Gesundheit hätten wir keine Lebensqualität.',
         keywords: 'Prof. Ding Hongyu',
         pos: '65% 40%',
-      },
+      }, */
       {
         img: 'main_training.jpg',
         modal: '#idModalTraining',
@@ -150,6 +151,7 @@ class App extends Component {
         <ModalBlog colors={this.colors} mq={this.mq} />
         <ModalEvents colors={this.colors} mq={this.mq} />
         <ModalLogin />
+        <ModalImpressum colors={this.colors} mq={this.mq} />
         <div className="Frame bg">
           <div className="Content d-flex flex-row flex-wrap justify-content-center">
             {this.renderCards()}
