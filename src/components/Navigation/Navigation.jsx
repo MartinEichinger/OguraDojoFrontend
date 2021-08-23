@@ -329,7 +329,7 @@ class Navigation extends Component {
             <div className="center d-flex flex-column justify-content-center">
               <h1>Ogura Dojo</h1>
               {/* <h2>Tengu Ryu Karate-Do, PanZi Gong, TaiJi Quan, QiGong</h2> */}
-              <h2>Karate, Taiji, Qigong im Herzen des Chiemgaus</h2>
+              <h2>Karate, Panzi Gong, Taiji, Qigong im Herzen des Chiemgaus</h2>
             </div>
             {this.isAuthenticated && (
               <button onClick={this.logout}>
@@ -350,7 +350,7 @@ class Navigation extends Component {
             <hr />
             <div className="text d-flex flex-column justify-content-around">
               <h1>Willkommen im Ogura Dojo</h1>
-              <h2>Tengu Ryu Karate-Do, Panzi Gong, Taiji Quan, Qigong</h2>
+              <h2>Tengu Ryu Karate, Panzi Gong, Taiji Quan, Qigong</h2>
               <div className="btnNav d-flex flex-row justify-content-around flex-wrap">
                 <button
                   data-bs-toggle="modal"

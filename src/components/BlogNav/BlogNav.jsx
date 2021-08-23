@@ -12,7 +12,7 @@ const BlogNav = ({ filter, filterProps, colors }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="modal-in-nav d-flex justify-content-around flex-wrap">
+    <div className="modal-in-nav">
       {filterProps.map((item, i) => {
         return item === filterState ? (
           <button className="buttons active" onClick={() => dispatch(switchfilter(item))} key={i}>

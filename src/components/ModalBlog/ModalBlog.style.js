@@ -54,26 +54,43 @@ class ModalClassBasis extends Component {
             backgroundColor: 'white',
             borderRadius: '5px',
             display: 'grid',
-            gridTemplateColumns: 'auto',
             gridTemplateRows: 'auto 1fr auto 1fr auto',
+            gridTemplateColumns: '1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr',
+            [this.mq[2]]: {
+              // bis 960 px
+              gridTemplateColumns: '0.5fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.5fr',
+            },
+            [this.mq[1]]: {
+              // bis 600 px
+              gridTemplateColumns: '0.2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.2fr',
+            },
+            [this.mq[0]]: {
+              // bis 400px
+              gridTemplateColumns: '0.1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.1fr',
+            },
 
             '& h1': {
-              gridColumn: '1',
+              gridColumn: '2/-1',
               gridRow: '1',
-              maxHeight: '20vh',
+              maxHeight: 'calc(20vh - 4px)',
+              boxSizing: 'border-box',
               fontSize: '10vh',
               marginBottom: '1vh',
               color: this.colors.bgGrey,
               textShadow: `2px 0 0 ${this.colors.bgRed}, 0 2px 0 ${this.colors.bgRed}, -2px 0 0 ${this.colors.bgRed}, 0 -2px 0 ${this.colors.bgRed}`,
               //position: 'relative',
-              paddingTop: '2vh',
-              paddingLeft: '2vh',
+              //paddingTop: '2vh',
+              //paddingLeft: '2vh',
             },
 
             '& .modal-in-nav': {
               maxHeight: '10vh',
-              gridColumn: '1',
+              boxSizing: 'border-box',
+              gridColumn: '2/12',
               gridRow: '3',
+              display: 'grid',
+              justifyContent: 'space-evenly',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
 
               '& .buttons': {
                 padding: '0 15px',
@@ -90,10 +107,12 @@ class ModalClassBasis extends Component {
             },
 
             '& .table': {
-              maxHeight: '70vh',
-              gridColumn: '1',
+              maxHeight: 'calc(70vh - 4px)',
+              gridColumn: '2/12',
               gridRow: '5',
-              overflow: 'auto',
+              display: 'grid',
+              justifyContent: 'space-around',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(550px, 1fr))',
 
               '& .blog-card': {
                 width: '550px',
