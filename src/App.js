@@ -112,12 +112,12 @@ class App extends Component {
         heading: 'Training',
         headingTwo: '- Beginn / Probetraining jederzeit möglich -',
         table: [
-          { head: 'Taiji', day: 'Montag', time: '18:20 - 20:00' },
-          { head: 'Karate', day: 'Montag', time: '20:00 - 22:00' },
-          { head: 'Karate', day: 'Mittwoch', time: '17:00 - 18:30' },
-          { head: 'Karate', day: 'Freitag', time: '20:00 - 22:00' },
+          { head: 'Taiji (Ew/Ju)', day: 'Montag', time: '18:30 - 20:00' },
+          { head: 'Karate (Ew/Ju)', day: 'Montag', time: '20:00 - 22:00' },
+          { head: 'Karate (Ki)', day: 'Mittwoch', time: '17:00 - 18:30' },
+          { head: 'Karate (Ew/Ju)', day: 'Freitag', time: '20:00 - 22:00' },
         ],
-        keywords: 'Sonnenschule Traunreut - Martin-Luther-Straße - 83301 Traunreut',
+        keywords: 'Werner-von-Siemens Mittelschule - Martin-Luther-Straße - 83301 Traunreut',
         pos: '65% 40%',
       },
     ];
