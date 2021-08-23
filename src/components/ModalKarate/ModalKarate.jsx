@@ -32,13 +32,13 @@ class ModalKarate extends ModalClassBasis {
 
     this.contentTenguRyu = [
       {
-        titleNo1_L1: 'karate-do',
+        titleNo1_L1: 'Karate',
         titleNo1_L2: '"Es ablehnen zu kämpfen, es ablehnen zu unterliegen..."',
         heightContent1: 'h22',
         contentNo1:
           'Ursprüngliches Ziel von Karate war es eine bedrohliche Situation zu überstehen. Dazu war es notwendig seine vorhandenen körperlichen und geistigen Fähigkeiten optimal zu nutzen. Von entscheidender Bedeutung war sicher ein gutes Selbstbewußtsein und die nötige Entschlossenheit. Bewegungen im Karate basieren auf physikalischen Grundgesetzen, dies sollte man bei seinen Techniken optimal für sich ausnutzen. Geistig sollte man konzentriert und trotzdem flexibel sein. Optimalen Erfolg verspricht wahrscheinlich nur das harmonische Zusammenspiel sehr vieler physischer, psychischer und mentaler Faktoren. Daher ist absolute Perfektion nicht zu erreichen.',
         pics: ['num1', 'num8', 'num9'],
-        titleNo2_L1: 'tengu-ryu',
+        titleNo2_L1: 'Tengu Ryu',
         heightContent2: 'h22',
         contentNo2:
           "Im Karate gibt es unterschiedliche Schulen (ryu's). Tengu-Ryū oder Tengu-no-michi (wörtlich: „Weg des Tengu“) ist ein rein defensiver Stil der klassischen japanischen Kampfkünste (Budo). Initiiert wurde dieser Stil 1995 von dem französischen Kampfkunst- experten Roland Habersetzer. Er umfasst drei Kompetenzbereiche: Tengu-Ryū Karatedo (ohne Waffen), Tengu-Ryū Kobudo (traditionelle Waffen), Tengu-Ryū Hojutsu (moderne Waffen). 2006 wurde dieser Stil in Japan durch die japanische Karatemeister Ogura Tsuneyoshi und Ōtsuka Tadahiko anerkannt. Das heißt, Hanshi Habersetzer ist der erste Soke dieses Stils. Tengu-Ryū ist eine Synthese der traditionellen japanischen Kriegskünste, die auf kulturellen und nicht auf wettkämpferischen Kriterien beruhen, mit dem Ziel der persönlichen Verwirklichung im körperlichen Bereich (Techniken) wie im mentalen Bereich (Ethik). Dieser Stil der Kriegskunst integriert sowohl die klassischen als auch die modernen Entwicklungen mit oder ohne Waffen. Tengu-Ryū ist der Versuch, die Kampfkunst im 21. Jahrhundert neu zu definieren.",
