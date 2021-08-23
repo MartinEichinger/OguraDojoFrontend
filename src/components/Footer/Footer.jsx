@@ -88,7 +88,7 @@ const Footer = ({ colors, select }) => {
   };
 
   const contentFooter = {
-    heading: 'Ogura Dojo - Tenug Ryu Karate-Do, Panzi Gong, Taiji Quan, Qigong im Herzen des Chiemgaus',
+    heading: 'Ogura Dojo - Tengu Ryu Karate, Panzi Gong, Taiji Quan, Qigong im Herzen des Chiemgaus',
     'link-group': [
       {
         heading: 'Ogura Dojo',
@@ -104,10 +104,10 @@ const Footer = ({ colors, select }) => {
         ],
       },
       {
-        heading: 'Tengu Ryu Karate-Do',
+        heading: 'Tengu Ryu Karate',
         items: [
           {
-            title: 'Über Tengu-Ryu',
+            title: 'Über Tengu Ryu',
             target: '#idModalKarate',
             link: () => selectpage('TenguRyu', 'pageKarate'),
           },
