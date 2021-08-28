@@ -74,13 +74,10 @@ class ModalClassBasis extends Component {
               gridRow: '1',
               maxHeight: 'calc(20vh - 4px)',
               boxSizing: 'border-box',
-              fontSize: '10vh',
+              fontSize: 'calc(5rem + 2.5vw)',
               marginBottom: '1vh',
               color: this.colors.bgGrey,
               textShadow: `2px 0 0 ${this.colors.bgRed}, 0 2px 0 ${this.colors.bgRed}, -2px 0 0 ${this.colors.bgRed}, 0 -2px 0 ${this.colors.bgRed}`,
-              //position: 'relative',
-              //paddingTop: '2vh',
-              //paddingLeft: '2vh',
             },
 
             '& .modal-in-nav': {
@@ -90,13 +87,18 @@ class ModalClassBasis extends Component {
               gridRow: '3',
               display: 'grid',
               justifyContent: 'space-evenly',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(175px, 1fr))',
+
+              [this.mq[0]]: {
+                // bis 400px
+                gridTemplateColumns: 'repeat(auto-fit, minmax(125px, 1fr))',
+              },
 
               '& .buttons': {
                 padding: '0 15px',
-                margin: '1vh 0',
+                margin: '1vh 1vw',
                 borderRadius: '25px',
-                fontSize: '2.5vh',
+                fontSize: 'calc(1rem + 0.75vw)',
                 border: `0px`,
 
                 '&.active': {
@@ -111,13 +113,18 @@ class ModalClassBasis extends Component {
               gridColumn: '2/12',
               gridRow: '5',
               display: 'grid',
-              justifyContent: 'space-around',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(550px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
+
+              [this.mq[1]]: {
+                // bis 600px
+                gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+              },
 
               '& .blog-card': {
-                width: '550px',
+                maxWidth: '650px',
                 fontFamily: 'Lato, sans-serif',
-                padding: '1vh',
+                padding: '1vw',
+                justifySelf: 'center',
 
                 [this.mq[1]]: {
                   // bis 600px
@@ -125,19 +132,39 @@ class ModalClassBasis extends Component {
                 },
 
                 '& h2': {
-                  fontSize: '1.75vh',
+                  fontSize: '1.5rem',
+
+                  [this.mq[3]]: {
+                    // bis 1280
+                    fontSize: 'calc(1rem + 0.625vw)',
+                  },
                 },
 
                 '& h4': {
-                  fontSize: '1.2vh',
+                  fontSize: '1rem',
+
+                  [this.mq[3]]: {
+                    // bis 1280
+                    fontSize: 'calc(0.75rem + 0.3125vw)',
+                  },
                 },
 
                 '& h5': {
-                  fontSize: '1.2vh',
+                  fontSize: '0.875rem',
+
+                  [this.mq[3]]: {
+                    // bis 1280
+                    fontSize: 'calc(0.625rem + 0.3125vw)',
+                  },
                 },
 
                 '& p': {
-                  fontSize: '1.3vh',
+                  fontSize: '1rem',
+
+                  [this.mq[3]]: {
+                    // bis 1280
+                    fontSize: 'calc(0.75rem + 0.3125vw)',
+                  },
                 },
 
                 '& .body': {
@@ -159,7 +186,8 @@ class ModalClassBasis extends Component {
                   },
 
                   '& .text': {
-                    margin: '15px',
+                    margin: '1vw',
+                    padding: '0',
                     width: '50%',
 
                     [this.mq[0]]: {

@@ -100,7 +100,7 @@ const Footer = ({ colors, select }) => {
           },
           { title: 'Wir', target: '#idModalTraining', link: () => selectpage('Wir', 'pageTraining') },
           { title: 'Blog', target: '#idModalBlog' },
-          { title: 'Veranstaltungen', target: '#idModalEvents' },
+          { title: 'Termine', target: '#idModalEvents' },
         ],
       },
       {

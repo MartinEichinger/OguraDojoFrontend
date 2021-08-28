@@ -24,7 +24,7 @@ const BlogEntry = ({ blog, colors }) => {
     return filterState === 'Alle' || item.cat === filterState ? (
       <div className="blog-card d-flex flex-column" key={i}>
         <h5 className="text-center font-weight-bold">
-          {item.date} +++ {item.cat} +++ {item.tags}
+          {item.date} +++ {item.tags}
         </h5>
         <div className="body d-flex flex-row">
           <div
