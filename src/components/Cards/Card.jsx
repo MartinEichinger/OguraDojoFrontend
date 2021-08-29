@@ -111,6 +111,20 @@ class Card extends Component {
           height: '200px',
           padding: '10px',
         },
+
+        '& .card-rows': {
+          display: 'grid',
+          gridTemplateColumns: 'auto 1fr auto 1fr auto',
+          '& .tab1': {
+            gridColumn: '1',
+          },
+          '& .tab2': {
+            gridColumn: '3',
+          },
+          '& .tab3': {
+            gridColumn: '5',
+          },
+        },
       },
 
       '& h1': {
@@ -170,9 +184,10 @@ class Card extends Component {
         },
 
         [this.mq[0]]: {
-          maxHeight: '16px',
-          textOverflow: 'ellipsis',
-          overflow: 'hidden',
+          display: 'none',
+          //maxHeight: '16px',
+          //textOverflow: 'ellipsis',
+          //overflow: 'hidden',
         },
       },
     };
@@ -223,7 +238,7 @@ class Card extends Component {
     } else if (table !== undefined) {
       return table.map((line, j) => {
         return (
-          <div className="d-flex flex-row justify-content-between" key={j}>
+          <div className="card-rows" key={j}>
             <p className="bold">{line.head}</p>
             <p>{line.day}</p>
             <p>{line.time}</p>
@@ -234,8 +249,7 @@ class Card extends Component {
   };
 
   render() {
-    var { img, modal, heading, headingTwo, para, table, keywords, pos } =
-      this.props.props;
+    var { img, modal, heading, headingTwo, para, table, keywords, pos } = this.props.props;
     this.styleCard['& .img'].backgroundImage = `url(${img})`;
     this.styleCard['& .img'].backgroundPosition = `${pos}`;
     this.updateHx();
@@ -251,14 +265,27 @@ class Card extends Component {
         key={this.keys}
       >
         <div className="img" id="modalCard"></div>
-        <div
-          className="cardBody d-flex flex-column justify-content-between"
-          id="modalCard"
-        >
+        <div className="cardBody d-flex flex-column justify-content-between" id="modalCard">
           <div>
             <h1>{heading}</h1>
             <h2>{headingTwo}</h2>
-            {this.renderPara(para, table)}
+            {/* {this.renderPara(para, table)} */}
+            {para !== undefined ? <p>{para}</p> : ''}
+            {table !== undefined ? (
+              <div className="card-rows scroll_">
+                {table.map((line, j) => {
+                  return (
+                    <React.Fragment>
+                      <p className="tab1 bold">{line.head}</p>
+                      <p className="tab2">{line.day}</p>
+                      <p className="tab3">{line.time}</p>
+                    </React.Fragment>
+                  );
+                })}
+              </div>
+            ) : (
+              ''
+            )}
           </div>
           <h5>{keywords}</h5>
         </div>
