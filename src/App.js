@@ -62,6 +62,7 @@ class App extends Component {
       bgWhite75: 'rgba(255,255,255,0.75)',
       bgWhite: 'rgba(255,255,255,1)',
       bgRed: 'rgba(121, 0, 0, 1)', //HSL: 0, 100, 24 //#790000
+      bgRed50: 'rgba(121, 0, 0, 0.5)',
       typoGrey: 'rgba(64, 64, 64, 1)',
       typoGreen: 'rgba(10, 121, 0, 1)',
       typoRed: 'rgba(121, 0, 0, 1)',

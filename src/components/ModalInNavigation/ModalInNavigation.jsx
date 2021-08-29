@@ -6,26 +6,9 @@ import React from 'react';
 
 const ModalInNavigation = ({ clickUpDown, nextItem, colors, config, mq, apdx }) => {
   const styleInNav = {
-    //position: 'absolute',
-    //width: '47px',
-    //top: '5vh',
-    //height: '90vh',
     zIndex: '1052',
-    //right: '2px',
     backgroundColor: colors.bgWhite,
     borderRadius: '45px',
-
-    [mq[2]]: {
-      //width: '35px',
-    },
-
-    [mq[1]]: {
-      //width: '30px',
-    },
-
-    [mq[0]]: {
-      //width: '25px',
-    },
 
     '& .btn-close': {
       width: '45px',
@@ -62,7 +45,7 @@ const ModalInNavigation = ({ clickUpDown, nextItem, colors, config, mq, apdx }) 
       width: '145px',
       position: 'relative',
       transform: 'rotate(90deg)',
-      color: colors.bgGrey,
+      color: colors.bgRed50,
       border: `1px solid ${colors.bgWhite}`,
       borderRadius: '25px',
 
