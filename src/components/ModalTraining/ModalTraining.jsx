@@ -49,7 +49,7 @@ class ModalTraining extends ModalClassBasis {
         },
         {
           head1: 'Ulrike Geuder',
-          head2: '2ter Vorstand, Trainerin Karate',
+          head2: '2ter Vorstand \u00b7 Trainerin Karate',
           head3: '5. DAN Tengu Ryu',
           img: 'url(./wir_pic_ug.jpg)',
           img_pos: '50% 10%',
@@ -63,7 +63,7 @@ class ModalTraining extends ModalClassBasis {
         },
         {
           head1: 'Alex Hetzner',
-          head2: 'Schriftführer, Trainer Karate Kinder Jugendliche',
+          head2: 'Schriftführer \u00b7 Trainer Karate Kinder Jugendliche',
           head3: '1. KYU Tengu Ryu',
           img: 'url(./wir_pic_ah.jpg)',
           img_pos: '50% 30%',
@@ -125,16 +125,23 @@ class ModalTraining extends ModalClassBasis {
         title: 'Beitrag?',
         items: [
           {
-            heading: ['TuS Traunreut', '(Karate und Taiji)'],
-            listing: ['unter 18J: 60€/J', 'über 18J: 120€/J'],
+            heading: ['Jahresbeiträge'],
           },
           {
-            heading: ['Verband CRB', '(Tengu Ryu)'],
-            listing: ['Neuaufnahme: 31€/J', 'Verlängerung: 22€/J'],
+            heading: ['TuS Traunreut: '],
+            listing: ['unter 18J: 60€ und über 18J: 120€'],
           },
           {
-            heading: ['Verband DKV', '(Karate)'],
-            listing: ['18€/J für Kinder (bis 13J)', '23€/J für Jugendl. & Erwachsene'],
+            heading: ['TuS - Abt. Karate/Taiji: '],
+            listing: ['20€'],
+          },
+          {
+            heading: ['Verband CRB (Tengu Ryu): '],
+            listing: ['Neuaufnahme: 31€ und bei Verlängerung: 22€'],
+          },
+          {
+            heading: ['Verband DKV (Karate): '],
+            listing: ['18€ für Kinder (bis 13J) und 23€ für Jugendl. & Erwachsene'],
           },
         ],
       },
@@ -148,7 +155,7 @@ class ModalTraining extends ModalClassBasis {
 
   render() {
     if (this.debug) console.log('ModalTraining/render', this.state.width, this.state.height);
-    this.updateHxMT();
+    //this.updateHxMT();
 
     return (
       <React.Fragment>

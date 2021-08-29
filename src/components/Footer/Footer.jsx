@@ -151,9 +151,14 @@ const Footer = ({ colors, select }) => {
               return (
                 <div className="column d-flex flex-column align-items-start">
                   <h2>{entry.heading}</h2>
-                  {entry.items.map((item) => {
+                  {entry.items.map((item, i) => {
                     return (
-                      <button data-bs-toggle="modal" data-bs-target={item.target} onClick={item.link}>
+                      <button
+                        data-bs-toggle="modal"
+                        data-bs-target={item.target}
+                        onClick={item.link}
+                        key={i}
+                      >
                         {item.title}
                       </button>
                     );

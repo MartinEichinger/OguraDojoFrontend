@@ -21,7 +21,7 @@ const ModalTrainingWir = ({ contentWir }) => {
                 <div className="text d-flex flex-column align-items-center justify-content-around">
                   <h2>{item.head1}</h2>
                   <h5>{item.head2}</h5>
-                  <p className="white text-center mb-2 small">{item.head3}</p>
+                  <p className="white text-center mb-2">{item.head3}</p>
                   <img src="email_24px_outlined.png" alt="" />
                 </div>
               </div>

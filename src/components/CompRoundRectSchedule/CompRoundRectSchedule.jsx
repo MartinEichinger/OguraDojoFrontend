@@ -7,20 +7,20 @@ const CompRoundRectSchedule = ({ schedule }) => {
         <img src="wann_24px_outlined.svg" alt="" />
         <p className="red bold">{schedule.title}</p>
       </div>
-      <div className="rect d-flex flex-column justify-content-between scroll_">
+      <div className="rect tab-rows scroll_">
         {schedule.lesson.map((item, i) => {
           return (
-            <div className="tab-row d-flex flex-row" key={i}>
-              <div className="tab w20">
+            <React.Fragment>
+              <div className="tab1">
                 <p>{item.day}</p>
               </div>
-              <div className="tab w30">
+              <div className="tab2">
                 <p>{item.time}</p>
               </div>
-              <div className="tab w50">
+              <div className="tab3">
                 <p>{item.topic}</p>
               </div>
-            </div>
+            </React.Fragment>
           );
         })}
       </div>

@@ -31,8 +31,8 @@ class ModalClassBasis extends ModalClassStyle {
 
   onShowModalMT = () => {
     if (this.debug) console.log('ModalTraining/onShowModal');
-    this.updateDimensionsMT();
-    this.updateHxMT();
+    //this.updateDimensionsMT();
+    //this.updateHxMT();
     this.stats.page = this.props.page;
     var page = this.stats.page;
     if (this.debug) console.log('ModalTraining/onShowModalMT', this.stats);
@@ -137,9 +137,9 @@ class ModalClassBasis extends ModalClassStyle {
     //this.updateDimensionsMT();
     if (this.debug) console.log('ModalTraining/updateHxMT: ', this.resize);
     // H1
-    this.style['& .modal-content']['& .modal-row']['& .content']['& .Training, .Wir']['& .modal-col'][
-      '& h1'
-    ].fontSize = 120 * (this.state.width / 1440) * (this.state.height / 1200) + 18 + 'px';
+    //this.style['& .modal-content']['& .modal-row']['& .content']['& .Training, .Wir']['& .modal-col'][
+    //  '& h1'
+    //].fontSize = 120 * (this.state.width / 1440) * (this.state.height / 1200) + 18 + 'px';
 
     // H2
     this.style['& .modal-content']['& .modal-row']['& .content']['& .Training, .Wir']['& .modal-col'][
@@ -147,9 +147,9 @@ class ModalClassBasis extends ModalClassStyle {
     ].fontSize = 8 * (this.state.width / 1440) * (this.state.height / 1200) + 12 + 'px';
 
     // p
-    this.style['& .modal-content']['& .modal-row']['& .content']['& .Training, .Wir']['& .modal-col'][
-      '& p'
-    ].fontSize = 8 * (this.state.width / 1440) * (this.state.height / 1200) + 12 + 'px';
+    //this.style['& .modal-content']['& .modal-row']['& .content']['& .Training, .Wir']['& .modal-col'][
+    //  '& p'
+    //].fontSize = 8 * (this.state.width / 1440) * (this.state.height / 1200) + 12 + 'px';
   };
 
   updateDimensionsMT = () => {

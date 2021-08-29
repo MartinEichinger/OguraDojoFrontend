@@ -7,22 +7,21 @@ const CompRoundRectList = ({ list }) => {
         <img src="geld_24px_outlined.svg" alt="" />
         <p className="red bold">{list.title}</p>
       </div>
-      <div className="rect scroll_">
-        <div className="tab-row d-flex flex-row">
-          {list.items.map((item, i) => {
-            return (
-              <div className="tab w33" key={i}>
-                <p className="bold underline">
-                  {item.heading[0]}
-                  <span className="span_vis">{item.heading[1]}</span>
+      <div className="rect list-rows scroll_">
+        {list.items.map((item, i) => {
+          return (
+            <React.Fragment>
+              {i === 0 ? (
+                <p className="tab1 bold underline">{item.heading}</p>
+              ) : (
+                <p>
+                  <span className="tab1 bold">{item.heading}</span>
+                  {item.listing}
                 </p>
-                {item.listing.map((it, i) => {
-                  return <p key={i}>{it}</p>;
-                })}
-              </div>
-            );
-          })}
-        </div>
+              )}
+            </React.Fragment>
+          );
+        })}
       </div>
     </React.Fragment>
   );
