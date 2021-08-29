@@ -44,14 +44,14 @@ class ModalTraining extends ModalClassBasis {
           head1: 'Alex Callegari',
           head2: 'Trainer Karate.Taiji.Qigong',
           head3: '6. DAN Tengu Ryu',
-          img: 'url(./training_pic_2.png)',
+          img: 'url(./training_pic_2.jpg)',
           img_pos: '50% 30%',
         },
         {
           head1: 'Ulrike Geuder',
           head2: '2ter Vorstand.Trainerin Karate',
           head3: '5. DAN Tengu Ryu',
-          img: 'url(./training_pic_3.png)',
+          img: 'url(./training_pic_3.jpg)',
           img_pos: '50% 10%',
         },
         {

@@ -64,7 +64,7 @@ class ModalBlog extends ModalClassBasis {
           header: 'Lungen Qigong',
           detail:
             'Das Qigong, um das Qi zu stärken und die Lunge zu pflegen, wirkt sich vorbeugend und heilend auf Erkrankungen der Atmungsorgane aus.',
-          img: 'blog_pic_1.png',
+          img: 'blog_pic_1.jpg',
           imgPos: '50% 0%',
           link: '/blog/Pub_LungenQiGong.pdf',
         },
@@ -75,7 +75,7 @@ class ModalBlog extends ModalClassBasis {
           header: 'Ideen des Budos',
           detail:
             'Ideen des Budo, die von jedem wahren Meister der Kampfkunst studiert werden sollten...',
-          img: 'blog_pic_2.png',
+          img: 'blog_pic_2.jpg',
           imgPos: '60% 0%',
           link: '/blog/TenguRyu_IdeenBudo.pdf',
         },

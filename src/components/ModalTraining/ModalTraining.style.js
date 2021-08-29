@@ -188,7 +188,6 @@ class ModalClassStyle extends Component {
                 height: '55%',
                 borderRadius: '5px',
                 backgroundSize: 'cover',
-                //backgroundImage: 'url(./training_pic_2.png)',
               },
 
               '& .text': {
