@@ -65,22 +65,35 @@ class ModalClassBasis extends Component {
             backgroundColor: 'white',
             borderRadius: '5px',
             display: 'grid',
-            gridTemplateColumns: 'auto',
             gridTemplateRows: 'auto 1fr auto',
+            gridTemplateColumns: '1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr',
+            [this.mq[2]]: {
+              // bis 960 px
+              gridTemplateColumns: '0.5fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.5fr',
+            },
+            [this.mq[1]]: {
+              // bis 600 px
+              gridTemplateColumns: '0.2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.2fr',
+            },
+            [this.mq[0]]: {
+              // bis 400px
+              gridTemplateColumns: '0.1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.1fr',
+            },
 
             '& .heading': {
               gridRow: '1',
-              gridColumn: '1',
-              maxHeight: '20vh',
+              gridColumn: '2/-1',
+              maxHeight: 'calc(20vh-4px)',
+              boxSizing: 'border-box',
 
               '& h1': {
-                fontSize: '10vh',
+                fontSize: 'calc(5rem + 2.5vw)',
                 marginBottom: '1vh',
                 color: this.colors.bgGrey,
                 textShadow: `2px 0 0 ${this.colors.bgRed}, 0 2px 0 ${this.colors.bgRed}, -2px 0 0 ${this.colors.bgRed}, 0 -2px 0 ${this.colors.bgRed}`,
                 position: 'relative',
-                paddingTop: '2vh',
-                paddingLeft: '2vh',
+                //paddingTop: '2vh',
+                //paddingLeft: '2vh',
 
                 [this.mq[0]]: {
                   fontSize: '8vh',
@@ -90,8 +103,8 @@ class ModalClassBasis extends Component {
 
             '& .tables': {
               gridRow: '3',
-              gridColumn: '1',
-              maxHeight: 'calc(85vh - 4px)',
+              gridColumn: '2/12',
+              maxHeight: 'calc(80vh - 4px)',
               position: 'relative',
             },
           },

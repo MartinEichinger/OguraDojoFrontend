@@ -99,7 +99,7 @@ const EventFormInfos = ({
               onChange={(event) => onChangeEvent(x.name, event.target.value)}
               multiline={x.multiline ?? false}
               minRows={2}
-              maxRows={15}
+              maxRows={20}
               fullWidth
               id={x.id}
               label={x.label}
@@ -116,7 +116,7 @@ const EventFormInfos = ({
               color="primary"
               multiline={x.multiline ?? false}
               minRows={2}
-              maxRows={15}
+              maxRows={20}
               fullWidth
               id={x.id}
               label={x.label}

@@ -89,6 +89,11 @@ class ModalClassBasis extends Component {
               justifyContent: 'space-evenly',
               gridTemplateColumns: 'repeat(auto-fit, minmax(175px, 1fr))',
 
+              [this.mq[2]]: {
+                // bis 960px
+                maxHeight: '12vh',
+              },
+
               [this.mq[0]]: {
                 // bis 400px
                 gridTemplateColumns: 'repeat(auto-fit, minmax(125px, 1fr))',
@@ -115,16 +120,19 @@ class ModalClassBasis extends Component {
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
 
+              [this.mq[2]]: {
+                // bis 960px
+                maxHeight: 'calc(68vh - 4px)',
+              },
+
               [this.mq[1]]: {
                 // bis 600px
-                gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
               },
 
               '& .blog-card': {
-                maxWidth: '650px',
                 fontFamily: 'Lato, sans-serif',
                 padding: '1vw',
-                justifySelf: 'center',
 
                 [this.mq[1]]: {
                   // bis 600px
@@ -132,6 +140,7 @@ class ModalClassBasis extends Component {
                 },
 
                 '& h2': {
+                  // 16px to 24px
                   fontSize: '1.5rem',
 
                   [this.mq[3]]: {
@@ -141,6 +150,7 @@ class ModalClassBasis extends Component {
                 },
 
                 '& h4': {
+                  // 12px to 16px
                   fontSize: '1rem',
 
                   [this.mq[3]]: {
@@ -150,6 +160,7 @@ class ModalClassBasis extends Component {
                 },
 
                 '& h5': {
+                  // 10px to 14px
                   fontSize: '0.875rem',
 
                   [this.mq[3]]: {
@@ -159,6 +170,7 @@ class ModalClassBasis extends Component {
                 },
 
                 '& p': {
+                  // 12px to 16px
                   fontSize: '1rem',
 
                   [this.mq[3]]: {
@@ -170,7 +182,7 @@ class ModalClassBasis extends Component {
                 '& .body': {
                   backgroundColor: this.colors.bgGrey,
                   borderRadius: '5px',
-                  height: '25vh',
+                  height: '250px', //1'25vh',
                   maxHeight: '250px',
 
                   '.image': {
@@ -204,6 +216,8 @@ class ModalClassBasis extends Component {
 
                 '& .button': {
                   margin: '-16px auto 0',
+                  textDecoration: 'none',
+
                   '& Button': {
                     width: '150px',
                     fontSize: '12px',

@@ -4,16 +4,25 @@ export const useCustomStyles = ({ mq, colors }) => {
   if (debug) console.log('Events.style: ', mq, colors);
 
   return {
-    width: '45%',
+    width: '47%',
     height: '100%',
     fontFamily: 'Lato, sans-serif',
     paddingTop: '3vh',
-    overflow: 'auto',
+    //overflow: 'auto',
 
     [mq[2]]: {
+      // bis 960px
       width: '90%',
       marginBottom: '1vh',
       height: '50%',
+    },
+    [mq[1]]: {
+      // bis 600px
+      width: '95%',
+    },
+    [mq[0]]: {
+      // bis 400px
+      width: '100%',
     },
 
     '&.schedule': {
@@ -43,28 +52,55 @@ export const useCustomStyles = ({ mq, colors }) => {
           padding: '1vh',
 
           '& h3': {
-            fontSize: '2.1vh',
             fontWeight: 'bold',
+            // 16px to 24px
+            fontSize: '1.5rem',
+
+            [mq[3]]: {
+              // bis 1280
+              fontSize: 'calc(1rem + 0.625vw)',
+            },
           },
 
           '& h4': {
-            fontSize: '1vh',
             fontWeight: 'bold',
             margin: '1vh',
+            // 10px to 12px
+            fontSize: '0.75rem',
+
+            [mq[3]]: {
+              // bis 1280
+              fontSize: 'calc(0.625rem + 0.15625vw)',
+            },
           },
         },
 
         '& h1': {
-          fontSize: '6vh',
+          // 56px to 72px
+          fontSize: '4.5rem',
+          lineHeight: '3.75rem',
+
+          [mq[3]]: {
+            // bis 1280
+            fontSize: 'calc(3.25rem + 1.5625vw)',
+            lineHeight: 'calc(2.75rem + 1.25vw)',
+          },
           color: 'rgba(255,255,255,1)',
-          lineHeight: '4vh',
           marginBottom: '0px',
           padding: '1vh 1vh 0.25vh 1vh',
           textAlign: 'center',
           textShadow: 'none',
         },
         '& h2': {
-          fontSize: '4vh',
+          // 32px to 48px
+          fontSize: '3rem',
+          lineHeight: '2.5rem',
+
+          [mq[3]]: {
+            // bis 1280
+            fontSize: 'calc(2rem + 1.25vw)',
+            lineHeight: 'calc(1.75rem + 1.25vw)',
+          },
           color: 'rgba(255,255,255,1)',
           lineHeight: '3vh',
           marginBottom: '0px',
