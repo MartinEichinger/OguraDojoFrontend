@@ -102,7 +102,6 @@ export const useCustomStyles = ({ mq, colors }) => {
             lineHeight: 'calc(1.75rem + 1.25vw)',
           },
           color: 'rgba(255,255,255,1)',
-          lineHeight: '3vh',
           marginBottom: '0px',
           padding: '0.25vh 1vh 1vh 1vh',
           textAlign: 'center',
