@@ -62,8 +62,8 @@ const EventFormSchedule = ({ events, month, selectEvent, delEvent, isAuthenticat
                     )}
                   </div>
                   <div className="d-flex flex-row justify-content-start align-items-baseline">
-                    {i % 2 === 0 && <i className="fas fa-map-marker-alt red"></i>}
-                    {i % 2 === 1 && <i className="fas fa-map-marker-alt green"></i>}
+                    {i % 2 === 0 && <i className="fas fa-map-marker-alt red">here</i>}
+                    {i % 2 === 1 && <i className="fas fa-map-marker-alt green">hore</i>}
                     {i % 2 === 0 && <h4 className="red">{item.location}</h4>}
                     {i % 2 === 1 && <h4 className="green">{item.location}</h4>}
                     <i className="fas fa-user"></i>
