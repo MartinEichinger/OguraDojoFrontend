@@ -10,7 +10,6 @@ import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 import { useSelector } from 'react-redux';
@@ -32,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
 const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
   const filterState = useSelector(selectFilter);
   const classes = useStyles();
-  let blah = {};
 
   const entries = [
     // part I
@@ -45,11 +43,10 @@ const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
     { name: 'document', id: '#document' },
   ];
 
-  const { onChangeBlog, formIsValid, saveFormData, editData, entryData, changedData, errors } =
-    useFormControls({
-      blogs,
-      entries,
-    });
+  const { onChangeBlog, formIsValid, saveFormData, changedData, errors } = useFormControls({
+    blogs,
+    entries,
+  });
 
   return (
     <React.Fragment>

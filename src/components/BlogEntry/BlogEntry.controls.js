@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { updateBlog, createBlog, deleteBlog } from '../../store/blogs';
+import { updateBlog, createBlog } from '../../store/blogs';
 
 //import { format } from 'date-fns';
 
@@ -70,13 +70,13 @@ export const useFormControls = ({ blogs, entries }) => {
     if (debug) console.log('Blogs/onChangeBlog: ', attr, val);
     // concatenate pictPos_1 and pictPos_2
     if (attr.includes('pictPos')) {
-      if (attr == 'pictPos_1') {
+      if (attr === 'pictPos_1') {
         var pictPos_2 =
           changedData && 'pictPos' in changedData ? changedData['pictPos'].split(' ')[1] : '50';
         pictPos_2 = pictPos_2.replace('%', '');
         attr = 'pictPos';
         val = `${val}% ${pictPos_2}%`;
-      } else if (attr == 'pictPos_2') {
+      } else if (attr === 'pictPos_2') {
         var pictPos_1 =
           changedData && 'pictPos' in changedData ? changedData['pictPos'].split(' ')[0] : '50';
         pictPos_1 = pictPos_1.replace('%', '');
