@@ -10,7 +10,7 @@ const CompRoundRectSchedule = ({ schedule }) => {
       <div className="rect tab-rows scroll_">
         {schedule.lesson.map((item, i) => {
           return (
-            <React.Fragment>
+            <React.Fragment key={i}>
               <div className="tab1">
                 <p>{item.day}</p>
               </div>

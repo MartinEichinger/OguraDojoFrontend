@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as actions from '../api';
 
-const debug = false;
+const debug = true;
 const baseURL = process.env.REACT_APP_BACKEND_PATH;
 
 const api =
@@ -11,7 +11,7 @@ const api =
     if (debug) console.log('api', action);
     if (action.type !== actions.apiCallBegan.type) return next(action);
 
-    const { url, method, data, onStart, onSuccess, onError } = action.payload;
+    const { url, method, data, onStart, onSuccess, onError, headers = '' } = action.payload;
 
     if (onStart) dispatch({ type: onStart });
 
@@ -23,6 +23,7 @@ const api =
         url,
         method,
         data,
+        headers,
       });
       // general
       dispatch(actions.apiCallSuccess(response.data));

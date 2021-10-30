@@ -147,9 +147,9 @@ const Footer = ({ colors, select }) => {
         <div className="d-flex flex-column align-items-center">
           <h1>{contentFooter.heading}</h1>
           <div className="d-flex flex-row justify-content-around w-75">
-            {contentFooter['link-group'].map((entry) => {
+            {contentFooter['link-group'].map((entry, i) => {
               return (
-                <div className="column d-flex flex-column align-items-start">
+                <div className="column d-flex flex-column align-items-start" key={i}>
                   <h2>{entry.heading}</h2>
                   {entry.items.map((item, i) => {
                     return (

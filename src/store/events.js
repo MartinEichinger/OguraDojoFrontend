@@ -25,7 +25,7 @@ export const slice = createSlice({
       state.loading = true;
     },
     eventDeleteStart: (state) => {
-      state.lpading = true;
+      state.loading = true;
     },
     // onSuccess
     eventsReceived: (state, action) => {
@@ -37,9 +37,7 @@ export const slice = createSlice({
     },
     eventsUpdated: (state, action) => {
       if (debug) console.log('events/eventsUpdated: ', action.payload);
-      const index = state.events.findIndex(
-        (event) => event.id === action.payload.id
-      );
+      const index = state.events.findIndex((event) => event.id === action.payload.id);
       if (debug) console.log('events/eventsUpdated: ', index);
       state.events[index] = action.payload;
       const evArr = state.events;
@@ -62,9 +60,7 @@ export const slice = createSlice({
     },
     eventDeleted: (state, action) => {
       if (debug) console.log('events/eventDeleted: ', action.payload);
-      const newEvents = state.events.filter(
-        (item) => item.id !== action.payload.id
-      );
+      const newEvents = state.events.filter((item) => item.id !== action.payload.id);
       state.events = newEvents;
     },
     // onError

@@ -80,6 +80,14 @@ class ModalClassBasis extends Component {
               textShadow: `2px 0 0 ${this.colors.bgRed}, 0 2px 0 ${this.colors.bgRed}, -2px 0 0 ${this.colors.bgRed}, 0 -2px 0 ${this.colors.bgRed}`,
             },
 
+            '& i': {
+              gridColumn: '11',
+              gridRow: '1',
+              display: 'grid',
+              justifyContent: 'center',
+              alignContent: 'center',
+            },
+
             '& .modal-in-nav': {
               maxHeight: '10vh',
               boxSizing: 'border-box',
@@ -184,6 +192,56 @@ class ModalClassBasis extends Component {
                   borderRadius: '5px',
                   height: '250px', //1'25vh',
                   maxHeight: '250px',
+
+                  '&.new-entry': {
+                    display: 'grid',
+                    //gridTemplateRows: 'auto 1fr auto 1fr auto',
+                    gridTemplateColumns: '1fr 5fr 1fr 10fr 1fr 5fr 1fr 10fr 1fr',
+                    justifyContent: 'start',
+                    alignContent: 'space-around',
+
+                    '& .pict-frame': {
+                      gridColumn: '1/5',
+                      gridRow: '1 / 5',
+                      backgroundSize: 'cover',
+                      opacity: '0.2',
+                    },
+                    '& .row_1': {
+                      gridRow: '1',
+                    },
+                    '& .row_2': {
+                      gridRow: '2',
+                    },
+                    '& .row_3': {
+                      gridRow: '3',
+                    },
+                    '& .row_4': {
+                      gridRow: '4',
+                    },
+                    '& .col_1': {
+                      gridColumn: '2',
+                    },
+                    '& .col_2': {
+                      gridColumn: '4',
+                    },
+                    '& .col_1_2': {
+                      gridColumn: '2/4',
+                    },
+                    '& .col_3': {
+                      gridColumn: '6',
+                    },
+                    '& .col_4': {
+                      gridColumn: '8',
+                    },
+                    '& .overflow': {
+                      overflow: 'auto',
+                    },
+                    '& p': {
+                      margin: '0',
+                      display: 'flex',
+                      alignItems: 'center',
+                    },
+                  },
 
                   '.image': {
                     backgroundRepeat: 'no-repeat',

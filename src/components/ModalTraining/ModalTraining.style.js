@@ -5,7 +5,7 @@ class ModalClassStyle extends Component {
     super(props);
     this.mq = this.props.mq;
     this.colors = this.props.colors;
-    this.debug = true;
+    this.debug = this.props.debug;
 
     // Generell
     this.styleAll = {

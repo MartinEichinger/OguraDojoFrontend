@@ -29,7 +29,7 @@ class ModalImpressum extends ModalClassBasis {
     };
 
     // Debugging
-    this.debug = true;
+    this.debug = false;
 
     this.configNav = {
       upDown: 0,

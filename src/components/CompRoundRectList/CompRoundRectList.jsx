@@ -10,7 +10,7 @@ const CompRoundRectList = ({ list }) => {
       <div className="rect list-rows scroll_">
         {list.items.map((item, i) => {
           return (
-            <React.Fragment>
+            <React.Fragment key={i}>
               {i === 0 ? (
                 <p className="tab1 bold underline">{item.heading}</p>
               ) : (

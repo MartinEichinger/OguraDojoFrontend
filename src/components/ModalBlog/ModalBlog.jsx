@@ -3,6 +3,8 @@
 import { jsx } from '@emotion/react';
 
 import React from 'react';
+import { connect } from 'react-redux';
+import { getBlogs } from '../../store/blogs';
 import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
 import ModalComp_L1_Blog from './ModalComp_L1_Blog';
 import ModalClassBasis from './ModalBlog.style';
@@ -83,8 +85,27 @@ class ModalBlog extends ModalClassBasis {
     };
   }
 
+  async componentDidMount() {
+    if (this.debug) console.log('ModalBlog/compDidMount');
+    document.getElementById('idModalBlog').addEventListener('shown.bs.modal', this.onShowModal);
+    document.getElementById('idModalBlog').addEventListener('hidden.bs.modal', this.onHideModal);
+    this.props.getBlogs();
+  }
+
+  componentWillUnmount() {
+    if (this.debug) console.log('ModalBlogs/compWillUnMount');
+    document.getElementById('idModalBlog').removeEventListener('shown.bs.modal', this.onShowModal);
+    document.getElementById('idModalBlog').removeEventListener('hidden.bs.modal', this.onHideModal);
+  }
+
+  onShowModal = () => {
+    if (this.debug) console.log('ModalBlogs/onShowModal');
+    this.setState({ rerender: true });
+  };
+
   render() {
     if (this.debug) console.log('ModalBlog/render', this.stats, this.props);
+    this.isAuthenticated = this.props.isAuthenticated;
 
     return (
       <React.Fragment>
@@ -112,7 +133,12 @@ class ModalBlog extends ModalClassBasis {
                   mq={this.mq}
                 />
                 {/* eslint-disable-next-line */}
-                <ModalComp_L1_Blog colors={this.props.colors} content={this.content} mq={this.mq} />
+                <ModalComp_L1_Blog
+                  colors={this.props.colors}
+                  content={this.content}
+                  mq={this.mq}
+                  isAuthenticated={this.isAuthenticated}
+                />
               </div>
             </div>
           </div>
@@ -122,4 +148,17 @@ class ModalBlog extends ModalClassBasis {
   }
 }
 
-export default ModalBlog;
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.auth.token !== null,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getBlogs: () => dispatch(getBlogs()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ModalBlog);
+//export default ModalBlog;

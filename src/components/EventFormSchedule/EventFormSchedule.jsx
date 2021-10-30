@@ -39,9 +39,9 @@ const EventFormSchedule = ({ events, month, selectEvent, delEvent, isAuthenticat
             </div>
           </div>
         ) : (
-          <React.Fragment>
+          <React.Fragment key={i}>
             {uptodate && (
-              <div className="block d-flex flex-row" key={i} onClick={() => selectEvent(item)}>
+              <div className="block d-flex flex-row" onClick={() => selectEvent(item)}>
                 {i % 2 === 0 && (
                   <div className="date bgRed d-flex flex-column justify-content-center align-items-center">
                     <h1>{d.getDate()}</h1>
@@ -62,8 +62,8 @@ const EventFormSchedule = ({ events, month, selectEvent, delEvent, isAuthenticat
                     )}
                   </div>
                   <div className="d-flex flex-row justify-content-start align-items-baseline">
-                    {i % 2 === 0 && <i className="fas fa-map-marker-alt red">hee</i>}
-                    {i % 2 === 1 && <i className="fas fa-map-marker-alt green">hoe</i>}
+                    {i % 2 === 0 && <i className="fas fa-map-marker-alt red"></i>}
+                    {i % 2 === 1 && <i className="fas fa-map-marker-alt green"></i>}
                     {i % 2 === 0 && <h4 className="red">{item.location}</h4>}
                     {i % 2 === 1 && <h4 className="green">{item.location}</h4>}
                     <i className="fas fa-user"></i>

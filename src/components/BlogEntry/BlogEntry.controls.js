@@ -1,26 +1,25 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { updateEvent, createEvent, deleteEvent } from '../../store/events';
-import { sendEmail } from '../../store/email';
+import { updateBlog, createBlog, deleteBlog } from '../../store/blogs';
 
-import { format } from 'date-fns';
+//import { format } from 'date-fns';
 
-export const useFormControls = ({ events, entries }) => {
-  const debug = false;
+export const useFormControls = ({ blogs, entries }) => {
+  const debug = true;
 
   // STATES
   const [editData, setEditData] = useState(false);
-  const [entryData, setEntryData] = useState(events[0]);
-  const [changedData, setChangedData] = useState(events[0]);
+  const [entryData, setEntryData] = useState(blogs[0]);
+  const [changedData, setChangedData] = useState(blogs[0]);
   const [errors, setErrors] = useState({});
 
-  if (debug) console.log('Events.controls: ', changedData, entries, errors);
+  if (debug) console.log('Blogs.controls: ', changedData, entries, errors);
 
   const dispatch = useDispatch();
 
-  // EVENTS
-  const newEvent = () => {
+  // BLOGS
+  /*   const newEvent = () => {
     const item = {
       authorized: 'z.B. nur CRB Mitglieder',
       cost: 'z.B. 5 €',
@@ -36,9 +35,9 @@ export const useFormControls = ({ events, entries }) => {
     if (debug) console.log('New event: ', item.title);
     setChangedData(item);
     setEditData(true);
-  };
+  }; */
 
-  const selectEvent = (item) => {
+  /*   const selectEvent = (item) => {
     if (debug) console.log('Select event: ', item.title);
     setEntryData(item);
     setChangedData(item);
@@ -46,19 +45,20 @@ export const useFormControls = ({ events, entries }) => {
 
   const delEvent = (item) => {
     dispatch(deleteEvent(item));
-  };
+  }; */
 
   // ENTRIES
   const saveFormData = (save) => {
     setEditData(false);
     if (save) {
       if (debug) console.log('save data: ', changedData);
-      if (changedData['id'] === 'none') {
+      if (true) {
+        //changedData['id'] === 'none') {
         setEntryData(changedData);
-        dispatch(createEvent(changedData));
+        dispatch(createBlog(changedData));
       } else {
         setEntryData(changedData);
-        dispatch(updateEvent(changedData));
+        dispatch(updateBlog(changedData));
       }
     } else {
       if (debug) console.log('dont save data: ', entryData);
@@ -66,17 +66,38 @@ export const useFormControls = ({ events, entries }) => {
     }
   };
 
-  const onChangeEvent = (attr, val) => {
-    if (debug) console.log('Events/onChangeEvent: ', attr, val);
+  const onChangeBlog = (attr, val) => {
+    if (debug) console.log('Blogs/onChangeBlog: ', attr, val);
+    // concatenate pictPos_1 and pictPos_2
+    if (attr.includes('pictPos')) {
+      if (attr == 'pictPos_1') {
+        var pictPos_2 =
+          changedData && 'pictPos' in changedData ? changedData['pictPos'].split(' ')[1] : '50';
+        pictPos_2 = pictPos_2.replace('%', '');
+        attr = 'pictPos';
+        val = `${val}% ${pictPos_2}%`;
+      } else if (attr == 'pictPos_2') {
+        var pictPos_1 =
+          changedData && 'pictPos' in changedData ? changedData['pictPos'].split(' ')[0] : '50';
+        pictPos_1 = pictPos_1.replace('%', '');
+        attr = 'pictPos';
+        val = `${pictPos_1}% ${val}%`;
+      }
+      console.log('pictPos: ', attr, val);
+    }
+
+    // update changedData Obj before set change
     const obj = {
       ...changedData,
       [attr]: val,
     };
+
+    // set change
     setChangedData(obj);
     validate({ [attr]: val });
   };
 
-  const onChangeDate = (date) => {
+  /*   const onChangeDate = (date) => {
     if (debug) console.log('Events/onChangeDate: ', date);
     const obj = {
       ...changedData,
@@ -84,6 +105,7 @@ export const useFormControls = ({ events, entries }) => {
     };
     setChangedData(obj);
   };
+ */
 
   const validate = (fieldValues = changedData) => {
     let temp = { ...errors };
@@ -122,11 +144,11 @@ export const useFormControls = ({ events, entries }) => {
   const formIsValid = (fieldValues = changedData) => {
     const isValid = Object.values(errors).every((x) => x === '');
 
-    if (debug) console.log('Events/formIsValid: ', isValid);
+    if (debug) console.log('Blogs/formIsValid: ', isValid);
     return isValid;
   };
 
-  const handleFormSubmit = (seminar) => {
+  /*   const handleFormSubmit = (seminar) => {
     if (debug)
       console.log(
         'ContactFormControls/sendEmail: ',
@@ -143,18 +165,12 @@ export const useFormControls = ({ events, entries }) => {
     };
     setChangedData(obj);
     dispatch(sendEmail({ email, sender, seminar }));
-  };
+  }; */
 
   return {
-    newEvent,
-    selectEvent,
-    delEvent,
-    saveFormData,
-    onChangeEvent,
-    onChangeDate,
-    setEditData,
+    onChangeBlog,
     formIsValid,
-    handleFormSubmit,
+    saveFormData,
     editData,
     entryData,
     changedData,

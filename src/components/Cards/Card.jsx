@@ -275,7 +275,7 @@ class Card extends Component {
               <div className="card-rows scroll_">
                 {table.map((line, j) => {
                   return (
-                    <React.Fragment>
+                    <React.Fragment key={j}>
                       <p className="tab1 bold">{line.head}</p>
                       <p className="tab2">{line.day}</p>
                       <p className="tab3">{line.time}</p>

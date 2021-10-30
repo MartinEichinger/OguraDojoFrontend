@@ -25,7 +25,7 @@ class ModalTraining extends ModalClassBasis {
       animated: 0,
     };
 
-    this.debug = true;
+    this.debug = false;
     this.apdx = 'Train';
 
     // CONTENT

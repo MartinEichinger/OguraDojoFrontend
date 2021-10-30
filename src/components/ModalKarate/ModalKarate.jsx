@@ -17,7 +17,7 @@ class ModalKarate extends ModalClassBasis {
       height: 300,
     };
 
-    this.debug = true;
+    this.debug = false;
     this.apdx = 'Karate';
 
     this.form = React.createRef();
