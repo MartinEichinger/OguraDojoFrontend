@@ -5,16 +5,16 @@ import { jsx } from '@emotion/react';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import Button from '@material-ui/core/Button';
+import { Button } from '@mui/material';
 import { EventContactForm } from '../EventContactForm/EventContactForm';
 import EventFormEditSave from '../EventFormEditSave/EventFormEditSave';
 import EventFormInfos from '../EventFormInfos/EventFormInfos';
 import EventFormSchedule from '../EventFormSchedule/EventFormSchedule';
-import { makeStyles } from '@material-ui/core/styles';
+//import { makeStyles } from '@material-ui/core/styles';
 import { useCustomStyles } from './Events.style';
 import { useFormControls } from './Events.controls';
 
-const useStyles = makeStyles((theme) => ({
+/* const useStyles = makeStyles((theme) => ({
   root1: {
     '& > *': {
       margin: theme.spacing(1),
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
       width: '45%',
     },
   },
-}));
+})); */
 
 const Events = ({ events, colors, mq }) => {
   // constants
@@ -43,7 +43,7 @@ const Events = ({ events, colors, mq }) => {
   const isAuthenticated = useSelector((state) => state.auth.token !== null);
 
   // style
-  const classes = useStyles();
+  //const classes = useStyles();
   const style = useCustomStyles({ mq, colors });
 
   // util data
@@ -108,7 +108,7 @@ const Events = ({ events, colors, mq }) => {
           />
           {isAuthenticated && (
             <Button
-              className={classes.root2}
+              //className={classes.root2}
               variant="contained"
               color="primary"
               onClick={() => newEvent()}
@@ -121,7 +121,7 @@ const Events = ({ events, colors, mq }) => {
       {events.length > 0 && (
         <div className="detail d-flex flex-column scroll_" css={style}>
           <EventFormInfos
-            style={classes.root1}
+            //style={classes.root1}
             inFieldVal={entries.slice(0, 8)}
             isAuthEdit={isAuthEdit}
             isAuthNoEdit={isAuthNoEdit}
@@ -135,7 +135,7 @@ const Events = ({ events, colors, mq }) => {
 
           {!isAuthEdit && (
             <EventContactForm
-              style={classes.root2}
+              //style={classes.root2}
               inFieldVal={entries.slice(8, 10)}
               event={changedData.title}
               value={changedData}
@@ -147,7 +147,7 @@ const Events = ({ events, colors, mq }) => {
           )}
           {isAuthEdit && (
             <EventFormEditSave
-              style={classes.root2}
+              //style={classes.root2}
               saveFormData={saveFormData}
               formIsValid={formIsValid}
             />

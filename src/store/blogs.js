@@ -1,8 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { apiCallBegan } from './api';
 
-const debug = true;
+const debug = false;
 const baseURL = process.env.REACT_APP_BACKEND_PATH;
+const removeURL = process.env.REACT_APP_STATIC_REMOVE;
+console.log('Paths: ', process.env, baseURL, removeURL);
 
 // initial state
 const initialState = {
@@ -32,15 +34,15 @@ export const slice = createSlice({
     blogsReceived: (state, action) => {
       if (debug) console.log('blogs/blogsReceived: ', action.payload);
       action.payload.sort((a, b) => {
-        return new Date(a.date) - new Date(b.date);
+        return new Date(b.date) - new Date(a.date);
       });
 
       state.blogs = action.payload;
       // replace parts from path
       // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD
       state.blogs.map((item) => {
-        item.picture = item.picture.replace('ogura_dojo_backend/oguradojo/', '');
-        item.file = item.file.replace('ogura_dojo_backend/oguradojo/', '');
+        item.picture = item.picture.replace(removeURL, '');
+        item.file = item.file.replace(removeURL, '');
         return false;
       });
     },
@@ -57,8 +59,8 @@ export const slice = createSlice({
       // replace parts from path
       // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD
       state.blogs.map((item) => {
-        item.picture = item.picture.replace('ogura_dojo_backend/oguradojo/', '');
-        item.file = item.file.replace('ogura_dojo_backend/oguradojo/', '');
+        item.picture = item.picture.replace(removeURL, '');
+        item.file = item.file.replace(removeURL, '');
         return false;
       });
 
@@ -77,9 +79,8 @@ export const slice = createSlice({
       state.blogs.map((item) => {
         // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD
         if (!item.picture.includes(baseURL))
-          item.picture = baseURL + item.picture.replace('ogura_dojo_backend/oguradojo/', '');
-        if (!item.file.includes(baseURL))
-          item.file = baseURL + item.file.replace('ogura_dojo_backend/oguradojo/', '');
+          item.picture = baseURL + item.picture.replace(removeURL, '');
+        if (!item.file.includes(baseURL)) item.file = baseURL + item.file.replace(removeURL, '');
         return false;
       });
 

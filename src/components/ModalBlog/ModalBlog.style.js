@@ -170,7 +170,7 @@ class ModalClassBasis extends Component {
                 '& h5': {
                   // 10px to 14px
                   fontSize: '0.875rem',
-
+                  padding: '0',
                   [this.mq[3]]: {
                     // bis 1280
                     fontSize: 'calc(0.625rem + 0.3125vw)',

@@ -332,12 +332,12 @@ class Navigation extends Component {
               <h2>Karate, Panzi Gong, Taiji, Qigong im Herzen des Chiemgaus</h2>
             </div>
             {this.isAuthenticated && (
-              <button onClick={this.logout}>
+              <button title="Logout" onClick={this.logout}>
                 <i className="fas fa-sign-out-alt"></i>
               </button>
             )}
             {!this.isAuthenticated && (
-              <button data-bs-toggle="modal" data-bs-target="#idModalLogin">
+              <button title="Login" data-bs-toggle="modal" data-bs-target="#idModalLogin">
                 <i className="fas fa-sign-in-alt"></i>
               </button>
             )}

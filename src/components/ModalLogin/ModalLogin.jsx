@@ -2,32 +2,19 @@
 // eslint-disable-next-line
 import { jsx } from '@emotion/react';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../store/auth';
 
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: '4vh',
-
-    '& .MuiTextField-root': {
-      marginBottom: theme.spacing(4),
-      //padding: '1vh',
-      //width: '50ch',
-      display: 'flex',
-      flexDirection: 'column',
-    },
-  },
-}));
+import { TextField, Button } from '@mui/material';
+import Box from '@mui/material/Box';
 
 const ModalLogin = () => {
   const dispatch = useDispatch();
-  const [pwd, setPwd] = useState(0);
-  const [user, setUser] = useState(0);
+  const [pwd, setPwd] = useState({ password: '' });
+  const [user, setUser] = useState({ username: '' });
+
+  const innerRef = useRef(null);
 
   // Debugging
   const debug = false;
@@ -61,13 +48,27 @@ const ModalLogin = () => {
     },
   };
 
-  const classes = useStyles();
-
   // Methods
   const onlogin = (username, password) => {
     console.log('try login: ', username, password);
     dispatch(logIn(username, password));
+    setUser({ username: '' });
+    setPwd({ password: '' });
   };
+
+  useEffect(() => {
+    const div = innerRef.current;
+    // subscribe event
+    div.addEventListener('keyup', function (ev) {
+      if (ev.keyCode === 13) document.getElementById('login-button').click();
+    });
+    // unsubscribe event
+    return function cleanup() {
+      div.removeEventListener('keyup', function (ev) {
+        if (ev.keyCode === 13) document.getElementById('login-button').click();
+      });
+    };
+  }, []);
 
   if (debug) console.log('ModalLogin/render');
 
@@ -89,19 +90,36 @@ const ModalLogin = () => {
           <div className="modal-content">
             <div className="modal-row d-flex flex-row h-100 align-items-center">
               <div className="modal-up">
-                <form className={classes.root}>
+                <Box
+                  component="form"
+                  autoComplete="off"
+                  sx={{
+                    padding: '4vh',
+
+                    '& .MuiTextField-root': {
+                      marginBottom: 3,
+                      display: 'flex',
+                      flexDirection: 'column',
+                    },
+                  }}
+                  ref={innerRef}
+                >
                   <TextField
                     required
+                    variant="standard"
                     id="id_login"
                     label="Login"
+                    value={user.username}
                     onChange={(e) => setUser({ username: e.target.value })}
                   />
                   <TextField
                     required
+                    variant="standard"
                     id="id_pwd"
                     label="Password"
                     type="password"
                     autoComplete="current-password"
+                    value={pwd.password}
                     onChange={(e) => setPwd({ password: e.target.value })}
                   />
 
@@ -109,13 +127,27 @@ const ModalLogin = () => {
                     type="button"
                     color="primary"
                     className="form__custom-button"
+                    id="login-button"
                     variant="contained"
                     onClick={() => onlogin(user.username, pwd.password)}
                     data-bs-dismiss="modal"
                   >
                     Log in
                   </Button>
-                </form>
+                  <Button
+                    sx={{
+                      marginLeft: 1,
+                    }}
+                    type="button"
+                    color="secondary"
+                    className="form__custom-button"
+                    id="break-button"
+                    variant="contained"
+                    data-bs-dismiss="modal"
+                  >
+                    Abbruch
+                  </Button>
+                </Box>
               </div>
             </div>
           </div>

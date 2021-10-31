@@ -1,9 +1,9 @@
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
+import { TextField } from '@mui/material';
 
 import 'date-fns';
-import DateFnsUtils from '@date-io/date-fns';
-import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
+//import DateFnsUtils from '@date-io/date-fns';
+//import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 
 import { format } from 'date-fns';
 import { de } from 'date-fns/locale';
@@ -34,21 +34,7 @@ const EventFormInfos = ({
         {inFieldVal?.slice(0, 4).map((x, i) => {
           return isAuthEdit ? (
             x.label === 'Termin' ? (
-              <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <KeyboardDatePicker
-                  disableToolbar
-                  variant="inline"
-                  format="dd.MM.yyyy"
-                  margin="normal"
-                  id="date-picker-inline"
-                  label="Date picker inline"
-                  value={changedData[x.name]}
-                  onChange={onChangeDate}
-                  KeyboardButtonProps={{
-                    'aria-label': 'change date',
-                  }}
-                />
-              </MuiPickersUtilsProvider>
+              <TextField variant="standard" type="date" />
             ) : (
               <TextField
                 key={x.id + i}
@@ -133,3 +119,20 @@ const EventFormInfos = ({
 };
 
 export default EventFormInfos;
+
+/*               <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardDatePicker
+                  disableToolbar
+                  variant="inline"
+                  format="dd.MM.yyyy"
+                  margin="normal"
+                  id="date-picker-inline"
+                  label="Date picker inline"
+                  value={changedData[x.name]}
+                  onChange={onChangeDate}
+                  KeyboardButtonProps={{
+                    'aria-label': 'change date',
+                  }}
+                />
+              </MuiPickersUtilsProvider>
+ */

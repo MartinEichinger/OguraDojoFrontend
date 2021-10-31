@@ -7,12 +7,15 @@ import { useSelector } from 'react-redux';
 import BlogNav from '../BlogNav/BlogNav';
 import BlogEntry from '../BlogEntry/BlogEntry';
 
+var dataReady = false;
+
 const ModalComp_L1_Blog = ({ colors, content, mq, isAuthenticated }) => {
   const debug = true;
 
   const blogs = useSelector((state) => state.blogs.blogs);
 
-  if (debug) console.log('ModalComp_L1_Blogs: ', blogs, blogs.length);
+  if (blogs.length > 0) dataReady = true;
+  if (debug) console.log('ModalComp_L1_Blogs: ', blogs, blogs.length, dataReady);
 
   return (
     <div className="modal-col">
@@ -20,7 +23,7 @@ const ModalComp_L1_Blog = ({ colors, content, mq, isAuthenticated }) => {
       <BlogNav filterProps={content.filterProps} colors={colors} />
       {isAuthenticated && <i className="fas fa-edit red mr-5"></i>}
       <div className="table scroll_">
-        <BlogEntry blogs={blogs} colors={colors} isAuthenticated={isAuthenticated} />
+        {dataReady && <BlogEntry blogs={blogs} colors={colors} isAuthenticated={isAuthenticated} />}
       </div>
     </div>
   );

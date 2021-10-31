@@ -1,53 +1,52 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { updateBlog, createBlog } from '../../store/blogs';
 
-//import { format } from 'date-fns';
+const initialItem = {
+  category: '',
+  detail: '',
+  date: '2020-01-01',
+  document: '',
+  pictPos: '50% 50%',
+  picture: '',
+  smallHeading: '',
+  title: '',
+};
 
 export const useFormControls = ({ blogs, entries }) => {
   const debug = true;
 
   // STATES
   const [editData, setEditData] = useState(false);
-  const [entryData, setEntryData] = useState(blogs[0]);
-  const [changedData, setChangedData] = useState(blogs[0]);
+  const [entryData, setEntryData] = useState(initialItem);
+  const [changedData, setChangedData] = useState(initialItem);
   const [errors, setErrors] = useState({});
+  const [save2validate, setSave2validate] = useState(false);
 
-  if (debug) console.log('Blogs.controls: ', changedData, entries, errors);
+  if (debug) console.log('Blogs.controls: ', blogs, changedData, entries, errors);
 
   const dispatch = useDispatch();
 
-  // BLOGS
-  /*   const newEvent = () => {
-    const item = {
-      authorized: 'z.B. nur CRB Mitglieder',
-      cost: 'z.B. 5 €',
-      date: '2021-01-01',
-      details: 'z.B. was ist mitzubringen oder Details zum Seminar',
-      id: 'none',
-      location: 'z.B. Traunreut, Sonnenschule',
-      organisator: 'z.B. Uli Geuder',
-      other: 'z.B. was ist sonst noch interessant',
-      title: 'Neuer Event',
-    };
-
-    if (debug) console.log('New event: ', item.title);
-    setChangedData(item);
-    setEditData(true);
-  }; */
-
-  /*   const selectEvent = (item) => {
-    if (debug) console.log('Select event: ', item.title);
-    setEntryData(item);
-    setChangedData(item);
-  };
-
-  const delEvent = (item) => {
-    dispatch(deleteEvent(item));
-  }; */
+  // Trigger save after validation results are stored
+  useEffect(() => {
+    console.log('useEffekt in BlogEntry');
+    if (save2validate) {
+      console.log('errors: ', errors);
+      let save = formIsValid();
+      console.log('save: ', save);
+      saveFormData(save);
+      setChangedData(initialItem);
+      setSave2validate(false);
+    }
+  }, [save2validate]);
 
   // ENTRIES
+  const clickSaveButton = () => {
+    validate();
+    setSave2validate(true);
+  };
+
   const saveFormData = (save) => {
     setEditData(false);
     if (save) {
@@ -97,16 +96,6 @@ export const useFormControls = ({ blogs, entries }) => {
     validate({ [attr]: val });
   };
 
-  /*   const onChangeDate = (date) => {
-    if (debug) console.log('Events/onChangeDate: ', date);
-    const obj = {
-      ...changedData,
-      date: format(new Date(date), 'yyyy-MM-dd'),
-    };
-    setChangedData(obj);
-  };
- */
-
   const validate = (fieldValues = changedData) => {
     let temp = { ...errors };
 
@@ -115,7 +104,8 @@ export const useFormControls = ({ blogs, entries }) => {
       if (x.name in fieldValues) {
         // validate length property
         if ('val_length' in x) {
-          let [idx] = Object.keys(fieldValues);
+          //let [idx] = Object.keys(fieldValues);
+          let idx = x.name;
           temp[idx] = fieldValues[idx] ? '' : 'Notwendiges Feld';
           if (fieldValues[idx])
             temp[idx] =
@@ -136,9 +126,10 @@ export const useFormControls = ({ blogs, entries }) => {
 
     //if ('fullName' in fieldValues) temp.fullName = fieldValues.fullName ? '' : 'This field is required.';
 
-    setErrors({
-      ...temp,
-    });
+    console.log('temp: ', temp);
+    setErrors(temp);
+
+    if (debug) console.log('BlogEntry/Validate, errors: ', errors);
   };
 
   const formIsValid = (fieldValues = changedData) => {
@@ -148,7 +139,49 @@ export const useFormControls = ({ blogs, entries }) => {
     return isValid;
   };
 
-  /*   const handleFormSubmit = (seminar) => {
+  return {
+    onChangeBlog,
+    formIsValid,
+    saveFormData,
+    validate,
+    clickSaveButton,
+    editData,
+    entryData,
+    changedData,
+    errors,
+  };
+};
+
+// BLOGS
+/*   const newEvent = () => {
+    const item = {
+      authorized: 'z.B. nur CRB Mitglieder',
+      cost: 'z.B. 5 €',
+      date: '2021-01-01',
+      details: 'z.B. was ist mitzubringen oder Details zum Seminar',
+      id: 'none',
+      location: 'z.B. Traunreut, Sonnenschule',
+      organisator: 'z.B. Uli Geuder',
+      other: 'z.B. was ist sonst noch interessant',
+      title: 'Neuer Event',
+    };
+
+    if (debug) console.log('New event: ', item.title);
+    setChangedData(item);
+    setEditData(true);
+  }; */
+
+/*   const selectEvent = (item) => {
+    if (debug) console.log('Select event: ', item.title);
+    setEntryData(item);
+    setChangedData(item);
+  };
+
+  const delEvent = (item) => {
+    dispatch(deleteEvent(item));
+  }; */
+
+/*   const handleFormSubmit = (seminar) => {
     if (debug)
       console.log(
         'ContactFormControls/sendEmail: ',
@@ -167,13 +200,12 @@ export const useFormControls = ({ blogs, entries }) => {
     dispatch(sendEmail({ email, sender, seminar }));
   }; */
 
-  return {
-    onChangeBlog,
-    formIsValid,
-    saveFormData,
-    editData,
-    entryData,
-    changedData,
-    errors,
+/*   const onChangeDate = (date) => {
+    if (debug) console.log('Events/onChangeDate: ', date);
+    const obj = {
+      ...changedData,
+      date: format(new Date(date), 'yyyy-MM-dd'),
+    };
+    setChangedData(obj);
   };
-};
+ */
