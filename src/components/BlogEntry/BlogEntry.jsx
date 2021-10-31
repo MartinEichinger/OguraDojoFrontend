@@ -45,11 +45,10 @@ const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
     { name: 'document', id: '#document', val_length: 32 },
   ];
 
-  const { onChangeBlog, formIsValid, saveFormData, validate, clickSaveButton, changedData, errors } =
-    useFormControls({
-      blogs,
-      entries,
-    });
+  const { onChangeBlog, formIsValid, clickSaveButton, changedData, errors } = useFormControls({
+    blogs,
+    entries,
+  });
 
   return (
     <React.Fragment>
@@ -68,7 +67,7 @@ const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
             <h5 className="text-center font-weight-bold">+++ Neuer Eintrag +++</h5>
             <div className={`body new-entry`}>
               <p className="col_1 row_1 green">Datum: </p>
-              {changedData && 'picture' in changedData && changedData['picture'] != '' && (
+              {changedData && 'picture' in changedData && changedData['picture'] !== '' && (
                 <div
                   className="pict-frame"
                   style={{

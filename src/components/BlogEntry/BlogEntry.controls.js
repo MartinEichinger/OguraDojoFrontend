@@ -30,15 +30,12 @@ export const useFormControls = ({ blogs, entries }) => {
 
   // Trigger save after validation results are stored
   useEffect(() => {
-    console.log('useEffekt in BlogEntry');
     if (save2validate) {
-      console.log('errors: ', errors);
-      let save = formIsValid();
-      console.log('save: ', save);
-      saveFormData(save);
+      saveFormData(formIsValid());
       setChangedData(initialItem);
       setSave2validate(false);
     }
+    // eslint-disable-next-line
   }, [save2validate]);
 
   // ENTRIES
