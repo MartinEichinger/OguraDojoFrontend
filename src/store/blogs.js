@@ -4,7 +4,6 @@ import { apiCallBegan } from './api';
 const debug = false;
 const baseURL = process.env.REACT_APP_BACKEND_PATH;
 const removeURL = process.env.REACT_APP_STATIC_REMOVE;
-console.log('Paths: ', process.env, baseURL, removeURL);
 
 // initial state
 const initialState = {
@@ -39,7 +38,6 @@ export const slice = createSlice({
 
       state.blogs = action.payload;
       // replace parts from path
-      // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD
       state.blogs.map((item) => {
         item.picture = item.picture.replace(removeURL, '');
         item.file = item.file.replace(removeURL, '');
@@ -57,7 +55,6 @@ export const slice = createSlice({
       });
       state.blogs = evArr;
       // replace parts from path
-      // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD
       state.blogs.map((item) => {
         item.picture = item.picture.replace(removeURL, '');
         item.file = item.file.replace(removeURL, '');
@@ -70,14 +67,12 @@ export const slice = createSlice({
       if (debug) console.log('blogs/blogCreated: ', action.payload);
       const evArr = state.blogs;
       evArr.push(action.payload);
-      //const evArr = state.blogs;
       evArr.sort((a, b) => {
         return new Date(b.date) - new Date(a.date);
       });
       state.blogs = evArr;
       // replace parts from path
       state.blogs.map((item) => {
-        // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD
         if (!item.picture.includes(baseURL))
           item.picture = baseURL + item.picture.replace(removeURL, '');
         if (!item.file.includes(baseURL)) item.file = baseURL + item.file.replace(removeURL, '');
@@ -162,7 +157,6 @@ export const updateBlog = (data) => (dispatch) => {
 // CREATE
 export const createBlog = (datas) => (dispatch) => {
   if (debug) console.log('blogs/createBlog: ', datas);
-  //const urlUpdate = url + 'create';
 
   var headers = {
     'content-type': 'multipart/form-data',
