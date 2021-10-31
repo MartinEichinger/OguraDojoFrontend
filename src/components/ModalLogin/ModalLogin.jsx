@@ -50,7 +50,6 @@ const ModalLogin = () => {
 
   // Methods
   const onlogin = (username, password) => {
-    console.log('try login: ', username, password);
     dispatch(logIn(username, password));
     setUser({ username: '' });
     setPwd({ password: '' });
