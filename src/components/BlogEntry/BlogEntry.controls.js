@@ -15,7 +15,7 @@ const initialItem = {
 };
 
 export const useFormControls = ({ blogs, entries }) => {
-  const debug = true;
+  const debug = false;
 
   // STATES
   const [editData, setEditData] = useState(false);
