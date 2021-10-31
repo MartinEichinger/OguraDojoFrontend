@@ -39,8 +39,8 @@ export const slice = createSlice({
       // replace parts from path
       // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD
       state.blogs.map((item) => {
-        item.picture = item.picture.replace('ogura_dojo_backend/oguradojo/restapi/', '');
-        item.file = item.file.replace('ogura_dojo_backend/oguradojo/restapi/', '');
+        item.picture = item.picture.replace('ogura_dojo_backend/oguradojo/', '');
+        item.file = item.file.replace('ogura_dojo_backend/oguradojo/', '');
         return false;
       });
     },
@@ -57,8 +57,8 @@ export const slice = createSlice({
       // replace parts from path
       // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD
       state.blogs.map((item) => {
-        item.picture = item.picture.replace('ogura_dojo_backend/oguradojo/restapi/', '');
-        item.file = item.file.replace('ogura_dojo_backend/oguradojo/restapi/', '');
+        item.picture = item.picture.replace('ogura_dojo_backend/oguradojo/', '');
+        item.file = item.file.replace('ogura_dojo_backend/oguradojo/', '');
         return false;
       });
 
@@ -77,9 +77,9 @@ export const slice = createSlice({
       state.blogs.map((item) => {
         // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD
         if (!item.picture.includes(baseURL))
-          item.picture = baseURL + item.picture.replace('ogura_dojo_backend/oguradojo/restapi/', '');
+          item.picture = baseURL + item.picture.replace('ogura_dojo_backend/oguradojo/', '');
         if (!item.file.includes(baseURL))
-          item.file = baseURL + item.file.replace('ogura_dojo_backend/oguradojo/restapi/', '');
+          item.file = baseURL + item.file.replace('ogura_dojo_backend/oguradojo/', '');
         return false;
       });
 
