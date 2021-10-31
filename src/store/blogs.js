@@ -73,10 +73,11 @@ export const slice = createSlice({
       state.blogs = evArr;
       // replace parts from path
       state.blogs.map((item) => {
+        // TEST PFAD
         if (!item.picture.includes(baseURL))
-          item.picture = baseURL + item.picture.replace('oguradojo/restapi/', '');
+          item.picture = baseURL + item.picture.replace('oguradojo/restapi/static/', '');
         if (!item.file.includes(baseURL))
-          item.file = baseURL + item.file.replace('oguradojo/restapi/', '');
+          item.file = baseURL + item.file.replace('oguradojo/restapi/static/', '');
         return false;
       });
 
