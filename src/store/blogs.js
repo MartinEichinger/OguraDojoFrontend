@@ -37,9 +37,10 @@ export const slice = createSlice({
 
       state.blogs = action.payload;
       // replace parts from path
+      // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD
       state.blogs.map((item) => {
-        item.picture = item.picture.replace('oguradojo/restapi/', '');
-        item.file = item.file.replace('oguradojo/restapi/', '');
+        item.picture = item.picture.replace('ogura_dojo_backend/oguradojo/restapi/', '');
+        item.file = item.file.replace('ogura_dojo_backend/oguradojo/restapi/', '');
         return false;
       });
     },
@@ -54,9 +55,10 @@ export const slice = createSlice({
       });
       state.blogs = evArr;
       // replace parts from path
+      // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD
       state.blogs.map((item) => {
-        item.picture = item.picture.replace('oguradojo/restapi/', '');
-        item.file = item.file.replace('oguradojo/restapi/', '');
+        item.picture = item.picture.replace('ogura_dojo_backend/oguradojo/restapi/', '');
+        item.file = item.file.replace('ogura_dojo_backend/oguradojo/restapi/', '');
         return false;
       });
 
@@ -73,7 +75,7 @@ export const slice = createSlice({
       state.blogs = evArr;
       // replace parts from path
       state.blogs.map((item) => {
-        // TEST PFAD
+        // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD // TEST PFAD
         if (!item.picture.includes(baseURL))
           item.picture = baseURL + item.picture.replace('ogura_dojo_backend/oguradojo/restapi/', '');
         if (!item.file.includes(baseURL))
