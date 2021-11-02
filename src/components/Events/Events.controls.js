@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { updateEvent, createEvent, deleteEvent } from '../../store/events';
 import { sendEmail } from '../../store/email';
 
-import { format } from 'date-fns';
+//import { format } from 'date-fns';
 
 export const useFormControls = ({ events, entries }) => {
   const debug = false;
