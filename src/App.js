@@ -119,7 +119,7 @@ class App extends Component {
           { head: 'Karate', day: 'Freitag', time: '20:00 - 22:00' },
         ],
         keywords: 'Werner-von-Siemens Mittelschule - Martin-Luther-Straße - 83301 Traunreut',
-        pos: '65% 40%',
+        pos: '45% 40%',
       },
     ];
   }
