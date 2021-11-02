@@ -34,17 +34,33 @@ const EventFormInfos = ({
         {inFieldVal?.slice(0, 4).map((x, i) => {
           return isAuthEdit ? (
             x.label === 'Termin' ? (
-              <TextField variant="standard" type="date" />
-            ) : (
               <TextField
-                key={x.id + i}
-                color="primary"
-                onChange={(event) => onChangeEvent(x.name, event.target.value)}
-                multiline={x.multiline ?? false}
                 fullWidth
                 id={x.id}
+                key={x.id + i}
                 label={x.label}
-                error={errors[x.name]}
+                onChange={(event) => onChangeDate(x.name, event.target.value)}
+                sx={{
+                  marginBottom: 1,
+                }}
+                type="date"
+                value={changedData[x.name]}
+                variant="standard"
+              />
+            ) : (
+              <TextField
+                fullWidth
+                id={x.id}
+                key={x.id + i}
+                label={x.label}
+                variant="standard"
+                sx={{
+                  marginBottom: 1,
+                }}
+                //color="primary"
+                onChange={(event) => onChangeEvent(x.name, event.target.value)}
+                multiline={x.multiline ?? false}
+                //error={errors[x.name]}
                 value={changedData[x.name]}
                 {...(errors[x.name] && {
                   error: true,
@@ -54,6 +70,10 @@ const EventFormInfos = ({
             )
           ) : (
             <TextField
+              variant="standard"
+              sx={{
+                marginBottom: 1,
+              }}
               key={x.id + i}
               color="primary"
               multiline={x.multiline ?? false}
@@ -80,6 +100,10 @@ const EventFormInfos = ({
         {inFieldVal?.slice(4, 8).map((x, i) => {
           return isAuthEdit ? (
             <TextField
+              variant="standard"
+              sx={{
+                marginBottom: 1,
+              }}
               key={x.id + i}
               color="primary"
               onChange={(event) => onChangeEvent(x.name, event.target.value)}
@@ -89,7 +113,7 @@ const EventFormInfos = ({
               fullWidth
               id={x.id}
               label={x.label}
-              error={errors[x.name]}
+              //error={errors[x.name]}
               value={changedData[x.name]}
               {...(errors[x.name] && {
                 error: true,
@@ -98,6 +122,10 @@ const EventFormInfos = ({
             />
           ) : (
             <TextField
+              variant="standard"
+              sx={{
+                marginBottom: 1,
+              }}
               key={x.id + i}
               color="primary"
               multiline={x.multiline ?? false}

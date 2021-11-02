@@ -21,6 +21,10 @@ export const EventContactForm = ({
         {inFieldVal.map((inputFieldValue, index) => {
           return (
             <TextField
+              variant="standard"
+              sx={{
+                marginBottom: 1,
+              }}
               key={index}
               id={inputFieldValue.id}
               color="primary"

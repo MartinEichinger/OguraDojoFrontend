@@ -76,11 +76,12 @@ export const useFormControls = ({ events, entries }) => {
     validate({ [attr]: val });
   };
 
-  const onChangeDate = (date) => {
-    if (debug) console.log('Events/onChangeDate: ', date);
+  const onChangeDate = (attr, val) => {
+    if (debug) console.log('Events/onChangeDate: ', val);
     const obj = {
       ...changedData,
-      date: format(new Date(date), 'yyyy-MM-dd'),
+      [attr]: val,
+      //date: format(new Date(date), 'yyyy-MM-dd'),
     };
     setChangedData(obj);
   };
