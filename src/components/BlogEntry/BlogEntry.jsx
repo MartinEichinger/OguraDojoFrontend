@@ -4,35 +4,18 @@ import { jsx } from '@emotion/react';
 
 import React from 'react';
 import { Button, TextField } from '@mui/material';
-//import Button from '@material-ui/core/Button';
 import SubjectOutlinedIcon from '@mui/icons-material/SubjectOutlined';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
-//import MenuItem from '@mui/material/MenuItem';
-//import FormControl from '@mui/material/FormControl';
-//import Select from '@mui/material/Select';
 import Box from '@mui/material/Box';
 
 import { useSelector } from 'react-redux';
 import { selectFilter } from '../../store/filter';
-//import { makeStyles } from '@mui/styles';
 import { useFormControls } from './BlogEntry.controls';
-
-/* const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: 'rgba(121, 0, 0, 1)',
-  },
-  root2: {
-    '& .MuiFormHelperText-root': {
-      fontSize: '0.75rem !important',
-    },
-  },
-})); */
 
 const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
   const filterState = useSelector(selectFilter);
-  //const classes = useStyles();
 
   const entries = [
     // part I
@@ -50,7 +33,6 @@ const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
     formIsValid,
     clickSaveButton,
     delBlogEntry,
-    setEditData,
     selectBlog,
     disselectBlog,
     changedData,

@@ -170,7 +170,6 @@ export const useFormControls = ({ blogs, entries }) => {
     delBlogEntry,
     validate,
     clickSaveButton,
-    setEditData,
     selectBlog,
     disselectBlog,
     editData,
