@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { updateBlog, createBlog } from '../../store/blogs';
+import { updateBlog, createBlog, deleteBlog } from '../../store/blogs';
 
 const initialItem = {
+  id: '',
   category: '',
   detail: '',
   date: '2020-01-01',
-  document: '',
+  file: '',
   pictPos: '50% 50%',
   picture: '',
   smallHeading: '',
@@ -15,10 +16,10 @@ const initialItem = {
 };
 
 export const useFormControls = ({ blogs, entries }) => {
-  const debug = false;
+  const debug = true;
 
   // STATES
-  const [editData, setEditData] = useState(false);
+  const [editData, setEditData] = useState({ edit: false, id: 0 });
   const [entryData, setEntryData] = useState(initialItem);
   const [changedData, setChangedData] = useState(initialItem);
   const [errors, setErrors] = useState({});
@@ -31,8 +32,9 @@ export const useFormControls = ({ blogs, entries }) => {
   // Trigger save after validation results are stored
   useEffect(() => {
     if (save2validate) {
-      saveFormData(formIsValid());
-      setChangedData(initialItem);
+      let valid = formIsValid();
+      saveFormData(valid);
+      if (valid) setChangedData(initialItem);
       setSave2validate(false);
     }
     // eslint-disable-next-line
@@ -44,12 +46,33 @@ export const useFormControls = ({ blogs, entries }) => {
     setSave2validate(true);
   };
 
+  const selectBlog = (item) => {
+    if (debug) console.log('Select event: ', item);
+    setEditData({ edit: true, id: item.id });
+    setEntryData({
+      ...item,
+      picture: '',
+      file: '',
+    });
+    setChangedData({
+      ...item,
+      picture: '',
+      file: '',
+    });
+  };
+
+  const disselectBlog = () => {
+    if (debug) console.log('Disselect event');
+    setEditData({ edit: false, id: 0 });
+    setEntryData(initialItem);
+    setChangedData(initialItem);
+  };
+
   const saveFormData = (save) => {
-    setEditData(false);
+    setEditData({ edit: false, id: 0 });
     if (save) {
       if (debug) console.log('save data: ', changedData);
-      if (true) {
-        //changedData['id'] === 'none') {
+      if (changedData['id'] === '') {
         setEntryData(changedData);
         dispatch(createBlog(changedData));
       } else {
@@ -91,6 +114,10 @@ export const useFormControls = ({ blogs, entries }) => {
     // set change
     setChangedData(obj);
     validate({ [attr]: val });
+  };
+
+  const delBlogEntry = (item) => {
+    dispatch(deleteBlog(item));
   };
 
   const validate = (fieldValues = changedData) => {
@@ -140,8 +167,12 @@ export const useFormControls = ({ blogs, entries }) => {
     onChangeBlog,
     formIsValid,
     saveFormData,
+    delBlogEntry,
     validate,
     clickSaveButton,
+    setEditData,
+    selectBlog,
+    disselectBlog,
     editData,
     entryData,
     changedData,
@@ -166,16 +197,6 @@ export const useFormControls = ({ blogs, entries }) => {
     if (debug) console.log('New event: ', item.title);
     setChangedData(item);
     setEditData(true);
-  }; */
-
-/*   const selectEvent = (item) => {
-    if (debug) console.log('Select event: ', item.title);
-    setEntryData(item);
-    setChangedData(item);
-  };
-
-  const delEvent = (item) => {
-    dispatch(deleteEvent(item));
   }; */
 
 /*   const handleFormSubmit = (seminar) => {

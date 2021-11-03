@@ -42,13 +42,27 @@ const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
     { name: 'title', id: '#title', val_length: 64 },
     { name: 'detail', id: '#detail', val_length: 256 },
     { name: 'picture', id: '#picture', val_length: 32 },
-    { name: 'document', id: '#document', val_length: 32 },
+    { name: 'file', id: '#file', val_length: 32 },
   ];
 
-  const { onChangeBlog, formIsValid, clickSaveButton, changedData, errors } = useFormControls({
+  const {
+    onChangeBlog,
+    formIsValid,
+    clickSaveButton,
+    delBlogEntry,
+    setEditData,
+    selectBlog,
+    disselectBlog,
+    changedData,
+    editData,
+    errors,
+  } = useFormControls({
     blogs,
     entries,
   });
+
+  //const isAuthEdit = editData && isAuthenticated; // Muss im item mit item.id gebildet werden
+  const isAuthNoEdit = !editData.edit && isAuthenticated;
 
   return (
     <React.Fragment>
@@ -64,14 +78,24 @@ const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
               },
             }}
           >
-            <h5 className="text-center font-weight-bold">+++ Neuer Eintrag +++</h5>
+            {changedData['id'] === '' ? (
+              <h5 className="text-center font-weight-bold">+++ Neuer Eintrag +++</h5>
+            ) : (
+              <h5 className="text-center font-weight-bold">
+                +++ Aktualisiere Eintrag +++ {changedData['title']}
+              </h5>
+            )}
             <div className={`body new-entry`}>
               <p className="col_1 row_1 green">Datum: </p>
               {changedData && 'picture' in changedData && changedData['picture'] !== '' && (
                 <div
                   className="pict-frame"
                   style={{
-                    backgroundImage: `url(${URL.createObjectURL(changedData['picture'])})`,
+                    backgroundImage: `${
+                      typeof changedData['picture'] === 'object'
+                        ? `url(${URL?.createObjectURL(changedData['picture'])})`
+                        : `url(${changedData['picture']})`
+                    }`,
                     backgroundPosition: `${
                       'pictPos' in changedData ? changedData['pictPos'] : '50% 50%'
                     }`,
@@ -198,30 +222,32 @@ const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
                   hidden
                   type="file"
                   accept=".pdf"
-                  id="document"
-                  onChange={(event) => onChangeBlog('document', event.target.files[0])}
+                  id="file"
+                  onChange={(event) => onChangeBlog('file', event.target.files[0])}
                   required
                 />
-                <label htmlFor="document">
+                <label htmlFor="file">
                   <IconButton color="primary" component="span">
                     <UploadFileIcon />
                   </IconButton>
                 </label>
               </div>
               <p className="col_4 row_4 overflow">
-                {changedData && 'document' in changedData ? changedData['document'].name : '...'}
+                {changedData && 'file' in changedData ? changedData['file'].name : '...'}
               </p>
             </div>
 
-            <div className="button">
+            <div className="button w-100 d-flex flex-row justify-content-around">
               <Button
-                sx={{ backgroundColor: 'rgba(121, 0, 0, 1)' }}
-                variant="contained"
-                startIcon={<SubjectOutlinedIcon />}
-                onClick={() => clickSaveButton()}
+                className="green"
                 disabled={!formIsValid()}
+                onClick={() => clickSaveButton()}
+                variant="contained"
               >
                 Speichern
+              </Button>
+              <Button className="red" onClick={() => disselectBlog()} variant="contained">
+                Abbrechen
               </Button>
             </div>
           </Box>
@@ -230,9 +256,14 @@ const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
       {blogs.map((item, i) => {
         return filterState === 'Alle' || item.category === filterState ? (
           <div className="blog-card d-flex flex-column" key={i}>
-            <h5 className="text-center font-weight-bold">
-              {item.date} +++ {item.smallHeading}
-            </h5>
+            <div className="d-flex flex-row justify-content-between align-items-baseline">
+              <h5 className="text-center font-weight-bold">
+                {item.date} +++ {item.smallHeading}
+              </h5>
+              {isAuthenticated && (
+                <i className="far red fa-trash-alt mr-3 cursor" onClick={() => delBlogEntry(item)}></i>
+              )}
+            </div>
             <div className="body d-flex flex-row">
               <div
                 style={{
@@ -248,12 +279,19 @@ const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
                 <p className="linie text-center"></p>
                 <p className="text-center">{item.detail}</p>
               </div>
+              {isAuthNoEdit && (
+                <i
+                  className="editButton fas fa-edit red mr-5 cursor align-self-start"
+                  onClick={() => selectBlog(item)}
+                ></i>
+              )}
             </div>
             <a href={item.file} target="_blank" rel="noreferrer" className="button">
               <Button
-                sx={{ backgroundColor: 'rgba(121, 0, 0, 1)' }}
-                variant="contained"
+                className="red"
                 startIcon={<SubjectOutlinedIcon />}
+                sx={{ backgroundColor: colors.bgRed }}
+                variant="contained"
               >
                 Artikel lesen
               </Button>

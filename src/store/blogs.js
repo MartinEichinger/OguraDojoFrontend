@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { apiCallBegan } from './api';
 
-const debug = false;
+const debug = true;
 const baseURL = process.env.REACT_APP_BACKEND_PATH;
 const removeURL = process.env.REACT_APP_STATIC_REMOVE;
 
@@ -56,8 +56,9 @@ export const slice = createSlice({
       state.blogs = evArr;
       // replace parts from path
       state.blogs.map((item) => {
-        item.picture = item.picture.replace(removeURL, '');
-        item.file = item.file.replace(removeURL, '');
+        if (!item.picture.includes(baseURL))
+          item.picture = baseURL + item.picture.replace(removeURL, '');
+        if (!item.file.includes(baseURL)) item.file = baseURL + item.file.replace(removeURL, '');
         return false;
       });
 
@@ -139,9 +140,23 @@ export const getBlogs = () => (dispatch) => {
 };
 
 // UPDATE
-export const updateBlog = (data) => (dispatch) => {
-  if (debug) console.log('blogs/updateBlog: ', data);
-  const urlUpdate = url + data.id + '/update';
+export const updateBlog = (datas) => (dispatch) => {
+  if (debug) console.log('blogs/updateBlog: ', datas);
+  const urlUpdate = url + datas.id + '/update';
+
+  var headers = {
+    'content-type': 'multipart/form-data',
+  };
+  var data = new FormData();
+  data.append('date', datas.date);
+  data.append('smallHeading', datas.smallHeading);
+  data.append('category', datas.category);
+  data.append('title', datas.title);
+  data.append('detail', datas.detail);
+  data.append('picture', datas.picture, datas.picture.name);
+  data.append('file', datas.file, datas.file.name);
+  data.append('pictPos', datas.pictPos);
+
   dispatch(
     apiCallBegan({
       url: urlUpdate,
@@ -168,8 +183,8 @@ export const createBlog = (datas) => (dispatch) => {
   data.append('title', datas.title);
   data.append('detail', datas.detail);
   data.append('picture', datas.picture, datas.picture.name);
-  data.append('file', datas.document, datas.document.name);
-  data.append('pictPos', '50% 50%');
+  data.append('file', datas.file, datas.file.name);
+  data.append('pictPos', datas.pictPos);
 
   dispatch(
     apiCallBegan({
@@ -186,7 +201,7 @@ export const createBlog = (datas) => (dispatch) => {
 
 // DELETE
 export const deleteBlog = (data) => (dispatch) => {
-  if (debug) console.log('blogs/createBlog: ', data);
+  if (debug) console.log('blogs/deleteBlog: ', data, url + data.id + '/delete');
   const urlUpdate = url + data.id + '/delete';
   dispatch(
     apiCallBegan({

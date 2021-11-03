@@ -192,6 +192,14 @@ class ModalClassBasis extends Component {
                   borderRadius: '5px',
                   height: '250px', //1'25vh',
                   maxHeight: '250px',
+                  position: 'relative',
+
+                  '& .editButton': {
+                    position: 'absolute',
+                    top: '0%',
+                    right: '0%',
+                    margin: '5px',
+                  },
 
                   '&.new-entry': {
                     display: 'grid',
@@ -256,8 +264,8 @@ class ModalClassBasis extends Component {
                   },
 
                   '& .text': {
-                    margin: '1vw',
-                    padding: '0',
+                    margin: '0',
+                    padding: '1vw',
                     width: '50%',
 
                     [this.mq[0]]: {
@@ -280,11 +288,24 @@ class ModalClassBasis extends Component {
                     width: '150px',
                     fontSize: '12px',
                     borderRadius: '25px',
-                    backgroundColor: this.colors.bgRed,
                     color: this.colors.bgWhite,
 
-                    '&:hover': {
+                    '&.red': {
                       backgroundColor: this.colors.bgRed,
+                      '&:hover': {
+                        backgroundColor: this.colors.bgRed,
+                      },
+                    },
+
+                    '&.green': {
+                      backgroundColor: this.colors.bgGreen,
+                      '&:hover': {
+                        backgroundColor: this.colors.bgGreen,
+                      },
+                    },
+
+                    '&:hover': {
+                      //backgroundColor: this.colors.bgRed,
                       color: this.colors.bgWhite,
                       boxShadow: `10px 10px 25px 0px ${this.colors.shadowGrey}`,
                     },
@@ -294,6 +315,10 @@ class ModalClassBasis extends Component {
                       boxShadow: `0px 0px 5px 0px ${this.colors.shadowGrey}`,
                     },
                   },
+                },
+
+                '& .cursor': {
+                  cursor: 'pointer',
                 },
               },
             },
