@@ -162,6 +162,7 @@ export const updateBlog = (datas) => (dispatch) => {
       url: urlUpdate,
       method: 'put',
       data,
+      headers,
       onStart: blogUpdateStart.type,
       onSuccess: blogUpdated.type,
       onError: blogUpdateFailed.type,
