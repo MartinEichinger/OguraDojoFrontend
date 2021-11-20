@@ -80,7 +80,7 @@ class App extends Component {
           'Roland Habersetzer - Kampfkunst im 21. Jh. - Selbstverteidigung - Waffen - Koshiki Kata',
         pos: '50% 20%',
       },
-      {
+      /* {
         img: 'main_panzigong.jpg',
         modal: '#idModalPanziGong',
         heading: 'Panzi Gong',
@@ -88,7 +88,7 @@ class App extends Component {
         para: 'Der menschliche Körper wird mit zunehmendem Alter immer schwächer und anfälliger. Dies ist ein Naturgesetz, das man nicht ändern kann. Aber man kann den Alterungsprozess nach hinten verschieben und somit die Geschwindigkeit des Alterns verlangsamen.',
         keywords: 'Prof. Ding Hongyu - Tellerdrehung - Gesundheitsübung - Nanjing Universität',
         pos: '50% 20%',
-      },
+      }, */
       /* {
         img: 'main_taiji.jpg',
         modal: '#idModalTaiji',
