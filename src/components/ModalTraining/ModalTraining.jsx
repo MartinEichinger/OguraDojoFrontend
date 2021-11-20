@@ -82,6 +82,13 @@ class ModalTraining extends ModalClassBasis {
           img: 'url(./wir_pic_er.jpg)',
           img_pos: '50% 30%',
         },
+        {
+          head1: 'Martin Eichinger',
+          head2: 'Webseite',
+          head3: '3. DAN Tengu Ryu',
+          img: 'url(./wir_pic_me.jpg)',
+          img_pos: '50% 30%',
+        },
       ],
     };
 
