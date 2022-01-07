@@ -69,17 +69,17 @@ class ModalTraining extends ModalClassBasis {
           img_pos: '50% 30%',
         },
         {
-          head1: 'Wolfgang Liedke',
-          head2: '2ter Kassier',
-          head3: '4. KYU Tengu Ryu',
-          img: 'url(./avatar_nopic.jpg)',
-          img_pos: '50% 30%',
-        },
-        {
           head1: 'Erika Rudl',
           head2: 'Trainerin Karate Kinder Jugendliche',
           head3: '2. DAN Tengu Ryu',
           img: 'url(./wir_pic_er.jpg)',
+          img_pos: '50% 30%',
+        },
+        {
+          head1: 'Martin Eichinger',
+          head2: 'Webseite',
+          head3: '3. DAN Tengu Ryu',
+          img: 'url(./wir_pic_me.jpg)',
           img_pos: '50% 30%',
         },
       ],
@@ -92,7 +92,7 @@ class ModalTraining extends ModalClassBasis {
         lesson: [
           {
             day: 'Montag',
-            time: '18:20 - 20:00',
+            time: '18:30 - 20:00',
             topic: 'Taiji',
           },
           {

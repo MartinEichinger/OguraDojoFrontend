@@ -9,6 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import Box from '@mui/material/Box';
+//import CombiButton from '../CompCombiButton/CompCombiButton';
 
 import { useSelector } from 'react-redux';
 import { selectFilter } from '../../store/filter';
@@ -268,6 +269,12 @@ const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
                 ></i>
               )}
             </div>
+            {/** <div>
+              <CombiButton
+                colors={colors}
+                sx={{ '& .MuiButtonGroup-root': { padding: '0px !important' } }}
+              />
+            </div> **/}
             <a href={item.file} target="_blank" rel="noreferrer" className="button">
               <Button
                 className="red"
