@@ -69,13 +69,6 @@ class ModalTraining extends ModalClassBasis {
           img_pos: '50% 30%',
         },
         {
-          head1: 'Wolfgang Liedke',
-          head2: '2ter Kassier',
-          head3: '4. KYU Tengu Ryu',
-          img: 'url(./wir_pic_wl.jpg)',
-          img_pos: '50% 30%',
-        },
-        {
           head1: 'Erika Rudl',
           head2: 'Trainerin Karate Kinder Jugendliche',
           head3: '2. DAN Tengu Ryu',
@@ -121,7 +114,7 @@ class ModalTraining extends ModalClassBasis {
       },
       map: {
         title: 'Wo?',
-        address: 'Werner-von-Siemens Mittelschule Traunreut - Pestalozzistraße 12 - 83301 Traunreut',
+        address: 'Werner-von-Siemens Mittelschule Traunreut - Martin-Luther-Straße - 83301 Traunreut',
         src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d667.9166880710771!2d12.595441829286242!3d47.962167896732744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDU3JzQzLjgiTiAxMsKwMzUnNDUuNiJF!5e0!3m2!1sen!2sde!4v1619885924254!5m2!1sen!2sde',
       },
       text: {
