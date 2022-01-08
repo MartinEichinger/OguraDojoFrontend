@@ -31,7 +31,7 @@ export const slice = createSlice({
     },
     // onSuccess
     blogsReceived: (state, action) => {
-      if (debug) console.log('blogs/blogsReceived: ', action.payload);
+      if (debug) console.log('blogs/blogsReceived: ', action.payload, removeURL);
       action.payload.sort((a, b) => {
         return new Date(b.date) - new Date(a.date);
       });
