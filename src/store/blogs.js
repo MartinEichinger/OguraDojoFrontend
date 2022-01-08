@@ -43,7 +43,6 @@ export const slice = createSlice({
         item.file = item.file.replace(removeURL, '');
         return false;
       });
-      if (debug) console.log('blogs/blogsReceived-2: ', state.blogs);
     },
     blogUpdated: (state, action) => {
       if (debug) console.log('blogs/blogsUpdated: ', action.payload);
