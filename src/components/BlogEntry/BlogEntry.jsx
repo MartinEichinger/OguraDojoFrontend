@@ -240,7 +240,7 @@ const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
         return filterState === 'Alle' || item.category === filterState ? (
           <div className="blog-card d-flex flex-column" key={i}>
             <div className="d-flex flex-row justify-content-between align-items-baseline">
-              <h5 className="text-center font-weight-bold">
+              <h5 className="text-center w-100 green regular">
                 {item.date} +++ {item.smallHeading}
               </h5>
               {isAuthenticated && (
@@ -258,9 +258,9 @@ const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
               <div className="text d-flex flex-column justify-content-center">
                 <h4 className="text-center green">{item.category}</h4>
                 <p className="linie text-center"></p>
-                <h2 className="text-center">{item.title}</h2>
+                <h2 className="text-center smaller">{item.title}</h2>
                 <p className="linie text-center"></p>
-                <p className="text-center">{item.detail}</p>
+                <p className="text-center small">{item.detail}</p>
               </div>
               {isAuthNoEdit && (
                 <i
@@ -277,7 +277,7 @@ const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
             </div> **/}
             <a href={item.file} target="_blank" rel="noreferrer" className="button">
               <Button
-                className="red"
+                className="red smaller"
                 startIcon={<SubjectOutlinedIcon />}
                 sx={{ backgroundColor: colors.bgRed }}
                 variant="contained"

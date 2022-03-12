@@ -97,6 +97,24 @@ code {
     font-size: 19.25px;
   }
 }
+#root h2.smaller {
+  font-size: 24px;
+}
+@media only screen and (max-width: 1439px) {
+  #root h2.smaller {
+    font-size: calc(1.041667vw + 9px);
+  }
+}
+@media only screen and (max-width: 767px) {
+  #root h2.smaller {
+    font-size: calc(1.463104vw + 16px);
+  }
+}
+@media only screen and (max-width: 374px) {
+  #root h2.smaller {
+    font-size: 11.25px;
+  }
+}
 #root h3 {
   font-size: 20px;
   font-weight: bold;
@@ -149,6 +167,25 @@ code {
     font-size: 13.5px;
   }
 }
+#root p.small {
+  font-size: 18px;
+  font-weight: normal;
+}
+@media only screen and (max-width: 1439px) {
+  #root p.small {
+    font-size: calc(0.595238vw + 9.5px);
+  }
+}
+@media only screen and (max-width: 767px) {
+  #root p.small {
+    font-size: calc(0.636132vw + 9px);
+  }
+}
+@media only screen and (max-width: 374px) {
+  #root p.small {
+    font-size: 11.5px;
+  }
+}
 #root button {
   font-size: 22px;
 }
@@ -178,6 +215,19 @@ code {
 @media only screen and (max-width: 767px) {
   #root button.small {
     font-size: 13px;
+  }
+}
+#root button.smaller {
+  font-size: 12px;
+}
+@media only screen and (max-width: 1439px) {
+  #root button.smaller {
+    font-size: calc(0.446429vw + 5.5px);
+  }
+}
+@media only screen and (max-width: 767px) {
+  #root button.smaller {
+    font-size: 9px;
   }
 }
 #root button.big {
@@ -278,6 +328,10 @@ code {
 
 .w66 {
   width: 66%;
+}
+
+.regular {
+  font-weight: 400 !important;
 }
 
 .bold {
