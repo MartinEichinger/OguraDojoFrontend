@@ -178,15 +178,15 @@ class ModalClassStyle extends Component {
                       backgroundPosition: '50% 5%',
                     },
                     '& .num7': {
-                      backgroundImage: 'url(panzigong_pic_7.jpg)',
+                      backgroundImage: 'url(panzigong_pics_7.jpg)',
                       backgroundPosition: '50% 30%',
                     },
                     '& .num8': {
-                      backgroundImage: 'url(panzigong_pic_8.jpg)',
+                      backgroundImage: 'url(panzigong_pics_8.jpg)',
                       backgroundPosition: '50% 30%',
                     },
                     '& .num9': {
-                      backgroundImage: 'url(panzigong_pic_9.jpg)',
+                      backgroundImage: 'url(panzigong_pics_9.jpg)',
                       backgroundPosition: '50% 30%',
                     },
                   },
