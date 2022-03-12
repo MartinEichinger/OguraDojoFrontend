@@ -11,13 +11,13 @@ const EventFormSchedule = ({ events, month, selectEvent, delEvent, isAuthenticat
           <div className="block d-flex flex-row" key={i} onClick={() => selectEvent(item)}>
             {i % 2 === 0 && (
               <div className="date bgRed d-flex flex-column justify-content-center align-items-center">
-                <h1>{d.getDate()}</h1>
+                <h1 className="big">{d.getDate()}</h1>
                 <h2>{month[d.getMonth()]}</h2>
               </div>
             )}
             {i % 2 === 1 && (
               <div className="date bgGreen d-flex flex-column justify-content-center align-items-center">
-                <h1>{d.getDate()}</h1>
+                <h1 className="big">{d.getDate()}</h1>
                 <h2>{month[d.getMonth()]}</h2>
               </div>
             )}
@@ -44,13 +44,13 @@ const EventFormSchedule = ({ events, month, selectEvent, delEvent, isAuthenticat
               <div className="block d-flex flex-row" onClick={() => selectEvent(item)}>
                 {i % 2 === 0 && (
                   <div className="date bgRed d-flex flex-column justify-content-center align-items-center">
-                    <h1>{d.getDate()}</h1>
+                    <h1 className="big">{d.getDate()}</h1>
                     <h2>{month[d.getMonth()]}</h2>
                   </div>
                 )}
                 {i % 2 === 1 && (
                   <div className="date bgGreen d-flex flex-column justify-content-center align-items-center">
-                    <h1>{d.getDate()}</h1>
+                    <h1 className="big">{d.getDate()}</h1>
                     <h2>{month[d.getMonth()]}</h2>
                   </div>
                 )}

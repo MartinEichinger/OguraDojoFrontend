@@ -249,7 +249,7 @@ class ModalClassStyle extends Component {
             filter: 'blur(4px)',
           },
 
-          '.big': {
+          '.bigger': {
             gridColumn: '1',
             gridRow: '1',
           },

@@ -4,7 +4,7 @@ const ModalTrainingWir = ({ contentWir }) => {
       <div className="modal-col d-flex flex-column h-100">
         <div className="modal-up">
           <div className="bg-training"></div>
-          <h1 className="big">{contentWir.title}</h1>
+          <h1 className="bigger">{contentWir.title}</h1>
           <div className="table_ d-flex flex-column justify-content-around">
             <div className="rect h31 scroll_">
               <p className="mb-2">{contentWir.text}</p>

@@ -49,20 +49,33 @@ code {
   }
 }
 #root h1.big {
-  font-size: 120px;
+  font-size: 80px;
 }
 @media only screen and (max-width: 1439px) {
   #root h1.big {
-    font-size: calc(2.97619vw + 77px);
-  }
-}
-@media only screen and (max-width: 767px) {
-  #root h1.big {
-    font-size: calc(5.089059vw + 61px);
+    font-size: calc(2.253521vw + 48px);
   }
 }
 @media only screen and (max-width: 374px) {
   #root h1.big {
+    font-size: 56px;
+  }
+}
+#root h1.bigger {
+  font-size: 120px;
+}
+@media only screen and (max-width: 1439px) {
+  #root h1.bigger {
+    font-size: calc(2.97619vw + 77px);
+  }
+}
+@media only screen and (max-width: 767px) {
+  #root h1.bigger {
+    font-size: calc(5.089059vw + 61px);
+  }
+}
+@media only screen and (max-width: 374px) {
+  #root h1.bigger {
     font-size: 80px;
   }
 }

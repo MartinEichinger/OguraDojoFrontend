@@ -8,7 +8,7 @@ const ModalComp_L1_Impressum = ({ colors, content, mq, isAuthenticated }) => {
   return (
     <div className="modal-col">
       <div className="imageBg"></div>
-      <h1 className="big">{content.title}</h1>
+      <h1 className="bigger">{content.title}</h1>
       <div className="impressum scroll_">
         <p>Inhaber und Webmaster der privaten Homepage: Martin Eichinger</p>
 

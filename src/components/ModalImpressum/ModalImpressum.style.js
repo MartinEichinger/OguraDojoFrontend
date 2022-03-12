@@ -81,12 +81,12 @@ class ModalClassBasis extends Component {
               gridTemplateColumns: '0.1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.1fr',
             },
 
-            '& .big': {
+            '& .bigger': {
               gridRow: '1',
               gridColumn: '1/-1',
               maxHeight: 'calc(20vh - 4px)',
               boxSizing: 'border-box',
-              fontSize: '144px',
+              //fontSize: '144px',
               margin: '0',
               color: this.colors.bgGrey,
               textShadow: `2px 0 0 ${this.colors.bgRed}, 0 2px 0 ${this.colors.bgRed}, -2px 0 0 ${this.colors.bgRed}, 0 -2px 0 ${this.colors.bgRed}`,
@@ -98,15 +98,15 @@ class ModalClassBasis extends Component {
 
               [this.mq[2]]: {
                 // bis 960 px
-                fontSize: 'calc(15vw)',
+                //fontSize: 'calc(15vw)',
               },
               [this.mq[1]]: {
                 // bis 600 px
-                fontSize: 'calc(-30px + 20vw)',
+                //fontSize: 'calc(-30px + 20vw)',
               },
               [this.mq[0]]: {
                 // bis 400px
-                fontSize: '56px',
+                //fontSize: '56px',
               },
             },
 

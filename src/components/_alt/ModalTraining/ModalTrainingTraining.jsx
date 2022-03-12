@@ -8,7 +8,7 @@ const ModalTrainingTraining = ({ contentTraining }) => {
     <div className="Training">
       <div className="modal-col">
         <div className="bg-training"></div>
-        <h1 className="big">{contentTraining.title}</h1>
+        <h1 className="bigger">{contentTraining.title}</h1>
         <CompRoundRectSchedule schedule={contentTraining.schedule} apdx="_tr" />
         <CompRoundRectMap map={contentTraining.map} apdx="_tr" />
         <CompRoundRectText text={contentTraining.text} apdx="_tr" />

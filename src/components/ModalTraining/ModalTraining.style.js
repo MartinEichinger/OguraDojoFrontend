@@ -174,7 +174,7 @@ class ModalClassStyle extends Component {
           },
           '& .bg-training': {},
 
-          '& .big': {
+          '& .bigger': {
             gridColumn: '2/-1',
             gridRow: '1',
             maxHeight: '20vh',
@@ -253,7 +253,7 @@ class ModalClassStyle extends Component {
 
           '& .bg-training': {},
 
-          '& .big': {
+          '& .bigger': {
             gridColumn: '2 / -1',
             gridRow: '1',
             maxHeight: 'calc(20vh - 4px)',

@@ -3,7 +3,7 @@ const ModalTrainingWir = ({ contentWir }) => {
     <div className="csWirTR d-none">
       <div className="modal-col">
         <div className="bg-training"></div>
-        <h1 className="big">{contentWir.title}</h1>
+        <h1 className="bigger">{contentWir.title}</h1>
         <div className="rect scroll_">
           <p className="mb-2">{contentWir.text}</p>
         </div>

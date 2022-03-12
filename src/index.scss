@@ -77,6 +77,22 @@ code {
     }
 
     &.big {
+      font-size: 80px;
+
+      @media only screen and (max-width: 1439px) {
+        font-size: calc(2.253521vw + 48px);
+      }
+
+      @media only screen and (max-width: 767px) {
+        //font-size: calc(5.089059vw + 61px);
+      }
+
+      @media only screen and (max-width: 374px) {
+        font-size: 56px;
+      }
+    }
+
+    &.bigger {
       font-size: 120px;
 
       @media only screen and (max-width: 1439px) {
