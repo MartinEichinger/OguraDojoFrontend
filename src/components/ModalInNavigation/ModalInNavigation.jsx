@@ -4,7 +4,7 @@ import { jsx } from '@emotion/react';
 
 import React from 'react';
 
-const ModalInNavigation = ({ clickUpDown, nextItem, colors, config, mq, apdx }) => {
+const ModalInNavigation = ({ clickUpDown, nextItem, colors, config, mq, apdx, type }) => {
   const styleInNav = {
     zIndex: '1052',
     backgroundColor: colors.bgWhite,
@@ -42,37 +42,29 @@ const ModalInNavigation = ({ clickUpDown, nextItem, colors, config, mq, apdx }) 
     },
 
     '& .navItem': {
-      width: '145px',
+      maxWidth: '165px',
       position: 'relative',
       transform: 'rotate(90deg)',
-      color: colors.bgRed50,
+      color: colors.bgTheme50,
       border: `1px solid ${colors.bgWhite}`,
       borderRadius: '25px',
+      padding: '0px 10px',
 
-      '& h1': {
-        fontSize: '28px',
+      '& button': {
         cursor: 'pointer',
         fontWeight: 'normal',
+        border: 'none',
+        backgroundColor: 'rgba(0,0,0,0)',
+        color: 'inherit',
 
         [mq[2]]: {
-          fontSize: '24px',
-          margin: '0',
-        },
-
-        [mq[1]]: {
-          fontSize: '20px',
-          margin: '0',
-        },
-
-        [mq[0]]: {
-          fontSize: '16px',
           margin: '0',
         },
       },
 
       '&.active': {
-        color: colors.typoRed,
-        border: `1px solid ${colors.bgRed}`,
+        color: colors.typoTheme,
+        border: `1px solid ${colors.bgTheme}`,
 
         '& h1': {
           fontWeight: 'bold',
@@ -104,7 +96,7 @@ const ModalInNavigation = ({ clickUpDown, nextItem, colors, config, mq, apdx }) 
       },
 
       '&.active': {
-        backgroundColor: colors.bgRed,
+        backgroundColor: colors.bgTheme,
         cursor: 'pointer',
       },
     },
@@ -135,13 +127,13 @@ const ModalInNavigation = ({ clickUpDown, nextItem, colors, config, mq, apdx }) 
       {config?.navItems.map((link, i) => {
         return (
           <div
-            className={`navItem ${link}Btn ${
+            className={`navItem ${link}Btn${type} ${
               i === 0 ? 'active' : ''
             } d-flex align-items-center justify-content-center`}
             onClick={(e) => nextItem(link)}
             key={i}
           >
-            <h1>{link}</h1>
+            <button className="big">{link}</button>
           </div>
         );
       })}

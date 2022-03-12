@@ -21,69 +21,46 @@ const Footer = ({ colors, select }) => {
     minWidth: '390px',
     backgroundColor: colors.bgGrey,
 
+    [mq[0]]: {
+      padding: '5px',
+    },
+
+    '& .container-fluid': {
+      padding: '0px',
+
+      '& .content': {
+        '& .body': {
+          width: '75%',
+
+          [mq[2]]: {
+            width: '80%',
+          },
+
+          [mq[1]]: {
+            width: '90%',
+          },
+
+          [mq[0]]: {
+            width: '100%',
+          },
+        },
+      },
+    },
+
     '& i': {
       width: '48px',
       height: '48px',
     },
 
-    [mq[0]]: {
-      //display: 'none',
-    },
-
-    '& h1': {
-      fontSize: '28px',
-
-      [mq[1]]: {
-        fontSize: '18px',
-      },
-
-      [mq[0]]: {
-        fontSize: '16px',
-      },
-    },
-
-    '& h2': {
-      fontSize: '18px',
-
-      [mq[1]]: {
-        fontSize: '16px',
-      },
-
-      [mq[0]]: {
-        fontSize: '14px',
-      },
-    },
-
-    '& h3': {
-      fontSize: '1.1vh',
-
-      [mq[1]]: {
-        fontSize: '1vh',
-      },
-
-      [mq[0]]: {
-        fontSize: '0.9vh',
-      },
-    },
-
     '& .column': {
-      marginTop: '20px',
+      marginTop: '15px',
       marginRight: '25px',
     },
 
     '& button': {
       backgroundColor: 'rgba(0,0,0,0)',
-      fontSize: '1.1vh',
       border: 'none',
       outline: 'none',
-
-      [mq[1]]: {
-        fontSize: '1vh',
-      },
-
-      [mq[0]]: {
-        fontSize: '0.9vh',
-      },
     },
   };
 
@@ -104,10 +81,10 @@ const Footer = ({ colors, select }) => {
         ],
       },
       {
-        heading: 'Tengu Ryu Karate',
+        heading: 'Tengu Ryu',
         items: [
           {
-            title: 'Über Tengu Ryu',
+            title: 'Tengu Ryu',
             target: '#idModalKarate',
             link: () => selectpage('TenguRyu', 'pageKarate'),
           },
@@ -116,7 +93,23 @@ const Footer = ({ colors, select }) => {
       },
       {
         heading: 'Panzi Gong',
-        items: [{ title: '- leer -' }],
+        items: [
+          {
+            title: 'Panzi Gong',
+            target: '#idModalPanziGong',
+            link: () => selectpage('PanziGong', 'pagePanziGong'),
+          },
+          {
+            title: 'Lehrer',
+            target: '#idModalPanziGong',
+            link: () => selectpage('Lehrer', 'pagePanziGong'),
+          },
+          {
+            title: 'Form',
+            target: '#idModalPanziGong',
+            link: () => selectpage('Form', 'pagePanziGong'),
+          },
+        ],
       },
       /*       {
         heading: 'Taiji Quan',
@@ -144,16 +137,17 @@ const Footer = ({ colors, select }) => {
   return (
     <footer className="Footer fixed-bottom mt-auto py-3" css={styleFooter}>
       <div className="container-fluid">
-        <div className="d-flex flex-column align-items-center">
-          <h1>{contentFooter.heading}</h1>
-          <div className="d-flex flex-row justify-content-around w-75">
+        <div className="content d-flex flex-column align-items-center">
+          <h2>{contentFooter.heading}</h2>
+          <div className="body d-flex flex-row justify-content-around">
             {contentFooter['link-group'].map((entry, i) => {
               return (
                 <div className="column d-flex flex-column align-items-start" key={i}>
-                  <h2>{entry.heading}</h2>
+                  <h3>{entry.heading}</h3>
                   {entry.items.map((item, i) => {
                     return (
                       <button
+                        className="small"
                         data-bs-toggle="modal"
                         data-bs-target={item.target}
                         onClick={item.link}

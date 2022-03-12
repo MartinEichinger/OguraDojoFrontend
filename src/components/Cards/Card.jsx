@@ -128,19 +128,15 @@ class Card extends Component {
       },
 
       '& h1': {
-        fontSize: '36px',
-        fontWeight: 'bold',
         color: this.typoGrey,
         textAlign: 'left',
       },
 
-      '& h2': {
-        paddingBottom: '20px',
-        margin: '0px',
-        fontSize: '20px',
-        fontWeight: 'bold',
+      '& h3': {
         color: this.typoRed,
         textAlign: 'left',
+        paddingBottom: '20px',
+        margin: '0px',
 
         [this.mq[2]]: {
           paddingBottom: '10px',
@@ -149,8 +145,6 @@ class Card extends Component {
 
       '& p': {
         margin: '0px',
-        fontSize: '20px',
-        fontWeight: 'normal',
         color: this.typoGrey,
         textAlign: 'justify',
 
@@ -172,8 +166,6 @@ class Card extends Component {
       },
 
       '& h5': {
-        fontSize: '16px',
-        fontWeight: 'bold',
         color: this.typoGreen,
         textAlign: 'left',
 
@@ -185,31 +177,10 @@ class Card extends Component {
 
         [this.mq[0]]: {
           display: 'none',
-          //maxHeight: '16px',
-          //textOverflow: 'ellipsis',
-          //overflow: 'hidden',
         },
       },
     };
   }
-
-  updateHx = () => {
-    // H1
-    this.styleCard['& h1'].fontSize =
-      20 * (((this.state.width / 1280) * this.state.height) / 340) + 18 + 'px';
-
-    // H2
-    this.styleCard['& h2'].fontSize =
-      8 * (((this.state.width / 1280) * this.state.height) / 340) + 12 + 'px';
-
-    // p
-    this.styleCard['& p'].fontSize =
-      8 * (((this.state.width / 1280) * this.state.height) / 340) + 12 + 'px';
-
-    // H5
-    this.styleCard['& h5'].fontSize =
-      6 * (((this.state.width / 1280) * this.state.height) / 340) + 10 + 'px';
-  };
 
   updateDimensions = () => {
     this.setState({
@@ -252,7 +223,6 @@ class Card extends Component {
     var { img, modal, heading, headingTwo, para, table, keywords, pos } = this.props.props;
     this.styleCard['& .img'].backgroundImage = `url(${img})`;
     this.styleCard['& .img'].backgroundPosition = `${pos}`;
-    this.updateHx();
     //console.log('Card/render');
 
     return (
@@ -268,7 +238,7 @@ class Card extends Component {
         <div className="cardBody d-flex flex-column justify-content-between" id="modalCard">
           <div>
             <h1>{heading}</h1>
-            <h2>{headingTwo}</h2>
+            <h3>{headingTwo}</h3>
             {/* {this.renderPara(para, table)} */}
             {para !== undefined ? <p>{para}</p> : ''}
             {table !== undefined ? (

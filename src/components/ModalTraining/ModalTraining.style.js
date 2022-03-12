@@ -65,7 +65,7 @@ class ModalClassStyle extends Component {
             gridTemplateColumns: 'auto',
             gridTemplateRows: '6fr',
 
-            '& .Training, .Wir': {
+            '& .csTrainingTR, .csWirTR': {
               //height: '100%',
               gridRow: '1',
               gridColumn: '1',
@@ -95,7 +95,7 @@ class ModalClassStyle extends Component {
                 },
 
                 '& h1': {
-                  fontSize: 'calc(5rem + 2.5vw)',
+                  //fontSize: 'calc(5rem + 2.5vw)',
                   color: 'white',
                   textShadow: `0px 0px 5px ${this.colors.bgRed}`,
                   position: 'relative',
@@ -103,34 +103,34 @@ class ModalClassStyle extends Component {
                   marginBottom: '1vh',
                 },
 
-                '& h2': {
-                  fontWeight: 'bold',
+                '& .highlight': {
+                  //fontWeight: 'bold',
                   color: this.colors.typoRed,
                   marginBottom: '0.5vh',
                   position: 'relative',
                   textAlign: 'center',
                   textShadow: '0 0 2px white',
                   // 14px to 20px
-                  fontSize: '1.25rem',
+                  //fontSize: '1.25rem',
 
                   [this.mq[3]]: {
                     // bis 1280
-                    fontSize: 'calc(0.875rem + 0.4688vw)',
+                    //fontSize: 'calc(0.875rem + 0.4688vw)',
                   },
                 },
 
                 '& h5': {
-                  fontWeight: 'bold',
+                  //fontWeight: 'bold',
                   color: this.colors.bgWhite,
                   marginBottom: '0.5vh',
                   position: 'relative',
                   textAlign: 'center',
                   // 10px to 16px
-                  fontSize: '1rem',
+                  //fontSize: '1rem',
 
                   [this.mq[3]]: {
                     // bis 1280
-                    fontSize: 'calc(0.625rem + 0.4688vw)',
+                    //fontSize: 'calc(0.625rem + 0.4688vw)',
                   },
                 },
 
@@ -140,11 +140,11 @@ class ModalClassStyle extends Component {
                   position: 'relative',
                   zIndex: '1',
                   // 12px to 20px
-                  fontSize: '1.25rem',
+                  //fontSize: '1.25rem',
 
                   [this.mq[3]]: {
                     // bis 1280
-                    fontSize: 'calc(0.75rem + 0.625vw)',
+                    //fontSize: 'calc(0.75rem + 0.625vw)',
                   },
                 },
               },
@@ -156,7 +156,7 @@ class ModalClassStyle extends Component {
 
     // WIR
     this.styleWir = {
-      '& .Wir': {
+      '& .csWirTR': {
         '& .modal-col': {
           gridTemplateRows: 'auto 1fr auto 1fr auto',
           gridTemplateColumns: '1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr',
@@ -234,7 +234,7 @@ class ModalClassStyle extends Component {
 
     // TRAINING
     this.styleTraining = {
-      '& .Training': {
+      '& .csTrainingTR': {
         '& .modal-col': {
           gridTemplateColumns: '1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr',
           gridTemplateRows: 'auto 1fr auto 1fr auto 1fr auto 1fr auto',

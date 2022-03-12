@@ -155,7 +155,9 @@ class ModalTraining extends ModalClassBasis {
 
   render() {
     if (this.debug) console.log('ModalTraining/render', this.state.width, this.state.height);
-    //this.updateHxMT();
+    this.props.colors.bgTheme = this.props.colors.bgRed;
+    this.props.colors.bgTheme50 = this.props.colors.bgRed50;
+    this.props.colors.typoTheme = this.props.colors.typoRed;
 
     return (
       <React.Fragment>
@@ -181,6 +183,7 @@ class ModalTraining extends ModalClassBasis {
                   config={this.contentNav}
                   mq={this.mq}
                   apdx={this.apdx}
+                  type="TR"
                 />
                 <div className="content">
                   <ModalTrainingTraining

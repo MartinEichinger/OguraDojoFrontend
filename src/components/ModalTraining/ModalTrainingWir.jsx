@@ -1,6 +1,6 @@
 const ModalTrainingWir = ({ contentWir }) => {
   return (
-    <div className="Wir d-none">
+    <div className="csWirTR d-none">
       <div className="modal-col">
         <div className="bg-training"></div>
         <h1 className="big">{contentWir.title}</h1>
@@ -19,7 +19,7 @@ const ModalTrainingWir = ({ contentWir }) => {
                   }}
                 ></div>
                 <div className="text d-flex flex-column align-items-center justify-content-around">
-                  <h2>{item.head1}</h2>
+                  <p className="bold highlight">{item.head1}</p>
                   <h5>{item.head2}</h5>
                   <p className="white text-center mb-2">{item.head3}</p>
                   <img src="email_24px_outlined.png" alt="" />

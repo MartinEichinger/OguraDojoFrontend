@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Navigation from './components/Navigation/Navigation';
 import CardsKarate from './components/Cards/CardsKarate';
 import ModalKarate from './components/ModalKarate/ModalKarate';
+import ModalPanziGong from './components/ModalPanziGong/ModalPanziGong';
 import ModalTraining from './components/ModalTraining/ModalTraining';
 import ModalBlog from './components/ModalBlog/ModalBlog';
 import ModalEvents from './components/ModalEvents/ModalEvents';
@@ -31,7 +32,9 @@ class App extends Component {
     this.state = {
       pageTraining: 'Training',
       pageKarate: 'TenguRyu',
+      pagePanziGong: 'PanziGong',
     };
+
     this.styleApp = {
       height: '100vh',
       margin: '0px 0px 100px',
@@ -80,7 +83,7 @@ class App extends Component {
           'Roland Habersetzer - Kampfkunst im 21. Jh. - Selbstverteidigung - Waffen - Koshiki Kata',
         pos: '50% 20%',
       },
-      /* {
+      {
         img: 'main_panzigong.jpg',
         modal: '#idModalPanziGong',
         heading: 'Panzi Gong',
@@ -88,7 +91,7 @@ class App extends Component {
         para: 'Der menschliche Körper wird mit zunehmendem Alter immer schwächer und anfälliger. Dies ist ein Naturgesetz, das man nicht ändern kann. Aber man kann den Alterungsprozess nach hinten verschieben und somit die Geschwindigkeit des Alterns verlangsamen.',
         keywords: 'Prof. Ding Hongyu - Tellerdrehung - Gesundheitsübung - Nanjing Universität',
         pos: '50% 20%',
-      }, */
+      },
       /* {
         img: 'main_taiji.jpg',
         modal: '#idModalTaiji',
@@ -148,6 +151,7 @@ class App extends Component {
         <ToastContainer />
         <Navigation colors={this.colors} select={this.selectpage} mq={this.mq} />
         <ModalKarate colors={this.colors} page={this.state.pageKarate} mq={this.mq} />
+        <ModalPanziGong colors={this.colors} page={this.state.pagePanziGong} mq={this.mq} />
         <ModalTraining colors={this.colors} page={this.state.pageTraining} mq={this.mq} />
         <ModalBlog colors={this.colors} mq={this.mq} />
         <ModalEvents colors={this.colors} mq={this.mq} />

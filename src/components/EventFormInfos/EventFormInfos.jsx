@@ -22,7 +22,7 @@ const EventFormInfos = ({
 }) => {
   const debug = false;
 
-  if (debug) console.log('EventFormInfos: ', inFieldVal);
+  if (debug) console.log('EventFormInfos: ', inFieldVal, changedData);
 
   return (
     <React.Fragment>

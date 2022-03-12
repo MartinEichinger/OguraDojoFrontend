@@ -163,14 +163,12 @@ class Navigation extends Component {
         },
 
         '& h1': {
-          fontSize: '48px',
           fontWeight: 'bold',
           textAlign: 'left',
           color: this.colorCard.typoGrey,
         },
 
         '& h2': {
-          fontSize: '36px',
           fontWeight: 'bold',
           textAlign: 'left',
           color: this.colorCard.typoGrey,
@@ -203,7 +201,7 @@ class Navigation extends Component {
           fontFamily: 'Lato, cursive',
 
           '& h1': {
-            fontSize: '36px',
+            //fontSize: '36px',
             textAlign: 'center',
             fontWeight: 'bold',
             color: this.colorCard.typoGrey,
@@ -213,8 +211,8 @@ class Navigation extends Component {
             },
           },
 
-          '& h2': {
-            fontSize: '18px',
+          '& h3': {
+            //fontSize: '18px',
             fontWeight: 'bold',
 
             textAlign: 'center',
@@ -274,14 +272,14 @@ class Navigation extends Component {
 
   updateHx = () => {
     // H1
-    this.styleNavCard['& .text']['& h1'].fontSize =
-      26 * (((this.state.width / 1280) * this.state.height) / 300) + 22 + 'px';
+    //this.styleNavCard['& .text']['& h1'].fontSize =
+    //  26 * (((this.state.width / 1280) * this.state.height) / 300) + 22 + 'px';
     // H2
-    this.styleNavCard['& .text']['& h2'].fontSize =
-      16 * (((this.state.width / 1280) * this.state.height) / 300) + 16 + 'px';
+    //this.styleNavCard['& .text']['& h2'].fontSize =
+    //  16 * (((this.state.width / 1280) * this.state.height) / 300) + 16 + 'px';
     // p
-    this.styleNavCard['& button'].fontSize =
-      12 * (((this.state.width / 1280) * this.state.height) / 300) + 10 + 'px';
+    //this.styleNavCard['& button'].fontSize =
+    //  12 * (((this.state.width / 1280) * this.state.height) / 300) + 10 + 'px';
     // margin left/right // width
     if (this.state.viewWidth > 1280) {
       this.styleNavCard.width = `${this.state.viewWidth - 40}px`;
@@ -329,7 +327,7 @@ class Navigation extends Component {
             <div className="center d-flex flex-column justify-content-center">
               <h1>Ogura Dojo</h1>
               {/* <h2>Tengu Ryu Karate-Do, PanZi Gong, TaiJi Quan, QiGong</h2> */}
-              <h2>Karate, Panzi Gong, Taiji, Qigong im Herzen des Chiemgaus</h2>
+              <h3>Karate, Panzi Gong, Taiji, Qigong im Herzen des Chiemgaus</h3>
             </div>
             {this.isAuthenticated && (
               <button title="Logout" onClick={this.logout}>
@@ -349,7 +347,7 @@ class Navigation extends Component {
             <img className="align-self-center" src="./OguraDojoLogo.png" alt="" />
             <hr />
             <div className="text d-flex flex-column justify-content-around">
-              <h1>Willkommen im Ogura Dojo</h1>
+              <h1 className="title">Willkommen im Ogura Dojo</h1>
               <h2>Tengu Ryu Karate, Panzi Gong, Taiji Quan, Qigong</h2>
               <div className="btnNav d-flex flex-row justify-content-around flex-wrap">
                 <button

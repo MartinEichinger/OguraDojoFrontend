@@ -7,7 +7,7 @@ import { sendEmail } from '../../store/email';
 //import { format } from 'date-fns';
 
 export const useFormControls = ({ events, entries }) => {
-  const debug = false;
+  const debug = true;
 
   // STATES
   const [editData, setEditData] = useState(false);
@@ -15,7 +15,7 @@ export const useFormControls = ({ events, entries }) => {
   const [changedData, setChangedData] = useState(events[0]);
   const [errors, setErrors] = useState({});
 
-  if (debug) console.log('Events.controls: ', changedData, entries, errors);
+  if (debug) console.log('Events.controls: ', events, changedData, entries, errors);
 
   const dispatch = useDispatch();
 
@@ -95,7 +95,14 @@ export const useFormControls = ({ events, entries }) => {
         // validate length property
         if ('val_length' in x) {
           let [idx] = Object.keys(fieldValues);
-          temp[idx] = fieldValues[idx] ? '' : 'Notwendiges Feld';
+          // error message if field is required and no entry
+          if (fieldValues[idx] || x.required === 'false') {
+            temp[idx] = '';
+          } else {
+            temp[idx] = 'Notwendiges Feld';
+          }
+
+          // check length
           if (fieldValues[idx])
             temp[idx] =
               fieldValues[idx].length > x.val_length

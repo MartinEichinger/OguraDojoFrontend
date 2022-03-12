@@ -15,7 +15,6 @@ class ModalClassStyle extends Component {
       margin: '0 auto',
 
       '& .modal-content': {
-        //width: '100%',
         backgroundColor: 'rgba(0,0,0,0)',
         border: 'none',
 
@@ -48,7 +47,6 @@ class ModalClassStyle extends Component {
           },
 
           '& .content': {
-            //position: 'relative',
             height: '100%',
             gridColumn: '1',
             gridRow: '2',
@@ -56,11 +54,9 @@ class ModalClassStyle extends Component {
             gridTemplateColumns: 'auto',
             gridTemplateRows: '6fr',
 
-            '& .csTenguRyuKT, .csLehrerKT': {
-              //position: 'absolute',
+            '& .csPanziGongPG, .csLehrerPG, .csFormPG': {
               gridRow: '1',
               gridColumn: '1',
-              //height: '100%',
               display: 'grid',
               gridTemplateColumns: 'auto',
               gridTemplateRows: '6fr',
@@ -90,24 +86,19 @@ class ModalClassStyle extends Component {
                 },
 
                 '& h1': {
-                  //fontSize: '4vh',
                   marginBottom: '1vh',
-                  //fontWeight: 'bold',
                   position: 'relative',
                   zIndex: '1',
                 },
 
                 '& h2': {
-                  //fontSize: '2vh',
-                  //fontWeight: 'bold',
-                  color: this.colors.typoRed,
+                  color: this.colors.typoGreen,
                   marginBottom: '2vh',
                   position: 'relative',
                   zIndex: '1',
                 },
 
                 '& p': {
-                  //fontSize: '1.8vh',
                   margin: '0vh 15px 0vh 0px',
                   textAlign: 'justify',
                   position: 'relative',
@@ -121,11 +112,31 @@ class ModalClassStyle extends Component {
                   borderRadius: '5px',
                   padding: '2vh 0.5vh 2vh 2vh',
                   gridRow: '1',
+
+                  '& .videos': {
+                    position: 'relative',
+                    paddingBottom: '25%',
+                    height: 0,
+                    maxHeight: '36vh',
+
+                    [this.mq[2]]: {
+                      paddingBottom: '56.25%' /* 16:9 */,
+                    },
+
+                    '& iframe': {
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: '100%',
+                      maxHeight: '36vh',
+                    },
+                  },
                 },
 
                 '& .modal-strip': {
                   boxSizing: 'border-box',
-                  backgroundColor: this.colors.bgRed,
+                  backgroundColor: this.colors.bgGreen,
                   margin: '5px 0px',
                   gridRow: '3',
                   overflow: 'hidden',
@@ -143,64 +154,40 @@ class ModalClassStyle extends Component {
                     },
 
                     '& .num1': {
-                      backgroundImage: 'url(karate_pic_1.jpg)',
-                      backgroundPosition: '77% 10%',
+                      backgroundImage: 'url(panzigong_pic_1.jpg)',
+                      backgroundPosition: '75% 35%',
                     },
                     '& .num2': {
-                      backgroundImage: 'url(karate_pic_2.jpg)',
-                      backgroundPosition: '50% 50%',
+                      backgroundImage: 'url(panzigong_pic_2.jpg)',
+                      backgroundPosition: '50% 5%',
                     },
                     '& .num3': {
-                      backgroundImage: 'url(karate_pic_3.jpg)',
+                      backgroundImage: 'url(panzigong_pic_3.jpg)',
                       backgroundPosition: '50% 50%',
                     },
                     '& .num4': {
-                      backgroundImage: 'url(karate_pic_4.jpg)',
-                      backgroundPosition: '12% 5%',
+                      backgroundImage: 'url(panzigong_pic_4.jpg)',
+                      backgroundPosition: '12% 75%',
                     },
                     '& .num5': {
-                      backgroundImage: 'url(karate_pic_5.jpg)',
-                      backgroundPosition: '50% 25%',
+                      backgroundImage: 'url(panzigong_pic_5.jpg)',
+                      backgroundPosition: '50% 65%',
                     },
                     '& .num6': {
-                      backgroundImage: 'url(karate_pic_6.jpg)',
+                      backgroundImage: 'url(panzigong_pic_6.jpg)',
                       backgroundPosition: '50% 5%',
                     },
                     '& .num7': {
-                      backgroundImage: 'url(karate_pic_7.jpg)',
-                      backgroundPosition: '50% 50%',
+                      backgroundImage: 'url(panzigong_pic_7.jpg)',
+                      backgroundPosition: '50% 30%',
                     },
                     '& .num8': {
-                      backgroundImage: 'url(karate_pic_8.jpg)',
+                      backgroundImage: 'url(panzigong_pic_8.jpg)',
                       backgroundPosition: '50% 30%',
                     },
                     '& .num9': {
-                      backgroundImage: 'url(karate_pic_9.jpg)',
-                      backgroundPosition: '29% 40%',
-                    },
-                    '& .num10': {
-                      backgroundImage: 'url(karate_pic_10.jpg)',
-                      backgroundPosition: '50% 50%',
-                    },
-                    '& .num11': {
-                      backgroundImage: 'url(karate_pic_11.jpg)',
-                      backgroundPosition: '50% 31%',
-                    },
-                    '& .num12': {
-                      backgroundImage: 'url(karate_pic_12.jpg)',
-                      backgroundPosition: '50% 10%',
-                    },
-                    '& .num13': {
-                      backgroundImage: 'url(karate_pic_13.jpg)',
-                      backgroundPosition: '65% 27%',
-                    },
-                    '& .num14': {
-                      backgroundImage: 'url(karate_pic_14.jpg)',
-                      backgroundPosition: '30% 15%',
-                    },
-                    '& .num15': {
-                      backgroundImage: 'url(karate_pic_15.jpg)',
-                      backgroundPosition: '50% 10%',
+                      backgroundImage: 'url(panzigong_pic_9.jpg)',
+                      backgroundPosition: '50% 30%',
                     },
                   },
                 },

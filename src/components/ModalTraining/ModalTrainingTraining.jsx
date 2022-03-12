@@ -5,7 +5,7 @@ import CompRoundRectList from '../CompRoundRectList/CompRoundRectList';
 
 const ModalTrainingTraining = ({ contentTraining }) => {
   return (
-    <div className="Training">
+    <div className="csTrainingTR">
       <div className="modal-col">
         <div className="bg-training"></div>
         <h1 className="big">{contentTraining.title}</h1>

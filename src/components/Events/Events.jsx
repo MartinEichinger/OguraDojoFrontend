@@ -14,26 +14,6 @@ import EventFormSchedule from '../EventFormSchedule/EventFormSchedule';
 import { useCustomStyles } from './Events.style';
 import { useFormControls } from './Events.controls';
 
-/* const useStyles = makeStyles((theme) => ({
-  root1: {
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-    '& label': {
-      fontWeight: 'bold',
-    },
-  },
-  root2: {
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-
-    '& .MuiTextField-root': {
-      width: '45%',
-    },
-  },
-})); */
-
 const Events = ({ events, colors, mq }) => {
   // constants
   const debug = false;
@@ -51,10 +31,16 @@ const Events = ({ events, colors, mq }) => {
 
   const entries = [
     // part I
-    { name: 'title', label: 'Seminar', id: '#title', val_length: 80 },
+    { name: 'title', label: 'Seminar', id: '#title', val_length: 80, required: 'true' },
     { name: 'date', label: 'Termin', id: '#date' },
-    { name: 'location', label: 'Ort', id: '#location', val_length: 80 },
-    { name: 'organisator', label: 'Ausrichter/Trainer', id: '#organisator', val_length: 80 },
+    { name: 'location', label: 'Ort', id: '#location', val_length: 80, required: 'true' },
+    {
+      name: 'organisator',
+      label: 'Ausrichter/Trainer',
+      id: '#organisator',
+      val_length: 80,
+      required: 'true',
+    },
     // part II
     {
       name: 'details',
@@ -63,10 +49,18 @@ const Events = ({ events, colors, mq }) => {
       multiline: true,
       multilinerows: 5,
       val_length: 2047,
+      required: 'true',
     },
-    { name: 'authorized', label: 'Berechtigt', id: '#authorized', val_length: 40 },
-    { name: 'cost', label: 'Gebühr', id: '#cost', val_length: 80 },
-    { name: 'other', label: 'Sonstiges', id: '#other', multiline: true, val_length: 1023 },
+    { name: 'authorized', label: 'Berechtigt', id: '#authorized', val_length: 40, required: 'true' },
+    { name: 'cost', label: 'Gebühr', id: '#cost', val_length: 80, required: 'true' },
+    {
+      name: 'other',
+      label: 'Sonstiges',
+      id: '#other',
+      multiline: true,
+      val_length: 1023,
+      required: 'true',
+    },
     // part III
     { name: 'email', label: 'E-Mail', id: '#email', val_email: true },
     { name: 'fullName', label: 'Name', id: '#fullName', val_length: 40 },

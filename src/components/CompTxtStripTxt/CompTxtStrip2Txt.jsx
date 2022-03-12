@@ -17,16 +17,25 @@ const CompTxtStripTxt = ({ content, clickLeftRight }) => {
             <div className="modal-up d-flex flex-column">
               {page.titleNo1_L1 && <h1 className={'' + page.classTitleNo1_L1}>{page.titleNo1_L1}</h1>}
               {page.titleNo1_L2 && <h2 className={'' + page?.classTitleNo1_L2}>{page.titleNo1_L2}</h2>}
-              <div className={'scroll_ '}>
-                <p>{page.contentNo1}</p>
+              <div className="d-flex flex-column flex-md-row scroll_">
+                <div className="d-flex flex-column w-100 w-md-50 scroll__">
+                  <p>{page.contentNo1}</p>
+                </div>
+                <div className="videos d-flex flex-row justify-content-center align-items-center w-100 w-md-50">
+                  {page.vids.map((vids, i) => {
+                    return (
+                      <iframe title="Panzi Gong Video" src={vids} allowFullScreen="allowfullscreen" />
+                    );
+                  })}
+                </div>
               </div>
             </div>
 
             <div
               className={
                 page.contentNav
-                  ? 'modal-strip d-flex flex-row justify-content-around align-items-center'
-                  : 'modal-strip d-flex flex-row justify-content-around align-items-center' //////
+                  ? 'modal-strip watch-pg d-flex flex-row justify-content-around align-items-center'
+                  : 'modal-strip watch-pg d-flex flex-row justify-content-around align-items-center' //////
               }
             >
               {page.contentNav && (
@@ -48,14 +57,26 @@ const CompTxtStripTxt = ({ content, clickLeftRight }) => {
               )}
             </div>
 
-            <div className="modal-down d-flex flex-column">
-              {page.titleNo2_L1 && <h1 className={'' + page.classTitleNo2_L1}>{page.titleNo2_L1}</h1>}
-              {page.titleNo2_L2 && <h2 className={'' + page.classTitleNo2_L2}>{page.titleNo2_L2}</h2>}
-              <div className={'scroll_ '}>
-                {Object.values(page.contentNo2).map((content, i) => {
-                  return <p>{content}</p>;
-                })}
-              </div>
+            <div className="modal-down d-flex flex-column flex-md-row scroll_">
+              {Object.values(
+                page.contentNo2.map((content, i) => {
+                  return (
+                    <div className="d-flex flex-column w-100 w-md-50">
+                      {page.titleNo2_L1 && (
+                        <h1 className={'' + page.classTitleNo2_L1}>{page.titleNo2_L1[i]}</h1>
+                      )}
+                      {page.titleNo2_L2 && (
+                        <h2 className={'' + page.classTitleNo2_L2}>{page.titleNo2_L2[i]}</h2>
+                      )}
+                      <div className={'scroll_'}>
+                        {content.map((cont, i) => {
+                          return <p>{cont}</p>;
+                        })}
+                      </div>
+                    </div>
+                  );
+                })
+              )}
             </div>
           </div>
         );

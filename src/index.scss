@@ -43,6 +43,172 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+#root {
+  h1 {
+    font-size: 38px;
+    font-weight: bold;
+
+    @media only screen and (max-width: 1439px) {
+      font-size: calc(1.488095vw + 16.5px);
+    }
+
+    @media only screen and (max-width: 767px) {
+      font-size: calc(1.526718vw + 16px);
+    }
+
+    @media only screen and (max-width: 374px) {
+      font-size: 22px;
+    }
+
+    &.title {
+      font-size: 48px;
+
+      @media only screen and (max-width: 1439px) {
+        font-size: calc(1.785714vw + 22px);
+      }
+
+      @media only screen and (max-width: 767px) {
+        font-size: calc(2.290076vw + 18px);
+      }
+
+      @media only screen and (max-width: 374px) {
+        font-size: 27px;
+      }
+    }
+
+    &.big {
+      font-size: 120px;
+
+      @media only screen and (max-width: 1439px) {
+        font-size: calc(2.97619vw + 77px);
+      }
+
+      @media only screen and (max-width: 767px) {
+        font-size: calc(5.089059vw + 61px);
+      }
+
+      @media only screen and (max-width: 374px) {
+        font-size: 80px;
+      }
+    }
+  }
+
+  h2 {
+    font-size: 32px;
+
+    @media only screen and (max-width: 1439px) {
+      font-size: calc(1.041667vw + 17px);
+    }
+
+    @media only screen and (max-width: 767px) {
+      font-size: calc(1.463104vw + 14px);
+    }
+
+    @media only screen and (max-width: 374px) {
+      font-size: 19.25px;
+    }
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: bold;
+
+    @media only screen and (max-width: 1439px) {
+      font-size: calc(0.595238vw + 11.5px); // 16px
+    }
+
+    @media only screen and (max-width: 767px) {
+      font-size: calc(0.636132vw + 11px); // 13,5px
+    }
+
+    @media only screen and (max-width: 374px) {
+      font-size: 13.5px;
+    }
+  }
+
+  h5 {
+    font-size: 16px;
+    font-weight: bold;
+
+    @media only screen and (max-width: 1439px) {
+      font-size: calc(0.446429vw + 9.5px); // 13px
+    }
+
+    @media only screen and (max-width: 767px) {
+      font-size: 13px;
+    }
+
+    @media only screen and (max-width: 374px) {
+      //font-size: 13.5px;
+    }
+  }
+
+  p {
+    font-size: 20px;
+    font-weight: normal;
+
+    @media only screen and (max-width: 1439px) {
+      font-size: calc(0.595238vw + 11.5px); // 16px
+    }
+
+    @media only screen and (max-width: 767px) {
+      font-size: calc(0.636132vw + 11px); // 13,5px
+    }
+
+    @media only screen and (max-width: 374px) {
+      font-size: 13.5px;
+    }
+  }
+
+  button {
+    font-size: 22px;
+
+    @media only screen and (max-width: 1439px) {
+      font-size: calc(0.744048vw + 11.3px); // 17px
+    }
+
+    @media only screen and (max-width: 767px) {
+      font-size: calc(1.017812vw + 9.2px); // 13px
+    }
+
+    @media only screen and (max-width: 374px) {
+      font-size: 13px;
+    }
+
+    &.small {
+      font-size: 16px;
+
+      @media only screen and (max-width: 1439px) {
+        font-size: calc(0.446429vw + 9.5px); // 13px
+      }
+
+      @media only screen and (max-width: 767px) {
+        font-size: 13px;
+      }
+
+      @media only screen and (max-width: 374px) {
+        //font-size: 13.5px;
+      }
+    }
+
+    &.big {
+      font-size: 28px;
+
+      @media only screen and (max-width: 1439px) {
+        font-size: calc(0.595238vw + 19.5px); // 24px
+      }
+
+      @media only screen and (max-width: 767px) {
+        font-size: calc(2.035623vw + 8.4px); // 16px
+      }
+
+      @media only screen and (max-width: 374px) {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
 .modal {
   backdrop-filter: blur(6px);
 }
@@ -128,7 +294,7 @@ code {
 
 // typography
 .small {
-  font-size: 1.5vh !important;
+  //font-size: 1.5vh !important;
 }
 
 .big {
@@ -136,7 +302,7 @@ code {
 }
 
 .bold {
-  font-weight: bold;
+  font-weight: bold !important;
 }
 
 .underline {
