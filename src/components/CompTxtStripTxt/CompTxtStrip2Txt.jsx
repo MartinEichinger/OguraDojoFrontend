@@ -17,7 +17,7 @@ const CompTxtStripTxt = ({ content, clickLeftRight }) => {
             <div className="modal-up d-flex flex-column">
               {page.titleNo1_L1 && <h1 className={'' + page.classTitleNo1_L1}>{page.titleNo1_L1}</h1>}
               {page.titleNo1_L2 && <h2 className={'' + page?.classTitleNo1_L2}>{page.titleNo1_L2}</h2>}
-              <div className="d-flex flex-column flex-md-row scroll_">
+              <div className="d-flex flex-column flex-column-reverse flex-md-row scroll_">
                 <div className="d-flex flex-column w-100 w-md-50 scroll__">
                   <p>{page.contentNo1}</p>
                 </div>
