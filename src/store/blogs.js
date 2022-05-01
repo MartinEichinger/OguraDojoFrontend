@@ -156,6 +156,8 @@ export const updateBlog = (datas) => (dispatch) => {
   data.append('picture', datas.picture, datas.picture.name);
   data.append('file', datas.file, datas.file.name);
   data.append('pictPos', datas.pictPos);
+  data.append('website', datas.website);
+  data.append('video', datas.video);
 
   dispatch(
     apiCallBegan({
@@ -186,6 +188,8 @@ export const createBlog = (datas) => (dispatch) => {
   data.append('picture', datas.picture, datas.picture.name);
   data.append('file', datas.file, datas.file.name);
   data.append('pictPos', datas.pictPos);
+  data.append('website', datas.website);
+  data.append('video', datas.video);
 
   dispatch(
     apiCallBegan({

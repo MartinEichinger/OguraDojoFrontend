@@ -281,19 +281,20 @@ class ModalClassBasis extends Component {
                 },
 
                 '& .button': {
-                  margin: '-16px auto 0',
-                  textDecoration: 'none',
+                  //margin: '-16px auto 0',
+                  //textDecoration: 'none',
 
-                  '& Button': {
-                    width: '150px',
-                    fontSize: '12px',
-                    borderRadius: '25px',
-                    color: this.colors.bgWhite,
+                  '& button': {
+                    fontSize: '12px !important',
+                    //width: '150px',
+                    //fontSize: '12px',
+                    //borderRadius: '25px',
+                    //color: this.colors.bgWhite,
 
                     '&.red': {
-                      backgroundColor: this.colors.bgRed,
+                      //backgroundColor: this.colors.bgRed,
                       '&:hover': {
-                        backgroundColor: this.colors.bgRed,
+                        //backgroundColor: this.colors.bgRed,
                       },
                     },
 

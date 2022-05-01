@@ -10,7 +10,7 @@ import BlogEntry from '../BlogEntry/BlogEntry';
 var dataReady = false;
 
 const ModalComp_L1_Blog = ({ colors, content, mq, isAuthenticated }) => {
-  const debug = false;
+  const debug = true;
 
   const blogs = useSelector((state) => state.blogs.blogs);
 

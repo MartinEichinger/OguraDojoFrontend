@@ -1,15 +1,14 @@
 /** @jsxImportSource @emotion/react */
 // eslint-disable-next-line
 import { jsx } from '@emotion/react';
-
+import styled from '@emotion/styled';
 import React from 'react';
 import { Button, TextField } from '@mui/material';
-import SubjectOutlinedIcon from '@mui/icons-material/SubjectOutlined';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import Box from '@mui/material/Box';
-//import CombiButton from '../CompCombiButton/CompCombiButton';
+import CombiButton from '../CompCombiButton/CompCombiButton';
 
 import { useSelector } from 'react-redux';
 import { selectFilter } from '../../store/filter';
@@ -27,6 +26,8 @@ const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
     { name: 'detail', id: '#detail', val_length: 256 },
     { name: 'picture', id: '#picture', val_length: 32 },
     { name: 'file', id: '#file', val_length: 32 },
+    { name: 'website', id: '#website' },
+    { name: 'video', id: '#video' },
   ];
 
   const {
@@ -218,6 +219,36 @@ const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
               <p className="col_4 row_4 overflow">
                 {changedData && 'file' in changedData ? changedData['file'].name : '...'}
               </p>
+
+              <p className="col_1 row_5 green">Webseite: </p>
+              <TextField
+                variant="standard"
+                className="col_2 row_5"
+                name="website"
+                id="website"
+                value={changedData['website']}
+                {...(errors['website'] && {
+                  error: true,
+                  helperText: errors['website'],
+                })}
+                onChange={(event) => onChangeBlog('website', event.target.value)}
+                onBlur={(event) => onChangeBlog('website', event.target.value)}
+              />
+
+              <p className="col_3 row_5 green">Video: </p>
+              <TextField
+                variant="standard"
+                className="col_4 row_5"
+                name="video"
+                id="video"
+                value={changedData['video']}
+                {...(errors['video'] && {
+                  error: true,
+                  helperText: errors['video'],
+                })}
+                onChange={(event) => onChangeBlog('video', event.target.value)}
+                onBlur={(event) => onChangeBlog('video', event.target.value)}
+              />
             </div>
 
             <div className="button w-100 d-flex flex-row justify-content-around">
@@ -269,22 +300,7 @@ const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
                 ></i>
               )}
             </div>
-            {/** <div>
-              <CombiButton
-                colors={colors}
-                sx={{ '& .MuiButtonGroup-root': { padding: '0px !important' } }}
-              />
-            </div> **/}
-            <a href={item.file} target="_blank" rel="noreferrer" className="button">
-              <Button
-                className="red smaller"
-                startIcon={<SubjectOutlinedIcon />}
-                sx={{ backgroundColor: colors.bgRed }}
-                variant="contained"
-              >
-                Artikel lesen
-              </Button>
-            </a>
+            <CombiButtonBE colors={colors} links={[item.file, item.website, item.video]} />
           </div>
         ) : (
           ''
@@ -296,22 +312,32 @@ const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
 
 export default BlogEntry;
 
-/* <Select
-  variant="standard"
-  className={`col_2 row_2`}
-  name="category"
-  id="category"
-  value={changedData && 'category' in changedData ? changedData['category'] : 'Tengu'}
-  onChange={(event) => onChangeBlog('category', event.target.value)}
->
-  <MenuItem style={{ display: 'block' }} value={'Tengu'}>
-    Tengu
-  </MenuItem>
-  <MenuItem style={{ display: 'block' }} value={'Taiji/Qigong'}>
-    Taiji/Qigong
-  </MenuItem>
-  <MenuItem style={{ display: 'block' }} value={'Bücher'}>
-    Bücher
-  </MenuItem>
-</Select>;
- */
+// STYLED COMPONENTS
+const CombiButtonBE = styled(CombiButton)`
+  margin: -16px auto 0;
+  width: inherit;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+
+  #ButtonGroup {
+    padding: 0px;
+    width: 150px;
+
+    .select {
+      //padding: 0.5rem;
+    }
+
+    .descr {
+      font-size: 12px;
+      //font-size: calc(.44643vw + 5.5px);
+      padding: 0.5rem;
+    }
+  }
+
+  #List {
+    padding: 0px;
+
+    button i {
+      padding: 5px 0px;
+    }
+  }
+`;

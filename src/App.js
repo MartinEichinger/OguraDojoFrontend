@@ -2,7 +2,7 @@
 // eslint-disable-next-line
 import { jsx } from '@emotion/react';
 
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import { authStatus } from './store/auth';
 import { ToastContainer } from 'react-toastify';
@@ -65,6 +65,9 @@ class App extends Component {
       bgWhite75: 'rgba(255,255,255,0.75)',
       bgWhite: 'rgba(255,255,255,1)',
       bgRed: 'rgba(121, 0, 0, 1)', //HSL: 0, 100, 24 //#790000
+      bgRedLight: 'hsl(0,100%,36%)',
+      bgRed20: 'hsl(0,100%,20%)',
+      bgRedSolid: 'hsl(0,100%,12%)',
       bgRed50: 'rgba(121, 0, 0, 0.5)',
       typoGrey: 'rgba(64, 64, 64, 1)',
       typoGreen: 'rgba(10, 121, 0, 1)',

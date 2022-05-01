@@ -13,6 +13,8 @@ const initialItem = {
   picture: '',
   smallHeading: '',
   title: '',
+  website: '',
+  video: '',
 };
 
 export const useFormControls = ({ blogs, entries }) => {
