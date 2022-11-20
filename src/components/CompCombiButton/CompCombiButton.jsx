@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
 import { Button } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAt, faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
+import { faFile, faCirclePlay } from '@fortawesome/free-regular-svg-icons';
 /* import SubjectOutlinedIcon from '@mui/icons-material/SubjectOutlined'; // Article
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined'; // Web
 import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutlineOutlined'; // Video */
@@ -31,7 +34,8 @@ const CombiButton = ({ colors, className, links }) => {
   };
 
   const list = ['ARTIKEL LESEN', 'WEBSEITE', 'VIDEO SEHEN'];
-  const icons = ['far fa-file', 'fas fa-at', 'far fa-circle-play'];
+  //const icons = ['far fa-file', 'fas fa-at', 'far fa-circle-play'];
+  const icons = [faFile, faAt, faCirclePlay];
   const isAvailable = [links[0] !== '', links[1] !== '', links[2] !== ''];
   const countAvailable = isAvailable.filter(Boolean).length;
   const firstAvailable = isAvailable.indexOf(true);
@@ -52,11 +56,16 @@ const CombiButton = ({ colors, className, links }) => {
           colors={colors}
           disabled={countAvailable <= 1}
         >
-          {countAvailable === 0 && <i className={icons[0]}></i>}
+          {/*           {countAvailable === 0 && <i className={icons[0]}></i>}
           {countAvailable === 1 && <i className={icons[firstAvailable]}></i>}
           {visible === true && countAvailable > 1 && <i className="fas fa-caret-up fa-xs"></i>}
           {visible === 0 && countAvailable > 1 && <i className="fas fa-caret-down fa-xs"></i>}
-          {visible === false && countAvailable > 1 && <i className="fas fa-caret-down fa-xs"></i>}
+          {visible === false && countAvailable > 1 && <i className="fas fa-caret-down fa-xs"></i>} */}
+          {countAvailable === 0 && <FontAwesomeIcon icon={icons[0]} size="2x" />}
+          {countAvailable === 1 && <FontAwesomeIcon icon={icons[0]} size="2x" />}
+          {visible === true && countAvailable > 1 && <FontAwesomeIcon icon={faCaretUp} size="2x" />}
+          {visible === 0 && countAvailable > 1 && <FontAwesomeIcon icon={faCaretDown} size="2x" />}
+          {visible === false && countAvailable > 1 && <FontAwesomeIcon icon={faCaretDown} size="2x" />}
         </Buttn>
         <a href={links[item]} target="_blank" rel="noreferrer">
           <Buttn className="descr" colors={colors} onClick={() => unsetVisible()}>
@@ -75,17 +84,18 @@ const CombiButton = ({ colors, className, links }) => {
       >
         {isAvailable[0] === true && (
           <Buttn colors={colors} onClick={() => onSetItem(0)}>
-            <i className={icons[0]}></i>
+            {/* <i className={icons[0]}></i> */}
+            <FontAwesomeIcon icon={icons[0]} size="1x" />
           </Buttn>
         )}
         {isAvailable[1] === true && (
           <Buttn colors={colors} onClick={() => onSetItem(1)}>
-            <i className={icons[1]}></i>
+            <FontAwesomeIcon icon={icons[1]} size="1x" />
           </Buttn>
         )}
         {isAvailable[2] === true && (
           <Buttn colors={colors} onClick={() => onSetItem(2)}>
-            <i className={icons[2]}></i>
+            <FontAwesomeIcon icon={icons[2]} size="1x" />
           </Buttn>
         )}
       </List>
