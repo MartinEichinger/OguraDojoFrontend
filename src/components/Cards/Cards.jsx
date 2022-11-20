@@ -75,12 +75,12 @@ class Cards extends Component {
 
         '& h1': {
           fontSize: '48px',
-          fontFamily: 'Ribeye, cursive',
+          //fontFamily: 'Ribeye, cursive',
         },
 
         '& h2': {
           fontSize: '24px',
-          fontFamily: 'Ribeye, cursive',
+          //fontFamily: 'Ribeye, cursive',
           color: 'rgba(83,0,0,1)',
           margin: '15px 0px',
         },
@@ -88,7 +88,7 @@ class Cards extends Component {
         '& p': {
           fontSize: '22px',
           margin: '15px 0px',
-          fontFamily: 'Roboto',
+          //fontFamily: 'Roboto',
           textAlign: 'justify',
         },
 
@@ -200,12 +200,9 @@ class Cards extends Component {
   }
 
   nextItem = (e) => {
-    if (this.debug)
-      console.log('nextItem', e.target.parentElement.classList[1]);
+    if (this.debug) console.log('nextItem', e.target.parentElement.classList[1]);
     if (this.stats.status === 0) {
-      var step = parseInt(
-        e.target.parentElement.classList[1].replace('form', '')
-      );
+      var step = parseInt(e.target.parentElement.classList[1].replace('form', ''));
 
       this.stats = {
         status: 11 - step,
@@ -233,12 +230,7 @@ class Cards extends Component {
     if (this.debug) console.log('render');
     return (
       <React.Fragment>
-        <button
-          className="Cards"
-          data-bs-toggle="modal"
-          data-bs-target="#exModal"
-          css={this.styleCard}
-        >
+        <button className="Cards" data-bs-toggle="modal" data-bs-target="#exModal" css={this.styleCard}>
           <p>Data</p>
         </button>
 
@@ -286,28 +278,21 @@ class Cards extends Component {
           </div>
           <div className="modal-dialog" css={this.styleModal}>
             <div className="modal-content">
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-              >
+              <button type="button" className="btn-close" data-bs-dismiss="modal">
                 <img src="./CancelButton.png" alt="" />
               </button>
               <div className="modal-up">
                 <h1>karate-do</h1>
                 <h2>„Es ablehnen zu kämpfen, es ablehnen zu unterliegen...“</h2>
                 <p>
-                  Ursprüngliches Ziel von Karate war es eine bedrohliche
-                  Situation zu überstehen. Dazu war es notwendig seine
-                  vorhandenen körperlichen und geistigen Fähigkeiten optimal zu
-                  nutzen. Von entscheidender Bedeutung war sicher ein gutes
-                  Selbstbewußtsein und die nötige Entschlossenheit. Bewegungen
-                  im Karate basieren auf physikalischen Grundgesetzen, dies
-                  sollte man bei seinen Techniken optimal für sich ausnutzen.
-                  Geistig sollte man konzentriert und trotzdem flexibel sein.
-                  Optimalen Erfolg verspricht wahrscheinlich nur das harmonische
-                  Zusammenspiel sehr vieler physischer, psychischer und mentaler
-                  Faktoren. Daher ist absolute Perfektion nicht zu erreichen.
+                  Ursprüngliches Ziel von Karate war es eine bedrohliche Situation zu überstehen. Dazu
+                  war es notwendig seine vorhandenen körperlichen und geistigen Fähigkeiten optimal zu
+                  nutzen. Von entscheidender Bedeutung war sicher ein gutes Selbstbewußtsein und die
+                  nötige Entschlossenheit. Bewegungen im Karate basieren auf physikalischen
+                  Grundgesetzen, dies sollte man bei seinen Techniken optimal für sich ausnutzen. Geistig
+                  sollte man konzentriert und trotzdem flexibel sein. Optimalen Erfolg verspricht
+                  wahrscheinlich nur das harmonische Zusammenspiel sehr vieler physischer, psychischer
+                  und mentaler Faktoren. Daher ist absolute Perfektion nicht zu erreichen.
                 </p>
               </div>
 
@@ -315,24 +300,19 @@ class Cards extends Component {
               <div className="modal-down">
                 <h1>tengu-ryu</h1>
                 <p>
-                  Im Karate gibt es unterschiedliche Schulen (ryu's). Tengu-Ryū
-                  oder Tengu-no-michi (wörtlich: „Weg des Tengu“) ist ein rein
-                  defensiver Stil der klassischen japanischen Kampfkünste
-                  (Budo). Initiiert wurde dieser Stil 1995 von dem französischen
-                  Kampfkunst- experten Roland Habersetzer. Er umfasst drei
-                  Kompetenzbereiche: Tengu-Ryū Karatedo (ohne Waffen), Tengu-Ryū
-                  Kobudo (traditionelle Waffen), Tengu-Ryū Hojutsu (moderne
-                  Waffen). 2006 wurde dieser Stil in Japan durch die japanische
-                  Karatemeister Ogura Tsuneyoshi und Ōtsuka Tadahiko anerkannt.
-                  Das heißt, Hanshi Habersetzer ist der erste Soke dieses Stils.
-                  Tengu-Ryū ist eine Synthese der traditionellen japanischen
-                  Kriegskünste, die auf kulturellen und nicht auf
-                  wettkämpferischen Kriterien beruhen, mit dem Ziel der
-                  persönlichen Verwirklichung im körperlichen Bereich
-                  (Techniken) wie im mentalen Bereich (Ethik). Dieser Stil der
-                  Kriegskunst integriert sowohl die klassischen als auch die
-                  modernen Entwicklungen mit oder ohne Waffen. Tengu-Ryū ist der
-                  Versuch, die Kampfkunst im 21. Jahrhundert neu zu definieren.
+                  Im Karate gibt es unterschiedliche Schulen (ryu's). Tengu-Ryū oder Tengu-no-michi
+                  (wörtlich: „Weg des Tengu“) ist ein rein defensiver Stil der klassischen japanischen
+                  Kampfkünste (Budo). Initiiert wurde dieser Stil 1995 von dem französischen Kampfkunst-
+                  experten Roland Habersetzer. Er umfasst drei Kompetenzbereiche: Tengu-Ryū Karatedo
+                  (ohne Waffen), Tengu-Ryū Kobudo (traditionelle Waffen), Tengu-Ryū Hojutsu (moderne
+                  Waffen). 2006 wurde dieser Stil in Japan durch die japanische Karatemeister Ogura
+                  Tsuneyoshi und Ōtsuka Tadahiko anerkannt. Das heißt, Hanshi Habersetzer ist der erste
+                  Soke dieses Stils. Tengu-Ryū ist eine Synthese der traditionellen japanischen
+                  Kriegskünste, die auf kulturellen und nicht auf wettkämpferischen Kriterien beruhen,
+                  mit dem Ziel der persönlichen Verwirklichung im körperlichen Bereich (Techniken) wie im
+                  mentalen Bereich (Ethik). Dieser Stil der Kriegskunst integriert sowohl die klassischen
+                  als auch die modernen Entwicklungen mit oder ohne Waffen. Tengu-Ryū ist der Versuch,
+                  die Kampfkunst im 21. Jahrhundert neu zu definieren.
                 </p>
               </div>
             </div>

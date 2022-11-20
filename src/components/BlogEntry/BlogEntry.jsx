@@ -316,7 +316,7 @@ export default BlogEntry;
 const CombiButtonBE = styled(CombiButton)`
   margin: -16px auto 0;
   width: inherit;
-  font-family: Roboto, Helvetica, Arial, sans-serif;
+  //font-family: Roboto, Helvetica, Arial, sans-serif;
 
   #ButtonGroup {
     padding: 0px;
