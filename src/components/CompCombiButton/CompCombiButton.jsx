@@ -5,9 +5,6 @@ import { Button } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAt, faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import { faFile, faCirclePlay } from '@fortawesome/free-regular-svg-icons';
-/* import SubjectOutlinedIcon from '@mui/icons-material/SubjectOutlined'; // Article
-import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined'; // Web
-import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutlineOutlined'; // Video */
 
 const CombiButton = ({ colors, className, links }) => {
   const [visible, setVisible] = useState(0);
