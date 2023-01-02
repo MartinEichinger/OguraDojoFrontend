@@ -64,7 +64,7 @@ class ModalTraining extends ModalClassBasis {
         {
           head1: 'Alex Hetzner',
           head2: 'Schriftführer \u00b7 Trainer Karate Kinder Jugendliche',
-          head3: '1. KYU Tengu Ryu',
+          head3: '1. DAN Tengu Ryu',
           img: 'url(./wir_pic_ah.jpg)',
           img_pos: '50% 30%',
         },
