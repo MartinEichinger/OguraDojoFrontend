@@ -24,7 +24,12 @@ const CompTxtStripTxt = ({ content, clickLeftRight }) => {
                 <div className="videos d-flex flex-row justify-content-center align-items-center w-100 w-md-50">
                   {page.vids.map((vids, i) => {
                     return (
-                      <iframe title="Panzi Gong Video" src={vids} allowFullScreen="allowfullscreen" />
+                      <iframe
+                        title="Panzi Gong Video"
+                        src={vids}
+                        allowFullScreen="allowfullscreen"
+                        key={i}
+                      />
                     );
                   })}
                 </div>
