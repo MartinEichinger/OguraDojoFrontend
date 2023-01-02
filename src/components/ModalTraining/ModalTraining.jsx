@@ -43,7 +43,7 @@ class ModalTraining extends ModalClassBasis {
         {
           head1: 'Alexander Callegari',
           head2: 'Trainer Karate Taiji Qigong',
-          head3: '6. DAN Tengu Ryu',
+          head3: '7. DAN Tengu Ryu',
           img: 'url(./wir_pic_ac.jpg)',
           img_pos: '50% 30%',
         },
