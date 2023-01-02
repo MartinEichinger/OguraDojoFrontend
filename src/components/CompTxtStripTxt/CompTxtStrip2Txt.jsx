@@ -1,13 +1,13 @@
 import React from 'react';
 
 const CompTxtStripTxt = ({ content, clickLeftRight }) => {
-  var debug = true;
+  var debug = false;
   if (debug) console.log(content);
 
   return (
     <React.Fragment>
       {content.map((page, i) => {
-        console.log(Object.values(page.contentNo2));
+        if (debug) console.log(Object.values(page.contentNo2));
 
         return (
           <div
@@ -61,7 +61,7 @@ const CompTxtStripTxt = ({ content, clickLeftRight }) => {
               {Object.values(
                 page.contentNo2.map((content, i) => {
                   return (
-                    <div className="d-flex flex-column w-100 w-md-50">
+                    <div className="d-flex flex-column w-100 w-md-50" key={i}>
                       {page.titleNo2_L1 && (
                         <h1 className={'' + page.classTitleNo2_L1}>{page.titleNo2_L1[i]}</h1>
                       )}
@@ -70,7 +70,7 @@ const CompTxtStripTxt = ({ content, clickLeftRight }) => {
                       )}
                       <div className={'scroll_'}>
                         {content.map((cont, i) => {
-                          return <p>{cont}</p>;
+                          return <p key={i}>{cont}</p>;
                         })}
                       </div>
                     </div>

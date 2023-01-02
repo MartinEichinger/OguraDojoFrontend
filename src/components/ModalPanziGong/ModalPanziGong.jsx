@@ -18,7 +18,7 @@ class ModalPanziGong extends ModalClassBasis {
       height: 300,
     };
 
-    this.debug = true;
+    this.debug = false;
     this.apdx = 'PanziGong';
 
     this.form = React.createRef();

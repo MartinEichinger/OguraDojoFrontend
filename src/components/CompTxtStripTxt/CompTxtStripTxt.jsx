@@ -1,13 +1,13 @@
 import React from 'react';
 
 const CompTxtStripTxt = ({ content, clickLeftRight }) => {
-  var debug = true;
+  var debug = false;
   if (debug) console.log(content);
 
   return (
     <React.Fragment>
       {content.map((page, i) => {
-        console.log(Object.values(page.contentNo2));
+        if (debug) console.log(Object.values(page.contentNo2));
 
         return (
           <div
@@ -53,7 +53,7 @@ const CompTxtStripTxt = ({ content, clickLeftRight }) => {
               {page.titleNo2_L2 && <h2 className={'' + page.classTitleNo2_L2}>{page.titleNo2_L2}</h2>}
               <div className={'scroll_ '}>
                 {Object.values(page.contentNo2).map((content, i) => {
-                  return <p>{content}</p>;
+                  return <p key={i}>{content}</p>;
                 })}
               </div>
             </div>

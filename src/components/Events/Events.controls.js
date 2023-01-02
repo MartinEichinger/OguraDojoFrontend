@@ -15,7 +15,7 @@ export const useFormControls = ({ events, entries }) => {
     var event_date = new Date(event.date);
     return event_date > today;
   });
-  console.log('events.controls/events date: ', idx);
+  console.log('events.controls/events date: ', events[idx]);
 
   // STATES
   const [editData, setEditData] = useState(false);

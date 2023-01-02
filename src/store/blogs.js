@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { apiCallBegan } from './api';
 
-const debug = true;
+const debug = false;
 const baseURL = process.env.REACT_APP_BACKEND_PATH;
 const removeURL = process.env.REACT_APP_STATIC_REMOVE;
 
@@ -189,7 +189,7 @@ export const createBlog = (datas) => (dispatch) => {
   data.append('file', datas.file, datas.file.name);
   data.append('pictPos', datas.pictPos);
   data.append('website', datas.website);
-  data.append('video', datas.video); 
+  data.append('video', datas.video);
 
   dispatch(
     apiCallBegan({

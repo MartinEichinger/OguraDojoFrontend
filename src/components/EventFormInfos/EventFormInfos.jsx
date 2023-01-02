@@ -134,7 +134,7 @@ const EventFormInfos = ({
               fullWidth
               id={x.id}
               label={x.label}
-              value={entryData[x.name]}
+              value={changedData[x.name]}
               InputProps={{
                 readOnly: true,
               }}
