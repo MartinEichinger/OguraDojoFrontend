@@ -7,12 +7,20 @@ import { sendEmail } from '../../store/email';
 //import { format } from 'date-fns';
 
 export const useFormControls = ({ events, entries }) => {
-  const debug = true;
+  const debug = false;
+
+  // Find index of first event dataset which is younger than today
+  var idx = events.findIndex((event, i) => {
+    var today = new Date();
+    var event_date = new Date(event.date);
+    return event_date > today;
+  });
+  console.log('events.controls/events date: ', idx);
 
   // STATES
   const [editData, setEditData] = useState(false);
   const [entryData, setEntryData] = useState(events[0]);
-  const [changedData, setChangedData] = useState(events[0]);
+  const [changedData, setChangedData] = useState(events[idx]);
   const [errors, setErrors] = useState({});
 
   if (debug) console.log('Events.controls: ', events, changedData, entries, errors);

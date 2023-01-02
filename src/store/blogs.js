@@ -189,7 +189,7 @@ export const createBlog = (datas) => (dispatch) => {
   data.append('file', datas.file, datas.file.name);
   data.append('pictPos', datas.pictPos);
   data.append('website', datas.website);
-  data.append('video', datas.video);
+  data.append('video', datas.video); 
 
   dispatch(
     apiCallBegan({
