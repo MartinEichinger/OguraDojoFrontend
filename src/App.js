@@ -11,6 +11,7 @@ import Navigation from './components/Navigation/Navigation';
 import CardsKarate from './components/Cards/CardsKarate';
 import ModalKarate from './components/ModalKarate/ModalKarate';
 import ModalPanziGong from './components/ModalPanziGong/ModalPanziGong';
+import ModalQiGong from './components/ModalQiGong/ModalQiGong';
 import ModalTraining from './components/ModalTraining/ModalTraining';
 import ModalBlog from './components/ModalBlog/ModalBlog';
 import ModalEvents from './components/ModalEvents/ModalEvents';
@@ -33,6 +34,7 @@ class App extends Component {
       pageTraining: 'Training',
       pageKarate: 'TenguRyu',
       pagePanziGong: 'PanziGong',
+      pageQiGong: 'QiGong',
     };
 
     this.styleApp = {
@@ -60,6 +62,8 @@ class App extends Component {
     this.colors = {
       bgGreen50: 'rgba(10, 121, 0, 0.5)',
       bgGreen: 'rgba(10, 121, 0, 1)', //HSL: 115, 100, 24 //#0A7900
+      bgBlue50: 'rgba(23,85,118,0.5)',
+      bgBlue: 'rgba(23,85,118,1)',
       bgGrey: 'rgba(232, 232, 232, 1)',
       bgWhite50: 'rgba(255,255,255,0.5)',
       bgWhite75: 'rgba(255,255,255,0.75)',
@@ -71,6 +75,7 @@ class App extends Component {
       bgRed50: 'rgba(121, 0, 0, 0.5)',
       typoGrey: 'rgba(64, 64, 64, 1)',
       typoGreen: 'rgba(10, 121, 0, 1)',
+      typoBlue: 'rgba(23,85,118,1)',
       typoRed: 'rgba(121, 0, 0, 1)',
       shadowGrey: 'rgba(122,122,122,1)',
     };
@@ -104,15 +109,15 @@ class App extends Component {
         keywords: 'Yang Taiji - Chen Taiji - Faust - Schwert - Fächer',
         pos: '50% 20%',
       }, */
-      /* {
+      {
         img: 'main_qigong.jpg',
-        modal: '#idModalQigong',
+        modal: '#idModalQiGong',
         heading: 'Qigong',
         headingTwo: '„Wenn man leben will, muss man sich auch bewegen.“',
-        para: 'Nicht nur die Bewegung ist ein untrennbarer Teil des Lebens, sondern die Gesundheit überhaupt ist das Fundament unseres Lebens. Ohne Bewegung könnten wir nur schwer existieren und ohne Gesundheit hätten wir keine Lebensqualität.',
-        keywords: 'Prof. Ding Hongyu',
-        pos: '65% 40%',
-      }, */
+        para: 'Im Volksmund in China sagt man „HuoDong“ (Huo – leben, Dong – bewegen). Qigong gehört zu Chinas altem Kulturerbe. Qigong differenziert sich in „DongGong“ (dynamisch, bewegend) und „JingGong“ (ruhig, still). Beides wird in den Übungen praktiziert. Für Qigong-Übende sind nicht bestimmte Gesetze und Methoden festgelegt – naturgemäß ist wichtigste Methode und Regel die Übung selbst..',
+        keywords: 'Kulturerbe - Gesundheitsübungen - leben und bewegen',
+        pos: '60% 40%',
+      },
       {
         img: 'main_training.jpg',
         modal: '#idModalTraining',
@@ -155,6 +160,7 @@ class App extends Component {
         <Navigation colors={this.colors} select={this.selectpage} mq={this.mq} />
         <ModalKarate colors={this.colors} page={this.state.pageKarate} mq={this.mq} />
         <ModalPanziGong colors={this.colors} page={this.state.pagePanziGong} mq={this.mq} />
+        <ModalQiGong colors={this.colors} page={this.state.pageQiGong} mq={this.mq} />
         <ModalTraining colors={this.colors} page={this.state.pageTraining} mq={this.mq} />
         <ModalBlog colors={this.colors} mq={this.mq} />
         <ModalEvents colors={this.colors} mq={this.mq} />

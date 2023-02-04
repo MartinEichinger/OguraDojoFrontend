@@ -1,13 +1,13 @@
 import React from 'react';
 
-const CompTxtStripTxt = ({ content, clickLeftRight }) => {
-  var debug = false;
-  if (debug) console.log(content);
+const CompTxtStripVids = ({ content, clickLeftRight }) => {
+  var debug = true;
+  if (debug) console.log('CompTxtStripVids: ', content, clickLeftRight);
 
   return (
     <React.Fragment>
       {content.map((page, i) => {
-        if (debug) console.log(Object.values(page.contentNo2));
+        if (debug) console.log(page);
 
         return (
           <div
@@ -16,9 +16,11 @@ const CompTxtStripTxt = ({ content, clickLeftRight }) => {
           >
             <div className="modal-up d-flex flex-column">
               {page.titleNo1_L1 && <h1 className={'' + page.classTitleNo1_L1}>{page.titleNo1_L1}</h1>}
-              {page.titleNo1_L2 && <h2 className={'' + page?.classTitleNo1_L2}>{page.titleNo1_L2}</h2>}
-              <div className={'scroll_ '}>
-                <p>{page.contentNo1}</p>
+              <div className="scroll_">
+                {page.contentNo1.map((line, i) => {
+                  if (line.type === 'h2') return <h2>{line.content}</h2>;
+                  if (line.type === 'p') return <p>{line.content}</p>;
+                })}
               </div>
             </div>
 
@@ -48,12 +50,19 @@ const CompTxtStripTxt = ({ content, clickLeftRight }) => {
               )}
             </div>
 
-            <div className="modal-down d-flex flex-column">
+            <div className="modal-down d-flex flex-column scroll_">
               {page.titleNo2_L1 && <h1 className={'' + page.classTitleNo2_L1}>{page.titleNo2_L1}</h1>}
               {page.titleNo2_L2 && <h2 className={'' + page.classTitleNo2_L2}>{page.titleNo2_L2}</h2>}
-              <div className={'scroll_ '}>
-                {Object.values(page.contentNo2).map((content, i) => {
-                  return <p key={i}>{content}</p>;
+              <div className="vids d-flex flex-row flex-wrap">
+                {page.vids.map((vids, i) => {
+                  return (
+                    <iframe
+                      title="Panzi Gong Video"
+                      src={vids}
+                      allowFullScreen="allowfullscreen"
+                      key={i}
+                    />
+                  );
                 })}
               </div>
             </div>
@@ -64,4 +73,4 @@ const CompTxtStripTxt = ({ content, clickLeftRight }) => {
   );
 };
 
-export default CompTxtStripTxt;
+export default CompTxtStripVids;
