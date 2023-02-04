@@ -182,7 +182,7 @@ class ModalClassStyle extends Component {
                   gridRow: '5',
 
                   '& .vids': {
-                    height: '500px',
+                    height: '400px',
 
                     [this.mq[3]]: {
                       // bis 1280 px
