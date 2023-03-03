@@ -89,6 +89,11 @@ const Footer = ({ colors, select }) => {
             link: () => selectpage('TenguRyu', 'pageKarate'),
           },
           { title: 'Lehrer', target: '#idModalKarate', link: () => selectpage('Lehrer', 'pageKarate') },
+          {
+            title: 'Centre de Recherche Budo',
+            target: 'url',
+            link: () => selectpage('http://tengu.fr/', 'url'),
+          },
         ],
       },
       {
@@ -131,7 +136,12 @@ const Footer = ({ colors, select }) => {
 
   const selectpage = (page, param) => {
     if (debug) console.log('Footer/selectpage', page);
-    select(page, param);
+    if (param === 'url') {
+      console.log('open website: ', page);
+      window.open(page, '_blank');
+    } else {
+      select(page, param);
+    }
   };
 
   return (
