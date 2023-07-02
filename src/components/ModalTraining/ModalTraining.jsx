@@ -33,13 +33,13 @@ class ModalTraining extends ModalClassBasis {
       title: 'Wir',
       text: `Der Name unseres Dojo OGURA nimmt Bezug auf Ogura Tsuneyoshi (* 1924; † 2007), japanischer Karatemeister (Shotokan, Goju ryu) aus Kofu, 10. Dan. Dieser war ab dem Jahr 1973 der Lehrer des französischen Kampfkunstexperten Roland Habersetzer. Der Name unseres Dojo soll die Wertschätzung für den Menschen Ogura und seinen „Schüler“ Habersetzer zum Ausdruck bringen. Die Karateka des OGURA DOJO sind Mitglied im Budoforschungszentrum Tengu Institut (CRB-IT) von Shihan Roland Habersetzer und betreiben die Stilrichtung Tengu ryu. Neben dem Karate bieten wir in unserem Dojo Taiji und Qigong an. Im Taiji trainieren wir Faust, Fächer und Schwertformen – Schwerpunktmäßig aus dem Yang-Stil. Die Formen die wir im Qigong üben stammen überwiegend von dem chinesichen Professor Ding Hongyu. Das OGURA DOJO ist organisatorisch beim Turn- und Sportverein Traunreut angegliedert. Unsere Abteilungsleiter ist Hans-Jürgen Groiß.`,
       tabs: [
-        {
+        /*         {
           head1: 'Johann Boxler',
           head2: '1ter Kassier',
           head3: '3. KYU Tengu Ryu',
           img: 'url(./wir_pic_jb.jpg)',
           img_pos: '50% 30%',
-        },
+        }, */
         {
           head1: 'Alexander Callegari',
           head2: 'Trainer Karate Taiji Qigong',
@@ -47,13 +47,13 @@ class ModalTraining extends ModalClassBasis {
           img: 'url(./wir_pic_ac.jpg)',
           img_pos: '50% 30%',
         },
-        {
+        /*         {
           head1: 'Ulrike Geuder',
           head2: '2ter Vorstand \u00b7 Trainerin Karate',
           head3: '5. DAN Tengu Ryu',
           img: 'url(./wir_pic_ug.jpg)',
           img_pos: '50% 10%',
-        },
+        }, */
         {
           head1: 'Hans-Jürgen Groiß',
           head2: '1ter Vorstand',
@@ -66,6 +66,20 @@ class ModalTraining extends ModalClassBasis {
           head2: 'Schriftführer \u00b7 Trainer Karate Kinder Jugendliche',
           head3: '1. DAN Tengu Ryu',
           img: 'url(./wir_pic_ah.jpg)',
+          img_pos: '50% 30%',
+        },
+        {
+          head1: 'Wolfgang Lidtke',
+          head2: '2ter Kassier',
+          head3: '2. Kyu Tengu Ryu',
+          img: 'url(./wir_nopic.png)',
+          img_pos: '50% 30%',
+        },
+        {
+          head1: 'Johannes Nolte',
+          head2: '1ter Kassier',
+          head3: '7. Kyu Tengu Ryu',
+          img: 'url(./wir_nopic.png)',
           img_pos: '50% 30%',
         },
         {

@@ -6,7 +6,6 @@ import React from 'react';
 import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
 import ModalClassBasis from './ModalQiGong.controls';
 import CompTxtStripTxt from '../CompTxtStripTxt/CompTxtStripTxt';
-import CompTxtStrip2Txt from '../CompTxtStripTxt/CompTxtStrip2Txt';
 import CompTxtStripVids from '../CompTxtStripTxt/CompTxtStripVids';
 import '../animation.css';
 
@@ -19,7 +18,7 @@ class ModalQiGong extends ModalClassBasis {
       height: 300,
     };
 
-    this.debug = true;
+    this.debug = false;
     this.apdx = 'QiGong';
 
     this.form = React.createRef();

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CompTxtStripVids = ({ content, clickLeftRight }) => {
-  var debug = true;
+  var debug = false;
   if (debug) console.log('CompTxtStripVids: ', content, clickLeftRight);
 
   return (
@@ -17,10 +17,13 @@ const CompTxtStripVids = ({ content, clickLeftRight }) => {
             <div className="modal-up d-flex flex-column">
               {page.titleNo1_L1 && <h1 className={'' + page.classTitleNo1_L1}>{page.titleNo1_L1}</h1>}
               <div className="scroll_">
-                {page.contentNo1.map((line, i) => {
-                  if (line.type === 'h2') return <h2>{line.content}</h2>;
-                  if (line.type === 'p') return <p>{line.content}</p>;
-                })}
+                {
+                  // eslint-disable-next-line
+                  page.contentNo1.map((line, i) => {
+                    if (line.type === 'h2') return <h2 key={i}>{line.content}</h2>;
+                    if (line.type === 'p') return <p key={i}>{line.content}</p>;
+                  })
+                }
               </div>
             </div>
 
@@ -52,7 +55,11 @@ const CompTxtStripVids = ({ content, clickLeftRight }) => {
 
             <div className="modal-down d-flex flex-column scroll_">
               {page.titleNo2_L1 && <h1 className={'' + page.classTitleNo2_L1}>{page.titleNo2_L1}</h1>}
-              {page.titleNo2_L2 && <h2 className={'' + page.classTitleNo2_L2}>{page.titleNo2_L2}</h2>}
+              {page.titleNo2_L2 && (
+                <h2 className={'' + page.classTitleNo2_L2} key={i}>
+                  {page.titleNo2_L2}
+                </h2>
+              )}
               <div className="vids d-flex flex-row flex-wrap">
                 {page.vids.map((vids, i) => {
                   return (

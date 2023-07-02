@@ -22,7 +22,7 @@ const ModalTrainingWir = ({ contentWir }) => {
                   <p className="bold highlight">{item.head1}</p>
                   <h5>{item.head2}</h5>
                   <p className="white text-center mb-2">{item.head3}</p>
-                  <img src="email_24px_outlined.png" alt="" />
+                  {/* <img src="email_24px_outlined.png" alt="" /> */}
                 </div>
               </div>
             );
