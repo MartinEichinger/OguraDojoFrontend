@@ -82,10 +82,10 @@ const EventFormInfos = ({
               label={x.label}
               value={
                 x.label === 'Termin'
-                  ? format(new Date(changedData[x.name]), 'EEEE, dd.MM.yyyy', {
+                  ? format(new Date(changedData[x?.name]), 'EEEE, dd.MM.yyyy', {
                       locale: de,
                     })
-                  : changedData[x.name]
+                  : changedData[x?.name]
               }
               InputProps={{
                 readOnly: true,

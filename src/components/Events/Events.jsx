@@ -88,6 +88,7 @@ const Events = ({ events, colors, mq }) => {
 
   const isAuthEdit = editData && isAuthenticated;
   const isAuthNoEdit = !editData && isAuthenticated;
+  if (debug) console.log('Events/props : ', changedData, entryData, isAuthEdit, isAuthNoEdit);
 
   return (
     <React.Fragment>

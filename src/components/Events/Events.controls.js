@@ -5,6 +5,17 @@ import { updateEvent, createEvent, deleteEvent } from '../../store/events';
 import { sendEmail } from '../../store/email';
 
 //import { format } from 'date-fns';
+const defaultEntry = {
+  authorized: '-',
+  cost: '-',
+  date: '2020-01-01',
+  details: '-',
+  id: '-',
+  location: '-',
+  organisator: '-',
+  other: '-',
+  title: 'Aktuell keine neuen Termine geplant',
+};
 
 export const useFormControls = ({ events, entries }) => {
   const debug = false;
@@ -16,13 +27,16 @@ export const useFormControls = ({ events, entries }) => {
     return event_date > today;
   });
 
+  // if no event is planned, the default Entry should be used
+  const changedDataDefaultEntry = idx > -1 ? events[idx] : defaultEntry;
+
   // STATES
   const [editData, setEditData] = useState(false);
   const [entryData, setEntryData] = useState(events[0]);
-  const [changedData, setChangedData] = useState(events[idx]);
+  const [changedData, setChangedData] = useState(changedDataDefaultEntry); //events[idx]);
   const [errors, setErrors] = useState({});
 
-  if (debug) console.log('Events.controls: ', events, changedData, entries, errors);
+  if (debug) console.log('Events.controls: ', idx, events, changedData, entries, errors);
 
   const dispatch = useDispatch();
 

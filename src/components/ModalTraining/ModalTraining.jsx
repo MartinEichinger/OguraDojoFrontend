@@ -72,14 +72,14 @@ class ModalTraining extends ModalClassBasis {
           head1: 'Wolfgang Lidtke',
           head2: '2ter Kassier',
           head3: '3. Kyu Tengu Ryu',
-          img: 'url(./wir_nopic.png)',
+          img: 'url(./wir_pic_wl.jpg)',
           img_pos: '50% 30%',
         },
         {
           head1: 'Johannes Nolte',
           head2: '1ter Kassier',
           head3: '8. Kyu Tengu Ryu',
-          img: 'url(./wir_nopic.png)',
+          img: 'url(./wir_pic_jn.jpg)',
           img_pos: '50% 30%',
         },
         {
