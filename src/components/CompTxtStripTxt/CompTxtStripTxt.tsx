@@ -2,7 +2,7 @@ import React from 'react';
 import { IContentPage } from '../ModalPanziGong/ModalPanziGong';
 
 const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftRight?: any }) => {
-  var debug = true;
+  var debug = false;
   if (debug) console.log('CompTxtStripTxt/content: ', content);
 
   return (
@@ -50,12 +50,20 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftR
             </div>
 
             <div className="modal-down d-flex flex-column">
-              {page.titleNo2_L1 && <h1 className={'' + page.classTitleNo2_L1}>{page.titleNo2_L1}</h1>}
+              {page.titleNo2_L1 && (
+                <h1 className={'' + page.classTitleNo2_L1}>
+                  {page.titleNo2_L1[0]?.entry ? page.titleNo2_L1[0]?.entry : page.titleNo2_L1}
+                </h1>
+              )}
               {page.titleNo2_L2 && <h2 className={'' + page.classTitleNo2_L2}>{page.titleNo2_L2}</h2>}
               <div className={'scroll_ '}>
-                {Object.values(page.contentNo2).map((content, i) => {
-                  return <p key={i}>{content.entry ? content.entry : content}</p>;
-                })}
+                {Object.values(page.contentNo2)[0].entry
+                  ? Object.values(page.contentNo2)[0].entry.map((content, i) => {
+                      return <p key={i}>{content.entry ? content.entry : content}</p>;
+                    })
+                  : Object.values(page.contentNo2).map((content, i) => {
+                      return <p key={i}>{content.entry ? content.entry : content}</p>;
+                    })}
               </div>
             </div>
           </div>

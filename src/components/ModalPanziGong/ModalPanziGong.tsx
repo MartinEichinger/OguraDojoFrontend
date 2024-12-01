@@ -21,13 +21,17 @@ export interface IContentPage {
   contentNo1: string;
   pics: string[];
   vids: string[];
-  titleNo2_L1: string;
+  titleNo2_L1: {
+    entry: string;
+  }[];
   classTitleNo2_L1: string;
   titleNo2_L2: string;
   classTitleNo2_L2: string;
   heightContent2: string;
   contentNo2: {
-    entry: string;
+    entry: {
+      entry: string;
+    }[];
   }[];
 }
 
@@ -35,28 +39,9 @@ interface IContentPageSchema {
   ContentPage: IContentPage[];
 }
 
-export default function ModalPanziGong() {
+export default function ModalPanziGong({ colors, page, mq }: { colors: any; page: any; mq: any }) {
   const debug = true;
-  const colors = {
-    bgGreen50: 'rgba(10, 121, 0, 0.5)',
-    bgGreen: 'rgba(10, 121, 0, 1)', //HSL: 115, 100, 24 //#0A7900
-    bgBlue50: 'rgba(23,85,118,0.5)',
-    bgBlue: 'rgba(23,85,118,1)',
-    bgGrey: 'rgba(232, 232, 232, 1)',
-    bgWhite50: 'rgba(255,255,255,0.5)',
-    bgWhite75: 'rgba(255,255,255,0.75)',
-    bgWhite: 'rgba(255,255,255,1)',
-    bgRed: 'rgba(121, 0, 0, 1)', //HSL: 0, 100, 24 //#790000
-    bgRedLight: 'hsl(0,100%,36%)',
-    bgRed20: 'hsl(0,100%,20%)',
-    bgRedSolid: 'hsl(0,100%,12%)',
-    bgRed50: 'rgba(121, 0, 0, 0.5)',
-    typoGrey: 'rgba(64, 64, 64, 1)',
-    typoGreen: 'rgba(10, 121, 0, 1)',
-    typoBlue: 'rgba(23,85,118,1)',
-    typoRed: 'rgba(121, 0, 0, 1)',
-    shadowGrey: 'rgba(122,122,122,1)',
-  };
+
   const stats = {
     navItems: ['PanziGong', 'Lehrer', 'Form'],
     page: 'PanziGong', //props.page,
@@ -66,8 +51,6 @@ export default function ModalPanziGong() {
     upDown: 1,
   };
   const apdx = 'PanziGong';
-  const breakpoints = [400, 600, 960, 1280, 1920];
-  const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
 
   const style: any = {
     width: '100vw',
@@ -353,10 +336,14 @@ export default function ModalPanziGong() {
                 contentNo1
                 pics
                 vids
-                titleNo2_L1
+                titleNo2_L1 {
+                  entry
+                }
                 classTitleNo2_L1
                 contentNo2 {
-                  entry
+                  entry {
+                    entry
+                  }
                 }
             }
         }
@@ -368,6 +355,10 @@ export default function ModalPanziGong() {
   }, []);
 
   console.log('ModalPanziGong/Results', contentPage);
+
+  colors.bgTheme = colors.bgGreen;
+  colors.bgTheme50 = colors.bgGreen50;
+  colors.typoTheme = colors.typoGreen;
 
   return (
     <>
@@ -397,7 +388,6 @@ export default function ModalPanziGong() {
               />
               <div className="content">
                 <div className="csPanziGongPG">
-                  {console.log('content: ', contentPage)}
                   {contentPage && <CompTxtStripTxt content={[contentPage[0]]} />}
                 </div>
                 <div className="csLehrerPG d-none">

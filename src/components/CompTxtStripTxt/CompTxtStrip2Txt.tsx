@@ -8,7 +8,7 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftR
   return (
     <React.Fragment>
       {content.map((page: IContentPage, i: number) => {
-        if (debug) console.log(Object.values(page.contentNo2));
+        if (debug) console.log('Content: ', Object.values(page.contentNo2));
 
         return (
           <div
@@ -62,16 +62,15 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftR
                   return (
                     <div className="d-flex flex-column w-100 w-md-50" key={i}>
                       {page.titleNo2_L1 && (
-                        <h1 className={'' + page.classTitleNo2_L1}>{page.titleNo2_L1[i]}</h1>
+                        <h1 className={'' + page.classTitleNo2_L1}>{page.titleNo2_L1[i].entry}</h1>
                       )}
                       {page.titleNo2_L2 && (
                         <h2 className={'' + page.classTitleNo2_L2}>{page.titleNo2_L2[i]}</h2>
                       )}
                       <div className={'scroll_'}>
-                        {/* {content.map((cont: any, i: number) => { 
-                          return <p key={i}>{cont}</p>;
-                        })}*/}
-                        <p key={i}>{content.entry}</p>;
+                        {content.entry.map((cont: any, i: number) => {
+                          return <p key={i}>{cont.entry}</p>;
+                        })}
                       </div>
                     </div>
                   );
