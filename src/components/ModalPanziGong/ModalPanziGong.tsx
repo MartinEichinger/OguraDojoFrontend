@@ -1,6 +1,193 @@
 /** @jsxImportSource @emotion/react */
 // eslint-disable-next-line
 import { jsx } from '@emotion/react';
+import { createDirectus, graphql } from '@directus/sdk';
+
+import React, { useEffect, useState } from 'react';
+import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
+import ModalClassBasis from './ModalPanziGong.controls';
+import CompTxtStripTxt from '../CompTxtStripTxt/CompTxtStripTxt';
+import CompTxtStrip2Txt from '../CompTxtStripTxt/CompTxtStrip2Txt';
+import '../animation.css';
+
+interface IContentPage {
+  id: number;
+  contentNav: boolean;
+  customClass: string;
+  titleNo1_L1: string;
+  titleNo1_L2: string;
+  heightContent1: string;
+  contentNo1: string;
+  pics: string;
+  vids: string;
+  titleNo2_L1: string;
+  heightContent2: string;
+  contentNo2: string;
+}
+
+interface Schema {
+  articles: IContentPage[];
+}
+
+export default function ModalPanziGong() {
+  const debug = true;
+  const style = {};
+  const colors = {};
+  const stats = {
+    navItems: ['PanziGong', 'Lehrer', 'Form'],
+    page: 'PanziGong', //props.page,
+    allSubPages: [],
+    subPage: '',
+    animated: 0,
+    upDown: 1,
+  };
+  const apdx = 'PanziGong';
+  const mq = {};
+
+  const [results, setResults] = useState<IContentPage[]>();
+
+  const clickUpDown = (dir: any) => {
+    if (debug) console.log('ModalPanziGong/clickUpDown', dir);
+
+    // find index of current page
+    var idx = stats.navItems.findIndex((item) => {
+      return item === stats.page;
+    });
+
+    // trigger nextItem with requested page
+    if (idx === 0 && dir === 'down') {
+      nextItem(stats.navItems[idx + 1]);
+    } else if (idx === 0 && dir === 'up') {
+      stats.animated = 0;
+      return 0;
+    } else if (idx === stats.navItems.length - 1 && dir === 'up') {
+      stats.animated = 1;
+      nextItem(stats.navItems[idx - 1]);
+    } else if (idx === stats.navItems.length - 1 && dir === 'down') {
+      stats.animated = 0;
+      return 0;
+    } else if (dir === 'up') {
+      stats.animated = 1;
+      nextItem(stats.navItems[idx - 1]);
+    } else if (dir === 'down') {
+      stats.animated = 1;
+      nextItem(stats.navItems[idx + 1]);
+    }
+  };
+
+  const nextItem = (button: any) => {
+    if (debug) console.log('ModalPanziGong/nextItem', button);
+    // identify the page to be shown
+    document.querySelector(`.cs${stats.page}PG`)!.classList.remove('slide-in-bottom')!;
+    document.querySelector(`.${stats.page}BtnPG`)!.classList.remove('active');
+    document.querySelector(`.cs${stats.page}PG`)!.classList.add('slide-out-top');
+
+    stats.page = button;
+
+    try {
+      document.querySelector(`.cs${stats.page}PG`)!.classList.remove('d-none');
+    } catch (e) {}
+
+    document.querySelector(`.cs${stats.page}PG`)!.classList.remove('slide-out-top');
+    document.querySelector(`.${stats.page}BtnPG`)!.classList.add('active');
+    document.querySelector(`.cs${stats.page}PG`)!.classList.add('slide-in-bottom');
+
+    // check if end of list start or end -> in case reset arrow from active
+    var idx = stats.navItems.findIndex((item) => {
+      return item === stats.page;
+    });
+
+    if (idx === 0) {
+      document.querySelector(`.upArrow` + apdx)!.classList.remove('active');
+      document.querySelector(`.downArrow` + apdx)!.classList.add('active');
+    } else if (idx === stats.navItems.length - 1) {
+      document.querySelector(`.upArrow` + apdx)!.classList.add('active');
+      document.querySelector(`.downArrow` + apdx)!.classList.remove('active');
+    } else {
+      document.querySelector(`.upArrow` + apdx)!.classList.add('active');
+      document.querySelector(`.downArrow` + apdx)!.classList.add('active');
+    }
+  };
+
+  useEffect(() => {
+    const client = createDirectus<Schema>('https://ogura-dojo-cms.directus.app/').with(graphql());
+
+    const getResults = async () => {
+      const result = await client.query<IContentPage[]>(`
+        query {
+            ContentPage {
+                id
+                contentNav
+                customClass
+                titleNo1_L1
+                titleNo1_L2
+                heightContent1
+                contentNo1
+                pics
+                vids
+                titleNo2_L1
+                heightContent2
+                contentNo2
+            }
+        }
+    `);
+      setResults(result);
+    };
+
+    getResults();
+  }, []);
+
+  console.log('results', results);
+
+  return (
+    <>
+      <div
+        className="modal fade"
+        id="idModalPanziGong"
+        tabIndex={-1}
+        aria-labelledby="ModalPanziGongLabel"
+        aria-hidden="true"
+        data-bs-backdrop="static"
+      >
+        <div
+          className="modal-dialog d-flex flex-row-reverse align-items-center"
+          id="modalDialog"
+          css={style}
+        >
+          <div className="modal-content">
+            <div className="modal-row">
+              <ModalInNavigation
+                clickUpDown={clickUpDown}
+                nextItem={nextItem}
+                colors={colors}
+                config={stats}
+                mq={mq}
+                apdx="QiGong"
+                type="QG"
+              />
+              <div className="content">
+                <div className="csPanziGongPG">
+                  {/* <CompTxtStripTxt content={this.contentPage1} /> */}
+                </div>
+                <div className="csLehrerPG d-none">
+                  {/* <CompTxtStripTxt content={this.contentPage2} /> */}
+                </div>
+                <div className="csFormPG d-none">
+                  {/* <CompTxtStrip2Txt content={this.contentPage3} /> */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+/* 
+/* /** @jsxImportSource @emotion/react */
+// eslint-disable-next-line
+/* import { jsx } from '@emotion/react';
 
 import React from 'react';
 import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
@@ -164,5 +351,4 @@ class ModalPanziGong extends ModalClassBasis {
 }
 
 export default ModalPanziGong;
-
-//d-flex flex-row h-100 align-items-center
+ */

@@ -34,7 +34,7 @@
     "web-vitals": "^1.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -57,5 +57,10 @@
       "last 5 firefox version",
       "last 5 safari version"
     ]
+  },
+  "devDependencies": {
+    "@directus/sdk": "^18.0.0",
+    "@types/react": "^17.0.83",
+    "@types/react-dom": "^18.3.1"
   }
 }
