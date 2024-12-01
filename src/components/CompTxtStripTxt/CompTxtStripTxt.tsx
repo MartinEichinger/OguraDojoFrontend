@@ -1,12 +1,13 @@
 import React from 'react';
+import { IContentPage } from '../ModalPanziGong/ModalPanziGong';
 
-const CompTxtStripTxt = ({ content, clickLeftRight }) => {
-  var debug = false;
-  if (debug) console.log(content);
+const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftRight?: any }) => {
+  var debug = true;
+  if (debug) console.log('CompTxtStripTxt/content: ', content);
 
   return (
-    <React.Fragment>
-      {content.map((page, i) => {
+    <>
+      {content?.map((page: IContentPage, i: number) => {
         if (debug) console.log(Object.values(page.contentNo2));
 
         return (
@@ -36,7 +37,7 @@ const CompTxtStripTxt = ({ content, clickLeftRight }) => {
               )}
               {page.pics.length && (
                 <div className="pics d-flex flex-row justify-content-center align-items-center">
-                  {page.pics.map((pic, i) => {
+                  {page.pics.map((pic: any, i: any) => {
                     return <div className={'img ' + pic} key={i}></div>;
                   })}
                 </div>
@@ -53,14 +54,14 @@ const CompTxtStripTxt = ({ content, clickLeftRight }) => {
               {page.titleNo2_L2 && <h2 className={'' + page.classTitleNo2_L2}>{page.titleNo2_L2}</h2>}
               <div className={'scroll_ '}>
                 {Object.values(page.contentNo2).map((content, i) => {
-                  return <p key={i}>{content}</p>;
+                  return <p key={i}>{content.entry ? content.entry : content}</p>;
                 })}
               </div>
             </div>
           </div>
         );
       })}
-    </React.Fragment>
+    </>
   );
 };
 
