@@ -36,7 +36,7 @@ export interface IContentPage {
 }
 
 export default function ModalPanziGong({ colors, mq }: { colors: any; mq: any }) {
-  const debug = true;
+  const debug = false;
 
   const stats = {
     navItems: ['PanziGong', 'Lehrer', 'Form'],

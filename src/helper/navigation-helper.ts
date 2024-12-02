@@ -1,5 +1,4 @@
 export const clickUpDown = (dir: string, stats: any, apdx: string) => {
-  console.log('clickUpDown: ', dir, apdx);
   // find index of current page
   var idx = stats.navItems.findIndex((item: string) => {
     return item === stats.page;
@@ -27,7 +26,6 @@ export const clickUpDown = (dir: string, stats: any, apdx: string) => {
 };
 
 export const nextItem = (button: string, stats: any, apdx: string) => {
-  console.log('nextItem: ', button, apdx, stats);
   // identify the page to be shown
   document.querySelector(`.cs${stats.page}PG`)!.classList.remove('slide-in-bottom')!;
   document.querySelector(`.${stats.page}BtnPG`)!.classList.remove('active');
