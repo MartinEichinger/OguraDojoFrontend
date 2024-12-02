@@ -159,7 +159,7 @@ class App extends Component {
         <ToastContainer />
         <Navigation colors={this.colors} select={this.selectpage} mq={this.mq} />
         <ModalKarate colors={this.colors} page={this.state.pageKarate} mq={this.mq} />
-        <ModalPanziGong colors={this.colors} page={this.state.pagePanziGong} mq={this.mq} />
+        <ModalPanziGong colors={this.colors} mq={this.mq} />
         <ModalQiGong colors={this.colors} page={this.state.pageQiGong} mq={this.mq} />
         <ModalTraining colors={this.colors} page={this.state.pageTraining} mq={this.mq} />
         <ModalBlog colors={this.colors} mq={this.mq} />
