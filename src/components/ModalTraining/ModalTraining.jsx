@@ -63,22 +63,22 @@ class ModalTraining extends ModalClassBasis {
         },
         {
           head1: 'Alex Hetzner',
-          head2: 'Schriftführer \u00b7 Trainer Karate Kinder Jugendliche',
-          head3: '1. DAN Tengu Ryu',
+          head2: '2ter Vorstand \u00b7 Schriftführer \u00b7 Trainer Karate Kinder Jugendliche',
+          head3: '2. DAN Tengu Ryu',
           img: 'url(./wir_pic_ah.jpg)',
           img_pos: '50% 30%',
         },
         {
           head1: 'Wolfgang Lidtke',
           head2: '2ter Kassier',
-          head3: '3. Kyu Tengu Ryu',
+          head3: '2. Kyu Tengu Ryu',
           img: 'url(./wir_pic_wl.jpg)',
           img_pos: '50% 30%',
         },
         {
           head1: 'Johannes Nolte',
           head2: '1ter Kassier',
-          head3: '8. Kyu Tengu Ryu',
+          head3: '6. Kyu Tengu Ryu',
           img: 'url(./wir_pic_jn.jpg)',
           img_pos: '50% 30%',
         },
@@ -112,23 +112,18 @@ class ModalTraining extends ModalClassBasis {
           {
             day: 'Montag',
             time: '20:00 - 22:00',
-            topic: 'Karate (Erwachsene)',
-          },
-          {
-            day: 'Mittwoch',
-            time: '17:00 - 18:30',
-            topic: 'Karate (Kinder/Jugendliche)',
+            topic: 'Karate',
           },
           {
             day: 'Freitag',
             time: '20:00 - 22:00',
-            topic: 'Karate (Erwachsene)',
+            topic: 'Karate',
           },
         ],
       },
       map: {
         title: 'Wo?',
-        address: 'Werner-von-Siemens Mittelschule Traunreut - Martin-Luther-Straße - 83301 Traunreut',
+        address: 'Werner-von-Siemens Mittelschule \u00b7 Martin-Luther-Straße \u00b7 83301 Traunreut',
         src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d667.9166880710771!2d12.595441829286242!3d47.962167896732744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDU3JzQzLjgiTiAxMsKwMzUnNDUuNiJF!5e0!3m2!1sen!2sde!4v1619885924254!5m2!1sen!2sde',
       },
       text: {

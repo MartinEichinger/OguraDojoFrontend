@@ -126,7 +126,6 @@ class App extends Component {
         table: [
           { head: 'Taiji', day: 'Montag', time: '18:30 - 20:00' },
           { head: 'Karate', day: 'Montag', time: '20:00 - 22:00' },
-          { head: 'Karate', day: 'Mittwoch', time: '17:00 - 18:30' },
           { head: 'Karate', day: 'Freitag', time: '20:00 - 22:00' },
         ],
         keywords: 'Werner-von-Siemens Mittelschule - Martin-Luther-Straße - 83301 Traunreut',
