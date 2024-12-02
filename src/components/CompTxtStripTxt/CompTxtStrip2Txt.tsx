@@ -1,13 +1,14 @@
 import React from 'react';
+import { IContentPage } from '../ModalPanziGong/ModalPanziGong';
 
-const CompTxtStripTxt = ({ content, clickLeftRight }) => {
+const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftRight?: any }) => {
   var debug = false;
   if (debug) console.log(content);
 
   return (
     <React.Fragment>
-      {content.map((page, i) => {
-        if (debug) console.log(Object.values(page.contentNo2));
+      {content.map((page: IContentPage, i: number) => {
+        if (debug) console.log('Content: ', Object.values(page.contentNo2));
 
         return (
           <div
@@ -22,15 +23,8 @@ const CompTxtStripTxt = ({ content, clickLeftRight }) => {
                   <p>{page.contentNo1}</p>
                 </div>
                 <div className="videos d-flex flex-row justify-content-center align-items-center w-100 w-md-50">
-                  {page.vids.map((vids, i) => {
-                    return (
-                      <iframe
-                        title="Panzi Gong Video"
-                        src={vids}
-                        allowFullScreen="allowfullscreen"
-                        key={i}
-                      />
-                    );
+                  {page.vids.map((vids: any, i: number) => {
+                    return <iframe title="Panzi Gong Video" src={vids} allowFullScreen={true} key={i} />;
                   })}
                 </div>
               </div>
@@ -68,14 +62,14 @@ const CompTxtStripTxt = ({ content, clickLeftRight }) => {
                   return (
                     <div className="d-flex flex-column w-100 w-md-50" key={i}>
                       {page.titleNo2_L1 && (
-                        <h1 className={'' + page.classTitleNo2_L1}>{page.titleNo2_L1[i]}</h1>
+                        <h1 className={'' + page.classTitleNo2_L1}>{page.titleNo2_L1[i].entry}</h1>
                       )}
                       {page.titleNo2_L2 && (
                         <h2 className={'' + page.classTitleNo2_L2}>{page.titleNo2_L2[i]}</h2>
                       )}
                       <div className={'scroll_'}>
-                        {content.map((cont, i) => {
-                          return <p key={i}>{cont}</p>;
+                        {content.entry.map((cont: any, i: number) => {
+                          return <p key={i}>{cont.entry}</p>;
                         })}
                       </div>
                     </div>

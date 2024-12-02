@@ -1,12 +1,13 @@
 import React from 'react';
+import { IContentPage } from '../ModalPanziGong/ModalPanziGong';
 
-const CompTxtStripTxt = ({ content, clickLeftRight }) => {
+const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftRight?: any }) => {
   var debug = false;
-  if (debug) console.log(content);
+  if (debug) console.log('CompTxtStripTxt/content: ', content);
 
   return (
-    <React.Fragment>
-      {content.map((page, i) => {
+    <>
+      {content?.map((page: IContentPage, i: number) => {
         if (debug) console.log(Object.values(page.contentNo2));
 
         return (
@@ -36,7 +37,7 @@ const CompTxtStripTxt = ({ content, clickLeftRight }) => {
               )}
               {page.pics.length && (
                 <div className="pics d-flex flex-row justify-content-center align-items-center">
-                  {page.pics.map((pic, i) => {
+                  {page.pics.map((pic: any, i: any) => {
                     return <div className={'img ' + pic} key={i}></div>;
                   })}
                 </div>
@@ -49,18 +50,26 @@ const CompTxtStripTxt = ({ content, clickLeftRight }) => {
             </div>
 
             <div className="modal-down d-flex flex-column">
-              {page.titleNo2_L1 && <h1 className={'' + page.classTitleNo2_L1}>{page.titleNo2_L1}</h1>}
+              {page.titleNo2_L1 && (
+                <h1 className={'' + page.classTitleNo2_L1}>
+                  {page.titleNo2_L1[0]?.entry ? page.titleNo2_L1[0]?.entry : page.titleNo2_L1}
+                </h1>
+              )}
               {page.titleNo2_L2 && <h2 className={'' + page.classTitleNo2_L2}>{page.titleNo2_L2}</h2>}
               <div className={'scroll_ '}>
-                {Object.values(page.contentNo2).map((content, i) => {
-                  return <p key={i}>{content}</p>;
-                })}
+                {Object.values(page.contentNo2)[0].entry
+                  ? Object.values(page.contentNo2)[0].entry.map((content, i) => {
+                      return <p key={i}>{content.entry ? content.entry : content}</p>;
+                    })
+                  : Object.values(page.contentNo2).map((content, i) => {
+                      return <p key={i}>{content.entry ? content.entry : content}</p>;
+                    })}
               </div>
             </div>
           </div>
         );
       })}
-    </React.Fragment>
+    </>
   );
 };
 
