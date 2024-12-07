@@ -9,7 +9,7 @@ import ModalCompL1Blog from './ModalCompL1Blog';
 import { clickUpDown, nextItem } from '../../helper/navigation-helper';
 import '../animation.css';
 
-export default function ModalBlog({ colors, mq }: { colors: any; mq: any }) {
+export default function ModalBlog({ colors, mq, lang }: { colors: any; mq: string; lang: string }) {
   const debug = true;
   const style: any = {
     width: '100vw',
@@ -328,17 +328,6 @@ export default function ModalBlog({ colors, mq }: { colors: any; mq: any }) {
     },
   };
 
-  const state = {
-    width: 1440,
-    height: 1200,
-  };
-
-  const stats = {
-    allPages: ['1', '2'],
-    page: 'Blog',
-    animated: 0,
-  };
-
   const configNav = {
     upDown: 0,
     pagItems: 4,
@@ -351,23 +340,31 @@ export default function ModalBlog({ colors, mq }: { colors: any; mq: any }) {
   };
 
   const query = `query {
-    ContentBlog {
+    blog_data {
         id
-        category
-        date
-        detail
-        file
-        pictPos
-        picture
-        smallHeading
-        title
-        video
+        picture {
+            id
+        }
+        picture_position
+        file {
+            id
+        }
         website
+        video
+        translations (filter: {languages_code: {code: {_eq: "${lang}"}}}) {
+            languages_code {
+                code
+            }
+            date
+            tags
+            category
+            headline
+            content
+        }
     }
-  }`;
+}`;
 
   const contentBlog = useGraphQLQuery(query);
-
   if (debug) console.log('ModalBlog/Results', contentBlog);
 
   return (
@@ -398,7 +395,7 @@ export default function ModalBlog({ colors, mq }: { colors: any; mq: any }) {
                   type
                 />
                 {contentBlog && (
-                  <ModalCompL1Blog colors={colors} content={content} blogs={contentBlog.ContentBlog} />
+                  <ModalCompL1Blog colors={colors} content={content} blogs={contentBlog.blog_data} />
                 )}
               </div>
             </div>
