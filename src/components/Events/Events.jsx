@@ -6,13 +6,12 @@ import React from 'react';
 import { EventContactForm } from '../EventContactForm/EventContactForm';
 import EventFormInfos from '../EventFormInfos/EventFormInfos';
 import EventFormSchedule from '../EventFormSchedule/EventFormSchedule';
-//import { makeStyles } from '@material-ui/core/styles';
 import { useCustomStyles } from './Events.style';
-import { useFormControls } from './Events.controlss';
+import { useFormControls } from './Events.controls';
 
 const Events = ({ events, colors, mq }) => {
   // constants
-  const debug = true;
+  const debug = false;
   if (debug) console.log('Events : ', events);
 
   // style
