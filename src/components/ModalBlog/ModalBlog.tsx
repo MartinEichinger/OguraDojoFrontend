@@ -10,7 +10,7 @@ import { clickUpDown, nextItem } from '../../helper/navigation-helper';
 import '../animation.css';
 
 export default function ModalBlog({ colors, mq, lang }: { colors: any; mq: string; lang: string }) {
-  const debug = true;
+  const debug = false;
   const style: any = {
     width: '100vw',
     maxWidth: '1440px',

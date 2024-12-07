@@ -8,7 +8,7 @@ import BlogEntry from '../BlogEntry/BlogEntry';
 var dataReady = false;
 
 const ModalCompL1Blog = ({ colors, content, blogs }) => {
-  const debug = true;
+  const debug = false;
 
   if (blogs.length > 0) dataReady = true;
   if (debug) console.log('ModalComp_L1_Blogs: ', blogs, blogs.length, dataReady);
