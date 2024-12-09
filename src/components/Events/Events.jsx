@@ -8,10 +8,11 @@ import EventFormInfos from '../EventFormInfos/EventFormInfos';
 import EventFormSchedule from '../EventFormSchedule/EventFormSchedule';
 import { useCustomStyles } from './Events.style';
 import { useFormControls } from './Events.controls';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 
 const Events = ({ events, colors, mq }) => {
   // constants
-  const debug = false;
+  const debug = true;
   if (debug) console.log('Events : ', events);
 
   // style
@@ -26,6 +27,13 @@ const Events = ({ events, colors, mq }) => {
     { name: 'seminar_title', label: 'Seminar', id: '#title', val_length: 80, required: 'true' },
     { name: 'seminar_date', label: 'Termin', id: '#date' },
     { name: 'seminar_location', label: 'Ort', id: '#location', val_length: 80, required: 'true' },
+    {
+      name: 'seminar_organiser',
+      label: 'Ausrichter/Trainer',
+      id: '#organisator',
+      val_length: 80,
+      required: 'true',
+    },
     {
       name: 'seminar_organiser',
       label: 'Ausrichter/Trainer',
@@ -76,8 +84,21 @@ const Events = ({ events, colors, mq }) => {
       )}
       {events.length > 0 && (
         <div className="detail d-flex flex-column scroll_" css={style}>
-          <EventFormInfos inFieldVal={entries.slice(0, 8)} changedData={changedData} />
-
+          <EventFormInfos inFieldVal={entries.slice(0, 4)} changedData={changedData} />
+          <div className="invitation d-flex row-direction">
+            <p>Ausschreibung</p>
+            {changedData?.invitation_to_tender ? (
+              <a
+                href={`https://ogura-dojo-cms.directus.app/assets/${changedData?.invitation_to_tender?.id}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <PictureAsPdfIcon />
+              </a>
+            ) : (
+              '-'
+            )}
+          </div>
           <EventContactForm
             //style={classes.root2}
             inFieldVal={entries.slice(8, 10)}
