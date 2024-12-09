@@ -12,7 +12,7 @@ import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 
 const Events = ({ events, colors, mq }) => {
   // constants
-  const debug = true;
+  const debug = false;
   if (debug) console.log('Events : ', events);
 
   // style
