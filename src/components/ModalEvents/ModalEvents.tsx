@@ -122,8 +122,9 @@ export default function ModalEvents({ colors, mq, lang }: { colors: any; mq: str
     title: 'Termine',
   };
 
+  var today = new Date();
   const query = `query {
-    event_data {
+    event_data  (filter: {seminar_date: {_gt: "${today.toISOString()}"}}) {
         translations (filter: {languages_code: {code: {_eq: "${lang}"}}}) {
             seminar_title
         }

@@ -32,7 +32,7 @@ const ModalCompL1Events = ({
         <h1 className="bigger">{content.title}</h1>
       </div>
       <div className="tables d-flex flex-column flex-lg-row flex-lg-wrap align-items-center align-items-lg-stretch justify-content-lg-around ">
-        {events.length > 0 && <Events events={events} colors={colors} mq={mq} />}
+        <Events events={events} colors={colors} mq={mq} />
       </div>
     </div>
   );

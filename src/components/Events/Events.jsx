@@ -77,40 +77,44 @@ const Events = ({ events, colors, mq }) => {
 
   return (
     <React.Fragment>
-      {events.length > 0 && (
+      {1 && (
         <div className="schedule d-flex flex-column scroll_" css={style}>
           <EventFormSchedule events={events} month={month} selectEvent={selectEvent} />
         </div>
       )}
-      {events.length > 0 && (
-        <div className="detail d-flex flex-column scroll_" css={style}>
-          <EventFormInfos inFieldVal={entries.slice(0, 4)} changedData={changedData} />
-          <div className="invitation d-flex row-direction">
-            <p>Ausschreibung</p>
-            {changedData?.invitation_to_tender ? (
-              <a
-                href={`https://ogura-dojo-cms.directus.app/assets/${changedData?.invitation_to_tender?.id}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <PictureAsPdfIcon />
-              </a>
-            ) : (
-              '-'
-            )}
-          </div>
-          <EventContactForm
-            //style={classes.root2}
-            inFieldVal={entries.slice(8, 10)}
-            event={changedData.title}
-            value={changedData}
-            onChangeEvent={onChangeEvent}
-            errors={errors}
-            formIsValid={formIsValid}
-            handleFormSubmit={handleFormSubmit}
-          />
-        </div>
-      )}
+      <div className="detail d-flex flex-column scroll_" css={style}>
+        {events.length > 0 ? (
+          <>
+            <EventFormInfos inFieldVal={entries.slice(0, 4)} changedData={changedData} />
+            <div className="invitation d-flex row-direction">
+              <p className="green">Ausschreibung</p>
+              {changedData?.invitation_to_tender ? (
+                <a
+                  href={`https://ogura-dojo-cms.directus.app/assets/${changedData?.invitation_to_tender?.id}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <PictureAsPdfIcon />
+                </a>
+              ) : (
+                '-'
+              )}
+            </div>
+            <EventContactForm
+              //style={classes.root2}
+              inFieldVal={entries.slice(8, 10)}
+              event={changedData.title}
+              value={changedData}
+              onChangeEvent={onChangeEvent}
+              errors={errors}
+              formIsValid={formIsValid}
+              handleFormSubmit={handleFormSubmit}
+            />
+          </>
+        ) : (
+          <h2>Aktuell keine Termine</h2>
+        )}
+      </div>
     </React.Fragment>
   );
 };

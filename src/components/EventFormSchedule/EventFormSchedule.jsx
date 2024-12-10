@@ -4,7 +4,7 @@ const EventFormSchedule = ({ events, month, selectEvent }) => {
   const debug = false;
   if (debug) console.log('EventFormSchedule: ', events);
   return (
-    <React.Fragment>
+    <>
       {events.map((item, i) => {
         var d = new Date(item.seminar_date);
         return (
@@ -39,7 +39,7 @@ const EventFormSchedule = ({ events, month, selectEvent }) => {
           </React.Fragment>
         );
       })}
-    </React.Fragment>
+    </>
   );
 };
 
