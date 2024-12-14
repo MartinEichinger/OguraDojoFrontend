@@ -1,7 +1,4 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-
-import { updateEvent, createEvent, deleteEvent } from '../../store/events';
 import { sendEmail } from '../../store/email';
 
 //import { format } from 'date-fns';
@@ -38,7 +35,7 @@ export const useFormControls = ({ events, entries }) => {
 
   if (debug) console.log('Events.controls: ', idx, events, changedData, entries, errors);
 
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
 
   // EVENTS
   const newEvent = () => {
@@ -65,27 +62,27 @@ export const useFormControls = ({ events, entries }) => {
     setChangedData(item);
   };
 
-  const delEvent = (item) => {
-    dispatch(deleteEvent(item));
-  };
+  /*   const delEvent = (item) => {
+    //dispatch(deleteEvent(item));
+  }; */
 
   // ENTRIES
-  const saveFormData = (save) => {
+  /*   const saveFormData = (save) => {
     setEditData(false);
     if (save) {
       if (debug) console.log('save data: ', changedData);
       if (changedData['id'] === 'none') {
         setEntryData(changedData);
-        dispatch(createEvent(changedData));
+        //dispatch(createEvent(changedData));
       } else {
         setEntryData(changedData);
-        dispatch(updateEvent(changedData));
+        //dispatch(updateEvent(changedData));
       }
     } else {
       if (debug) console.log('dont save data: ', entryData);
       setChangedData(entryData);
     }
-  };
+  }; */
 
   const onChangeEvent = (attr, val) => {
     if (debug) console.log('Events/onChangeEvent: ', attr, val);
@@ -171,15 +168,15 @@ export const useFormControls = ({ events, entries }) => {
       fullName: '',
     };
     setChangedData(obj);
-    dispatch(sendEmail({ email, sender, seminar }));
+    //dispatch(sendEmail({ email, sender, seminar }));
   };
 
   return {
     newEvent,
     selectEvent,
-    delEvent,
+    /*     delEvent,
     saveFormData,
-    onChangeEvent,
+ */ onChangeEvent,
     onChangeDate,
     setEditData,
     formIsValid,

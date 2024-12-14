@@ -1,12 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import filterReducer from './filter';
 import toasty from './middleware/toast';
 import api from './middleware/api';
 
 export const store = configureStore({
-  reducer: {
-    filter: filterReducer,
-  },
+  reducer: {},
   //middleware: [...getDefaultMiddleware(), toasty, api, configSerialize],
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

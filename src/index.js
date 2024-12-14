@@ -7,8 +7,8 @@ import bootstrap from 'bootstrap';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 //import blue from '@material-ui/core/colors/blue';
 import App from './App';
-import { store } from './store/configureStore';
-import { Provider } from 'react-redux';
+//import { store } from './store/configureStore';
+//import { Provider } from 'react-redux';
 
 import * as serviceWorker from './serviceWorker';
 //import { configureStore } from '@reduxjs/toolkit';
@@ -28,11 +28,11 @@ const od_theme = createTheme({
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ThemeProvider theme={od_theme}>
-        <App />
-      </ThemeProvider>
-    </Provider>
+    {/* <Provider store={store}> */}
+    <ThemeProvider theme={od_theme}>
+      <App />
+    </ThemeProvider>
+    {/* </Provider> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

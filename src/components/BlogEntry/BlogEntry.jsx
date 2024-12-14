@@ -4,12 +4,9 @@ import { jsx } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 import CombiButton from '../CompCombiButton/CompCombiButton';
-import { useSelector } from 'react-redux';
-import { selectFilter } from '../../store/filter';
 
-const BlogEntry = ({ blogs, colors }) => {
+const BlogEntry = ({ blogs, colors, filterState }) => {
   const debug = false;
-  const filterState = useSelector(selectFilter);
 
   if (debug) console.log('BlogEntry: ', blogs);
 

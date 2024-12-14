@@ -3,8 +3,6 @@
 import { jsx } from '@emotion/react';
 
 import { Component } from 'react';
-import { connect } from 'react-redux';
-import { authStatus } from './store/auth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navigation from './components/Navigation/Navigation';
@@ -15,7 +13,6 @@ import ModalQiGong from './components/ModalQiGong/ModalQiGong';
 import ModalTraining from './components/ModalTraining/ModalTraining';
 import ModalBlog from './components/ModalBlog/ModalBlog';
 import ModalEvents from './components/ModalEvents/ModalEvents';
-import ModalLogin from './components/ModalLogin/ModalLogin';
 import Footer from './components/Footer/Footer';
 import ModalImpressum from './components/ModalImpressum/ModalImpressum';
 
@@ -23,7 +20,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.debug = false;
-    this.authStatus = this.props.authStatus;
 
     // BREAKPOINTS
     this.breakpoints = [400, 600, 960, 1280, 1920];
@@ -135,10 +131,6 @@ class App extends Component {
     ];
   }
 
-  componentDidMount() {
-    this.authStatus();
-  }
-
   selectpage = (page, param) => {
     if (this.debug) console.log('App/selectpage', page, param);
     this.setState({ [param]: page });
@@ -164,7 +156,6 @@ class App extends Component {
         <ModalTraining colors={this.colors} page={this.state.pageTraining} mq={this.mq} />
         <ModalBlog colors={this.colors} mq={this.mq} lang={'de-DE'} />
         <ModalEvents colors={this.colors} mq={this.mq} lang={'de-DE'} />
-        <ModalLogin />
         <ModalImpressum colors={this.colors} mq={this.mq} />
         <div className="Frame bg">
           <div className="Content d-flex flex-row flex-wrap justify-content-center">
@@ -178,11 +169,4 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    authStatus: () => dispatch(authStatus()),
-    dispatch,
-  };
-};
-
-export default connect(null, mapDispatchToProps)(App);
+export default App;
