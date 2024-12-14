@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { sendEmail } from '../../store/email';
+//import { sendEmail } from '../../store/email';
+import { apiCallBegan } from '../../store/api';
 
 //import { format } from 'date-fns';
 const defaultEntry = {
@@ -168,6 +169,16 @@ export const useFormControls = ({ events, entries }) => {
       fullName: '',
     };
     setChangedData(obj);
+
+    const url = '/api/email/';
+    apiCallBegan({
+      url,
+      method: 'post',
+      data: { email: email, sender: sender, seminar: seminar },
+      /*       onStart: emailSendStart.type,
+      onSuccess: emailSended.type,
+      onError: emailSentFailed.type, */
+    });
     //dispatch(sendEmail({ email, sender, seminar }));
   };
 

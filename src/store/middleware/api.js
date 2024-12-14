@@ -11,9 +11,9 @@ const api =
     if (debug) console.log('api', action);
     if (action.type !== actions.apiCallBegan.type) return next(action);
 
-    const { url, method, data, onStart, onSuccess, onError, headers = '' } = action.payload;
+    const { url, method, data, /* onStart, onSuccess, onError ,*/ headers = '' } = action.payload;
 
-    if (onStart) dispatch({ type: onStart });
+    //if (onStart) dispatch({ type: onStart });
 
     next(action);
 
@@ -28,23 +28,23 @@ const api =
       // general
       dispatch(actions.apiCallSuccess(response.data));
       // specific
-      if (onSuccess) {
+      /* if (onSuccess) {
         if (data?.username) response.data.username = data.username;
         dispatch({
           type: onSuccess,
           payload: response.data,
         });
-      }
+      } */
     } catch (error) {
       if (debug) console.log('api/error', error);
       // general
       dispatch(actions.apiCallFailed(error.message));
       // specific
-      if (onError)
+      /* if (onError)
         dispatch({
           type: onError,
           payload: error.message,
-        });
+        }); */
     }
   };
 
