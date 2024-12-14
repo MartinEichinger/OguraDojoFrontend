@@ -303,7 +303,9 @@ class Navigation extends Component {
       <React.Fragment>
         <div className="navbar navbar-dark fixed-top invisible d-flex flex-column" css={this.styleNav}>
           <div className="block d-flex flex-row justify-content-between">
-            <a href="http://www.tengu.fr" target="_blank" rel="noreferrer"></a>
+            <a href="http://www.tengu.fr" target="_blank" rel="noreferrer">
+              {/* <img src="./OguraDojoLogo.png" alt="" /> */}
+            </a>
             <div className="center d-flex flex-column justify-content-center">
               <h1>Ogura Dojo</h1>
               <h3>Karate, Panzi Gong, Taiji, Qigong im Herzen des Chiemgaus</h3>
