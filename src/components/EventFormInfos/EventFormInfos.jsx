@@ -28,7 +28,6 @@ const EventFormInfos = ({
     <React.Fragment>
       <div className="d-flex flex-row align-items-center justify-content-between">
         <h3>SEMINAR</h3>
-        {isAuthNoEdit && <i className="fas fa-edit red mr-5" onClick={() => setEditData(true)}></i>}
       </div>
       <form className={style}>
         {inFieldVal?.slice(0, 4).map((x, i) => {
@@ -57,10 +56,8 @@ const EventFormInfos = ({
                 sx={{
                   marginBottom: 1,
                 }}
-                //color="primary"
                 onChange={(event) => onChangeEvent(x.name, event.target.value)}
                 multiline={x.multiline ?? false}
-                //error={errors[x.name]}
                 value={changedData[x.name]}
                 {...(errors[x.name] && {
                   error: true,
@@ -113,7 +110,6 @@ const EventFormInfos = ({
               fullWidth
               id={x.id}
               label={x.label}
-              //error={errors[x.name]}
               value={changedData[x.name]}
               {...(errors[x.name] && {
                 error: true,
@@ -147,20 +143,3 @@ const EventFormInfos = ({
 };
 
 export default EventFormInfos;
-
-/*               <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <KeyboardDatePicker
-                  disableToolbar
-                  variant="inline"
-                  format="dd.MM.yyyy"
-                  margin="normal"
-                  id="date-picker-inline"
-                  label="Date picker inline"
-                  value={changedData[x.name]}
-                  onChange={onChangeDate}
-                  KeyboardButtonProps={{
-                    'aria-label': 'change date',
-                  }}
-                />
-              </MuiPickersUtilsProvider>
- */

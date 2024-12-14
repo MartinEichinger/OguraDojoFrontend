@@ -21,7 +21,6 @@ const ModalComp_L1_Blog = ({ colors, content, mq, isAuthenticated }) => {
     <div className="modal-col">
       <h1 className="bigger">{content.title}</h1>
       <BlogNav filterProps={content.filterProps} colors={colors} />
-      {isAuthenticated && <i className="fas fa-edit red mr-5"></i>}
       <div className="table scroll_">
         {dataReady && <BlogEntry blogs={blogs} colors={colors} isAuthenticated={isAuthenticated} />}
       </div>

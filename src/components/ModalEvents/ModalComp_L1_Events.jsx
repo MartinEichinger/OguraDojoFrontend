@@ -18,7 +18,6 @@ const ModalComp_L1_Events = ({ colors, content, mq, isAuthenticated }) => {
       <div className="imageBg"></div>
       <div className="heading d-flex flex-row justify-content-between align-items-center">
         <h1 className="bigger">{content.title}</h1>
-        {isAuthenticated && <i className="fas fa-edit red mr-5"></i>}
       </div>
       <div className="tables d-flex flex-column flex-lg-row flex-lg-wrap align-items-center align-items-lg-stretch justify-content-lg-around ">
         {events.length > 0 && <Events events={events} colors={colors} mq={mq} />}

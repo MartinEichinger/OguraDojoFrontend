@@ -30,23 +30,11 @@ const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
     { name: 'video', id: '#video' },
   ];
 
-  const {
-    onChangeBlog,
-    formIsValid,
-    clickSaveButton,
-    delBlogEntry,
-    selectBlog,
-    disselectBlog,
-    changedData,
-    editData,
-    errors,
-  } = useFormControls({
-    blogs,
-    entries,
-  });
-
-  //const isAuthEdit = editData && isAuthenticated; // Muss im item mit item.id gebildet werden
-  const isAuthNoEdit = !editData.edit && isAuthenticated;
+  const { onChangeBlog, formIsValid, clickSaveButton, disselectBlog, changedData, errors } =
+    useFormControls({
+      blogs,
+      entries,
+    });
 
   return (
     <React.Fragment>
@@ -274,9 +262,6 @@ const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
               <h5 className="text-center w-100 green regular">
                 {item.date} +++ {item.smallHeading}
               </h5>
-              {isAuthenticated && (
-                <i className="far red fa-trash-alt mr-3 cursor" onClick={() => delBlogEntry(item)}></i>
-              )}
             </div>
             <div className="body d-flex flex-row">
               <div
@@ -293,12 +278,6 @@ const BlogEntry = ({ blogs, colors, isAuthenticated }) => {
                 <p className="linie text-center"></p>
                 <p className="text-center small">{item.detail}</p>
               </div>
-              {isAuthNoEdit && (
-                <i
-                  className="editButton fas fa-edit red mr-5 cursor align-self-start"
-                  onClick={() => selectBlog(item)}
-                ></i>
-              )}
             </div>
             <CombiButtonBE colors={colors} links={[item.file, item.website, item.video]} />
           </div>
@@ -316,19 +295,17 @@ export default BlogEntry;
 const CombiButtonBE = styled(CombiButton)`
   margin: -16px auto 0;
   width: inherit;
-  //font-family: Roboto, Helvetica, Arial, sans-serif;
 
   #ButtonGroup {
     padding: 0px;
     width: 150px;
 
     .select {
-      //padding: 0.5rem;
+      padding: 5px;
     }
 
     .descr {
       font-size: 12px;
-      //font-size: calc(.44643vw + 5.5px);
       padding: 0.5rem;
     }
   }
