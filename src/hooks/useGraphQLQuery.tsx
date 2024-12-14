@@ -13,7 +13,8 @@ const useGraphQLQuery = (query: string) => {
     };
 
     getResults();
-  }, [query]);
+    /* eslint-disable */
+  }, []);
 
   return queryResult;
 };

@@ -112,14 +112,14 @@ const ModalInNavigation = ({ clickUpDown, nextItem, colors, config, mq, apdx, ty
         className="btn-close d-flex flex-row align-items-center justify-content-center"
         data-bs-dismiss="modal"
       >
-        <img src="./clear_white.png" alt="" />
+        <TablerIconX stroke={'white'} />
       </button>
       {config?.upDown ? (
         <div
           className={'arrow d-flex align-items-center justify-content-center upArrow' + apdx}
           onClick={(e) => clickUpDown('up')}
         >
-          <img src="arrow_white_up.png" alt="" />
+          <TablerIconChevronsUp stroke={'white'} />
         </div>
       ) : (
         ''
@@ -142,7 +142,7 @@ const ModalInNavigation = ({ clickUpDown, nextItem, colors, config, mq, apdx, ty
           className={'arrow d-flex align-items-center justify-content-center active downArrow' + apdx}
           onClick={(e) => clickUpDown('down')}
         >
-          <img src="arrow_white_down.png" alt="" />
+          <TablerIconChevronsDown stroke={'white'} />
         </div>
       ) : (
         ''
@@ -151,4 +151,66 @@ const ModalInNavigation = ({ clickUpDown, nextItem, colors, config, mq, apdx, ty
   );
 };
 
+const TablerIconX = ({ fill = 'none', stroke = 'black' }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="4 4 16 16"
+      fill={fill}
+      stroke={stroke}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="icon icon-tabler icons-tabler-outline icon-tabler-x"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M18 6l-12 12" />
+      <path d="M6 6l12 12" />
+    </svg>
+  );
+};
+
+const TablerIconChevronsDown = ({ fill = 'none', stroke = 'black' }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="4 4 16 16"
+      fill={fill}
+      stroke={stroke}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="icon icon-tabler icons-tabler-outline icon-tabler-chevrons-down"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M7 7l5 5l5 -5" />
+      <path d="M7 13l5 5l5 -5" />
+    </svg>
+  );
+};
+
+const TablerIconChevronsUp = ({ fill = 'none', stroke = 'black' }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="4 4 16 16"
+      fill={fill}
+      stroke={stroke}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="icon icon-tabler icons-tabler-outline icon-tabler-chevrons-up"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M7 11l5 -5l5 5" />
+      <path d="M7 17l5 -5l5 5" />
+    </svg>
+  );
+};
 export default ModalInNavigation;

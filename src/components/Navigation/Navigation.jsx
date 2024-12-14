@@ -3,7 +3,6 @@
 import { jsx, keyframes } from '@emotion/react';
 import '../animation.css';
 import React, { Component } from 'react';
-
 import { logOut } from '../../store/auth';
 import { connect } from 'react-redux';
 
@@ -30,15 +29,12 @@ class Navigation extends Component {
       position: 'relative',
       width: 'calc(100vw - 40px)',
       maxWidth: '1280px',
-      //minWidth: '340px',
       height: '300px',
       boxShadow: `10px 10px 25px 0px ${this.colorCard.shadowGrey}`,
       border: 'none',
       outline: 'none',
       borderRadius: '5px',
       margin: '20px 20px',
-      //marginLeft:
-      //  this.state.viewWidth > 1340 ? `calc((100vw - 1280px) / 2)` : '20px',
       marginLeft: this.state.viewWidth > 1340 ? `${(this.state.viewWidth - 1280) / 2}px` : '20px',
       marginRight: this.state.viewWidth > 1340 ? `calc((100vw - 1280px) / 2)` : '20px',
       backgroundColor: 'white',
@@ -71,7 +67,6 @@ class Navigation extends Component {
         color: this.colorCard.bgRed,
         borderLeft: `1px solid white`,
         borderRight: `1px solid white`,
-        //borderRight: `1px solid ${this.colorCard.bgRed}`,
         borderTop: `1px solid white`,
         borderBottom: `1px solid ${this.colorCard.bgRed}`,
         borderRadius: '25px',
@@ -201,7 +196,6 @@ class Navigation extends Component {
           fontFamily: 'Lato, cursive',
 
           '& h1': {
-            //fontSize: '36px',
             textAlign: 'center',
             fontWeight: 'bold',
             color: this.colorCard.typoGrey,
@@ -212,7 +206,6 @@ class Navigation extends Component {
           },
 
           '& h3': {
-            //fontSize: '18px',
             fontWeight: 'bold',
 
             textAlign: 'center',
@@ -267,20 +260,9 @@ class Navigation extends Component {
         document.querySelector('.Cards')?.offsetWidth,
         document.querySelector('.navbarCard')?.offsetHeight
       );
-    //this.updateHx();
   };
 
   updateHx = () => {
-    // H1
-    //this.styleNavCard['& .text']['& h1'].fontSize =
-    //  26 * (((this.state.width / 1280) * this.state.height) / 300) + 22 + 'px';
-    // H2
-    //this.styleNavCard['& .text']['& h2'].fontSize =
-    //  16 * (((this.state.width / 1280) * this.state.height) / 300) + 16 + 'px';
-    // p
-    //this.styleNavCard['& button'].fontSize =
-    //  12 * (((this.state.width / 1280) * this.state.height) / 300) + 10 + 'px';
-    // margin left/right // width
     if (this.state.viewWidth > 1280) {
       this.styleNavCard.width = `${this.state.viewWidth - 40}px`;
     } else if (this.state.viewWidth > 600) {
@@ -326,17 +308,12 @@ class Navigation extends Component {
             </a>
             <div className="center d-flex flex-column justify-content-center">
               <h1>Ogura Dojo</h1>
-              {/* <h2>Tengu Ryu Karate-Do, PanZi Gong, TaiJi Quan, QiGong</h2> */}
               <h3>Karate, Panzi Gong, Taiji, Qigong im Herzen des Chiemgaus</h3>
             </div>
-            {this.isAuthenticated && (
-              <button title="Logout" onClick={this.logout}>
-                <i className="fas fa-sign-out-alt"></i>
-              </button>
-            )}
+
             {!this.isAuthenticated && (
               <button title="Login" data-bs-toggle="modal" data-bs-target="#idModalLogin">
-                <i className="fas fa-sign-in-alt"></i>
+                <TablerIconLogin stroke={'green'} />
               </button>
             )}
           </div>
@@ -378,6 +355,28 @@ class Navigation extends Component {
     );
   }
 }
+
+const TablerIconLogin = ({ stroke = 'black', fill = 'white' }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill={fill}
+      stroke={stroke}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="icon icon-tabler icons-tabler-outline icon-tabler-login-2"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M9 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2" />
+      <path d="M3 12h13l-3 -3" />
+      <path d="M13 15l3 -3" />
+    </svg>
+  );
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {

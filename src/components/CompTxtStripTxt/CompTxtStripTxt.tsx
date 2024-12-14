@@ -32,7 +32,7 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftR
             >
               {page.contentNav && (
                 <div className="navLeft" onClick={(e) => clickLeftRight('left')}>
-                  <img src="./icon_left.png" alt="icon left" />
+                  <TablerIconChevronLeft stroke="white" />
                 </div>
               )}
               {page.pics.length && (
@@ -44,7 +44,7 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftR
               )}
               {page.contentNav && (
                 <div className="navRight" onClick={(e) => clickLeftRight('right')}>
-                  <img src="./icon_right.png" alt="icon right" />
+                  <TablerIconChevronRight stroke="white" />
                 </div>
               )}
             </div>
@@ -70,6 +70,46 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftR
         );
       })}
     </>
+  );
+};
+
+const TablerIconChevronLeft = ({ fill = 'none', stroke = 'black' }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="5 4 16 16"
+      fill={fill}
+      stroke={stroke}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M15 6l-6 6l6 6" />
+    </svg>
+  );
+};
+
+const TablerIconChevronRight = ({ fill = 'none', stroke = 'black' }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="3 4 16 16"
+      fill={fill}
+      stroke={stroke}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M9 6l6 6l-6 6" />
+    </svg>
   );
 };
 

@@ -2,8 +2,6 @@ import React from 'react';
 import { TextField } from '@mui/material';
 
 import 'date-fns';
-//import DateFnsUtils from '@date-io/date-fns';
-//import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 
 import { format } from 'date-fns';
 import { de } from 'date-fns/locale';
@@ -39,6 +37,32 @@ const EventFormInfos = ({ style, inFieldVal, changedData }) => {
                     })
                   : changedData[x?.name]
               }
+              InputProps={{
+                readOnly: true,
+              }}
+            />
+          );
+        })}
+      </form>
+
+      <h3>Infos</h3>
+      <form className={style}>
+        {inFieldVal?.slice(4, 8).map((x, i) => {
+          return (
+            <TextField
+              variant="standard"
+              sx={{
+                marginBottom: 1,
+              }}
+              key={x.id + i}
+              color="primary"
+              multiline={x.multiline ?? false}
+              minRows={2}
+              maxRows={20}
+              fullWidth
+              id={x.id}
+              label={x.label}
+              value={changedData[x.name]}
               InputProps={{
                 readOnly: true,
               }}

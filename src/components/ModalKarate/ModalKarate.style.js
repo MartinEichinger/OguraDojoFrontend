@@ -67,6 +67,19 @@ class ModalClassStyle extends Component {
 
               '& .navLeft, .navRight': {
                 cursor: 'pointer',
+                backgroundColor: 'rgba(255,255,255,0.5)',
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+
+                '&:hover': {
+                  '& svg': {
+                    stroke: 'rgba(200,200,200,1)',
+                  },
+                },
               },
 
               '& .modal-col': {

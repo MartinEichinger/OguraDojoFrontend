@@ -98,8 +98,6 @@ class ModalKarate extends ModalClassBasis {
 
   render() {
     if (this.debug) console.log('ModalKarate/render', this.state.width, this.state.height);
-    //this.loadStyles();
-    //this.updateHxMK();
     this.props.colors.bgTheme = this.props.colors.bgRed;
     this.props.colors.bgTheme50 = this.props.colors.bgRed50;
     this.props.colors.typoTheme = this.props.colors.typoRed;

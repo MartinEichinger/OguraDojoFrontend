@@ -12,6 +12,7 @@ const BlogEntry = ({ blogs, colors }) => {
   const filterState = useSelector(selectFilter);
 
   if (debug) console.log('BlogEntry: ', blogs);
+
   return (
     <React.Fragment>
       {blogs.map((item, i) => {
@@ -61,19 +62,17 @@ export default BlogEntry;
 const CombiButtonBE = styled(CombiButton)`
   margin: -16px auto 0;
   width: inherit;
-  //font-family: Roboto, Helvetica, Arial, sans-serif;
 
   #ButtonGroup {
     padding: 0px;
     width: 150px;
 
     .select {
-      //padding: 0.5rem;
+      padding: 5px;
     }
 
     .descr {
       font-size: 12px;
-      //font-size: calc(.44643vw + 5.5px);
       padding: 0.5rem;
     }
   }
