@@ -2,7 +2,7 @@ import React from 'react';
 import { IContentPage } from '../ModalPanziGong/ModalPanziGong';
 
 const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftRight?: any }) => {
-  var debug = false;
+  var debug = true;
   if (debug) console.log('CompTxtStripTxt/content: ', content);
 
   return (
@@ -58,10 +58,10 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftR
               {page.titleNo2_L2 && <h2 className={'' + page.classTitleNo2_L2}>{page.titleNo2_L2}</h2>}
               <div className={'scroll_ '}>
                 {Object.values(page.contentNo2)[0].entry
-                  ? Object.values(page.contentNo2)[0].entry.map((content, i) => {
+                  ? Object.values(page.contentNo2)[0].entry.map((content: any, i: any) => {
                       return <p key={i}>{content.entry ? content.entry : content}</p>;
                     })
-                  : Object.values(page.contentNo2).map((content, i) => {
+                  : Object.values(page.contentNo2).map((content: any, i: any) => {
                       return <p key={i}>{content.entry ? content.entry : content}</p>;
                     })}
               </div>
