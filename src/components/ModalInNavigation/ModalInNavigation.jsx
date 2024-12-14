@@ -157,7 +157,7 @@ const TablerIconX = ({ fill = 'none', stroke = 'black' }) => {
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
-      viewBox="0 0 24 24"
+      viewBox="4 4 16 16"
       fill={fill}
       stroke={stroke}
       strokeWidth="2"
@@ -178,7 +178,7 @@ const TablerIconChevronsDown = ({ fill = 'none', stroke = 'black' }) => {
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
-      viewBox="0 0 24 24"
+      viewBox="4 4 16 16"
       fill={fill}
       stroke={stroke}
       strokeWidth="2"
@@ -199,7 +199,7 @@ const TablerIconChevronsUp = ({ fill = 'none', stroke = 'black' }) => {
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
-      viewBox="0 0 24 24"
+      viewBox="4 4 16 16"
       fill={fill}
       stroke={stroke}
       strokeWidth="2"
