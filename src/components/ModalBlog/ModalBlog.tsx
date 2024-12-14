@@ -373,7 +373,7 @@ export default function ModalBlog({ colors, mq, lang }: { colors: any; mq: strin
 
   return (
     <>
-      <React.Fragment>
+      <>
         <div
           className="modal fade"
           id="idModalBlog"
@@ -405,7 +405,7 @@ export default function ModalBlog({ colors, mq, lang }: { colors: any; mq: strin
             </div>
           </div>
         </div>
-      </React.Fragment>
+      </>
     </>
   );
 }
