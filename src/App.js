@@ -30,6 +30,7 @@ class App extends Component {
     //this.breakpoints = [430, 576, 678, 1023, 1320];
     this.mq = this.breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
 
+    this.lang = 'de-DE'; // 'en-US' 'de-DE' 'fr-FR'
     this.state = {
       pageTraining: 'Training',
       pageKarate: 'TenguRyu',
@@ -162,7 +163,7 @@ class App extends Component {
         <ModalQiGong colors={this.colors} page={this.state.pageQiGong} mq={this.mq} />
         <ModalTraining colors={this.colors} page={this.state.pageTraining} mq={this.mq} />
         <ModalBlog colors={this.colors} mq={this.mq} />
-        <ModalEvents colors={this.colors} mq={this.mq} />
+        <ModalEvents colors={this.colors} mq={this.mq} lang={'de-DE'} />
         <ModalLogin />
         <ModalImpressum colors={this.colors} mq={this.mq} />
         <div className="Frame bg">

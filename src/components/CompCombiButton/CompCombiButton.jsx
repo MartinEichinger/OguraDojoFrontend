@@ -34,6 +34,7 @@ const CombiButton = ({ colors, className, links }) => {
   const firstAvailable = isAvailable.indexOf(true);
 
   if (debug) console.log('List: ', list);
+  if (debug) console.log('Links: ', links);
   if (debug) console.log('Icons: ', icons);
   if (debug) console.log('isAvailable: ', isAvailable);
   if (debug) console.log('countAvailable: ', countAvailable);

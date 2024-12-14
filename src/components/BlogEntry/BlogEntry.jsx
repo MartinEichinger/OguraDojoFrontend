@@ -4,40 +4,49 @@ import { jsx } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 import CombiButton from '../CompCombiButton/CompCombiButton';
-
 import { useSelector } from 'react-redux';
 import { selectFilter } from '../../store/filter';
 
 const BlogEntry = ({ blogs, colors }) => {
+  const debug = false;
   const filterState = useSelector(selectFilter);
+
+  if (debug) console.log('BlogEntry: ', blogs);
 
   return (
     <React.Fragment>
       {blogs.map((item, i) => {
-        return filterState === 'Alle' || item.category === filterState ? (
+        return filterState === 'Alle' || item.translations?.[0].category === filterState ? (
           <div className="blog-card d-flex flex-column" key={i}>
             <div className="d-flex flex-row justify-content-between align-items-baseline">
               <h5 className="text-center w-100 green regular">
-                {item.date} +++ {item.smallHeading}
+                {item.translations?.[0]?.date} +++ {item.translations?.[0]?.tags}
               </h5>
             </div>
             <div className="body d-flex flex-row">
               <div
                 style={{
-                  backgroundImage: `url(${item.picture})`,
-                  backgroundPosition: item.pictPos,
+                  backgroundImage: `url("https://ogura-dojo-cms.directus.app/assets/${item.picture?.id}")`,
+                  backgroundPosition: item.picture_position,
                 }}
                 className="image"
               ></div>
               <div className="text d-flex flex-column justify-content-center">
-                <h4 className="text-center green">{item.category}</h4>
+                <h4 className="text-center green">{item.translations?.[0]?.category}</h4>
                 <p className="linie text-center"></p>
-                <h2 className="text-center smaller">{item.title}</h2>
+                <h2 className="text-center smaller">{item.translations?.[0]?.headline}</h2>
                 <p className="linie text-center"></p>
-                <p className="text-center small">{item.detail}</p>
+                <p className="text-center small">{item.translations?.[0]?.content}</p>
               </div>
             </div>
-            <CombiButtonBE colors={colors} links={[item.file, item.website, item.video]} />
+            <CombiButtonBE
+              colors={colors}
+              links={[
+                `https://ogura-dojo-cms.directus.app/assets/${item.file?.id}`,
+                item.website,
+                item.video,
+              ]}
+            />
           </div>
         ) : (
           ''

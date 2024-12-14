@@ -2,24 +2,11 @@ import React from 'react';
 import { TextField } from '@mui/material';
 
 import 'date-fns';
-//import DateFnsUtils from '@date-io/date-fns';
-//import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 
 import { format } from 'date-fns';
 import { de } from 'date-fns/locale';
 
-const EventFormInfos = ({
-  style,
-  inFieldVal,
-  isAuthEdit,
-  isAuthNoEdit,
-  setEditData,
-  onChangeEvent,
-  onChangeDate,
-  entryData,
-  changedData,
-  errors,
-}) => {
+const EventFormInfos = ({ style, inFieldVal, changedData }) => {
   const debug = false;
 
   if (debug) console.log('EventFormInfos: ', inFieldVal, changedData);
@@ -31,41 +18,7 @@ const EventFormInfos = ({
       </div>
       <form className={style}>
         {inFieldVal?.slice(0, 4).map((x, i) => {
-          return isAuthEdit ? (
-            x.label === 'Termin' ? (
-              <TextField
-                fullWidth
-                id={x.id}
-                key={x.id + i}
-                label={x.label}
-                onChange={(event) => onChangeDate(x.name, event.target.value)}
-                sx={{
-                  marginBottom: 1,
-                }}
-                type="date"
-                value={changedData[x.name]}
-                variant="standard"
-              />
-            ) : (
-              <TextField
-                fullWidth
-                id={x.id}
-                key={x.id + i}
-                label={x.label}
-                variant="standard"
-                sx={{
-                  marginBottom: 1,
-                }}
-                onChange={(event) => onChangeEvent(x.name, event.target.value)}
-                multiline={x.multiline ?? false}
-                value={changedData[x.name]}
-                {...(errors[x.name] && {
-                  error: true,
-                  helperText: errors[x.name],
-                })}
-              />
-            )
-          ) : (
+          return (
             <TextField
               variant="standard"
               sx={{
@@ -95,28 +48,7 @@ const EventFormInfos = ({
       <h3>Infos</h3>
       <form className={style}>
         {inFieldVal?.slice(4, 8).map((x, i) => {
-          return isAuthEdit ? (
-            <TextField
-              variant="standard"
-              sx={{
-                marginBottom: 1,
-              }}
-              key={x.id + i}
-              color="primary"
-              onChange={(event) => onChangeEvent(x.name, event.target.value)}
-              multiline={x.multiline ?? false}
-              minRows={2}
-              maxRows={20}
-              fullWidth
-              id={x.id}
-              label={x.label}
-              value={changedData[x.name]}
-              {...(errors[x.name] && {
-                error: true,
-                helperText: errors[x.name],
-              })}
-            />
-          ) : (
+          return (
             <TextField
               variant="standard"
               sx={{
