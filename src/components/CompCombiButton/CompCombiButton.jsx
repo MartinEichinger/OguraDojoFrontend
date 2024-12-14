@@ -29,7 +29,7 @@ const CombiButton = ({ colors, className, links }) => {
 
   const list = ['ARTIKEL LESEN', 'WEBSEITE', 'VIDEO SEHEN'];
   const icons = [TablerIconFile, TablerIconAt, TablerIconCirclePlay];
-  const isAvailable = [links[0] !== '', links[1] !== '', links[2] !== ''];
+  const isAvailable = [links[0] !== null, links[1] !== null, links[2] !== null];
   const countAvailable = isAvailable.filter(Boolean).length;
   const firstAvailable = isAvailable.indexOf(true);
 

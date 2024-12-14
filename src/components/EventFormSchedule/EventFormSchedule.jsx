@@ -26,11 +26,11 @@ const EventFormSchedule = ({ events, month, selectEvent }) => {
                 <div className="d-flex flex-row justify-content-between align-items-center">
                   <h3 className="align-self-stretch">{item.seminar_title}</h3>
                 </div>
-                <div className="d-flex flex-row justify-content-start align-items-baseline">
-                  {i % 2 === 0 && <TablerIconMapPin stroke={'red'} />}
-                  {i % 2 === 1 && <TablerIconMapPin stroke={'green'} />}
-                  {i % 2 === 0 && <h4 className="red">{item.location}</h4>}
-                  {i % 2 === 1 && <h4 className="green">{item.location}</h4>}
+                <div className="d-flex flex-row justify-content-start align-items-center">
+                  {i % 2 === 0 && <TablerIconMapPin stroke={'rgb(121,0,0)'} />}
+                  {i % 2 === 1 && <TablerIconMapPin stroke={'rgb(19,73,0'} />}
+                  {i % 2 === 0 && <h4 className="red">{item.seminar_location}</h4>}
+                  {i % 2 === 1 && <h4 className="green">{item.seminar_location}</h4>}
                   <TablerIconUser />
                   <h4>{item.seminar_organiser}</h4>
                 </div>
@@ -43,7 +43,7 @@ const EventFormSchedule = ({ events, month, selectEvent }) => {
   );
 };
 
-const TablerIconUser = ({ fill = 'white', stroke = 'black' }) => {
+const TablerIconUser = ({ fill = 'none', stroke = 'black' }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -52,10 +52,10 @@ const TablerIconUser = ({ fill = 'white', stroke = 'black' }) => {
       viewBox="0 0 24 24"
       fill={fill}
       stroke={stroke}
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="icon icon-tabler icons-tabler-outline icon-tabler-user"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="icon icon-tabler icons-tabler-outline icon-tabler-user"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
@@ -64,7 +64,7 @@ const TablerIconUser = ({ fill = 'white', stroke = 'black' }) => {
   );
 };
 
-const TablerIconMapPin = ({ fill = 'white', stroke = 'black' }) => {
+const TablerIconMapPin = ({ fill = 'none', stroke = 'black' }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -73,10 +73,10 @@ const TablerIconMapPin = ({ fill = 'white', stroke = 'black' }) => {
       viewBox="0 0 24 24"
       fill={fill}
       stroke={stroke}
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="icon icon-tabler icons-tabler-outline icon-tabler-map-pin"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="icon icon-tabler icons-tabler-outline icon-tabler-map-pin"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />

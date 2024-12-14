@@ -10,7 +10,7 @@ import { clickUpDown, nextItem } from '../../helper/navigation-helper';
 import '../animation.css';
 
 export default function ModalEvents({ colors, mq, lang }: { colors: any; mq: string; lang: string }) {
-  const debug = false;
+  const debug = true;
   const style: any = {
     width: '100vw',
     maxWidth: '1440px',
