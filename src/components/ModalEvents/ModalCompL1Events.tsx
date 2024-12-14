@@ -13,7 +13,7 @@ const ModalCompL1Events = ({
 }: {
   colors: any;
   content: any;
-  mq: string;
+  mq: string[];
   events: any;
 }) => {
   const debug = false;

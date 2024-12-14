@@ -9,7 +9,7 @@ import ModalCompL1Blog from './ModalCompL1Blog';
 import { clickUpDown, nextItem } from '../../helper/navigation-helper';
 import '../animation.css';
 
-export default function ModalBlog({ colors, mq, lang }: { colors: any; mq: string; lang: string }) {
+export default function ModalBlog({ colors, mq, lang }: { colors: any; mq: string[]; lang: string }) {
   const debug = false;
   const style: any = {
     width: '100vw',

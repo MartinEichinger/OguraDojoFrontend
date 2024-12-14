@@ -9,7 +9,7 @@ import ModalCompL1Events from './ModalCompL1Events';
 import { clickUpDown, nextItem } from '../../helper/navigation-helper';
 import '../animation.css';
 
-export default function ModalEvents({ colors, mq, lang }: { colors: any; mq: string; lang: string }) {
+export default function ModalEvents({ colors, mq, lang }: { colors: any; mq: string[]; lang: string }) {
   const debug = true;
   const style: any = {
     width: '100vw',
