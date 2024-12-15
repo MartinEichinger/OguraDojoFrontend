@@ -9,7 +9,6 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^5.16.11",
-    "@reduxjs/toolkit": "^1.9.7",
     "@tabler/icons": "^3.24.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -45,7 +44,6 @@
   "browserslist": {
     "production": [
       ">0.2%",
-      "iOS>=13.1",
       "not dead",
       "not op_mini all"
     ],
