@@ -17,7 +17,7 @@ import Footer from './components/Footer/Footer';
 import ModalImpressum from './components/ModalImpressum/ModalImpressum';
 
 function App() {
-  const debug = true;
+  const debug = false;
 
   // BREAKPOINTS
   const breakpoints = [400, 600, 960, 1280, 1920];
@@ -151,7 +151,7 @@ function App() {
       <ModalTraining colors={colors} page={state.pageTraining} mq={mq} />
       <ModalBlog colors={colors} mq={mq} lang={lang} />
       <ModalEvents colors={colors} mq={mq} lang={lang} />
-      <ModalImpressum colors={colors} mq={mq} />
+      <ModalImpressum colors={colors} mq={mq} lang={lang} />
       <div className="Frame bg">
         <div className="Content d-flex flex-row flex-wrap justify-content-center">{renderCards()}</div>
       </div>
