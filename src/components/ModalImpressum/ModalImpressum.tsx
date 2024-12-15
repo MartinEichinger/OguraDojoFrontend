@@ -3,14 +3,25 @@
 import { jsx } from '@emotion/react';
 
 import React from 'react';
-import useGraphQLQuery from '../../hooks/useGraphQLQuery';
 import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
-import ModalCompL1Events from './ModalCompL1Events';
-import { clickUpDown, nextItem } from '../../helper/navigation-helper';
+import ModalCompL1Impressum from './ModalCompL1Impressum';
+import useGraphQLQuery from '../../hooks/useGraphQLQuery';
 import '../animation.css';
 
-export default function ModalEvents({ colors, mq, lang }: { colors: any; mq: string[]; lang: string }) {
+export interface IContentImpressum {
+  title: string;
+  impressum: {
+    id: number;
+    translations: {
+      impressum: string;
+    }[];
+  };
+}
+
+export default function ModalImpressum({ colors, mq, lang }: { colors: any; mq: any; lang: string }) {
+  // Debugging
   const debug = false;
+
   const style: any = {
     width: '100vw',
     maxWidth: '1440px',
@@ -69,8 +80,8 @@ export default function ModalEvents({ colors, mq, lang }: { colors: any; mq: str
           backgroundColor: 'white',
           borderRadius: '5px',
           display: 'grid',
-          gridTemplateRows: 'auto 1fr auto',
           gridTemplateColumns: '1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr',
+          gridTemplateRows: 'auto 1fr auto',
           [mq[2]]: {
             // bis 960 px
             gridTemplateColumns: '0.5fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.5fr',
@@ -84,69 +95,119 @@ export default function ModalEvents({ colors, mq, lang }: { colors: any; mq: str
             gridTemplateColumns: '0.1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.1fr',
           },
 
-          '& .heading': {
+          '& .bigger': {
             gridRow: '1',
-            gridColumn: '2/-1',
-            maxHeight: 'calc(20vh-4px)',
+            gridColumn: '1/-1',
+            maxHeight: 'calc(20vh - 4px)',
             boxSizing: 'border-box',
-
-            '& h1': {
-              fontSize: 'calc(5rem + 2.5vw)',
-              marginBottom: '1vh',
-              color: colors.bgGrey,
-              textShadow: `2px 0 0 ${colors.bgRed}, 0 2px 0 ${colors.bgRed}, -2px 0 0 ${colors.bgRed}, 0 -2px 0 ${colors.bgRed}`,
-              position: 'relative',
-
-              [mq[0]]: {
-                fontSize: '8vh',
-              },
-            },
+            margin: '0',
+            color: colors.bgGrey,
+            textShadow: `2px 0 0 ${colors.bgRed}, 0 2px 0 ${colors.bgRed}, -2px 0 0 ${colors.bgRed}, 0 -2px 0 ${colors.bgRed}`,
+            position: 'relative',
+            width: '100%',
+            height: '100%',
+            paddingTop: '2vh',
+            paddingLeft: '2vw',
           },
 
-          '& .tables': {
-            gridRow: '2',
+          '& .impressum': {
+            gridRow: '3',
             gridColumn: '2/12',
             maxHeight: 'calc(80vh - 4px)',
             position: 'relative',
+            boxSizing: 'border-box',
+            backgroundColor: colors.bgWhite50,
+            padding: '1vh',
+            marginBottom: '1vh',
+            borderRadius: '5px',
+
+            '& h2': {
+              marginTop: '1vh',
+              fontSize: '36px',
+              [mq[2]]: {
+                // bis 960 px
+                fontSize: '34px',
+              },
+              [mq[1]]: {
+                // bis 600 px
+                fontSize: '32px',
+              },
+              [mq[0]]: {
+                // bis 400px
+                fontSize: '28px',
+              },
+            },
+
+            '& h3': {
+              fontSize: '30px',
+              margin: '1vh 0vh',
+              [mq[2]]: {
+                // bis 960 px
+                fontSize: '28px',
+              },
+              [mq[1]]: {
+                // bis 600 px
+                fontSize: '26px',
+              },
+              [mq[0]]: {
+                // bis 400px
+                fontSize: '24px',
+              },
+            },
+
+            '& p': {
+              margin: 0,
+              fontSize: '20px',
+              [mq[2]]: {
+                // bis 960 px
+                fontSize: '18px',
+              },
+              [mq[1]]: {
+                // bis 600 px
+                fontSize: '16px',
+              },
+              [mq[0]]: {
+                // bis 400px
+                fontSize: '16px',
+              },
+            },
           },
         },
       },
     },
   };
+
+  const query = `query {
+    content_impressum {
+      id
+      translations (filter: {languages_code: {code: {_eq: "${lang}"}}}) {
+        impressum
+      }
+  }
+  }`;
+
+  const contentImpressum = useGraphQLQuery(query);
+
   const configNav = {
     upDown: 0,
     pagItems: 4,
     navItems: [],
   };
-  const content = {
-    title: 'Termine',
+
+  const configContent: IContentImpressum = {
+    title: 'Impressum',
+    impressum: contentImpressum?.content_impressum[0],
   };
 
-  var today = new Date();
-  const query = `query {
-    event_data  (filter: {seminar_date: {_gt: "${today.toISOString()}"}}) {
-        translations (filter: {languages_code: {code: {_eq: "${lang}"}}}) {
-            seminar_title
-        }
-        seminar_date
-        seminar_location
-        seminar_organiser
-        invitation_to_tender {
-            id
-        }
-    }
-  }`;
-
-  const contentEvents = useGraphQLQuery(query);
-  if (debug) console.log('ModalEvents/Results', contentEvents);
+  if (debug) console.log('ModalImpressum/Results', contentImpressum);
 
   return (
     <>
       <div
         className="modal fade"
-        id="idModalEvents"
+        id="idModalImpressum"
         tabIndex={-1}
-        aria-labelledby="ModalEventsLabel"
+        aria-labelledby="ModalImpressumLabel"
         aria-hidden="true"
         data-bs-backdrop="static"
       >
@@ -158,8 +219,8 @@ export default function ModalEvents({ colors, mq, lang }: { colors: any; mq: str
           <div className="modal-content">
             <div className="modal-row">
               <ModalInNavigation
-                clickUpDown={clickUpDown}
-                nextItem={nextItem}
+                clickUpDown
+                nextItem
                 colors={colors}
                 config={configNav}
                 mq={mq}
@@ -167,14 +228,7 @@ export default function ModalEvents({ colors, mq, lang }: { colors: any; mq: str
                 type
               />
               {/* eslint-disable-next-line */}
-              {contentEvents && (
-                <ModalCompL1Events
-                  colors={colors}
-                  content={content}
-                  mq={mq}
-                  events={contentEvents.event_data}
-                />
-              )}
+              <ModalCompL1Impressum content={configContent} />
             </div>
           </div>
         </div>
