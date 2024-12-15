@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 
-import { updateBlog, createBlog, deleteBlog } from '../../store/blogs';
+//import { updateBlog, createBlog, deleteBlog } from '../../store/blogs';
 
 const initialItem = {
   id: '',
@@ -29,13 +28,11 @@ export const useFormControls = ({ blogs, entries }) => {
 
   if (debug) console.log('Blogs.controls: ', blogs, changedData, entries, errors);
 
-  const dispatch = useDispatch();
-
   // Trigger save after validation results are stored
   useEffect(() => {
     if (save2validate) {
       let valid = formIsValid();
-      saveFormData(valid);
+      //saveFormData(valid);
       if (valid) setChangedData(initialItem);
       setSave2validate(false);
     }
@@ -70,7 +67,7 @@ export const useFormControls = ({ blogs, entries }) => {
     setChangedData(initialItem);
   };
 
-  const saveFormData = (save) => {
+  /*   const saveFormData = (save) => {
     setEditData({ edit: false, id: 0 });
     if (save) {
       if (debug) console.log('save data: ', changedData);
@@ -85,7 +82,7 @@ export const useFormControls = ({ blogs, entries }) => {
       if (debug) console.log('dont save data: ', entryData);
       setChangedData(entryData);
     }
-  };
+  }; */
 
   const onChangeBlog = (attr, val) => {
     if (debug) console.log('Blogs/onChangeBlog: ', attr, val);
@@ -118,9 +115,9 @@ export const useFormControls = ({ blogs, entries }) => {
     validate({ [attr]: val });
   };
 
-  const delBlogEntry = (item) => {
+  /*   const delBlogEntry = (item) => {
     dispatch(deleteBlog(item));
-  };
+  }; */
 
   const validate = (fieldValues = changedData) => {
     let temp = { ...errors };
@@ -168,8 +165,8 @@ export const useFormControls = ({ blogs, entries }) => {
   return {
     onChangeBlog,
     formIsValid,
-    saveFormData,
-    delBlogEntry,
+    // saveFormData,
+    // delBlogEntry,
     validate,
     clickSaveButton,
     selectBlog,

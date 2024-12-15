@@ -4,6 +4,7 @@ import { jsx } from '@emotion/react';
 
 import $ from 'jquery';
 import React, { Component } from 'react';
+import { IconX } from '@tabler/icons-react';
 
 import './Cards.css';
 
@@ -279,7 +280,8 @@ class Cards extends Component {
           <div className="modal-dialog" css={this.styleModal}>
             <div className="modal-content">
               <button type="button" className="btn-close" data-bs-dismiss="modal">
-                <img src="./CancelButton.png" alt="" />
+                <IconX />
+                {/*                 <img src="./CancelButton.png" alt="" /> */}
               </button>
               <div className="modal-up">
                 <h1>karate-do</h1>

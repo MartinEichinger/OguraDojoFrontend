@@ -3,8 +3,6 @@
 import { jsx, keyframes } from '@emotion/react';
 import '../animation.css';
 import React, { Component } from 'react';
-import { logOut } from '../../store/auth';
-import { connect } from 'react-redux';
 
 class Navigation extends Component {
   constructor(props) {
@@ -295,14 +293,12 @@ class Navigation extends Component {
   };
 
   render() {
-    this.isAuthenticated = this.props.isAuthenticated;
     this.updateHx();
-    if (this.debug) console.log('Navigation/render: ', this.isAuthenticated);
 
     return (
       <React.Fragment>
         <div className="navbar navbar-dark fixed-top invisible d-flex flex-column" css={this.styleNav}>
-          <div className="block d-flex flex-row justify-content-between">
+          <div className="block d-flex flex-row justify-content-center">
             <a href="http://www.tengu.fr" target="_blank" rel="noreferrer">
               {/* <img src="./OguraDojoLogo.png" alt="" /> */}
             </a>
@@ -310,12 +306,6 @@ class Navigation extends Component {
               <h1>Ogura Dojo</h1>
               <h3>Karate, Panzi Gong, Taiji, Qigong im Herzen des Chiemgaus</h3>
             </div>
-
-            {!this.isAuthenticated && (
-              <button title="Login" data-bs-toggle="modal" data-bs-target="#idModalLogin">
-                <TablerIconLogin stroke={'green'} />
-              </button>
-            )}
           </div>
         </div>
 
@@ -356,39 +346,4 @@ class Navigation extends Component {
   }
 }
 
-const TablerIconLogin = ({ stroke = 'black', fill = 'white' }) => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill={fill}
-      stroke={stroke}
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="icon icon-tabler icons-tabler-outline icon-tabler-login-2"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M9 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2" />
-      <path d="M3 12h13l-3 -3" />
-      <path d="M13 15l3 -3" />
-    </svg>
-  );
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    logout: () => dispatch(logOut()),
-    dispatch,
-  };
-};
-
-const mapStateToProps = (state) => {
-  return {
-    isAuthenticated: state.auth.token !== null,
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
+export default Navigation;

@@ -21,9 +21,7 @@ export interface IContentPage {
   contentNo1: string;
   pics: string[];
   vids: string[];
-  titleNo2_L1: {
-    entry: string;
-  }[];
+  titleNo2_L1: any;
   classTitleNo2_L1: string;
   titleNo2_L2: string;
   classTitleNo2_L2: string;

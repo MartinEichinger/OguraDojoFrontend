@@ -4,22 +4,18 @@ import { jsx } from '@emotion/react';
 
 import React from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
-import { switchfilter, selectFilter } from '../../store/filter';
-
-const BlogNav = ({ filter, filterProps, colors }) => {
-  const filterState = useSelector(selectFilter);
-  const dispatch = useDispatch();
+const BlogNav = ({ filterProps, colors }) => {
+  const filterState = filterProps.filterState;
 
   return (
     <div className="modal-in-nav">
-      {filterProps.map((item, i) => {
+      {filterProps.filterProps.map((item, i) => {
         return item === filterState ? (
-          <button className="buttons active" onClick={() => dispatch(switchfilter(item))} key={i}>
+          <button className="buttons active" onClick={() => filterProps.setFilterState(item)} key={i}>
             {item}
           </button>
         ) : (
-          <button className="buttons" onClick={() => dispatch(switchfilter(item))} key={i}>
+          <button className="buttons" onClick={() => filterProps.setFilterState(item)} key={i}>
             {item}
           </button>
         );

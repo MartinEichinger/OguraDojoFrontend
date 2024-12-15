@@ -16,8 +16,10 @@ const ModalCompL1Blog = ({ colors, content, blogs }) => {
   return (
     <div className="modal-col">
       <h1 className="bigger">{content.title}</h1>
-      <BlogNav filterProps={content.filterProps} colors={colors} />
-      <div className="table scroll_">{dataReady && <BlogEntry blogs={blogs} colors={colors} />}</div>
+      <BlogNav filterProps={content} colors={colors} />
+      <div className="table scroll_">
+        {dataReady && <BlogEntry blogs={blogs} colors={colors} filterState={content.filterState} />}
+      </div>
     </div>
   );
 };

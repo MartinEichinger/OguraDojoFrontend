@@ -1,5 +1,6 @@
 import React from 'react';
 import { IContentPage } from '../ModalPanziGong/ModalPanziGong';
+import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 
 const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftRight?: any }) => {
   var debug = false;
@@ -39,7 +40,7 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftR
             >
               {page.contentNav && (
                 <div className="navLeft" onClick={(e) => clickLeftRight('left')}>
-                  <img src="./icon_left.png" alt="icon left" />
+                  <IconChevronLeft size={36} color={'white'} />
                 </div>
               )}
               {page.pics.length && (
@@ -51,7 +52,7 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftR
               )}
               {page.contentNav && (
                 <div className="navRight" onClick={(e) => clickLeftRight('right')}>
-                  <img src="./icon_right.png" alt="icon right" />
+                  <IconChevronRight size={36} color={'white'} />
                 </div>
               )}
             </div>
