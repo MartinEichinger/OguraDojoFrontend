@@ -3,15 +3,29 @@ import { IContentPage } from '../ModalPanziGong/ModalPanziGong';
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 
 const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftRight?: any }) => {
-  var debug = true;
+  var debug = false;
 
   if (debug) console.log('CompTxtStripTxt__/content: ', content?.subpages);
   const contentNav = content?.subpages?.length > 1;
-
   return (
     <>
       {content?.subpages?.map((subpage: any, i: number) => {
-        if (debug) console.log('CompTxtStripTxt__/subpage', content.title, subpage.title);
+        var two_column = subpage?.translations?.[0]?.content_item[1].two_column;
+        if (debug) console.log('CompTxtStripTxt__/subpage', content.title, subpage.title, two_column);
+        var contentText = subpage?.translations?.[0]?.content_item[0].content;
+
+        if (subpage?.translations?.[0]?.content_item[0].video) {
+          const vids = subpage?.translations?.[0]?.content_item[0].video;
+          const replacement = `
+            <iframe
+              title="Panzi Gong Video"
+              src='${vids}'
+              allowFullScreen={true}
+              key={i}
+            />
+          `;
+          contentText = contentText.replace('{video}', replacement);
+        }
 
         return (
           <div
@@ -21,18 +35,8 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftR
             <div className="modal-up d-flex flex-column flex-column-reverse flex-md-row align-items-end scroll_">
               <div
                 className="d-flex flex-column w-100 w-md-50"
-                dangerouslySetInnerHTML={{ __html: subpage?.translations?.[0]?.content_item[0].content }}
+                dangerouslySetInnerHTML={{ __html: contentText }}
               />
-              {subpage?.translations?.[0]?.content_item[0].video && (
-                <div className="videos d-flex flex-row justify-content-center align-items-center w-100 w-md-50">
-                  <iframe
-                    title="Panzi Gong Video"
-                    src={subpage?.translations?.[0]?.content_item[0].video}
-                    allowFullScreen={true}
-                    key={i}
-                  />
-                </div>
-              )}
             </div>
 
             <div
@@ -71,7 +75,11 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftR
             </div>
 
             <div
-              className="modal-down d-flex flex-column"
+              className={
+                two_column
+                  ? 'modal-down d-flex flex-column flex-md-row scroll_'
+                  : 'modal-down d-flex flex-column'
+              }
               dangerouslySetInnerHTML={{ __html: subpage?.translations?.[0]?.content_item[1].content }}
             />
           </div>

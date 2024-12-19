@@ -268,6 +268,7 @@ export default function ModalPanziGong({ colors, mq }: { colors: any; mq: any })
               id
               content
               video
+              two_column
             }
           }
         }
