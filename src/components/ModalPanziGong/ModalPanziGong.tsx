@@ -6,7 +6,6 @@ import { clickUpDown, nextItem } from '../../helper/navigation-helper';
 import useGraphQLQuery from '../../hooks/useGraphQLQuery';
 import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
 import CompTxtStripTxt from '../CompTxtStripTxt/CompTxtStripTxt_';
-import CompTxtStrip2Txt from '../CompTxtStripTxt/CompTxtStrip2Txt';
 import '../animation.css';
 
 export interface IContentPage {
@@ -34,7 +33,7 @@ export interface IContentPage {
 }
 
 export default function ModalPanziGong({ colors, mq }: { colors: any; mq: any }) {
-  const debug = true;
+  const debug = false;
 
   const stats = {
     navItems: ['PanziGong', 'Lehrer', 'Form'],
@@ -267,7 +266,9 @@ export default function ModalPanziGong({ colors, mq }: { colors: any; mq: any })
             content_item {
               id
               content
-              video
+              video_item {
+                video
+              }
               two_column
             }
           }

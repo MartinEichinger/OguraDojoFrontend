@@ -12,21 +12,34 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftR
       {content?.subpages?.map((subpage: any, i: number) => {
         var two_column = subpage?.translations?.[0]?.content_item[1].two_column;
         if (debug) console.log('CompTxtStripTxt__/subpage', content.title, subpage.title, two_column);
-        var contentText = subpage?.translations?.[0]?.content_item[0].content;
+        var contentText: string[] = [];
+        contentText[0] = subpage?.translations?.[0]?.content_item[0].content;
+        contentText[1] = subpage?.translations?.[0]?.content_item[1].content;
+        var video_1_length = subpage?.translations?.[0]?.content_item[0].video_item?.length;
+        var video_2_length = subpage?.translations?.[0]?.content_item[1].video_item?.length;
 
-        if (subpage?.translations?.[0]?.content_item[0].video) {
-          const vids = subpage?.translations?.[0]?.content_item[0].video;
-          const replacement = `
-            <iframe
-              title="Panzi Gong Video"
-              src='${vids}'
-              allowFullScreen={true}
-              key={i}
-            />
-          `;
-          contentText = contentText.replace('{video}', replacement);
+        if (video_1_length > 0 || video_2_length > 0) {
+          // eslint-disable-next-line array-callback-return
+          subpage?.translations?.[0]?.content_item.map((cont_item: any, i: number) => {
+            const vids = cont_item?.video_item;
+            console.log('vids: ', vids);
+            // eslint-disable-next-line array-callback-return
+            vids?.map((vid: any, j: number) => {
+              console.log('video: ', vid, j);
+              console.log('vide_text', contentText[i]);
+              const replacement = `
+              <iframe
+                title="Panzi Gong Video"
+                src='${vid.video}'
+                allowFullScreen={true}
+                key={${j}}
+              ></iframe>
+            `;
+              contentText[i] = contentText[i].replace(`{video_${j}}`, replacement);
+            });
+          });
         }
-
+        console.log('CompTxtStrpTxt/render: ', contentText);
         return (
           <div
             className={i > 0 ? subpage.title + ' modal-col d-out' : subpage.title + ' modal-col'}
@@ -35,7 +48,7 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftR
             <div className="modal-up d-flex flex-column flex-column-reverse flex-md-row align-items-end scroll_">
               <div
                 className="d-flex flex-column w-100 w-md-50"
-                dangerouslySetInnerHTML={{ __html: contentText }}
+                dangerouslySetInnerHTML={{ __html: contentText[0] }}
               />
             </div>
 
@@ -80,7 +93,7 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftR
                   ? 'modal-down d-flex flex-column flex-md-row scroll_'
                   : 'modal-down d-flex flex-column'
               }
-              dangerouslySetInnerHTML={{ __html: subpage?.translations?.[0]?.content_item[1].content }}
+              dangerouslySetInnerHTML={{ __html: contentText[1] }}
             />
           </div>
         );
