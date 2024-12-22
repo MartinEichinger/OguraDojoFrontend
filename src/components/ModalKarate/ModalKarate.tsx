@@ -2,18 +2,29 @@
 // eslint-disable-next-line
 import { jsx } from '@emotion/react';
 
-import React from 'react';
-import { clickUpDown, nextItem, clickLeftRight } from '../../helper/navigation-helper';
+import { useEffect } from 'react';
+import { clickUpDown, nextItem, clickLeftRight, onMount } from '../../helper/navigation-helper';
 import useGraphQLQuery from '../../hooks/useGraphQLQuery';
 import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
 import CompTxtStripTxt from '../CompTxtStripTxt/CompTxtStripTxt_';
 import '../animation.css';
 
-export default function ModalKarate({ colors, page, mq }: { colors: any; page: string; mq: string[] }) {
+export default function ModalKarate({
+  colors,
+  page,
+  mq,
+  select,
+}: {
+  colors: any;
+  page: string;
+  mq: string[];
+  select: any;
+}) {
   const debug = false;
 
   const stats = {
     navItems: ['TenguRyu', 'Lehrer'],
+    modal: 'Karate',
     page: page,
     allSubPages: ['Habersetzer', 'Ogura', 'Otsuka'],
     subPage: 'Habersetzer',
@@ -209,6 +220,7 @@ export default function ModalKarate({ colors, page, mq }: { colors: any; page: s
     }
   }`;
 
+  /// USEMEMO
   var contentKarate = useGraphQLQuery(query);
 
   // destructure
@@ -218,7 +230,12 @@ export default function ModalKarate({ colors, page, mq }: { colors: any; page: s
 
   contentKarate = contentKarate?.content_karate[0].pages;
 
-  if (debug) console.log('ModalKarate/render', contentKarate);
+  if (debug) console.log('ModalKarate/render', contentKarate, page);
+
+  useEffect(() => {
+    onMount({ stats, apdx, select });
+    // eslint-disable-next-line
+  }, [page]);
 
   return (
     <>

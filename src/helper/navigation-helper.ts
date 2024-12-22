@@ -1,4 +1,4 @@
-const debug = true;
+const debug = false;
 
 export const clickUpDown = (dir: string, stats: any, apdx: string) => {
   // find index of current page
@@ -31,6 +31,9 @@ export const nextItem = (button: string, stats: any, apdx: string) => {
   if (debug)
     console.log(
       'navigation-helper/nextItem',
+      button,
+      stats,
+      apdx,
       document.querySelector(`.cs${stats.page}${apdx}`),
       document.querySelector(`.${stats.page}Btn${apdx}`)
     );
@@ -97,4 +100,76 @@ const nextSubItem = (button: any, stats: any) => {
   document.querySelector(`.${stats.subPage}`)!.classList.remove('d-out');
   document.querySelector(`.${stats.subPage}`)!.classList.remove('slide-out-left');
   document.querySelector(`.${stats.subPage}`)!.classList.add('slide-in-right');
+};
+
+export const onMount = ({ stats, apdx, select }: { stats: any; apdx: string; select: any }) => {
+  if (debug) console.log('onMount:', stats, apdx);
+  const modal = document.getElementById(`idModal${stats.modal}`);
+  if (modal) modal.addEventListener('shown.bs.modal', (e) => onShowModal(e, stats, apdx));
+  if (modal) modal.addEventListener('hidden.bs.modal', (e) => onHideModal(e, stats, apdx, select));
+};
+
+const onShowModal = (e: any, stats: any, apdx: string) => {
+  if (debug) console.log('navigation-helper/onShowModal', stats, apdx);
+
+  // eslint-disable-next-line
+  stats.navItems.map((navItem: string, navIdx: number) => {
+    var item = document.querySelector(`.cs${stats.navItems[navIdx]}${apdx}`);
+    var itemBtn = document.querySelector(`.${stats.navItems[navIdx]}Btn${apdx}`);
+    var upArrow = document.querySelector(`.upArrow` + apdx);
+    var downArrow = document.querySelector(`.downArrow` + apdx);
+
+    // set single pages
+    if (navItem === stats.page) {
+      if (item) item.classList.remove('d-none');
+      if (itemBtn) itemBtn.classList.add('active');
+    } else {
+      if (item) item.classList.add('d-none');
+      if (itemBtn) itemBtn.classList.remove('active');
+    }
+
+    // set arrows
+    if (navItem === stats.page) {
+      if (navIdx === 0) {
+        if (upArrow) upArrow.classList.remove('active');
+        if (downArrow) downArrow.classList.add('active');
+      } else if (navIdx === stats.navItems.length - 1) {
+        if (upArrow) upArrow.classList.add('active');
+        if (downArrow) downArrow.classList.remove('active');
+      } else {
+        if (upArrow) upArrow.classList.add('active');
+        if (downArrow) downArrow.classList.add('active');
+      }
+    }
+  });
+};
+
+const onHideModal = (e: any, stats: any, apdx: string, select: any) => {
+  if (debug) console.log('navigation-helper/onHideModal');
+
+  // reset single pages
+  // eslint-disable-next-line
+  stats.navItems.map((navItem: string, navIdx: number) => {
+    var item = document.querySelector(`.cs${stats.navItems[navIdx]}${apdx}`);
+    var itemBtn = document.querySelector(`.${stats.navItems[navIdx]}Btn${apdx}`);
+
+    if (navItem === stats.page) {
+      if (item) {
+        item.classList.remove('slide-out-top');
+        item.classList.remove('slide-in-bottom');
+      }
+      if (itemBtn) itemBtn?.classList.add('active');
+    } else {
+      if (item) {
+        item.classList.remove('slide-out-top');
+        item.classList.remove('slide-in-bottom');
+        item.classList.add('d-none');
+        itemBtn?.classList.remove('active');
+      }
+    }
+  });
+
+  // reset stored value for active page
+  if (debug) console.log('onhide: ', `page${stats.modal}`, `${stats.navItems[0]}`);
+  select(`page${stats.modal}`, `${stats.navItems[0]}`);
 };

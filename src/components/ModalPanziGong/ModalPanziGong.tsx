@@ -2,7 +2,8 @@
 // eslint-disable-next-line
 import { jsx } from '@emotion/react';
 
-import { clickUpDown, nextItem } from '../../helper/navigation-helper';
+import { useEffect } from 'react';
+import { clickUpDown, nextItem, onMount } from '../../helper/navigation-helper';
 import useGraphQLQuery from '../../hooks/useGraphQLQuery';
 import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
 import CompTxtStripTxt from '../CompTxtStripTxt/CompTxtStripTxt_';
@@ -32,12 +33,23 @@ export interface IContentPage {
   }[];
 }
 
-export default function ModalPanziGong({ colors, mq }: { colors: any; mq: any }) {
+export default function ModalPanziGong({
+  colors,
+  page,
+  mq,
+  select,
+}: {
+  colors: any;
+  page: string;
+  mq: string[];
+  select: any;
+}) {
   const debug = false;
 
   const stats = {
     navItems: ['PanziGong', 'Lehrer', 'Form'],
-    page: 'PanziGong',
+    modal: 'PanziGong',
+    page: page,
     allSubPages: [],
     subPage: '',
     animated: 0,
@@ -279,13 +291,18 @@ export default function ModalPanziGong({ colors, mq }: { colors: any; mq: any })
 
   var contentPanziGong = useGraphQLQuery(query);
 
-  if (debug) console.log('ModalPanziGong/Results', contentPanziGong);
+  if (debug) console.log('ModalPanziGong/Results', stats, contentPanziGong);
 
   colors.bgTheme = colors.bgGreen;
   colors.bgTheme50 = colors.bgGreen50;
   colors.typoTheme = colors.typoGreen;
 
   contentPanziGong = contentPanziGong?.content_panzigong[0].pages;
+
+  useEffect(() => {
+    onMount({ stats, apdx, select });
+    // eslint-disable-next-line
+  }, [page]);
 
   return (
     <>

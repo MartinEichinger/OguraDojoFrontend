@@ -2,18 +2,29 @@
 // eslint-disable-next-line
 import { jsx } from '@emotion/react';
 
-import React from 'react';
-import { clickUpDown, nextItem } from '../../helper/navigation-helper';
+import { useEffect } from 'react';
+import { clickUpDown, nextItem, onMount } from '../../helper/navigation-helper';
 import useGraphQLQuery from '../../hooks/useGraphQLQuery';
 import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
 import CompTxtStripTxt from '../CompTxtStripTxt/CompTxtStripTxt_';
 import '../animation.css';
 
-export default function ModalQiGong({ colors, page, mq }: { colors: any; page: string; mq: string[] }) {
+export default function ModalQiGong({
+  colors,
+  page,
+  mq,
+  select,
+}: {
+  colors: any;
+  page: string;
+  mq: string[];
+  select: any;
+}) {
   const debug = false;
 
   const stats = {
     navItems: ['QiGong', 'Lehrer', 'Form'],
+    modal: 'QiGong',
     page: page,
     allSubPages: [],
     subPage: '',
@@ -284,6 +295,11 @@ export default function ModalQiGong({ colors, page, mq }: { colors: any; page: s
   contentQiGong = contentQiGong?.content_qigong;
 
   if (debug) console.log('ModalQiGong/render: ', contentQiGong);
+
+  useEffect(() => {
+    onMount({ stats, apdx, select });
+    // eslint-disable-next-line
+  }, [page]);
 
   return (
     <>

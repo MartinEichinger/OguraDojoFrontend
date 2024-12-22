@@ -128,9 +128,9 @@ function App() {
     },
   ];
 
-  const selectpage = (page: any, param: any) => {
-    if (debug) console.log('App/selectpage', page, param);
-    setState({ [param]: page });
+  const selectpage = (param: any, page: any) => {
+    if (debug) console.log('App/selectpage', param, page, state);
+    setState({ ...state, [param]: page });
   };
 
   const renderCards = () => {
@@ -139,15 +139,15 @@ function App() {
       return <CardsKarate props={content} colors={colors} mq={mq} keys={i} key={i} />;
     });
   };
-  if (debug) console.log('App/render');
+  if (debug) console.log('App/render: ', state);
 
   return (
     <div className="App d-flex flex-column" css={styleApp}>
       <ToastContainer />
       <Navigation colors={colors} select={selectpage} mq={mq} />
-      <ModalKarate colors={colors} page={state.pageKarate} mq={mq} />
-      <ModalPanziGong colors={colors} mq={mq} />
-      <ModalQiGong colors={colors} page={state.pageQiGong} mq={mq} />
+      <ModalKarate colors={colors} page={state.pageKarate} mq={mq} select={selectpage} />
+      <ModalPanziGong colors={colors} page={state.pagePanziGong} mq={mq} select={selectpage} />
+      <ModalQiGong colors={colors} page={state.pageQiGong} mq={mq} select={selectpage} />
       <ModalTraining colors={colors} page={state.pageTraining} mq={mq} />
       <ModalBlog colors={colors} mq={mq} lang={lang} />
       <ModalEvents colors={colors} mq={mq} lang={lang} />
