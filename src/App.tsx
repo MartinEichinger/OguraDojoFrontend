@@ -16,6 +16,36 @@ import ModalEvents from './components/ModalEvents/ModalEvents';
 import Footer from './components/Footer/Footer';
 import ModalImpressum from './components/ModalImpressum/ModalImpressum';
 
+export interface IColors {
+  bgGreen50: string;
+  bgGreen: string;
+  bgBlue50: string;
+  bgBlue: string;
+  bgGrey: string;
+  bgWhite50: string;
+  bgWhite75: string;
+  bgWhite: string;
+  bgRed: string;
+  bgRedLight: string;
+  bgRed20: string;
+  bgRedSolid: string;
+  bgRed50: string;
+  typoGrey: string;
+  typoGreen: string;
+  typoBlue: string;
+  typoRed: string;
+  shadowGrey: string;
+  bgTheme?: string;
+  bgTheme50?: string;
+  typoTheme?: string;
+}
+
+interface IState {
+  pageTraining: string;
+  pageKarate: string;
+  pagePanziGong: string;
+  pageQiGong: string;
+}
 function App() {
   const debug = false;
 
@@ -25,7 +55,7 @@ function App() {
   const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
 
   const lang = 'de-DE'; // 'en-US' 'de-DE' 'fr-FR'
-  const [state, setState] = useState<any>({
+  const [state, setState] = useState<IState>({
     pageTraining: 'Training',
     pageKarate: 'TenguRyu',
     pagePanziGong: 'PanziGong',
@@ -128,7 +158,7 @@ function App() {
     },
   ];
 
-  const selectpage = (param: any, page: any) => {
+  const selectpage = (param: string, page: string) => {
     if (debug) console.log('App/selectpage', param, page, state);
     setState({ ...state, [param]: page });
   };

@@ -7,30 +7,58 @@ import { clickUpDown, nextItem, onMount } from '../../helper/navigation-helper';
 import useGraphQLQuery from '../../hooks/useGraphQLQuery';
 import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
 import CompTxtStripTxt from '../CompTxtStripTxt/CompTxtStripTxt_';
+import { IColors } from '../../App';
 import '../animation.css';
 
-export interface IContentPage {
+export interface IVideoItem {
+  video: string;
+}
+
+export interface IPic {
   id: number;
-  contentNav: boolean;
-  customClass: string;
-  titleNo1_L1: string;
-  classTitleNo1_L1: string;
-  titleNo1_L2: string;
-  classTitleNo1_L2: string;
-  heightContent1: string;
-  contentNo1: string;
-  pics: string[];
-  vids: string[];
-  titleNo2_L1: any;
-  classTitleNo2_L1: string;
-  titleNo2_L2: string;
-  classTitleNo2_L2: string;
-  heightContent2: string;
-  contentNo2: {
-    entry: {
-      entry: string;
-    }[];
+  directus_files_id: {
+    id: string;
+  };
+}
+
+export interface IContentItem {
+  id: number;
+  content: string;
+  two_column: boolean;
+  video_item: IVideoItem[];
+}
+
+export interface ISubpage {
+  id: number;
+  title: string;
+  pics: IPic[];
+  translations: {
+    id: number;
+    content_item: IContentItem[];
   }[];
+}
+
+export interface IPage {
+  id: number;
+  title: string;
+  subpages: ISubpage[];
+}
+
+export interface IContentPanziGong {
+  content_panzigong: {
+    id: number;
+    pages: IPage[];
+  }[];
+}
+
+export interface IStats {
+  navItems: string[];
+  modal: string;
+  page: string;
+  allSubPages: string[];
+  subPage: string;
+  animated: number;
+  upDown: number;
 }
 
 export default function ModalPanziGong({
@@ -39,14 +67,14 @@ export default function ModalPanziGong({
   mq,
   select,
 }: {
-  colors: any;
+  colors: IColors;
   page: string;
   mq: string[];
-  select: any;
+  select: Function;
 }) {
-  const debug = false;
+  const debug = true;
 
-  const stats = {
+  const stats: IStats = {
     navItems: ['PanziGong', 'Lehrer', 'Form'],
     modal: 'PanziGong',
     page: page,
@@ -289,15 +317,14 @@ export default function ModalPanziGong({
     }
   }`;
 
-  var contentPanziGong = useGraphQLQuery(query);
+  var contentPanziGong: IContentPanziGong = useGraphQLQuery(query);
+  var contentPanziGongPage: IPage[] = contentPanziGong?.content_panzigong[0].pages;
 
   if (debug) console.log('ModalPanziGong/Results', stats, contentPanziGong);
 
   colors.bgTheme = colors.bgGreen;
   colors.bgTheme50 = colors.bgGreen50;
   colors.typoTheme = colors.typoGreen;
-
-  contentPanziGong = contentPanziGong?.content_panzigong[0].pages;
 
   useEffect(() => {
     onMount({ stats, apdx, select });
@@ -322,8 +349,8 @@ export default function ModalPanziGong({
           <div className="modal-content">
             <div className="modal-row">
               <ModalInNavigation
-                clickUpDown={(dir: any) => clickUpDown(dir, stats, apdx)}
-                nextItem={(button: any) => nextItem(button, stats, apdx)}
+                clickUpDown={(dir: string) => clickUpDown(dir, stats, apdx)}
+                nextItem={(button: string) => nextItem(button, stats, apdx)}
                 colors={colors}
                 config={stats}
                 mq={mq}
@@ -332,13 +359,13 @@ export default function ModalPanziGong({
               />
               <div className="content">
                 <div className="csPanziGongPG">
-                  {contentPanziGong && <CompTxtStripTxt content={contentPanziGong?.[0]} />}
+                  {contentPanziGong && <CompTxtStripTxt content={contentPanziGongPage?.[0]} />}
                 </div>
                 <div className="csLehrerPG d-none">
-                  {contentPanziGong && <CompTxtStripTxt content={contentPanziGong?.[1]} />}
+                  {contentPanziGong && <CompTxtStripTxt content={contentPanziGongPage?.[1]} />}
                 </div>
                 <div className="csFormPG d-none">
-                  {contentPanziGong && <CompTxtStripTxt content={contentPanziGong?.[2]} />}
+                  {contentPanziGong && <CompTxtStripTxt content={contentPanziGongPage?.[2]} />}
                 </div>
               </div>
             </div>

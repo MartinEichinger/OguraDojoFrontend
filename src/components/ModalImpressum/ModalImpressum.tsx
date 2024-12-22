@@ -7,6 +7,7 @@ import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
 import ModalCompL1Impressum from './ModalCompL1Impressum';
 import useGraphQLQuery from '../../hooks/useGraphQLQuery';
 import '../animation.css';
+import { IColors } from '../../App';
 
 export interface IContentImpressum {
   title: string;
@@ -18,7 +19,15 @@ export interface IContentImpressum {
   };
 }
 
-export default function ModalImpressum({ colors, mq, lang }: { colors: any; mq: any; lang: string }) {
+export default function ModalImpressum({
+  colors,
+  mq,
+  lang,
+}: {
+  colors: IColors;
+  mq: string[];
+  lang: string;
+}) {
   // Debugging
   const debug = false;
 

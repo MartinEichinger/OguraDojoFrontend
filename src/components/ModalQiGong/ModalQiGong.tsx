@@ -8,6 +8,17 @@ import useGraphQLQuery from '../../hooks/useGraphQLQuery';
 import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
 import CompTxtStripTxt from '../CompTxtStripTxt/CompTxtStripTxt_';
 import '../animation.css';
+import { IColors } from '../../App';
+import { IPage } from '../ModalPanziGong/ModalPanziGong';
+
+export interface IContentQiGongInner {
+  id: number;
+  pages: IPage[];
+}
+
+export interface IContentQiGong {
+  content_qigong: IContentQiGongInner[];
+}
 
 export default function ModalQiGong({
   colors,
@@ -15,10 +26,10 @@ export default function ModalQiGong({
   mq,
   select,
 }: {
-  colors: any;
+  colors: IColors;
   page: string;
   mq: string[];
-  select: any;
+  select: Function;
 }) {
   const debug = false;
 
@@ -285,14 +296,13 @@ export default function ModalQiGong({
     }
   }`;
 
-  var contentQiGong = useGraphQLQuery(query);
+  var contentQiGong: IContentQiGong = useGraphQLQuery(query);
+  var contentQiGongPage: IContentQiGongInner[] = contentQiGong?.content_qigong;
 
   // destructure
   colors.bgTheme = colors.bgBlue;
   colors.bgTheme50 = colors.bgBlue50;
   colors.typoTheme = colors.typoBlue;
-
-  contentQiGong = contentQiGong?.content_qigong;
 
   if (debug) console.log('ModalQiGong/render: ', contentQiGong);
 
@@ -319,8 +329,8 @@ export default function ModalQiGong({
           <div className="modal-content">
             <div className="modal-row">
               <ModalInNavigation
-                clickUpDown={(dir: any) => clickUpDown(dir, stats, apdx)}
-                nextItem={(button: any) => nextItem(button, stats, apdx)}
+                clickUpDown={(dir: string) => clickUpDown(dir, stats, apdx)}
+                nextItem={(button: string) => nextItem(button, stats, apdx)}
                 colors={colors}
                 config={stats}
                 mq={mq}
@@ -329,13 +339,13 @@ export default function ModalQiGong({
               />
               <div className="content">
                 <div className="csQiGongQG">
-                  <CompTxtStripTxt content={contentQiGong?.[0].pages[0]} />
+                  <CompTxtStripTxt content={contentQiGongPage?.[0].pages[0]} />
                 </div>
                 <div className="csLehrerQG d-none">
-                  <CompTxtStripTxt content={contentQiGong?.[1].pages[0]} />
+                  <CompTxtStripTxt content={contentQiGongPage?.[1].pages[0]} />
                 </div>
                 <div className="csFormQG d-none">
-                  <CompTxtStripTxt content={contentQiGong?.[2].pages[0]} />
+                  <CompTxtStripTxt content={contentQiGongPage?.[2].pages[0]} />
                 </div>
               </div>
             </div>

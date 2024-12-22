@@ -1,15 +1,15 @@
 import React from 'react';
-import { IContentPage } from '../ModalPanziGong/ModalPanziGong';
+import { IPage, ISubpage, IContentItem, IPic, IVideoItem } from '../ModalPanziGong/ModalPanziGong';
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 
-const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftRight?: any }) => {
+const CompTxtStripTxt = ({ content, clickLeftRight }: { content: IPage; clickLeftRight?: Function }) => {
   var debug = false;
 
   if (debug) console.log('CompTxtStripTxt__/content: ', content?.subpages);
   const contentNav = content?.subpages?.length > 1;
   return (
     <>
-      {content?.subpages?.map((subpage: any, i: number) => {
+      {content?.subpages?.map((subpage: ISubpage, i: number) => {
         var two_column = subpage?.translations?.[0]?.content_item[1].two_column;
         if (debug) console.log('CompTxtStripTxt__/subpage', content.title, subpage.title, two_column);
         var contentText: string[] = [];
@@ -20,10 +20,10 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftR
 
         if (video_1_length > 0 || video_2_length > 0) {
           // eslint-disable-next-line array-callback-return
-          subpage?.translations?.[0]?.content_item.map((cont_item: any, i: number) => {
+          subpage?.translations?.[0]?.content_item.map((cont_item: IContentItem, i: number) => {
             const vids = cont_item?.video_item;
             // eslint-disable-next-line array-callback-return
-            vids?.map((vid: any, j: number) => {
+            vids?.map((vid: IVideoItem, j: number) => {
               const replacement = `
               <iframe
                 title="Panzi Gong Video"
@@ -56,13 +56,13 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftR
               }
             >
               {contentNav && (
-                <div className="navLeft" onClick={(e) => clickLeftRight('left')}>
+                <div className="navLeft" onClick={clickLeftRight && ((e) => clickLeftRight('left'))}>
                   <IconChevronLeft size={36} color={'white'} />
                 </div>
               )}
               {subpage.pics.length && (
                 <div className="pics d-flex flex-row justify-content-center align-items-center">
-                  {subpage.pics.map((pic: any, i: any) => {
+                  {subpage.pics.map((pic: IPic, i: number) => {
                     return (
                       <div
                         className={'img'}
@@ -77,7 +77,7 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftR
                 </div>
               )}
               {contentNav && (
-                <div className="navRight" onClick={(e) => clickLeftRight('right')}>
+                <div className="navRight" onClick={clickLeftRight && ((e) => clickLeftRight('right'))}>
                   <IconChevronRight size={36} color={'white'} />
                 </div>
               )}

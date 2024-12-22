@@ -1,6 +1,8 @@
-const debug = false;
+import { IStats } from '../components/ModalPanziGong/ModalPanziGong';
 
-export const clickUpDown = (dir: string, stats: any, apdx: string) => {
+const debug = true;
+
+export const clickUpDown = (dir: string, stats: IStats, apdx: string) => {
   // find index of current page
   var idx = stats.navItems.findIndex((item: string) => {
     return item === stats.page;
@@ -27,7 +29,7 @@ export const clickUpDown = (dir: string, stats: any, apdx: string) => {
   }
 };
 
-export const nextItem = (button: string, stats: any, apdx: string) => {
+export const nextItem = (button: string, stats: IStats, apdx: string) => {
   if (debug)
     console.log(
       'navigation-helper/nextItem',
@@ -53,7 +55,7 @@ export const nextItem = (button: string, stats: any, apdx: string) => {
   document.querySelector(`.cs${stats.page}${apdx}`)!.classList.add('slide-in-bottom');
 
   // check if end of list start or end -> in case reset arrow from active
-  var idx = stats.navItems.findIndex((item: any) => {
+  var idx = stats.navItems.findIndex((item: string) => {
     return item === stats.page;
   });
 
@@ -69,9 +71,9 @@ export const nextItem = (button: string, stats: any, apdx: string) => {
   }
 };
 
-export const clickLeftRight = (dir: string, stats: any) => {
+export const clickLeftRight = (dir: string, stats: IStats) => {
   // find index of current page
-  var idx = stats.allSubPages.findIndex((item: any) => {
+  var idx = stats.allSubPages.findIndex((item: string) => {
     return item === stats.subPage;
   });
   if (debug) console.log('ModalKarate/clickLeftRight', dir, idx);
@@ -88,7 +90,7 @@ export const clickLeftRight = (dir: string, stats: any) => {
   }
 };
 
-const nextSubItem = (button: any, stats: any) => {
+const nextSubItem = (button: string, stats: IStats) => {
   if (debug) console.log('navigation-helper/nextSubItem', button);
 
   // identify the page to be shown
@@ -102,15 +104,15 @@ const nextSubItem = (button: any, stats: any) => {
   document.querySelector(`.${stats.subPage}`)!.classList.add('slide-in-right');
 };
 
-export const onMount = ({ stats, apdx, select }: { stats: any; apdx: string; select: any }) => {
+export const onMount = ({ stats, apdx, select }: { stats: IStats; apdx: string; select: Function }) => {
   if (debug) console.log('onMount:', stats, apdx);
   const modal = document.getElementById(`idModal${stats.modal}`);
   if (modal) modal.addEventListener('shown.bs.modal', (e) => onShowModal(e, stats, apdx));
   if (modal) modal.addEventListener('hidden.bs.modal', (e) => onHideModal(e, stats, apdx, select));
 };
 
-const onShowModal = (e: any, stats: any, apdx: string) => {
-  if (debug) console.log('navigation-helper/onShowModal', stats, apdx);
+const onShowModal = (e: Event, stats: IStats, apdx: string) => {
+  if (debug) console.log('navigation-helper/onShowModal', stats, apdx, typeof e);
 
   // eslint-disable-next-line
   stats.navItems.map((navItem: string, navIdx: number) => {
@@ -144,7 +146,7 @@ const onShowModal = (e: any, stats: any, apdx: string) => {
   });
 };
 
-const onHideModal = (e: any, stats: any, apdx: string, select: any) => {
+const onHideModal = (e: Event, stats: IStats, apdx: string, select: Function) => {
   if (debug) console.log('navigation-helper/onHideModal');
 
   // reset single pages

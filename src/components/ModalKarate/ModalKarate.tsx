@@ -7,7 +7,18 @@ import { clickUpDown, nextItem, clickLeftRight, onMount } from '../../helper/nav
 import useGraphQLQuery from '../../hooks/useGraphQLQuery';
 import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
 import CompTxtStripTxt from '../CompTxtStripTxt/CompTxtStripTxt_';
+import { IColors } from '../../App';
 import '../animation.css';
+import { IPage } from '../ModalPanziGong/ModalPanziGong';
+
+export interface IContentKarateInner {
+  id: number;
+  pages: IPage[];
+}
+
+export interface IContentKarate {
+  content_karate: IContentKarateInner[];
+}
 
 export default function ModalKarate({
   colors,
@@ -15,10 +26,10 @@ export default function ModalKarate({
   mq,
   select,
 }: {
-  colors: any;
+  colors: IColors;
   page: string;
   mq: string[];
-  select: any;
+  select: Function;
 }) {
   const debug = false;
 
@@ -221,14 +232,13 @@ export default function ModalKarate({
   }`;
 
   /// USEMEMO
-  var contentKarate = useGraphQLQuery(query);
+  var contentKarate: IContentKarate = useGraphQLQuery(query);
+  var contentKaratePage: IPage[] = contentKarate?.content_karate[0].pages;
 
   // destructure
   colors.bgTheme = colors.bgRed;
   colors.bgTheme50 = colors.bgRed50;
   colors.typoTheme = colors.typoRed;
-
-  contentKarate = contentKarate?.content_karate[0].pages;
 
   if (debug) console.log('ModalKarate/render', contentKarate, page);
 
@@ -255,8 +265,8 @@ export default function ModalKarate({
           <div className="modal-content">
             <div className="modal-row">
               <ModalInNavigation
-                clickUpDown={(dir: any) => clickUpDown(dir, stats, apdx)}
-                nextItem={(button: any) => nextItem(button, stats, apdx)}
+                clickUpDown={(dir: string) => clickUpDown(dir, stats, apdx)}
+                nextItem={(button: string) => nextItem(button, stats, apdx)}
                 colors={colors}
                 config={stats}
                 mq={mq}
@@ -265,12 +275,12 @@ export default function ModalKarate({
               />
               <div className="content">
                 <div className="csTenguRyuKT">
-                  <CompTxtStripTxt content={contentKarate?.[0]} />
+                  <CompTxtStripTxt content={contentKaratePage?.[0]} />
                 </div>
                 <div className="csLehrerKT d-none">
                   <CompTxtStripTxt
-                    content={contentKarate?.[1]}
-                    clickLeftRight={(dir: any) => clickLeftRight(dir, stats)}
+                    content={contentKaratePage?.[1]}
+                    clickLeftRight={(dir: string) => clickLeftRight(dir, stats)}
                   />
                 </div>
               </div>
