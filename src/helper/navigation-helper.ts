@@ -28,7 +28,12 @@ export const clickUpDown = (dir: string, stats: any, apdx: string) => {
 };
 
 export const nextItem = (button: string, stats: any, apdx: string) => {
-  if (debug) console.log('navigation-helper/nextItem', button, stats, apdx);
+  if (debug)
+    console.log(
+      'navigation-helper/nextItem',
+      document.querySelector(`.cs${stats.page}${apdx}`),
+      document.querySelector(`.${stats.page}Btn${apdx}`)
+    );
   // identify the page to be shown
   document.querySelector(`.cs${stats.page}${apdx}`)!.classList.remove('slide-in-bottom')!;
   document.querySelector(`.${stats.page}Btn${apdx}`)!.classList.remove('active');

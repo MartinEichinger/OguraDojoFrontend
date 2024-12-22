@@ -22,11 +22,8 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftR
           // eslint-disable-next-line array-callback-return
           subpage?.translations?.[0]?.content_item.map((cont_item: any, i: number) => {
             const vids = cont_item?.video_item;
-            console.log('vids: ', vids);
             // eslint-disable-next-line array-callback-return
             vids?.map((vid: any, j: number) => {
-              console.log('video: ', vid, j);
-              console.log('vide_text', contentText[i]);
               const replacement = `
               <iframe
                 title="Panzi Gong Video"
@@ -39,7 +36,6 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: any; clickLeftR
             });
           });
         }
-        console.log('CompTxtStrpTxt/render: ', contentText);
         return (
           <div
             className={i > 0 ? subpage.title + ' modal-col d-out' : subpage.title + ' modal-col'}

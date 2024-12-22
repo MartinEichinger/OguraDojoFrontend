@@ -10,7 +10,7 @@ import CompTxtStripTxt from '../CompTxtStripTxt/CompTxtStripTxt_';
 import '../animation.css';
 
 export default function ModalQiGong({ colors, page, mq }: { colors: any; page: string; mq: string[] }) {
-  const debug = true;
+  const debug = false;
 
   const stats = {
     navItems: ['QiGong', 'Lehrer', 'Form'],

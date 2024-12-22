@@ -162,7 +162,7 @@ const Footer = ({ colors, select }) => {
                     return (
                       <button
                         className="small"
-                        data-bs-toggle="modal"
+                        data-bs-toggle={item.target !== 'url' ? 'modal' : null}
                         data-bs-target={item.target}
                         onClick={item.link}
                         key={i}
