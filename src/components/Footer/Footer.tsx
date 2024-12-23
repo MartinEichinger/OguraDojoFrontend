@@ -3,12 +3,9 @@
 import { jsx } from '@emotion/react';
 
 import React from 'react';
+import { IColors } from '../../App';
 
-const Footer = ({ colors, select }) => {
-  // BREAKPOINTS
-  const breakpoints = [576, 678, 1023, 1280];
-  const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
-
+const Footer = ({ colors, select, mq }: { colors: IColors; select: Function; mq: string[] }) => {
   // DEBUG
   const debug = false;
 
@@ -160,7 +157,7 @@ const Footer = ({ colors, select }) => {
     ],
   };
 
-  const selectpage = (page, param) => {
+  const selectpage = (page: string, param: string) => {
     if (debug) console.log('Footer/selectpage', page);
     if (param === 'url') {
       window.open(page, '_blank');
