@@ -43,6 +43,12 @@ const Footer = ({ colors, select }) => {
           [mq[0]]: {
             width: '100%',
           },
+
+          '& img': {
+            marginTop: '15px',
+            marginRight: '15px',
+            height: '80px',
+          },
         },
       },
     },
@@ -169,6 +175,9 @@ const Footer = ({ colors, select }) => {
         <div className="content d-flex flex-column align-items-center">
           <h2>{contentFooter.heading}</h2>
           <div className="body d-flex flex-row justify-content-around">
+            <a href="https://www.tustraunreut.de/" target="_blank" rel="noreferrer">
+              <img src="./TusTraunreutLogo.avif" alt="" />
+            </a>
             {contentFooter['link-group'].map((entry, i) => {
               return (
                 <div className="column d-flex flex-column align-items-start" key={i}>
