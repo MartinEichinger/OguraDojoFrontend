@@ -4,6 +4,7 @@ import { jsx } from '@emotion/react';
 
 import React from 'react';
 import Events from '../Events/Events';
+import { IColors } from '../../App';
 
 const ModalCompL1Events = ({
   colors,
@@ -11,7 +12,7 @@ const ModalCompL1Events = ({
   mq,
   events,
 }: {
-  colors: any;
+  colors: IColors;
   content: any;
   mq: string[];
   events: any;

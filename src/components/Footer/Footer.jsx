@@ -120,10 +120,26 @@ const Footer = ({ colors, select }) => {
         heading: 'Taiji Quan',
         items: [{ title: '- leer -' }],
       }, */
-      /*       {
-        heading: 'Qigong',
-        items: [{ title: '- leer -' }],
-      }, */
+      {
+        heading: 'Qi Gong',
+        items: [
+          {
+            title: 'Qi Gong',
+            target: '#idModalQiGong',
+            link: () => selectpage('QiGong', 'pageQiGong'),
+          },
+          {
+            title: 'Lehrer',
+            target: '#idModalQiGong',
+            link: () => selectpage('Lehrer', 'pageQiGong'),
+          },
+          {
+            title: 'Form',
+            target: '#idModalQiGong',
+            link: () => selectpage('Form', 'pageQiGong'),
+          },
+        ],
+      },
       {
         heading: 'Allgemein',
         items: [
@@ -141,10 +157,9 @@ const Footer = ({ colors, select }) => {
   const selectpage = (page, param) => {
     if (debug) console.log('Footer/selectpage', page);
     if (param === 'url') {
-      console.log('open website: ', page);
       window.open(page, '_blank');
     } else {
-      select(page, param);
+      select(param, page);
     }
   };
 
@@ -162,7 +177,7 @@ const Footer = ({ colors, select }) => {
                     return (
                       <button
                         className="small"
-                        data-bs-toggle="modal"
+                        data-bs-toggle={item.target !== 'url' ? 'modal' : null}
                         data-bs-target={item.target}
                         onClick={item.link}
                         key={i}

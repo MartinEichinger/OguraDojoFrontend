@@ -2,49 +2,88 @@
 // eslint-disable-next-line
 import { jsx } from '@emotion/react';
 
-import { clickUpDown, nextItem } from '../../helper/navigation-helper';
+import { useEffect } from 'react';
+import { clickUpDown, nextItem, onMount } from '../../helper/navigation-helper';
 import useGraphQLQuery from '../../hooks/useGraphQLQuery';
 import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
 import CompTxtStripTxt from '../CompTxtStripTxt/CompTxtStripTxt';
-import CompTxtStrip2Txt from '../CompTxtStripTxt/CompTxtStrip2Txt';
+import { IColors } from '../../App';
 import '../animation.css';
 
-export interface IContentPage {
+export interface IVideoItem {
+  video: string;
+}
+
+export interface IPic {
   id: number;
-  contentNav: boolean;
-  customClass: string;
-  titleNo1_L1: string;
-  classTitleNo1_L1: string;
-  titleNo1_L2: string;
-  classTitleNo1_L2: string;
-  heightContent1: string;
-  contentNo1: string;
-  pics: string[];
-  vids: string[];
-  titleNo2_L1: any;
-  classTitleNo2_L1: string;
-  titleNo2_L2: string;
-  classTitleNo2_L2: string;
-  heightContent2: string;
-  contentNo2: {
-    entry: {
-      entry: string;
-    }[];
+  directus_files_id: {
+    id: string;
+  };
+}
+
+export interface IContentItem {
+  id: number;
+  content: string;
+  two_column: boolean;
+  video_item: IVideoItem[];
+}
+
+export interface ISubpage {
+  id: number;
+  title: string;
+  pics: IPic[];
+  translations: {
+    id: number;
+    content_item: IContentItem[];
   }[];
 }
 
-export default function ModalPanziGong({ colors, mq }: { colors: any; mq: any }) {
-  const debug = false;
+export interface IPage {
+  id: number;
+  title: string;
+  subpages: ISubpage[];
+}
 
-  const stats = {
+export interface IContentPanziGong {
+  content_panzigong: {
+    id: number;
+    pages: IPage[];
+  }[];
+}
+
+export interface IStats {
+  navItems: string[];
+  modal: string;
+  page: string;
+  allSubPages: string[];
+  subPage: string;
+  animated: number;
+  upDown: number;
+}
+
+export default function ModalPanziGong({
+  colors,
+  page,
+  mq,
+  select,
+}: {
+  colors: IColors;
+  page: string;
+  mq: string[];
+  select: Function;
+}) {
+  const debug = true;
+
+  const stats: IStats = {
     navItems: ['PanziGong', 'Lehrer', 'Form'],
-    page: 'PanziGong',
+    modal: 'PanziGong',
+    page: page,
     allSubPages: [],
     subPage: '',
     animated: 0,
     upDown: 1,
   };
-  const apdx = 'PanziGong';
+  const apdx = 'PG';
 
   const style: any = {
     width: '100vw',
@@ -248,35 +287,49 @@ export default function ModalPanziGong({ colors, mq }: { colors: any; mq: any })
   };
 
   const query = `query {
-            ContentPage {
-                id
-                contentNav
-                customClass
-                titleNo1_L1
-                classTitleNo1_L1
-                titleNo1_L2
-                contentNo1
-                pics
-                vids
-                titleNo2_L1 {
-                  entry
-                }
-                classTitleNo2_L1
-                contentNo2 {
-                  entry {
-                    entry
-                  }
-                }
+    content_panzigong {
+      id
+      pages {
+        id
+        title
+        subpages {
+          id
+          title
+          pics {
+            id
+            directus_files_id {
+              id
             }
-        }`;
+          }
+          translations {
+            id
+            content_item {
+              id
+              content
+              video_item {
+                video
+              }
+              two_column
+            }
+          }
+        }
+      }
+    }
+  }`;
 
-  const contentPage = useGraphQLQuery(query);
+  var contentPanziGong: IContentPanziGong = useGraphQLQuery(query);
+  var contentPanziGongPage: IPage[] = contentPanziGong?.content_panzigong[0].pages;
 
-  if (debug) console.log('ModalPanziGong/Results', contentPage);
+  if (debug) console.log('ModalPanziGong/Results', stats, contentPanziGong);
 
   colors.bgTheme = colors.bgGreen;
   colors.bgTheme50 = colors.bgGreen50;
   colors.typoTheme = colors.typoGreen;
+
+  useEffect(() => {
+    onMount({ stats, apdx, select });
+    // eslint-disable-next-line
+  }, [page]);
 
   return (
     <>
@@ -296,8 +349,8 @@ export default function ModalPanziGong({ colors, mq }: { colors: any; mq: any })
           <div className="modal-content">
             <div className="modal-row">
               <ModalInNavigation
-                clickUpDown={(dir: any) => clickUpDown(dir, stats, apdx)}
-                nextItem={(button: any) => nextItem(button, stats, apdx)}
+                clickUpDown={(dir: string) => clickUpDown(dir, stats, apdx)}
+                nextItem={(button: string) => nextItem(button, stats, apdx)}
                 colors={colors}
                 config={stats}
                 mq={mq}
@@ -306,13 +359,13 @@ export default function ModalPanziGong({ colors, mq }: { colors: any; mq: any })
               />
               <div className="content">
                 <div className="csPanziGongPG">
-                  {contentPage && <CompTxtStripTxt content={[contentPage.ContentPage[0]]} />}
+                  {contentPanziGong && <CompTxtStripTxt content={contentPanziGongPage?.[0]} />}
                 </div>
                 <div className="csLehrerPG d-none">
-                  {contentPage && <CompTxtStripTxt content={[contentPage.ContentPage[1]]} />}
+                  {contentPanziGong && <CompTxtStripTxt content={contentPanziGongPage?.[1]} />}
                 </div>
                 <div className="csFormPG d-none">
-                  {contentPage && <CompTxtStrip2Txt content={[contentPage.ContentPage[2]]} />}
+                  {contentPanziGong && <CompTxtStripTxt content={contentPanziGongPage?.[2]} />}
                 </div>
               </div>
             </div>

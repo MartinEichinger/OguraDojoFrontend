@@ -289,7 +289,7 @@ class Navigation extends Component {
 
   selectpage = (page) => {
     if (this.debug) console.log('Navigation/selectpage', page);
-    this.props.select(page, 'pageTraining');
+    this.props.select('pageTraining', page);
   };
 
   render() {
