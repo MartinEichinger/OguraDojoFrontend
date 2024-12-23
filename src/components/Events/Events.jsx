@@ -27,16 +27,18 @@ const Events = ({ events, colors, mq }) => {
     { name: 'seminar_date', label: 'Termin', id: '#date' },
     { name: 'seminar_location', label: 'Ort', id: '#location', val_length: 80, required: 'true' },
     {
-      name: 'seminar_organiser',
-      label: 'Ausrichter/Trainer',
-      id: '#organisator',
+      name: 'seminar_trainer',
+      label: 'Trainer',
+      id: '#trainer',
       val_length: 80,
       required: 'true',
     },
     {
       name: 'seminar_organiser',
-      label: 'Ausrichter/Trainer',
+      label: 'Ausrichter',
       id: '#organisator',
+      multiline: true,
+      multilinerows: 3,
       val_length: 80,
       required: 'true',
     },
@@ -84,7 +86,7 @@ const Events = ({ events, colors, mq }) => {
       <div className="detail d-flex flex-column scroll_" css={style}>
         {events.length > 0 ? (
           <>
-            <EventFormInfos inFieldVal={entries.slice(0, 4)} changedData={changedData} />
+            <EventFormInfos inFieldVal={entries.slice(0, 5)} changedData={changedData} />
             <div className="invitation d-flex row-direction">
               <p className="green">Ausschreibung</p>
               {changedData?.invitation_to_tender ? (

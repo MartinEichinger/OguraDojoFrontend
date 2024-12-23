@@ -1,6 +1,6 @@
 import { IStats } from '../components/ModalPanziGong/ModalPanziGong';
 
-const debug = true;
+const debug = false;
 
 export const clickUpDown = (dir: string, stats: IStats, apdx: string) => {
   // find index of current page

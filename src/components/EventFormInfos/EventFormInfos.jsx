@@ -17,7 +17,7 @@ const EventFormInfos = ({ style, inFieldVal, changedData }) => {
         <h3>SEMINAR</h3>
       </div>
       <form className={style}>
-        {inFieldVal?.slice(0, 4).map((x, i) => {
+        {inFieldVal?.slice(0, 5).map((x, i) => {
           return (
             <TextField
               variant="standard"
@@ -45,9 +45,9 @@ const EventFormInfos = ({ style, inFieldVal, changedData }) => {
         })}
       </form>
 
-      <h3>Infos</h3>
+      {/* <h3>Infos</h3> */}
       <form className={style}>
-        {inFieldVal?.slice(4, 8).map((x, i) => {
+        {inFieldVal?.slice(5, 8).map((x, i) => {
           return (
             <TextField
               variant="standard"
