@@ -277,6 +277,7 @@ export default function ModalBlog({
                 },
 
                 '& .text': {
+                  backgroundColor: colors.bgGrey,
                   margin: '0',
                   padding: '1vw',
                   width: '50%',

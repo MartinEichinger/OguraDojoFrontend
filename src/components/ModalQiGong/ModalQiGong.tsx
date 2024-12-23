@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { clickUpDown, nextItem, onMount } from '../../helper/navigation-helper';
 import useGraphQLQuery from '../../hooks/useGraphQLQuery';
 import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
-import CompTxtStripTxt from '../CompTxtStripTxt/CompTxtStripTxt_';
+import CompTxtStripTxt from '../CompTxtStripTxt/CompTxtStripTxt';
 import '../animation.css';
 import { IColors } from '../../App';
 import { IPage } from '../ModalPanziGong/ModalPanziGong';
