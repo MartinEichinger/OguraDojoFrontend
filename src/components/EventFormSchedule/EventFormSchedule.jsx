@@ -32,7 +32,7 @@ const EventFormSchedule = ({ events, month, selectEvent }) => {
                   {i % 2 === 0 && <h4 className="red">{item.seminar_location}</h4>}
                   {i % 2 === 1 && <h4 className="green">{item.seminar_location}</h4>}
                   <TablerIconUser />
-                  <h4>{item.seminar_organiser}</h4>
+                  <h4>{item.seminar_trainer}</h4>
                 </div>
               </div>
             </div>

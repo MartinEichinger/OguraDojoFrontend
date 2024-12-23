@@ -72,7 +72,7 @@ export default function ModalPanziGong({
   mq: string[];
   select: Function;
 }) {
-  const debug = true;
+  const debug = false;
 
   const stats: IStats = {
     navItems: ['PanziGong', 'Lehrer', 'Form'],

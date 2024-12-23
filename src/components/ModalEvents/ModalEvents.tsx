@@ -20,6 +20,7 @@ export default function ModalEvents({
   lang: string;
 }) {
   const debug = false;
+
   const style: any = {
     width: '100vw',
     maxWidth: '1440px',
@@ -122,6 +123,7 @@ export default function ModalEvents({
       },
     },
   };
+
   const configNav = {
     upDown: 0,
     pagItems: 4,
@@ -139,6 +141,7 @@ export default function ModalEvents({
         }
         seminar_date
         seminar_location
+        seminar_trainer
         seminar_organiser
         invitation_to_tender {
             id
