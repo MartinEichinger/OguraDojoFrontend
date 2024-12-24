@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 // eslint-disable-next-line
 import { jsx } from '@emotion/react';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import React from 'react';
-import CombiButton from '../CompCombiButton/CompCombiButton';
+import { ButtonGroup } from '../CompButtonGroup/CompButtonGroup';
 
 const BlogEntry = ({ blogs, colors, filterState }) => {
   const debug = false;
@@ -36,8 +36,7 @@ const BlogEntry = ({ blogs, colors, filterState }) => {
                 <p className="text-center small">{item.translations?.[0]?.content}</p>
               </div>
             </div>
-            <CombiButtonBE
-              colors={colors}
+            <BlogButtonGroup
               links={[
                 `https://ogura-dojo-cms.directus.app/assets/${item.file?.id}`,
                 item.website,
@@ -56,29 +55,7 @@ const BlogEntry = ({ blogs, colors, filterState }) => {
 export default BlogEntry;
 
 // STYLED COMPONENTS
-const CombiButtonBE = styled(CombiButton)`
+const BlogButtonGroup = styled(ButtonGroup)`
   margin: -16px auto 0;
   width: inherit;
-
-  #ButtonGroup {
-    padding: 0px;
-    width: 150px;
-
-    .select {
-      padding: 5px;
-    }
-
-    .descr {
-      font-size: 12px;
-      padding: 0.5rem;
-    }
-  }
-
-  #List {
-    padding: 0px;
-
-    button i {
-      padding: 5px 0px;
-    }
-  }
 `;
