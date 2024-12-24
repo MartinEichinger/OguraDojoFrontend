@@ -399,15 +399,7 @@ export default function ModalBlog({
           >
             <div className="modal-content">
               <div className="modal-row">
-                <ModalInNavigation
-                  clickUpDown={clickUpDown}
-                  nextItem={nextItem}
-                  colors={colors}
-                  config={configNav}
-                  mq={mq}
-                  apdx
-                  type
-                />
+                <ModalInNavigation clickUpDown={clickUpDown} nextItem={nextItem} config={configNav} />
                 {contentBlog && (
                   <ModalCompL1Blog colors={colors} content={content} blogs={contentBlog.blog_data} />
                 )}

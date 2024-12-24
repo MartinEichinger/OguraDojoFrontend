@@ -227,15 +227,7 @@ export default function ModalImpressum({
         >
           <div className="modal-content">
             <div className="modal-row">
-              <ModalInNavigation
-                clickUpDown
-                nextItem
-                colors={colors}
-                config={configNav}
-                mq={mq}
-                apdx
-                type
-              />
+              <ModalInNavigation config={configNav} />
               {/* eslint-disable-next-line */}
               <ModalCompL1Impressum content={configContent} />
             </div>

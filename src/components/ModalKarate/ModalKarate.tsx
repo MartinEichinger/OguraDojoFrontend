@@ -267,9 +267,7 @@ export default function ModalKarate({
               <ModalInNavigation
                 clickUpDown={(dir: string) => clickUpDown(dir, stats, apdx)}
                 nextItem={(button: string) => nextItem(button, stats, apdx)}
-                colors={colors}
                 config={stats}
-                mq={mq}
                 apdx={apdx}
                 type="KT"
               />

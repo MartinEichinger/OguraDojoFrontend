@@ -3,17 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import theme from './theme';
+import { radixtheme } from './radixtheme';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <App />
+      <EmotionThemeProvider theme={radixtheme}>
+        <CssBaseline />
+        <App />
+      </EmotionThemeProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

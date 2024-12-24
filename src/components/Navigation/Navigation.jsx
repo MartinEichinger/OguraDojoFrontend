@@ -3,6 +3,7 @@
 import { jsx, keyframes } from '@emotion/react';
 import '../animation.css';
 import React, { Component } from 'react';
+import ModalBookShop from '../ModalBookShop/ModalBookShop';
 
 class Navigation extends Component {
   constructor(props) {
@@ -216,6 +217,27 @@ class Navigation extends Component {
         },
       },
     };
+
+    this.colors = {
+      bgGreen50: 'rgba(10, 121, 0, 0.5)',
+      bgGreen: 'rgba(10, 121, 0, 1)', //HSL: 115, 100, 24 //#0A7900
+      bgBlue50: 'rgba(23,85,118,0.5)',
+      bgBlue: 'rgba(23,85,118,1)',
+      bgGrey: 'rgba(232, 232, 232, 1)',
+      bgWhite50: 'rgba(255,255,255,0.5)',
+      bgWhite75: 'rgba(255,255,255,0.75)',
+      bgWhite: 'rgba(255,255,255,1)',
+      bgRed: 'rgba(121, 0, 0, 1)', //HSL: 0, 100, 24 //#790000
+      bgRedLight: 'hsl(0,100%,36%)',
+      bgRed20: 'hsl(0,100%,20%)',
+      bgRedSolid: 'hsl(0,100%,12%)',
+      bgRed50: 'rgba(121, 0, 0, 0.5)',
+      typoGrey: 'rgba(64, 64, 64, 1)',
+      typoGreen: 'rgba(10, 121, 0, 1)',
+      typoBlue: 'rgba(23,85,118,1)',
+      typoRed: 'rgba(121, 0, 0, 1)',
+      shadowGrey: 'rgba(122,122,122,1)',
+    };
   }
 
   componentDidMount() {
@@ -294,7 +316,7 @@ class Navigation extends Component {
 
   render() {
     this.updateHx();
-
+    console.log('Navigation: ', this.colors);
     return (
       <React.Fragment>
         <div className="navbar navbar-dark fixed-top invisible d-flex flex-column" css={this.styleNav}>
@@ -337,6 +359,7 @@ class Navigation extends Component {
                 <button data-bs-toggle="modal" data-bs-target="#idModalEvents">
                   Termine
                 </button>
+                <ModalBookShop mq={this.mq} colors={this.colors} />
               </div>
             </div>
           </div>

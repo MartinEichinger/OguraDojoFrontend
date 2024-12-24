@@ -188,9 +188,7 @@ class ModalTraining extends ModalClassBasis {
                 <ModalInNavigation
                   clickUpDown={this.clickUpDown}
                   nextItem={this.nextItem}
-                  colors={this.props.colors}
                   config={this.contentNav}
-                  mq={this.mq}
                   apdx={this.apdx}
                   type="TR"
                 />

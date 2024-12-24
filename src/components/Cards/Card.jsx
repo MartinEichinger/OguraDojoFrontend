@@ -97,6 +97,7 @@ class Card extends Component {
       '& .cardBody': {
         padding: '20px',
         height: '340px',
+        boxSizing: 'border-box',
 
         [this.mq[2]]: {
           height: '300px',

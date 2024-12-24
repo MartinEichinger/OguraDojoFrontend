@@ -169,15 +169,7 @@ export default function ModalEvents({
         >
           <div className="modal-content">
             <div className="modal-row">
-              <ModalInNavigation
-                clickUpDown={clickUpDown}
-                nextItem={nextItem}
-                colors={colors}
-                config={configNav}
-                mq={mq}
-                apdx
-                type
-              />
+              <ModalInNavigation clickUpDown={clickUpDown} nextItem={nextItem} config={configNav} />
               {/* eslint-disable-next-line */}
               {contentEvents && (
                 <ModalCompL1Events

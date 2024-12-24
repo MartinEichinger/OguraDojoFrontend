@@ -331,9 +331,7 @@ export default function ModalQiGong({
               <ModalInNavigation
                 clickUpDown={(dir: string) => clickUpDown(dir, stats, apdx)}
                 nextItem={(button: string) => nextItem(button, stats, apdx)}
-                colors={colors}
                 config={stats}
-                mq={mq}
                 apdx={apdx}
                 type={apdx}
               />
