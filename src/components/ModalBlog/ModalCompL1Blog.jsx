@@ -4,7 +4,6 @@ import { jsx } from '@emotion/react';
 
 import BlogNav from '../BlogNav/BlogNav';
 import BlogEntry from '../BlogEntry/BlogEntry';
-import { ButtonGroup } from '../CompButtonGroup/CompButtonGroup';
 
 var dataReady = false;
 

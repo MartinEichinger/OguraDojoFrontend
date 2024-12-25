@@ -1,7 +1,4 @@
-/** @jsxImportSource @emotion/react */
-// eslint-disable-next-line
-import { jsx } from '@emotion/react';
-
+import styled from 'styled-components';
 import { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -61,28 +58,6 @@ function App() {
     pagePanziGong: 'PanziGong',
     pageQiGong: 'QiGong',
   });
-
-  const styleApp = {
-    height: '100vh',
-    margin: '0px 0px 100px',
-    padding: '0px',
-
-    '& .bg': {
-      zIndex: '1030',
-      backgroundColor: 'white',
-    },
-
-    '& .Frame': {
-      marginTop: '40px',
-      marginBottom: '200px',
-      minWidth: '390px',
-
-      '& .Content': {
-        maxWidth: '1440px',
-        margin: '0px auto',
-      },
-    },
-  };
 
   const colors = {
     bgGreen50: 'rgba(10, 121, 0, 0.5)',
@@ -172,7 +147,7 @@ function App() {
   if (debug) console.log('App/render: ', state);
 
   return (
-    <div className="App d-flex flex-column" css={styleApp}>
+    <AppBody className="App d-flex flex-column">
       <ToastContainer />
       <Navigation colors={colors} select={selectpage} mq={mq} />
       <ModalKarate colors={colors} page={state.pageKarate} mq={mq} select={selectpage} />
@@ -182,13 +157,32 @@ function App() {
       <ModalBlog colors={colors} mq={mq} lang={lang} />
       <ModalEvents colors={colors} mq={mq} lang={lang} />
       <ModalImpressum colors={colors} mq={mq} lang={lang} />
-      <div className="Frame bg">
+      <div className="Frame">
         <div className="Content d-flex flex-row flex-wrap justify-content-center">{renderCards()}</div>
       </div>
       <div className="Placeholder">p</div>
       <Footer colors={colors} mq={mq} select={selectpage} />
-    </div>
+    </AppBody>
   );
 }
+
+const AppBody = styled.div`
+  height: 100vh;
+  margin: 0px 0px 100px;
+  padding: 0px;
+
+  & .Frame {
+    z-index: 1030;
+    background-color: white;
+    margin-top: 40px;
+    margin-bottom: 200px;
+    min-width: 390px;
+
+    & .Content {
+      max-width: 1440px;
+      margin: 0px auto;
+    }
+  }
+`;
 
 export default App;

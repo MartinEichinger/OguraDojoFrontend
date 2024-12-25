@@ -1,60 +1,39 @@
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+//import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import React from 'react';
 import styled from 'styled-components';
-import './styles.css';
+import Dropdown from '../DropdownMenu/DropdownMenu';
 
 export const ButtonGroup = ({ links, className }: { links: any; className: any }) => {
   const onelink = links?.[1] === null && links?.[2] === null;
 
   const list = ['ARTIKEL LESEN', 'WEBSEITE', 'VIDEO SEHEN'];
-  const [person, setPerson] = React.useState('ARTIKEL LESEN');
+  const [value, setValue] = React.useState('ARTIKEL LESEN');
   const [open, setOpen] = React.useState(false);
 
   return (
     <ButtonGroupMain
       className={`ButtonGroupMain d-flex flex-direction-row align-items-center justify-content-center ${className}`}
     >
-      <DropdownMenu.Root open={open} onOpenChange={() => setOpen(onelink ? false : !open)}>
-        <DropdownMenu.Trigger asChild>
-          <button
-            className="IconButton d-flex align-items-center align-self-stretch"
-            aria-label="Customise options"
-            aria-haspopup={onelink ? false : 'menu'}
-            disabled={onelink ? true : false}
-          >
-            {!onelink && <TablerIconCaretDown fill={'white'} />}
-            {person === list[0] && onelink && <TablerIconFile stroke={'white'} />}
-            {person === list[1] && onelink && <TablerIconCirclePlay stroke={'white'} />}
-            {person === list[2] && onelink && <TablerIconAt stroke={'white'} />}
-          </button>
-        </DropdownMenu.Trigger>
-
-        <DropdownMenu.Portal>
-          <DropdownMenu.Content className="DropdownMenuContent" sideOffset={3} align={'start'}>
-            <DropdownMenu.RadioGroup value={person} onValueChange={setPerson}>
-              <DropdownMenu.RadioItem className="DropdownMenuRadioItem" value={list[0]}>
-                Artikel lesen
-              </DropdownMenu.RadioItem>
-              {links[1] !== null && (
-                <DropdownMenu.RadioItem className="DropdownMenuRadioItem" value={list[1]}>
-                  Webseite
-                </DropdownMenu.RadioItem>
-              )}
-              {links[2] !== null && (
-                <DropdownMenu.RadioItem className="DropdownMenuRadioItem" value={list[2]}>
-                  Video
-                </DropdownMenu.RadioItem>
-              )}
-            </DropdownMenu.RadioGroup>
-          </DropdownMenu.Content>
-        </DropdownMenu.Portal>
-      </DropdownMenu.Root>
-      <Button
-        href={links[list.findIndex((el) => el === person)]}
-        className="rightbutton"
-        target="_blank"
-      >
-        {person}
+      <Dropdown open={open} setOpen={onelink ? () => setOpen(false) : () => setOpen(!open)}>
+        <DropdownButton
+          className="TriggerButton d-flex align-items-center align-self-stretch"
+          disabled={onelink}
+        >
+          {!onelink && <TablerIconCaretDown fill={'white'} />}
+          {value === list[0] && onelink && <TablerIconFile stroke={'white'} />}
+          {value === list[1] && onelink && <TablerIconCirclePlay stroke={'white'} />}
+          {value === list[2] && onelink && <TablerIconAt stroke={'white'} />}
+        </DropdownButton>
+        <DropdownMenu sideOffset={3} align={'start'}>
+          <Dropdown.RadioGroup setValue={setValue}>
+            <DropdownRadioItem>{list[0]}</DropdownRadioItem>
+            {links[1] !== null && <DropdownRadioItem>{list[1]}</DropdownRadioItem>}
+            {links[2] !== null && <DropdownRadioItem>{list[2]}</DropdownRadioItem>}
+          </Dropdown.RadioGroup>
+        </DropdownMenu>
+      </Dropdown>
+      <Button href={links[list.findIndex((el) => el === value)]} className="rightbutton" target="_blank">
+        {value}
       </Button>
     </ButtonGroupMain>
   );
@@ -64,7 +43,40 @@ const ButtonGroupMain = styled.div`
   &.ButtonGroupMain {
     z-index: 1;
     height: 42px;
-    width: 150px;
+    width: 160px;
+  }
+`;
+
+const DropdownButton = styled(Dropdown.Button)`
+&.TriggerButton {
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(121,0,0,1);
+    border-radius: 8px 0px 0px 8px;
+    border: none;
+    outline: none;
+
+    &:hover {
+        background-color: rgba(100,0,0,1);
+    }
+
+    &:focus {
+        background-color: rgba(140,0,0,1);
+    }
+`;
+
+const DropdownMenu = styled(Dropdown.Menu)`
+  min-width: 160px !important;
+`;
+
+const DropdownRadioItem = styled(Dropdown.RadioItem)`
+  color: rgba(121, 0, 0, 1) !important;
+
+  &:hover {
+    color: rgba(255, 255, 255, 1) !important;
+    background-color: rgba(121, 0, 0, 1) !important;
   }
 `;
 
@@ -88,14 +100,6 @@ const Button = styled.a`
 
     &:hover {
       background-color: rgb(105, 0, 0);
-    }
-
-    &:active {
-      background-color: rgba(140, 0, 0, 1);
-      /* border-top: 1px solid rgba(255, 255, 255, 1);
-    border-bottom: 1px solid rgba(255, 255, 255, 1);
-    border-right: 1px solid rgba(255, 255, 255, 1); */
-      transform: scale(99%);
     }
   }
 `;

@@ -1,4 +1,6 @@
-import { Button, TextField } from '@mui/material';
+//import { TextField } from '@mui/material';
+import TextField from '../TextField/TextField';
+import Button from '../Button/Button';
 import React from 'react';
 
 export const EventContactForm = ({
@@ -49,6 +51,7 @@ export const EventContactForm = ({
           onClick={() => handleFormSubmit(event)}
           color="primary"
           disabled={!formIsValid()}
+          size={1}
         >
           Anmelden
         </Button>

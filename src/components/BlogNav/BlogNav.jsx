@@ -1,27 +1,41 @@
-/** @jsxImportSource @emotion/react */
-// eslint-disable-next-line
-import { jsx } from '@emotion/react';
+import styled from 'styled-components';
 
-import React from 'react';
-
-const BlogNav = ({ filterProps, colors }) => {
+const BlogNav = ({ filterProps }) => {
   const filterState = filterProps.filterState;
 
   return (
     <div className="modal-in-nav">
       {filterProps.filterProps.map((item, i) => {
         return item === filterState ? (
-          <button className="buttons active" onClick={() => filterProps.setFilterState(item)} key={i}>
+          <Button className="buttons active" onClick={() => filterProps.setFilterState(item)} key={i}>
             {item}
-          </button>
+          </Button>
         ) : (
-          <button className="buttons" onClick={() => filterProps.setFilterState(item)} key={i}>
+          <Button className="buttons" onClick={() => filterProps.setFilterState(item)} key={i}>
             {item}
-          </button>
+          </Button>
         );
       })}
     </div>
   );
 };
+
+const Button = styled.button`
+  &.buttons {
+    padding: 0 15px;
+    margin: 1vh 1vw;
+    border-radius: 25px;
+    font-size: calc(1rem + 0.75vw);
+    border: 0px;
+    display: flex;
+    justify-content: center;
+    background-color: ${(props) => props.theme.colors.bgGrey};
+
+    &.active {
+      background-color: ${(props) => props.theme.colors.bgRed};
+      color: ${(props) => props.theme.colors.bgWhite};
+    }
+  }
+`;
 
 export default BlogNav;

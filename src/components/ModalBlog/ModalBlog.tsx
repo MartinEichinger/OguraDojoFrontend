@@ -119,19 +119,6 @@ export default function ModalBlog({
               // bis 400px
               gridTemplateColumns: 'repeat(auto-fit, minmax(125px, 1fr))',
             },
-
-            '& .buttons': {
-              padding: '0 15px',
-              margin: '1vh 1vw',
-              borderRadius: '25px',
-              fontSize: 'calc(1rem + 0.75vw)',
-              border: `0px`,
-
-              '&.active': {
-                backgroundColor: colors.bgRed,
-                color: colors.bgWhite,
-              },
-            },
           },
 
           '& .table': {

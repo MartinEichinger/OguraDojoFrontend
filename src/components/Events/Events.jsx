@@ -103,7 +103,7 @@ const Events = ({ events, colors, mq }) => {
             </div>
             <EventContactForm
               //style={classes.root2}
-              inFieldVal={entries.slice(8, 10)}
+              inFieldVal={entries.slice(9, 11)}
               event={changedData.title}
               value={changedData}
               onChangeEvent={onChangeEvent}

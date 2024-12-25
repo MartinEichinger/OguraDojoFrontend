@@ -1,6 +1,3 @@
-/** @jsxImportSource @emotion/react */
-// eslint-disable-next-line
-import { jsx } from '@emotion/react';
 import styled from 'styled-components';
 import React from 'react';
 import { ButtonGroup } from '../CompButtonGroup/CompButtonGroup';
