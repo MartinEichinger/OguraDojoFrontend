@@ -1,17 +1,17 @@
 import styled from 'styled-components';
-import React from 'react';
 import { ButtonGroup } from '../CompButtonGroup/CompButtonGroup';
+import { IBlogData } from '../ModalBlog/ModalBlog';
 
-const BlogEntry = ({ blogs, colors, filterState }) => {
-  const debug = false;
+const BlogEntry = ({ blogs, filterState }: { blogs: any; filterState: string }) => {
+  const debug = true;
 
   if (debug) console.log('BlogEntry: ', blogs);
 
   return (
-    <React.Fragment>
-      {blogs.map((item, i) => {
+    <>
+      {blogs.map((item: IBlogData, i: number) => {
         return filterState === 'Alle' || item.translations?.[0].category === filterState ? (
-          <div className="blog-card d-flex flex-column" key={i}>
+          <BlogCard className="blog-card d-flex flex-column" key={i}>
             <div className="d-flex flex-row justify-content-between align-items-baseline">
               <h5 className="text-center w-100 green regular">
                 {item.translations?.[0]?.date} +++ {item.translations?.[0]?.tags}
@@ -40,19 +40,74 @@ const BlogEntry = ({ blogs, colors, filterState }) => {
                 item.video,
               ]}
             />
-          </div>
+          </BlogCard>
         ) : (
           ''
         );
       })}
-    </React.Fragment>
+    </>
   );
 };
 
-export default BlogEntry;
+const BlogCard = styled.div`
+  font-family: Lato, sans-serif;
+  padding: 1vw;
+  ${(props) => props.theme.breakpoints.mq[1]} {
+    // bis 600px
+    width: 100%;
+  }
 
-// STYLED COMPONENTS
+  & h5 {
+    font-size: 0.875rem;
+    padding: 0;
+    ${(props) => props.theme.breakpoints.mq[3]} {
+      // bis 1280
+      font-size: calc(0.625rem + 0.3125vw);
+    }
+  }
+
+  & .body {
+    background-color: ${(props) => props.theme.colors.bgGrey};
+    border-radius: 5px;
+    height: 250px;
+    max-height: 250px;
+    position: relative;
+
+    & .image {
+      background-repeat: no-repeat;
+      width: 50%;
+      background-size: cover;
+      border-radius: 5px 0 0px 5px;
+
+      ${(props) => props.theme.breakpoints.mq[0]} {
+        // bis 400px
+        display: none;
+      }
+    }
+
+    & .text {
+      background-color: ${(props) => props.theme.colors.bgGrey};
+      margin: 0;
+      padding: 1vw;
+      width: 50%;
+
+      ${(props) => props.theme.breakpoints.mq[0]} {
+        // bis 400px
+        width: 100%;
+      }
+
+      & .linie {
+        border-top: 1px solid black;
+        width: 30px;
+        margin: 5px auto;
+      }
+    }
+  },
+`;
+
 const BlogButtonGroup = styled(ButtonGroup)`
   margin: -16px auto 0;
   width: inherit;
 `;
+
+export default BlogEntry;

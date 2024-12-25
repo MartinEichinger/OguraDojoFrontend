@@ -9,6 +9,8 @@ const ModalInNavigation = ({ clickUpDown, nextItem, colors, config, mq, apdx, ty
     zIndex: '1052',
     backgroundColor: colors.bgWhite,
     borderRadius: '45px',
+    gridColumn: '2',
+    gridRow: '2',
 
     '& .btn-close': {
       width: '45px',

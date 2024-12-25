@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Dropdown from '../DropdownMenu/DropdownMenu';
 
-export const ButtonGroup = ({ links, className }: { links: any; className: any }) => {
+export const ButtonGroup = ({ links, className }: { links: any; className?: string }) => {
   const onelink = links?.[1] === null && links?.[2] === null;
 
   const list = ['ARTIKEL LESEN', 'WEBSEITE', 'VIDEO SEHEN'];
