@@ -14,8 +14,9 @@ interface ITextField {
 
 export default function TextField(props: ITextField) {
   const { value, className, label, multiline, fullWidth } = props;
+  const debug = false;
 
-  console.log('TextField: ', props, typeof multiline, typeof multiline === 'number');
+  if (debug) console.log('TextField: ', props, typeof multiline, typeof multiline === 'number');
 
   return (
     <TextFieldBody>
@@ -51,10 +52,7 @@ const Label = styled.div`
 const InputField = styled.input<{ fullWidth?: boolean }>`
   &.inputstyle {
     background-color: rgba(0, 0, 0, 0);
-    width: ${(props) => {
-      console.log('inputstyle: ', props);
-      return props.fullWidth && '100%';
-    }};
+    width: ${(props) => props.fullWidth && '100%'};
     border: none;
     outline: none;
     border-bottom: 1px solid ${(props) => props.theme.colors.typoGreen};

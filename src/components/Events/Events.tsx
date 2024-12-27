@@ -68,13 +68,13 @@ const Events = ({ events }: { events: any }) => {
   if (debug) console.log('Events/props : ', changedData, entryData);
 
   return (
-    <EventsBody>
+    <>
       {1 && (
-        <div className="schedule d-flex flex-column scroll_">
+        <Schedule className="schedule d-flex flex-column scroll_">
           <EventFormSchedule events={events} month={month} selectEvent={selectEvent} />
-        </div>
+        </Schedule>
       )}
-      <div className="detail d-flex flex-column scroll_">
+      <Detail className="detail d-flex flex-column scroll_">
         {events.length > 0 ? (
           <>
             <EventFormInfos inFieldVal={entries.slice(0, 5)} changedData={changedData} />
@@ -106,49 +106,71 @@ const Events = ({ events }: { events: any }) => {
         ) : (
           <h2>Aktuell keine Termine</h2>
         )}
-      </div>
-    </EventsBody>
+      </Detail>
+    </>
   );
 };
 
-const EventsBody = styled.div`
-  width: 47%;
-  height: 100%;
-  font-family: Lato, sans-serif;
-  padding-top: 3vh;
-
-  ${(props) => props.theme.breakpoints.mq[2]} {
-    // bis 960px
-    width: 90%;
-    margin-bottom: 1vh;
-    height: 50%;
-  }
-
-  ${(props) => props.theme.breakpoints.mq[1]} {
-    // bis 600px
-    width: 95%;
-  }
-
-  ${(props) => props.theme.breakpoints.mq[0]} {
-    // bis 400px
-    width: 100%;
-  }
-
+const Schedule = styled.div`
   &.schedule {
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.5);
+    width: 47%;
+    height: 100%;
+    font-family: Lato, sans-serif;
+    padding-top: 3vh;
 
-    '& button': {
-      position: 'absolute;
-      bottom: ' 3.5vh;
-      left: '3.5vh;
-    },
-  },
+    ${(props) => props.theme.breakpoints.mq[2]} {
+      // bis 960px
+      width: 90%;
+      margin-bottom: 1vh;
+      height: 50%;
+    }
 
+    ${(props) => props.theme.breakpoints.mq[1]} {
+      // bis 600px
+      width: 95%;
+    }
+
+    ${(props) => props.theme.breakpoints.mq[0]} {
+      // bis 400px
+      width: 100%;
+    }
+
+    & button {
+      position: absolute;
+      bottom: 3.5vh;
+      left: 3.5vh;
+    }
+  }
+`;
+
+const Detail = styled.div`
   &.detail {
     border-radius: 5px;
     background-color: rgba(255,255,255,0.5);
     padding: 2vh;
+    width: 47%;
+    height: 100%;
+    font-family: Lato, sans-serif;
+    padding-top: 3vh;
+
+    ${(props) => props.theme.breakpoints.mq[2]} {
+      // bis 960px
+      width: 90%;
+      margin-bottom: 1vh;
+      height: 50%;
+    }
+
+    ${(props) => props.theme.breakpoints.mq[1]} {
+      // bis 600px
+      width: 95%;
+    }
+
+    ${(props) => props.theme.breakpoints.mq[0]} {
+      // bis 400px
+      width: 100%;
+    }
 
     & .invitation {
       margin-top: 16px;
@@ -166,8 +188,7 @@ const EventsBody = styled.div`
     }
 
     & i {
-      cursor: '
-        pointer;
+      cursor: ' pointer;
     }
 
     & button {

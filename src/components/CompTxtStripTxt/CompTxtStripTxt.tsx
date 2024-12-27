@@ -58,7 +58,7 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: IPage; clickLef
               {contentNav && (
                 <NavLeftRight
                   className="navLeft"
-                  onClick={clickLeftRight && ((e) => clickLeftRight('left'))}
+                  onClick={clickLeftRight && (() => clickLeftRight('left'))}
                 >
                   <IconChevronLeft size={36} color={'white'} />
                 </NavLeftRight>
@@ -82,7 +82,7 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: IPage; clickLef
               {contentNav && (
                 <NavLeftRight
                   className="navRight"
-                  onClick={clickLeftRight && ((e) => clickLeftRight('right'))}
+                  onClick={clickLeftRight && (() => clickLeftRight('right'))}
                 >
                   <IconChevronRight size={36} color={'white'} />
                 </NavLeftRight>

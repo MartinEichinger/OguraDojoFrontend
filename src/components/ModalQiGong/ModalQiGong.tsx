@@ -65,7 +65,7 @@ export default function ModalQiGong({ page, select }: { page: string; select: Fu
   var contentQiGongPage: IContentQiGongInner[] = contentQiGong?.content_qigong;
 
   // destructure
-  var themeContext = useContext(ThemeContext);
+  var themeContext = useContext(ThemeContext)!;
 
   themeContext.colors.bgTheme = themeContext.colors.bgBlue;
   themeContext.colors.bgTheme50 = themeContext.colors.bgBlue50;

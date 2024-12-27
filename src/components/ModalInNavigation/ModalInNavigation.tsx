@@ -26,7 +26,7 @@ const ModalInNavigation = ({
       {config?.upDown ? (
         <Arrow
           className={'arrow d-flex align-items-center justify-content-center upArrow' + apdx}
-          onClick={clickUpDown && ((e) => clickUpDown('up'))}
+          onClick={clickUpDown && (() => clickUpDown('up'))}
         >
           <IconChevronsUp color={'white'} size={36} />
         </Arrow>
@@ -39,7 +39,7 @@ const ModalInNavigation = ({
             className={`navItem ${link}Btn${type} ${
               i === 0 ? 'active' : ''
             } d-flex align-items-center justify-content-center`}
-            onClick={nextItem && ((e) => nextItem(link))}
+            onClick={nextItem && (() => nextItem(link))}
             key={i}
           >
             <button className="big">{link}</button>
@@ -49,7 +49,7 @@ const ModalInNavigation = ({
       {config?.upDown ? (
         <Arrow
           className={'arrow d-flex align-items-center justify-content-center active downArrow' + apdx}
-          onClick={clickUpDown && ((e) => clickUpDown('down'))}
+          onClick={clickUpDown && (() => clickUpDown('down'))}
         >
           <IconChevronsDown color={'white'} size={36} />
         </Arrow>

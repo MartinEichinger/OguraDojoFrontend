@@ -3,7 +3,7 @@ import { ButtonGroup } from '../CompButtonGroup/CompButtonGroup';
 import { IBlogData } from '../ModalBlog/ModalBlog';
 
 const BlogEntry = ({ blogs, filterState }: { blogs: any; filterState: string }) => {
-  const debug = true;
+  const debug = false;
 
   if (debug) console.log('BlogEntry: ', blogs);
 

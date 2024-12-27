@@ -32,21 +32,21 @@ const ModalCol = styled.div`
   border-radius: 5px;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  grid-template-columns: '1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
-  
+  grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
+
   ${(props) => props.theme.breakpoints.mq[2]} {
     // bis 960 px
-    grid-template-columns: '0.5fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.5fr;
+    grid-template-columns: 0.5fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.5fr;
   }
 
   ${(props) => props.theme.breakpoints.mq[1]} {
     // bis 600 px
-    grid-template-columns: '0.2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.2fr;
+    grid-template-columns: 0.2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.2fr;
   }
 
   ${(props) => props.theme.breakpoints.mq[0]} {
     // bis 400px
-    grid-template-columns: '0.1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.1fr;
+    grid-template-columns: 0.1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.1fr;
   }
 
   & .imageBg {
@@ -70,9 +70,9 @@ const ModalCol = styled.div`
       font-size: calc(5rem + 2.5vw);
       margin-bottom: 1vh;
       color: ${(props) => props.theme.colors.bgGrey};
-      text-shadow: 2px 0 0 ${(props) => props.theme.colors.bgRed}, 0 2px 0 ${(props) =>
-  props.theme.colors.bgRed}, -2px 0 0 ${(props) => props.theme.colors.bgRed}, 0 -2px 0 ${(props) =>
-  props.theme.colors.bgRed};
+      text-shadow: 2px 0 0 ${(props) => props.theme.colors.bgRed},
+        0 2px 0 ${(props) => props.theme.colors.bgRed}, -2px 0 0 ${(props) => props.theme.colors.bgRed},
+        0 -2px 0 ${(props) => props.theme.colors.bgRed};
       position: relative;
 
       ${(props) => props.theme.breakpoints.mq[0]} {

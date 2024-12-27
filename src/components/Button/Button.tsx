@@ -21,7 +21,8 @@ interface IButton {
 }
 
 export default function Button(props: IButton) {
-  console.log('Button: ', props);
+  const debug = false;
+  if (debug) console.log('Button: ', props);
   const {
     children,
     className,

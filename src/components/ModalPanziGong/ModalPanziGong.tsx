@@ -108,7 +108,7 @@ export default function ModalPanziGong({ page, select }: { page: string; select:
   if (debug) console.log('ModalPanziGong/Results', stats, contentPanziGong);
 
   // destructure
-  var themeContext = useContext(ThemeContext);
+  var themeContext = useContext(ThemeContext)!;
 
   themeContext.colors.bgTheme = themeContext.colors.bgGreen;
   themeContext.colors.bgTheme50 = themeContext.colors.bgGreen50;
