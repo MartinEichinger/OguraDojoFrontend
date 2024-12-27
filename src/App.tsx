@@ -141,7 +141,7 @@ function App() {
   const renderCards = () => {
     if (debug) console.log('App/renderCards');
     return contentCards.map((content, i) => {
-      return <CardsKarate props={content} colors={colors} mq={mq} keys={i} key={i} />;
+      return <CardsKarate props={content} keys={i} key={i} />;
     });
   };
   if (debug) console.log('App/render: ', state);

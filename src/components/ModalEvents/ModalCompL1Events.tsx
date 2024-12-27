@@ -12,7 +12,7 @@ const ModalCompL1Events = ({ content, events }: { content: any; events: any }) =
   if (debug) console.log('ModalComp_L1_Events: ', events, events.length);
 
   return (
-    <ModalCol className="modal-col">
+    <ModalColumn className="modal-col">
       <div className="imageBg"></div>
       <div className="heading d-flex flex-row justify-content-between align-items-center">
         <h1 className="bigger">{content.title}</h1>
@@ -20,19 +20,22 @@ const ModalCompL1Events = ({ content, events }: { content: any; events: any }) =
       <div className="tables d-flex flex-column flex-lg-row flex-lg-wrap align-items-center align-items-lg-stretch justify-content-lg-around ">
         <Events events={events} />
       </div>
-    </ModalCol>
+    </ModalColumn>
   );
 };
 
-const ModalCol = styled.div`
-  grid-row: 2;
-  grid-column: 1;
+const ModalColumn = styled.div`
   height: 100%;
+`;
+/*
+grid-row: 2;
+  grid-column: 1;
   background-color: white;
   border-radius: 5px;
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
+
 
   ${(props) => props.theme.breakpoints.mq[2]} {
     // bis 960 px
@@ -87,6 +90,6 @@ const ModalCol = styled.div`
     max-height: calc(80vh - 4px);
     position: relative;
   }
-`;
+`; */
 
 export default ModalCompL1Events;
