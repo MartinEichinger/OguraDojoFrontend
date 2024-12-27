@@ -1,22 +1,13 @@
-/** @jsxImportSource @emotion/react */
-// eslint-disable-next-line
-import { jsx } from '@emotion/react';
-
-import React from 'react';
+import styled from 'styled-components';
 import { EventContactForm } from '../EventContactForm/EventContactForm';
 import EventFormInfos from '../EventFormInfos/EventFormInfos';
 import EventFormSchedule from '../EventFormSchedule/EventFormSchedule';
-import { useCustomStyles } from './Events.style';
 import { useFormControls } from './Events.controls';
 
-const Events = ({ events, colors, mq }) => {
+const Events = ({ events }: { events: any }) => {
   // constants
   const debug = false;
   if (debug) console.log('Events : ', events);
-
-  // style
-  //const classes = useStyles();
-  const style = useCustomStyles({ mq, colors });
 
   // util data
   const month = ['JAN', 'FEB', 'MAR', 'APR', 'MAI', 'JUN', 'JUL', 'AUG', 'SEP', 'OKT', 'NOV', 'DEZ'];
@@ -77,13 +68,13 @@ const Events = ({ events, colors, mq }) => {
   if (debug) console.log('Events/props : ', changedData, entryData);
 
   return (
-    <React.Fragment>
+    <EventsBody>
       {1 && (
-        <div className="schedule d-flex flex-column scroll_" css={style}>
+        <div className="schedule d-flex flex-column scroll_">
           <EventFormSchedule events={events} month={month} selectEvent={selectEvent} />
         </div>
       )}
-      <div className="detail d-flex flex-column scroll_" css={style}>
+      <div className="detail d-flex flex-column scroll_">
         {events.length > 0 ? (
           <>
             <EventFormInfos inFieldVal={entries.slice(0, 5)} changedData={changedData} />
@@ -116,9 +107,86 @@ const Events = ({ events, colors, mq }) => {
           <h2>Aktuell keine Termine</h2>
         )}
       </div>
-    </React.Fragment>
+    </EventsBody>
   );
 };
+
+const EventsBody = styled.div`
+  width: 47%;
+  height: 100%;
+  font-family: Lato, sans-serif;
+  padding-top: 3vh;
+
+  ${(props) => props.theme.breakpoints.mq[2]} {
+    // bis 960px
+    width: 90%;
+    margin-bottom: 1vh;
+    height: 50%;
+  }
+
+  ${(props) => props.theme.breakpoints.mq[1]} {
+    // bis 600px
+    width: 95%;
+  }
+
+  ${(props) => props.theme.breakpoints.mq[0]} {
+    // bis 400px
+    width: 100%;
+  }
+
+  &.schedule {
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+
+    '& button': {
+      position: 'absolute;
+      bottom: ' 3.5vh;
+      left: '3.5vh;
+    },
+  },
+
+  &.detail {
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.5);
+    padding: 2vh;
+
+    & .invitation {
+      margin-top: 16px;
+      margin-bottom: 32px;
+
+      & p {
+        margin-bottom: 0px;
+        margin-right: 16px;
+      }
+    }
+
+    & h3 {
+      text-decoration: underline;
+      margin: 1vh 0vh;
+    }
+
+    & i {
+      cursor: '
+        pointer;
+    }
+
+    & button {
+      cursor: pointer;
+      border-radius: 5px;
+      padding: 3px;
+
+      &.red {
+        border: 1px solid ${(props) => props.theme.colors.bgRed};
+        color: white;
+      }
+
+      &.green {
+        border: 1px solid ${(props) => props.theme.colors.bgGreen};
+        color: white;
+      }
+    }
+  }
+`;
 
 const TablerIconPDF = ({ stroke = 'white', fill = 'none' }) => {
   return (

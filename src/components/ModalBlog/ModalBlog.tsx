@@ -1,11 +1,9 @@
 import styled from 'styled-components';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import useGraphQLQuery from '../../hooks/useGraphQLQuery';
 import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
 import ModalCompL1Blog from './ModalCompL1Blog';
-import { clickUpDown, nextItem } from '../../helper/navigation-helper';
 import '../animation.css';
-import { IColors } from '../../App';
 
 interface IBlogContent {
   blog_data: IBlogData[];
@@ -41,15 +39,7 @@ export interface IBlogNav {
   setFilterState: Function;
 }
 
-export default function ModalBlog({
-  colors,
-  mq,
-  lang,
-}: {
-  colors: IColors;
-  mq: string[];
-  lang: string;
-}) {
+export default function ModalBlog({ lang }: { lang: string }) {
   const debug = true;
 
   const [filterState, setFilterState] = useState('Alle');
@@ -107,15 +97,7 @@ export default function ModalBlog({
       <ModalDialog className="modal-dialog d-flex flex-row-reverse align-items-center" id="modalDialog">
         <div className="modal-content">
           <div className="modal-row">
-            <ModalInNavigation
-              clickUpDown={clickUpDown}
-              nextItem={nextItem}
-              colors={colors}
-              config={configNav}
-              mq={mq}
-              apdx
-              type
-            />
+            <ModalInNavigation config={configNav} />
             {contentBlog && (
               <ModalCompL1Blog configBlogNav={configBlogNav} blogs={contentBlog.blog_data} />
             )}

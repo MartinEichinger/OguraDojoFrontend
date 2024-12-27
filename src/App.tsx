@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+//import 'react-toastify/dist/ReactToastify.css';
 import Navigation from './components/Navigation/Navigation';
 import CardsKarate from './components/Cards/CardsKarate';
 import ModalKarate from './components/ModalKarate/ModalKarate';
@@ -150,14 +150,14 @@ function App() {
     <AppBody className="App d-flex flex-column">
       <ToastContainer />
       <Navigation colors={colors} select={selectpage} mq={mq} />
-      <ModalKarate colors={colors} page={state.pageKarate} mq={mq} select={selectpage} />
-      <ModalPanziGong colors={colors} page={state.pagePanziGong} mq={mq} select={selectpage} />
-      <ModalQiGong colors={colors} page={state.pageQiGong} mq={mq} select={selectpage} />
+      <ModalKarate page={state.pageKarate} select={selectpage} />
+      <ModalPanziGong page={state.pagePanziGong} select={selectpage} />
+      <ModalQiGong page={state.pageQiGong} select={selectpage} />
       <ModalTraining colors={colors} page={state.pageTraining} mq={mq} />
-      <ModalBlog colors={colors} mq={mq} lang={lang} />
-      <ModalEvents colors={colors} mq={mq} lang={lang} />
-      <ModalImpressum colors={colors} mq={mq} lang={lang} />
-      <div className="Frame">
+      <ModalBlog lang={lang} />
+      <ModalEvents lang={lang} />
+      <ModalImpressum lang={lang} />
+      <div className="Frame bg">
         <div className="Content d-flex flex-row flex-wrap justify-content-center">{renderCards()}</div>
       </div>
       <div className="Placeholder">p</div>
@@ -167,13 +167,16 @@ function App() {
 }
 
 const AppBody = styled.div`
-  height: 100vh;
+  height: 100vh !important;
   margin: 0px 0px 100px;
   padding: 0px;
 
-  & .Frame {
+  & .bg {
     z-index: 1030;
     background-color: white;
+  }
+
+  & .Frame {
     margin-top: 40px;
     margin-bottom: 200px;
     min-width: 390px;

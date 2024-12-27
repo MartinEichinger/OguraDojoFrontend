@@ -7,7 +7,7 @@ import 'date-fns';
 import { format } from 'date-fns';
 import { de } from 'date-fns/locale';
 
-const EventFormInfos = ({ style, inFieldVal, changedData }) => {
+const EventFormInfos = ({ inFieldVal, changedData }: { inFieldVal: any; changedData: any }) => {
   const debug = false;
 
   if (debug) console.log('EventFormInfos: ', inFieldVal, changedData);
@@ -17,14 +17,11 @@ const EventFormInfos = ({ style, inFieldVal, changedData }) => {
       <div className="d-flex flex-row align-items-center justify-content-between">
         <h3>SEMINAR</h3>
       </div>
-      <form className={style}>
-        {inFieldVal?.slice(0, 5).map((x, i) => {
+      <form>
+        {inFieldVal?.slice(0, 5).map((x: any, i: number) => {
           return (
             <TextField
               variant="standard"
-              sx={{
-                marginBottom: 1,
-              }}
               key={x.id + i}
               color="primary"
               multiline={x.multiline ?? false}
@@ -47,19 +44,14 @@ const EventFormInfos = ({ style, inFieldVal, changedData }) => {
       </form>
 
       {/* <h3>Infos</h3> */}
-      <form className={style}>
-        {inFieldVal?.slice(5, 8).map((x, i) => {
+      <form>
+        {inFieldVal?.slice(5, 8).map((x: any, i: number) => {
           return (
             <TextField
               variant="standard"
-              sx={{
-                marginBottom: 1,
-              }}
               key={x.id + i}
               color="primary"
               multiline={x.multiline ?? false}
-              minRows={2}
-              maxRows={20}
               fullWidth
               id={x.id}
               label={x.label}

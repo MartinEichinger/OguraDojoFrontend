@@ -6,6 +6,10 @@ interface ITextField {
   fullWidth?: boolean;
   label?: string;
   multiline?: boolean;
+  variant?: 'outlined' | 'filled' | 'standard';
+  color?: string;
+  id?: string;
+  InputProps?: any;
 }
 
 export default function TextField(props: ITextField) {

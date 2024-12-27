@@ -1,4 +1,4 @@
-import React from 'react';
+import styled from 'styled-components';
 import { IPage, ISubpage, IContentItem, IPic, IVideoItem } from '../ModalPanziGong/ModalPanziGong';
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 
@@ -37,7 +37,7 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: IPage; clickLef
           });
         }
         return (
-          <div
+          <ModalCol
             className={i > 0 ? subpage.title + ' modal-col d-out' : subpage.title + ' modal-col'}
             key={i}
           >
@@ -56,9 +56,12 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: IPage; clickLef
               }
             >
               {contentNav && (
-                <div className="navLeft" onClick={clickLeftRight && ((e) => clickLeftRight('left'))}>
+                <NavLeftRight
+                  className="navLeft"
+                  onClick={clickLeftRight && ((e) => clickLeftRight('left'))}
+                >
                   <IconChevronLeft size={36} color={'white'} />
-                </div>
+                </NavLeftRight>
               )}
               {subpage.pics.length && (
                 <div className="pics d-flex flex-row justify-content-center align-items-center">
@@ -77,9 +80,12 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: IPage; clickLef
                 </div>
               )}
               {contentNav && (
-                <div className="navRight" onClick={clickLeftRight && ((e) => clickLeftRight('right'))}>
+                <NavLeftRight
+                  className="navRight"
+                  onClick={clickLeftRight && ((e) => clickLeftRight('right'))}
+                >
                   <IconChevronRight size={36} color={'white'} />
-                </div>
+                </NavLeftRight>
               )}
             </div>
 
@@ -91,11 +97,165 @@ const CompTxtStripTxt = ({ content, clickLeftRight }: { content: IPage; clickLef
               }
               dangerouslySetInnerHTML={{ __html: contentText[1] }}
             />
-          </div>
+          </ModalCol>
         );
       })}
     </>
   );
 };
+
+const ModalCol = styled.div`
+  grid-row: 1;
+  grid-column: 1;
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto 1.5vh minmax(17vh, 1fr) 1.5vh auto;
+
+  &.d-out {
+    transform: translateX(-2000px);
+    opacity: 0;
+  }
+
+  & .bg-heading {
+    position: absolute;
+    z-index: 0;
+    font-size: 15vh;
+    color: ${(props) => props.theme.colors.bgGrey};
+  }
+
+  & h1 {
+    margin-bottom: 1vh;
+    position: relative;
+    z-index: 1;
+  }
+
+  & h2 {
+    margin-bottom: 2vh;
+    position: relative;
+    z-index: 1;
+  }
+
+  & p {
+    margin: 0vh 15px 0vh 0px;
+    text-align: justify;
+    position: relative;
+    z-index: 1;
+  }
+
+  & .modal-up {
+    box-sizing: border-box;
+    max-height: calc(40vh - 2px);
+    background-color: white;
+    border-radius: 5px;
+    padding: 2vh 0.5vh 2vh 2vh;
+    grid-row: 1;
+
+    & .videos {
+      position: relative;
+      padding-bottom: 25%;
+      height: 0;
+      max-height: 36vh;
+
+      ${(props) => props.theme.breakpoints.mq[2]} {
+        padding-bottom: 56.25%;
+      }
+
+      & iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        max-height: 36vh;
+      }
+    }
+  }
+
+  & .modal-strip {
+    box-sizing: border-box;
+    background-color: ${(props) => props.theme.colors.bgRed};
+    margin: 5px 0px;
+    grid-row: 3;
+    overflow: hidden;
+
+    & .pics {
+      height: 100%;
+      overflow: hidden;
+
+      & .img {
+        height: calc(100% - 2vh);
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin: 0px 0.5vh;
+        width: 330px;
+      }
+    }
+  }
+
+  & .modal-down {
+    box-sizing: border-box;
+    max-height: calc(40vh - 2px);
+    background-color: white;
+    border-radius: 5px;
+    padding: 2vh 0.5vh 2vh 2vh;
+    grid-row: 5;
+
+    & .vids {
+      height: 400px;
+
+      ${(props) => props.theme.breakpoints.mq[3]} {
+        // bis 1280 px
+        height: 285px;
+      }
+
+      & iframe {
+        top: 0;
+        left: 0;
+        width: 550px;
+        height: 100%;
+        max-height: 36vh;
+        margin: 0px 25px 25px 0px;
+
+        ${(props) => props.theme.breakpoints.mq[3]} {
+          // bis 1280 px
+          width: 500px;
+        }
+
+        ${(props) => props.theme.breakpoints.mq[2]} {
+          // bis 960 px
+          width: 400px;
+        }
+
+        ${(props) => props.theme.breakpoints.mq[1]} {
+          // bis 600 px
+          width: 400px;
+        }
+
+        ${(props) => props.theme.breakpoints.mq[0]} {
+          // bis 400px
+          width: 300px;
+        }
+      }
+    }
+  }
+`;
+
+const NavLeftRight = styled.div`
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    & svg {
+      stroke: rgba(200, 200, 200, 1);
+    }
+  }
+`;
 
 export default CompTxtStripTxt;

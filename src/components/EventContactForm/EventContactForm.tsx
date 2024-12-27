@@ -5,22 +5,26 @@ import React from 'react';
 
 export const EventContactForm = ({
   inFieldVal,
-  style,
   event,
   value,
   onChangeEvent,
   errors,
   formIsValid,
   handleFormSubmit,
+}: {
+  inFieldVal: any;
+  event: any;
+  value: any;
+  onChangeEvent: any;
+  errors: any;
+  formIsValid: any;
+  handleFormSubmit: any;
 }) => {
-  const debug = false;
-
   return (
     <React.Fragment>
-      {debug ? console.log('ContactForm: ', inFieldVal) : ''}
       <h3>ANMELDUNG</h3>
-      <form autoComplete="off" className={style}>
-        {inFieldVal.map((inputFieldValue, index) => {
+      <form autoComplete="off">
+        {inFieldVal.map((inputFieldValue: any, index: number) => {
           return (
             <TextField
               variant="standard"
@@ -30,8 +34,8 @@ export const EventContactForm = ({
               key={index}
               id={inputFieldValue.id}
               color="primary"
-              onChange={(event) => onChangeEvent(inputFieldValue.name, event.target.value)}
-              onBlur={(event) => onChangeEvent(inputFieldValue.name, event.target.value)}
+              onChange={(event: any) => onChangeEvent(inputFieldValue.name, event.target.value)}
+              onBlur={(event: any) => onChangeEvent(inputFieldValue.name, event.target.value)}
               name={inputFieldValue.name}
               label={inputFieldValue.label}
               error={errors[inputFieldValue.name]}
@@ -49,7 +53,6 @@ export const EventContactForm = ({
         <Button
           variant="contained"
           onClick={() => handleFormSubmit(event)}
-          color="primary"
           disabled={!formIsValid()}
           size={1}
         >

@@ -2,10 +2,10 @@
 PROP        TYPE                                            DEFAULT
 asChild     boolean                                         No default value
 size        Responsive<"1" | "2" | "3" | "4">               "2"
-variant     enum                                            "solid"
-color       enum                                            No default value
+variant     "text", "contained", "outlined"                 "contained"
 radius      "none" | "small" | "medium" | "large" | "full"  No default value
-loading     boolean                                         false 
+disabled    boolean                                         false
+color       string                                          "black"
 */
 
 import styled from 'styled-components';
@@ -13,24 +13,51 @@ import styled from 'styled-components';
 interface IButton {
   children: any;
   className?: any;
-  size?: number;
+  size?: 1 | 2 | 3 | 4;
+  variant?: 'text' | 'contained' | 'outlined';
+  onClick?: Function;
+  disabled?: boolean;
+  color?: string;
 }
 
 export default function Button(props: IButton) {
   console.log('Button: ', props);
-  const { children, className, size } = props;
+  const {
+    children,
+    className,
+    size = 2,
+    variant = 'contained',
+    disabled = false,
+    color = 'rgba(0,0,0,1)',
+  } = props;
 
   return (
-    <ButtonBody className={`buttonstyle ${className}`} size={size}>
+    <ButtonBody
+      className={`buttonstyle ${className}`}
+      size={size}
+      variant={variant}
+      color={color}
+      disabled={disabled}
+    >
       {children}
     </ButtonBody>
   );
 }
 
-const ButtonBody = styled.button<{ size?: number }>`
+const ButtonBody = styled.button<{ size?: number; color?: string; variant?: string }>`
   &.buttonstyle {
     border: 1px solid rgba(0, 0, 0, 1);
     border-radius: 3px;
     min-width: ${(props) => props.size === 1 && '30px'};
+    background-color: ${(props) => {
+      if (props.variant === 'contained') return props.color;
+      if (props.variant === 'outlined') return 'white';
+      if (props.variant === 'text') return 'rgba(0,0,0,0)';
+    }};
+    color: ${(props) => {
+      if (props.variant === 'contained') return 'white';
+      if (props.variant === 'outlined') return props.color;
+      if (props.variant === 'text') return props.color;
+    }};
   }
 `;
