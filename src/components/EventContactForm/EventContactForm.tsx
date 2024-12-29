@@ -1,25 +1,52 @@
 //import { TextField } from '@mui/material';
 import TextField from '../TextField/TextField';
 import Button from '../Button/Button';
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { sendData } from '../../helper/api-helper';
+import { ThemeContext } from 'styled-components';
 
 export const EventContactForm = ({
   inFieldVal,
-  event,
+  eventinput,
   value,
   onChangeEvent,
   errors,
   formIsValid,
-  handleFormSubmit,
 }: {
   inFieldVal: any;
-  event: any;
+  eventinput: any;
   value: any;
   onChangeEvent: any;
   errors: any;
   formIsValid: any;
-  handleFormSubmit: any;
 }) => {
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [event] = useState(eventinput.seminar_title);
+
+  var themeContext = useContext(ThemeContext)!;
+
+  const onChange = (name: string, val: string) => {
+    if (name === 'email') setEmail(val);
+    if (name === 'message') setMessage(val);
+    onChangeEvent(name, val);
+  };
+
+  const handleFormSubmit = () => {
+    const query = `mutation {
+      create_message_data_item(data: {
+          email_address: "${email}",
+          message: "${email}: ich möchte mich zum Lehrgang: ${event} anmelden. ${
+      message && 'Weitere Nachricht: ' + message
+    }",
+      }) 
+      {
+          id    
+      }
+      }`;
+    email && sendData(query);
+  };
+
   return (
     <React.Fragment>
       <h3>ANMELDUNG</h3>
@@ -28,14 +55,11 @@ export const EventContactForm = ({
           return (
             <TextField
               variant="standard"
-              sx={{
-                marginBottom: 1,
-              }}
               key={index}
               id={inputFieldValue.id}
               color="primary"
-              onChange={(event: any) => onChangeEvent(inputFieldValue.name, event.target.value)}
-              onBlur={(event: any) => onChangeEvent(inputFieldValue.name, event.target.value)}
+              onChange={(e: any) => onChange(inputFieldValue.name, e.target.value)}
+              onBlur={(e: any) => onChange(inputFieldValue.name, e.target.value)}
               name={inputFieldValue.name}
               label={inputFieldValue.label}
               error={errors[inputFieldValue.name]}
@@ -51,10 +75,12 @@ export const EventContactForm = ({
           );
         })}
         <Button
+          id="eventcontactformbutton"
           variant="contained"
-          onClick={() => handleFormSubmit(event)}
+          onClick={() => handleFormSubmit()}
           disabled={!formIsValid()}
           size={1}
+          color={themeContext.colors.bgGreen}
         >
           Anmelden
         </Button>

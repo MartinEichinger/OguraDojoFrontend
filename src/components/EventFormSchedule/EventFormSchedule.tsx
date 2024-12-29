@@ -53,77 +53,80 @@ const EventFormSchedule = ({
 };
 
 const ScheduleBody = styled.div`
-& .block {
-  background-color: rgba(255,255,255,0.5);
-  margin-bottom: 2vh;
-  border-radius: 5px;
-  position: relative;
-  cursor: pointer;
+  & .block {
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 2vh;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
 
-  &:hover, &:active, &:focus, &.active: {
-    background-color: ${(props) => props.theme.colors.bgGreen50};
-  }
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: ${(props) => props.theme.colors.bgGreen50};
+    }
 
-  & .date {
-    margin-left: 5%;
-    width: 25%;
-  }
+    & .date {
+      margin-left: 5%;
+      width: 25%;
+    }
 
-  & .details {
-    height: 100%;
-    width: 70%;
-    padding: 1vh;
+    & .details {
+      //height: 100%;
+      width: 70%;
+      padding: 1vh;
 
-    & h3 {
-      font-weight: bold;
-      font-size: 1.5rem;
+      & h3 {
+        font-weight: bold;
+        font-size: 1.5rem;
 
-      ${(props) => props.theme.breakpoints.mq[3]} {
-        // bis 1280
-        font-size: calc(1rem + 0.625vw);
+        ${(props) => props.theme.breakpoints.mq[3]} {
+          // bis 1280
+          font-size: calc(1rem + 0.625vw);
+        }
+      }
+
+      & h4 {
+        font-weight: bold;
+        margin: 1vh;
+        font-size: 0.75rem;
+
+        ${(props) => props.theme.breakpoints.mq[3]} {
+          // bis 1280
+          font-size: calc(0.625rem + 0.15625vw);
+        }
       }
     }
 
-    & h4 {
-      font-weight: bold;
-      margin: 1vh;
-      font-size: 0.75rem;
+    & h1 {
+      font-size: 4.5rem;
+      line-height: 3.75rem;
+
+      ${(props) => props.theme.breakpoints.mq[3]} {
+        font-size: calc(3.25rem + 1.5625vw);
+        line-height: calc(2.75rem + 1.25vw);
+      }
+
+      color: rgba(255, 255, 255, 1);
+      margin-bottom: 0px;
+      padding: 1vh 1vh 0.25vh 1vh;
+      text-align: center;
+      text-shadow: none;
+    }
+
+    & h2 {
+      font-size: 3rem;
+      line-height: 2.5rem;
+      color: rgba(255, 255, 255, 1);
+      margin-bottom: 0px;
+      padding: 0.25vh 1vh 1vh 1vh;
+      text-align: center;
 
       ${(props) => props.theme.breakpoints.mq[3]} {
         // bis 1280
-        font-size: calc(0.625rem + 0.15625vw);
+        font-size: calc(2rem + 1.25vw);
+        line-height: calc(1.75rem + 1.25vw);
       }
-    }
-  }
-
-  & h1 {
-    font-size: 4.5rem;
-    line-height: 3.75rem;
-
-    ${(props) => props.theme.breakpoints.mq[3]} {
-      font-size: calc(3.25rem + 1.5625vw);
-      line-height: calc(2.75rem + 1.25vw);
-    }
-
-    color: rgba(255,255,255,1);
-    margin-bottom: 0px;
-    padding: 1vh 1vh 0.25vh 1vh;
-    text-align: center;
-    text-shadow: none;
-  }
-
-  & h2 {
-    font-size: 3rem;
-    line-height: 2.5rem;
-    color: rgba(255,255,255,1);
-    margin-bottom: 0px;
-    padding: 0.25vh 1vh 1vh 1vh;
-    text-align: center;
-
-    ${(props) => props.theme.breakpoints.mq[3]} {
-      // bis 1280
-      font-size: calc(2rem + 1.25vw);
-      line-height: calc(1.75rem + 1.25vw);
     }
   }
 `;

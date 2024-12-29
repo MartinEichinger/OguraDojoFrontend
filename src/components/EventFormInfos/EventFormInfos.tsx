@@ -35,9 +35,7 @@ const EventFormInfos = ({ inFieldVal, changedData }: { inFieldVal: any; changedD
                     })
                   : changedData[x?.name]
               }
-              InputProps={{
-                readOnly: true,
-              }}
+              readonly={true}
             />
           );
         })}
@@ -56,9 +54,7 @@ const EventFormInfos = ({ inFieldVal, changedData }: { inFieldVal: any; changedD
               id={x.id}
               label={x.label}
               value={changedData[x.name]}
-              InputProps={{
-                readOnly: true,
-              }}
+              readonly={true}
             />
           );
         })}

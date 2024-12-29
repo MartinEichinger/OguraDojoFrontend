@@ -56,17 +56,16 @@ const Events = ({ events }: { events: any }) => {
     },
     // part III
     { name: 'email', label: 'E-Mail', id: '#email', val_email: true },
-    { name: 'fullName', label: 'Name', id: '#fullName', val_length: 40 },
+    { name: 'message', label: 'Nachricht', id: '#message', val_length: 255, required: 'false' },
   ];
 
   // methods
-  const { selectEvent, onChangeEvent, formIsValid, handleFormSubmit, entryData, changedData, errors } =
-    useFormControls({
-      events,
-      entries,
-    });
+  var { selectEvent, onChangeEvent, formIsValid, entryData, changedData, errors } = useFormControls({
+    events,
+    entries,
+  });
 
-  if (debug) console.log('Events/props : ', changedData, entryData);
+  if (debug) console.log('Events/props : ', changedData, entryData, events);
 
   return (
     <>
@@ -94,14 +93,12 @@ const Events = ({ events }: { events: any }) => {
               )}
             </div>
             <EventContactForm
-              //style={classes.root2}
               inFieldVal={entries.slice(9, 11)}
-              event={changedData.title}
+              eventinput={changedData}
               value={changedData}
               onChangeEvent={onChangeEvent}
               errors={errors}
               formIsValid={formIsValid}
-              handleFormSubmit={handleFormSubmit}
             />
           </>
         ) : (

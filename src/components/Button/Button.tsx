@@ -11,6 +11,7 @@ color       string                                          "black"
 import styled from 'styled-components';
 
 interface IButton {
+  id: string;
   children: any;
   className?: any;
   size?: 1 | 2 | 3 | 4;
@@ -24,21 +25,31 @@ export default function Button(props: IButton) {
   const debug = false;
   if (debug) console.log('Button: ', props);
   const {
+    id,
     children,
     className,
     size = 2,
     variant = 'contained',
     disabled = false,
     color = 'rgba(0,0,0,1)',
+    onClick,
   } = props;
 
   return (
     <ButtonBody
+      id={id}
       className={`buttonstyle ${className}`}
       size={size}
       variant={variant}
       color={color}
       disabled={disabled}
+      onClick={
+        onClick &&
+        ((e) => {
+          e.preventDefault();
+          onClick(e);
+        })
+      }
     >
       {children}
     </ButtonBody>
@@ -60,5 +71,15 @@ const ButtonBody = styled.button<{ size?: number; color?: string; variant?: stri
       if (props.variant === 'outlined') return props.color;
       if (props.variant === 'text') return props.color;
     }};
+    padding-left: 5px;
+    padding-right: 5px;
+
+    &:hover {
+      background-image: linear-gradient(rgb(255 255 255/20%) 0 0);
+    }
+
+    &:active {
+      background-image: linear-gradient(rgb(0 0 0/20%) 0 0);
+    }
   }
 `;
