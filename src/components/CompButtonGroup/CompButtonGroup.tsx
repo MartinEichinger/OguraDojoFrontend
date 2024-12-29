@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Dropdown from '../DropdownMenu/DropdownMenu';
+import { IconCaretDown, IconFile, IconBrandYoutube, IconAt } from '@tabler/icons-react';
 
 export const ButtonGroup = ({ links, className }: { links: any; className?: string }) => {
   const onelink = links?.[1] === null && links?.[2] === null;
@@ -19,10 +20,10 @@ export const ButtonGroup = ({ links, className }: { links: any; className?: stri
           className="TriggerButton d-flex align-items-center align-self-stretch"
           disabled={onelink}
         >
-          {!onelink && <TablerIconCaretDown fill={'white'} />}
-          {value === list[0] && onelink && <TablerIconFile stroke={'white'} />}
-          {value === list[1] && onelink && <TablerIconCirclePlay stroke={'white'} />}
-          {value === list[2] && onelink && <TablerIconAt stroke={'white'} />}
+          {!onelink && <IconCaretDown color={'white'} />}
+          {value === list[0] && onelink && <IconFile color={'white'} />}
+          {value === list[1] && onelink && <IconBrandYoutube color={'white'} />}
+          {value === list[2] && onelink && <IconAt color={'white'} />}
         </DropdownButton>
         <DropdownMenu sideOffset={3} align={'start'}>
           <Dropdown.RadioGroup setValue={setValue}>
@@ -103,82 +104,3 @@ const Button = styled.a`
     }
   }
 `;
-
-const TablerIconCaretDown = ({ stroke = 'black', fill = 'black' }) => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill={fill}
-      className="icon icon-tabler icons-tabler-filled icon-tabler-caret-down"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M18 9c.852 0 1.297 .986 .783 1.623l-.076 .084l-6 6a1 1 0 0 1 -1.32 .083l-.094 -.083l-6 -6l-.083 -.094l-.054 -.077l-.054 -.096l-.017 -.036l-.027 -.067l-.032 -.108l-.01 -.053l-.01 -.06l-.004 -.057v-.118l.005 -.058l.009 -.06l.01 -.052l.032 -.108l.027 -.067l.07 -.132l.065 -.09l.073 -.081l.094 -.083l.077 -.054l.096 -.054l.036 -.017l.067 -.027l.108 -.032l.053 -.01l.06 -.01l.057 -.004l12.059 -.002z" />
-    </svg>
-  );
-};
-
-const TablerIconFile = ({ stroke = 'white', fill = 'none' }) => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="2 2 20 20"
-      fill={fill}
-      stroke={stroke}
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="icon icon-tabler icons-tabler-outline icon-tabler-file"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-      <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
-    </svg>
-  );
-};
-
-const TablerIconCirclePlay = ({ stroke = 'white', fill = 'none' }) => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill={fill}
-      stroke={stroke}
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="icon icon-tabler icons-tabler-outline icon-tabler-brand-youtube"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z" />
-      <path d="M10 9l5 3l-5 3z" />
-    </svg>
-  );
-};
-
-const TablerIconAt = ({ stroke = 'white', fill = 'none' }) => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill={fill}
-      stroke={stroke}
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="icon icon-tabler icons-tabler-outline icon-tabler-at"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-      <path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28" />
-    </svg>
-  );
-};

@@ -161,7 +161,7 @@ function App() {
         <div className="Content d-flex flex-row flex-wrap justify-content-center">{renderCards()}</div>
       </div>
       <div className="Placeholder">p</div>
-      <Footer colors={colors} mq={mq} select={selectpage} />
+      <Footer select={selectpage} />
     </AppBody>
   );
 }

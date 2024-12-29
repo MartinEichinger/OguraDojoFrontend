@@ -3,6 +3,7 @@ import { EventContactForm } from '../EventContactForm/EventContactForm';
 import EventFormInfos from '../EventFormInfos/EventFormInfos';
 import EventFormSchedule from '../EventFormSchedule/EventFormSchedule';
 import { useFormControls } from './Events.controls';
+import { IconFileTypePdf } from '@tabler/icons-react';
 
 const Events = ({ events }: { events: any }) => {
   // constants
@@ -86,7 +87,7 @@ const Events = ({ events }: { events: any }) => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <TablerIconPDF stroke="rgb(10,121,0)" />
+                  <IconFileTypePdf color="rgb(10,121,0)" />
                 </a>
               ) : (
                 '-'
@@ -208,30 +209,5 @@ const Detail = styled.div`
     }
   }
 `;
-
-const TablerIconPDF = ({ stroke = 'white', fill = 'none' }) => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill={fill}
-      stroke={stroke}
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="icon icon-tabler icons-tabler-outline icon-tabler-file-type-pdf"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-      <path d="M5 12v-7a2 2 0 0 1 2 -2h7l5 5v4" />
-      <path d="M5 18h1.5a1.5 1.5 0 0 0 0 -3h-1.5v6" />
-      <path d="M17 18h2" />
-      <path d="M20 15h-3v6" />
-      <path d="M11 15v6h1a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2h-1z" />
-    </svg>
-  );
-};
 
 export default Events;

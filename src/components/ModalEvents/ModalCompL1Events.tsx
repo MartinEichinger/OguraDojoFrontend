@@ -26,16 +26,13 @@ const ModalCompL1Events = ({ content, events }: { content: any; events: any }) =
 
 const ModalColumn = styled.div`
   height: 100%;
-`;
-/*
-grid-row: 2;
+  grid-row: 2;
   grid-column: 1;
   background-color: white;
   border-radius: 5px;
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
-
 
   ${(props) => props.theme.breakpoints.mq[2]} {
     // bis 960 px
@@ -90,6 +87,6 @@ grid-row: 2;
     max-height: calc(80vh - 4px);
     position: relative;
   }
-`; */
+`;
 
 export default ModalCompL1Events;

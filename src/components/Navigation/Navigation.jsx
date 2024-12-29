@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 // eslint-disable-next-line
-import { jsx, keyframes } from '@emotion/react';
+import { jsx } from '@emotion/react';
 import '../animation.css';
 import React, { Component } from 'react';
 
