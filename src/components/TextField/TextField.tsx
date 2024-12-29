@@ -44,10 +44,9 @@ export default function TextField({
   onChange,
 }: ITextField) {
   //const { value, className, label, multiline, fullWidth } = props;
-  const debug = true;
+  const debug = false;
 
   const inputHandler = (e: any) => {
-    console.log('inputHandler: ', e, e.target.value);
     e.preventDefault();
     if (onChange) onChange(e);
   };
