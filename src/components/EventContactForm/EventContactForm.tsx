@@ -78,7 +78,7 @@ export const EventContactForm = ({
           id="eventcontactformbutton"
           variant="contained"
           onClick={() => handleFormSubmit()}
-          disabled={!formIsValid()}
+          disabled={email === '' || !formIsValid()}
           size={1}
           color={themeContext.colors.bgGreen}
         >

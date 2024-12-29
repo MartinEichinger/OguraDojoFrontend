@@ -56,7 +56,12 @@ export default function Button(props: IButton) {
   );
 }
 
-const ButtonBody = styled.button<{ size?: number; color?: string; variant?: string }>`
+const ButtonBody = styled.button<{
+  size?: number;
+  color?: string;
+  variant?: string;
+  disabled?: boolean;
+}>`
   &.buttonstyle {
     border: 1px solid rgba(0, 0, 0, 1);
     border-radius: 3px;
@@ -74,12 +79,14 @@ const ButtonBody = styled.button<{ size?: number; color?: string; variant?: stri
     padding-left: 5px;
     padding-right: 5px;
 
+    background-image: ${(props) => props.disabled && 'linear-gradient(rgb(255 255 255/20%) 0 0)'};
+
     &:hover {
-      background-image: linear-gradient(rgb(255 255 255/20%) 0 0);
+      background-image: ${(props) => !props.disabled && 'linear-gradient(rgb(255 255 255/20%) 0 0)'};
     }
 
     &:active {
-      background-image: linear-gradient(rgb(0 0 0/20%) 0 0);
+      background-image: ${(props) => !props.disabled && 'linear-gradient(rgb(0 0 0/20%) 0 0)'};
     }
   }
 `;
