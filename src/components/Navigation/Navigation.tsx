@@ -5,17 +5,12 @@ import React, { useEffect, useState } from 'react';
 export default function Navigation({ select }: { select: Function }) {
   const debug = false;
   let navCardWidth = 'calc(100vw - 4px)';
-  /*   let navCardMarginLeft;
-  let navCardMarginRight; */
 
-  // BREAKPOINTS
   const [state, setState] = useState({
     viewWidth: 1600,
     width: 1280,
     height: 300,
   });
-
-  // STYLES
 
   useEffect(() => {
     if (debug) console.log('Navigation/compDidMount');
