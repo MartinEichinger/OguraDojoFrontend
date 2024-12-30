@@ -1,22 +1,14 @@
-/** @jsxImportSource @emotion/react */
-// eslint-disable-next-line
-import { jsx } from '@emotion/react';
-
-import React from 'react';
+import styled from 'styled-components';
 import { EventContactForm } from '../EventContactForm/EventContactForm';
 import EventFormInfos from '../EventFormInfos/EventFormInfos';
 import EventFormSchedule from '../EventFormSchedule/EventFormSchedule';
-import { useCustomStyles } from './Events.style';
 import { useFormControls } from './Events.controls';
+import { IconFileTypePdf } from '@tabler/icons-react';
 
-const Events = ({ events, colors, mq }) => {
+const Events = ({ events }: { events: any }) => {
   // constants
   const debug = false;
   if (debug) console.log('Events : ', events);
-
-  // style
-  //const classes = useStyles();
-  const style = useCustomStyles({ mq, colors });
 
   // util data
   const month = ['JAN', 'FEB', 'MAR', 'APR', 'MAI', 'JUN', 'JUL', 'AUG', 'SEP', 'OKT', 'NOV', 'DEZ'];
@@ -64,26 +56,25 @@ const Events = ({ events, colors, mq }) => {
     },
     // part III
     { name: 'email', label: 'E-Mail', id: '#email', val_email: true },
-    { name: 'fullName', label: 'Name', id: '#fullName', val_length: 40 },
+    { name: 'message', label: 'Nachricht', id: '#message', val_length: 255, required: 'false' },
   ];
 
   // methods
-  const { selectEvent, onChangeEvent, formIsValid, handleFormSubmit, entryData, changedData, errors } =
-    useFormControls({
-      events,
-      entries,
-    });
+  var { selectEvent, onChangeEvent, formIsValid, entryData, changedData, errors } = useFormControls({
+    events,
+    entries,
+  });
 
-  if (debug) console.log('Events/props : ', changedData, entryData);
+  if (debug) console.log('Events/props : ', changedData, entryData, events);
 
   return (
-    <React.Fragment>
+    <>
       {1 && (
-        <div className="schedule d-flex flex-column scroll_" css={style}>
+        <Schedule className="schedule d-flex flex-column scroll_">
           <EventFormSchedule events={events} month={month} selectEvent={selectEvent} />
-        </div>
+        </Schedule>
       )}
-      <div className="detail d-flex flex-column scroll_" css={style}>
+      <Detail className="detail d-flex flex-column scroll_">
         {events.length > 0 ? (
           <>
             <EventFormInfos inFieldVal={entries.slice(0, 5)} changedData={changedData} />
@@ -95,54 +86,125 @@ const Events = ({ events, colors, mq }) => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <TablerIconPDF stroke="rgb(10,121,0)" />
+                  <IconFileTypePdf color="rgb(10,121,0)" />
                 </a>
               ) : (
                 '-'
               )}
             </div>
             <EventContactForm
-              //style={classes.root2}
-              inFieldVal={entries.slice(8, 10)}
-              event={changedData.title}
+              inFieldVal={entries.slice(9, 11)}
+              eventinput={changedData}
               value={changedData}
               onChangeEvent={onChangeEvent}
               errors={errors}
               formIsValid={formIsValid}
-              handleFormSubmit={handleFormSubmit}
             />
           </>
         ) : (
           <h2>Aktuell keine Termine</h2>
         )}
-      </div>
-    </React.Fragment>
+      </Detail>
+    </>
   );
 };
 
-const TablerIconPDF = ({ stroke = 'white', fill = 'none' }) => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill={fill}
-      stroke={stroke}
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="icon icon-tabler icons-tabler-outline icon-tabler-file-type-pdf"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-      <path d="M5 12v-7a2 2 0 0 1 2 -2h7l5 5v4" />
-      <path d="M5 18h1.5a1.5 1.5 0 0 0 0 -3h-1.5v6" />
-      <path d="M17 18h2" />
-      <path d="M20 15h-3v6" />
-      <path d="M11 15v6h1a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2h-1z" />
-    </svg>
-  );
-};
+const Schedule = styled.div`
+  &.schedule {
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 47%;
+    height: 100%;
+    font-family: Lato, sans-serif;
+    padding-top: 3vh;
+
+    ${(props) => props.theme.breakpoints.mq[2]} {
+      // bis 960px
+      width: 90%;
+      margin-bottom: 1vh;
+      height: 50%;
+    }
+
+    ${(props) => props.theme.breakpoints.mq[1]} {
+      // bis 600px
+      width: 95%;
+    }
+
+    ${(props) => props.theme.breakpoints.mq[0]} {
+      // bis 400px
+      width: 100%;
+    }
+
+    & button {
+      position: absolute;
+      bottom: 3.5vh;
+      left: 3.5vh;
+    }
+  }
+`;
+
+const Detail = styled.div`
+  &.detail {
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.5);
+    padding: 2vh;
+    width: 47%;
+    height: 100%;
+    font-family: Lato, sans-serif;
+    padding-top: 3vh;
+
+    ${(props) => props.theme.breakpoints.mq[2]} {
+      // bis 960px
+      width: 90%;
+      margin-bottom: 1vh;
+      height: 50%;
+    }
+
+    ${(props) => props.theme.breakpoints.mq[1]} {
+      // bis 600px
+      width: 95%;
+    }
+
+    ${(props) => props.theme.breakpoints.mq[0]} {
+      // bis 400px
+      width: 100%;
+    }
+
+    & .invitation {
+      margin-top: 16px;
+      margin-bottom: 32px;
+
+      & p {
+        margin-bottom: 0px;
+        margin-right: 16px;
+      }
+    }
+
+    & h3 {
+      text-decoration: underline;
+      margin: 1vh 0vh;
+    }
+
+    & i {
+      cursor: ' pointer;
+    }
+
+    & button {
+      cursor: pointer;
+      border-radius: 5px;
+      padding: 3px;
+
+      &.red {
+        border: 1px solid ${(props) => props.theme.colors.bgRed};
+        color: white;
+      }
+
+      &.green {
+        border: 1px solid ${(props) => props.theme.colors.bgGreen};
+        color: white;
+      }
+    }
+  }
+`;
 
 export default Events;

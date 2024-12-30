@@ -1,10 +1,7 @@
-/** @jsxImportSource @emotion/react */
-// eslint-disable-next-line
-import { jsx } from '@emotion/react';
-
+import styled from 'styled-components';
 import { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+//import 'react-toastify/dist/ReactToastify.css';
 import Navigation from './components/Navigation/Navigation';
 import CardsKarate from './components/Cards/CardsKarate';
 import ModalKarate from './components/ModalKarate/ModalKarate';
@@ -49,11 +46,6 @@ interface IState {
 function App() {
   const debug = false;
 
-  // BREAKPOINTS
-  const breakpoints = [400, 600, 960, 1280, 1920];
-
-  const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
-
   const lang = 'de-DE'; // 'en-US' 'de-DE' 'fr-FR'
   const [state, setState] = useState<IState>({
     pageTraining: 'Training',
@@ -61,49 +53,6 @@ function App() {
     pagePanziGong: 'PanziGong',
     pageQiGong: 'QiGong',
   });
-
-  const styleApp = {
-    height: '100vh',
-    margin: '0px 0px 100px',
-    padding: '0px',
-
-    '& .bg': {
-      zIndex: '1030',
-      backgroundColor: 'white',
-    },
-
-    '& .Frame': {
-      marginTop: '40px',
-      marginBottom: '200px',
-      minWidth: '390px',
-
-      '& .Content': {
-        maxWidth: '1440px',
-        margin: '0px auto',
-      },
-    },
-  };
-
-  const colors = {
-    bgGreen50: 'rgba(10, 121, 0, 0.5)',
-    bgGreen: 'rgba(10, 121, 0, 1)', //HSL: 115, 100, 24 //#0A7900
-    bgBlue50: 'rgba(23,85,118,0.5)',
-    bgBlue: 'rgba(23,85,118,1)',
-    bgGrey: 'rgba(232, 232, 232, 1)',
-    bgWhite50: 'rgba(255,255,255,0.5)',
-    bgWhite75: 'rgba(255,255,255,0.75)',
-    bgWhite: 'rgba(255,255,255,1)',
-    bgRed: 'rgba(121, 0, 0, 1)', //HSL: 0, 100, 24 //#790000
-    bgRedLight: 'hsl(0,100%,36%)',
-    bgRed20: 'hsl(0,100%,20%)',
-    bgRedSolid: 'hsl(0,100%,12%)',
-    bgRed50: 'rgba(121, 0, 0, 0.5)',
-    typoGrey: 'rgba(64, 64, 64, 1)',
-    typoGreen: 'rgba(10, 121, 0, 1)',
-    typoBlue: 'rgba(23,85,118,1)',
-    typoRed: 'rgba(121, 0, 0, 1)',
-    shadowGrey: 'rgba(122,122,122,1)',
-  };
 
   const contentCards = [
     {
@@ -166,29 +115,51 @@ function App() {
   const renderCards = () => {
     if (debug) console.log('App/renderCards');
     return contentCards.map((content, i) => {
-      return <CardsKarate props={content} colors={colors} mq={mq} keys={i} key={i} />;
+      return <CardsKarate props={content} keys={i} key={i} />;
     });
   };
   if (debug) console.log('App/render: ', state);
 
   return (
-    <div className="App d-flex flex-column" css={styleApp}>
+    <AppBody className="App d-flex flex-column">
       <ToastContainer />
-      <Navigation colors={colors} select={selectpage} mq={mq} />
-      <ModalKarate colors={colors} page={state.pageKarate} mq={mq} select={selectpage} />
-      <ModalPanziGong colors={colors} page={state.pagePanziGong} mq={mq} select={selectpage} />
-      <ModalQiGong colors={colors} page={state.pageQiGong} mq={mq} select={selectpage} />
-      <ModalTraining colors={colors} page={state.pageTraining} mq={mq} />
-      <ModalBlog colors={colors} mq={mq} lang={lang} />
-      <ModalEvents colors={colors} mq={mq} lang={lang} />
-      <ModalImpressum colors={colors} mq={mq} lang={lang} />
+      <Navigation select={selectpage} />
+      <ModalKarate page={state.pageKarate} select={selectpage} />
+      <ModalPanziGong page={state.pagePanziGong} select={selectpage} />
+      <ModalQiGong page={state.pageQiGong} select={selectpage} />
+      <ModalTraining page={state.pageTraining} select={selectpage} />
+      <ModalBlog lang={lang} />
+      <ModalEvents lang={lang} />
+      <ModalImpressum lang={lang} />
       <div className="Frame bg">
         <div className="Content d-flex flex-row flex-wrap justify-content-center">{renderCards()}</div>
       </div>
       <div className="Placeholder">p</div>
-      <Footer colors={colors} mq={mq} select={selectpage} />
-    </div>
+      <Footer select={selectpage} />
+    </AppBody>
   );
 }
+
+const AppBody = styled.div`
+  height: 100vh !important;
+  margin: 0px 0px 100px;
+  padding: 0px;
+
+  & .bg {
+    z-index: 1030;
+    background-color: white;
+  }
+
+  & .Frame {
+    margin-top: 40px;
+    margin-bottom: 200px;
+    min-width: 390px;
+
+    & .Content {
+      max-width: 1440px;
+      margin: 0px auto;
+    }
+  }
+`;
 
 export default App;

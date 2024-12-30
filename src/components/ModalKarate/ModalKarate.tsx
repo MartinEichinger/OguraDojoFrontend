@@ -1,13 +1,9 @@
-/** @jsxImportSource @emotion/react */
-// eslint-disable-next-line
-import { jsx } from '@emotion/react';
-
-import { useEffect } from 'react';
+import styled, { ThemeContext } from 'styled-components';
+import { useContext, useEffect } from 'react';
 import { clickUpDown, nextItem, clickLeftRight, onMount } from '../../helper/navigation-helper';
 import useGraphQLQuery from '../../hooks/useGraphQLQuery';
 import ModalInNavigation from '../ModalInNavigation/ModalInNavigation';
 import CompTxtStripTxt from '../CompTxtStripTxt/CompTxtStripTxt';
-import { IColors } from '../../App';
 import '../animation.css';
 import { IPage } from '../ModalPanziGong/ModalPanziGong';
 
@@ -20,17 +16,7 @@ export interface IContentKarate {
   content_karate: IContentKarateInner[];
 }
 
-export default function ModalKarate({
-  colors,
-  page,
-  mq,
-  select,
-}: {
-  colors: IColors;
-  page: string;
-  mq: string[];
-  select: Function;
-}) {
+export default function ModalKarate({ page, select }: { page: string; select: Function }) {
   const debug = false;
 
   const stats = {
@@ -43,166 +29,6 @@ export default function ModalKarate({
     upDown: 1,
   };
   const apdx = 'KT';
-
-  const style: any = {
-    width: '100vw',
-    maxWidth: '1440px',
-    height: '100vh',
-    zIndex: '1051',
-    overflow: 'hidden',
-    margin: '0 auto',
-
-    '& .modal-content': {
-      //width: '100%',
-      backgroundColor: 'rgba(0,0,0,0)',
-      border: 'none',
-
-      '& .modal-row': {
-        height: 'calc(100vh - 4px)',
-        margin: '2px',
-        display: 'grid',
-        gridColumnGap: '2px',
-        gridTemplateColumns: '1fr 50px',
-        gridTemplateRows: '1fr 7fr 1fr',
-
-        [mq[2]]: {
-          // bis 960 px
-          gridTemplateColumns: '1fr 39px',
-        },
-
-        [mq[1]]: {
-          // bis 600 px
-          gridTemplateColumns: '1fr 34px',
-        },
-
-        [mq[0]]: {
-          // bis 400px
-          gridTemplateColumns: '1fr 29px',
-        },
-
-        '& .inNavigation': {
-          gridColumn: '2',
-          gridRow: '2',
-        },
-
-        '& .content': {
-          height: '100%',
-          gridColumn: '1',
-          gridRow: '2',
-          display: 'grid',
-          gridTemplateColumns: 'auto',
-          gridTemplateRows: '6fr',
-
-          '& .csTenguRyuKT, .csLehrerKT': {
-            gridRow: '1',
-            gridColumn: '1',
-            display: 'grid',
-            gridTemplateColumns: 'auto',
-            gridTemplateRows: '6fr',
-
-            '& .navLeft, .navRight': {
-              cursor: 'pointer',
-              backgroundColor: 'rgba(255,255,255,0.5)',
-              width: '40px',
-              height: '40px',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-
-              '&:hover': {
-                '& svg': {
-                  stroke: 'rgba(200,200,200,1)',
-                },
-              },
-            },
-
-            '& .modal-col': {
-              gridRow: '1',
-              gridColumn: '1',
-              height: '100%',
-              display: 'grid',
-              gridTemplateColumns: 'auto',
-              gridTemplateRows: 'auto 1.5vh minmax(17vh, 1fr) 1.5vh auto',
-
-              '&.d-out': {
-                transform: 'translateX(-2000px)',
-                opacity: '0',
-              },
-
-              '& .bg-heading': {
-                position: 'absolute',
-                zIndex: '0',
-                fontSize: '15vh',
-                color: colors.bgGrey,
-              },
-
-              '& h1': {
-                marginBottom: '1vh',
-                position: 'relative',
-                zIndex: '1',
-              },
-
-              '& h2': {
-                color: colors.typoRed,
-                marginBottom: '2vh',
-                position: 'relative',
-                zIndex: '1',
-              },
-
-              '& p': {
-                margin: '0vh 15px 0vh 0px',
-                textAlign: 'justify',
-                position: 'relative',
-                zIndex: '1',
-              },
-
-              '& .modal-up': {
-                boxSizing: 'border-box',
-                maxHeight: 'calc(40vh - 2px)',
-                backgroundColor: 'white',
-                borderRadius: '5px',
-                padding: '2vh 0.5vh 2vh 2vh',
-                gridRow: '1',
-              },
-
-              '& .modal-strip': {
-                boxSizing: 'border-box',
-                backgroundColor: colors.bgRed,
-                margin: '5px 0px',
-                gridRow: '3',
-                overflow: 'hidden',
-                /////////////////////////
-                //height: '15vh',
-
-                '& .pics': {
-                  height: '100%',
-                  overflow: 'hidden',
-
-                  '& .img': {
-                    height: 'calc(100% - 2vh)',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: 'cover',
-                    margin: '0px 0.5vh',
-                    width: '330px',
-                  },
-                },
-              },
-
-              '& .modal-down': {
-                boxSizing: 'border-box',
-                maxHeight: 'calc(40vh - 2px)',
-                backgroundColor: 'white',
-                borderRadius: '5px',
-                padding: '2vh 0.5vh 2vh 2vh',
-                gridRow: '5',
-              },
-            },
-          },
-        },
-      },
-    },
-  };
 
   const query = `query {
     content_karate {
@@ -236,11 +62,13 @@ export default function ModalKarate({
   var contentKaratePage: IPage[] = contentKarate?.content_karate[0].pages;
 
   // destructure
-  colors.bgTheme = colors.bgRed;
-  colors.bgTheme50 = colors.bgRed50;
-  colors.typoTheme = colors.typoRed;
+  var themeContext = useContext(ThemeContext)!;
 
-  if (debug) console.log('ModalKarate/render', contentKarate, page);
+  themeContext.colors.bgTheme = themeContext.colors.bgRed;
+  themeContext.colors.bgTheme50 = themeContext.colors.bgRed50;
+  themeContext.colors.typoTheme = themeContext.colors.typoRed;
+
+  if (debug) console.log('ModalKarate/render', themeContext);
 
   useEffect(() => {
     onMount({ stats, apdx, select });
@@ -257,19 +85,16 @@ export default function ModalKarate({
         aria-hidden="true"
         data-bs-backdrop="static"
       >
-        <div
+        <ModalDialog
           className="modal-dialog d-flex flex-row-reverse align-items-center"
           id="modalDialog"
-          css={style}
         >
           <div className="modal-content">
             <div className="modal-row">
               <ModalInNavigation
                 clickUpDown={(dir: string) => clickUpDown(dir, stats, apdx)}
                 nextItem={(button: string) => nextItem(button, stats, apdx)}
-                colors={colors}
                 config={stats}
-                mq={mq}
                 apdx={apdx}
                 type="KT"
               />
@@ -286,11 +111,67 @@ export default function ModalKarate({
               </div>
             </div>
           </div>
-        </div>
+        </ModalDialog>
       </div>
     </>
   );
 }
+
+const ModalDialog = styled.div`
+  width: 100vw;
+  max-width: 1440px;
+  height: 100vh;
+  z-index: 1051;
+  overflow: hidden;
+  margin: 0 auto;
+
+  & .modal-content {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+
+    & .modal-row {
+      height: calc(100vh - 4px);
+      margin: 2px;
+      display: grid;
+      grid-column-gap: 2px;
+      grid-template-columns: 1fr 50px;
+      grid-template-rows: 1fr 7fr 1fr;
+
+      ${(props) => props.theme.breakpoints.mq[2]} {
+        // bis 960 px
+        grid-template-columns: 1fr 39px;
+      }
+
+      ${(props) => props.theme.breakpoints.mq[1]} {
+        // bis 600 px
+        grid-template-columns: 1fr 34px;
+      }
+
+      ${(props) => props.theme.breakpoints.mq[0]} {
+        // bis 400px
+        grid-template-columns: 1fr 29px;
+      }
+
+      & .content {
+        height: 100%;
+        grid-column: 1;
+        grid-row: 2;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: 6fr;
+
+        & .csTenguRyuKT,
+        .csLehrerKT {
+          grid-row: 1;
+          grid-column: 1;
+          display: grid;
+          grid-template-columns: auto;
+          grid-template-rows: 6fr;
+        }
+      }
+    }
+  }
+`;
 
 /* this.contentTenguRyu = [
   {

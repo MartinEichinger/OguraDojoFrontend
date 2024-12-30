@@ -1,8 +1,5 @@
 import { useState } from 'react';
-//import { sendEmail } from '../../store/email';
-//import { apiCallBegan } from '../../store/api';
 
-//import { format } from 'date-fns';
 const defaultEntry = {
   authorized: '-',
   cost: '-',
@@ -13,6 +10,8 @@ const defaultEntry = {
   organisator: '-',
   other: '-',
   title: 'Aktuell keine neuen Termine geplant',
+  fullName: '',
+  email: '',
 };
 
 export const useFormControls = ({ events, entries }) => {
@@ -26,6 +25,7 @@ export const useFormControls = ({ events, entries }) => {
   });
 
   // if no event is planned, the default Entry should be used
+  //const inputData = {...changedData, ...events[idx]};
   const changedDataDefaultEntry = idx > -1 ? events[idx] : defaultEntry;
 
   // STATES
@@ -34,8 +34,11 @@ export const useFormControls = ({ events, entries }) => {
   const [changedData, setChangedData] = useState(changedDataDefaultEntry); //events[idx]);
   const [errors, setErrors] = useState({});
 
-  if (debug) console.log('Events.controls: ', idx, events, changedData, entries, errors);
+  if (debug) console.log('Events.controls: ', changedData);
 
+  /* useEffect(() => {
+    setChangedData(changedDataDefaultEntry);
+  }, []); */
   //const dispatch = useDispatch();
 
   // EVENTS
@@ -58,7 +61,7 @@ export const useFormControls = ({ events, entries }) => {
   };
 
   const selectEvent = (item) => {
-    if (debug) console.log('Select event: ', item.title);
+    if (debug) console.log('Select event: ', item.title, changedData);
     setEntryData(item);
     setChangedData(item);
   };
@@ -153,35 +156,6 @@ export const useFormControls = ({ events, entries }) => {
     return isValid;
   };
 
-  const handleFormSubmit = (seminar) => {
-    if (debug)
-      console.log(
-        'ContactFormControls/sendEmail: ',
-        changedData['email'],
-        changedData['fullName'],
-        seminar
-      );
-    const email = changedData['email'];
-    const sender = changedData['fullName'];
-    const obj = {
-      ...changedData,
-      email: '',
-      fullName: '',
-    };
-    setChangedData(obj);
-
-    /*const url = '/api/email/';
-    apiCallBegan({
-      url,
-      method: 'post',
-      data: { email: email, sender: sender, seminar: seminar },
-             onStart: emailSendStart.type,
-      onSuccess: emailSended.type,
-      onError: emailSentFailed.type, 
-    });*/
-    //dispatch(sendEmail({ email, sender, seminar }));
-  };
-
   return {
     newEvent,
     selectEvent,
@@ -191,7 +165,6 @@ export const useFormControls = ({ events, entries }) => {
     onChangeDate,
     setEditData,
     formIsValid,
-    handleFormSubmit,
     editData,
     entryData,
     changedData,
