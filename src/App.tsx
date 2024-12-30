@@ -153,7 +153,7 @@ function App() {
       <ModalKarate page={state.pageKarate} select={selectpage} />
       <ModalPanziGong page={state.pagePanziGong} select={selectpage} />
       <ModalQiGong page={state.pageQiGong} select={selectpage} />
-      <ModalTraining colors={colors} page={state.pageTraining} mq={mq} />
+      <ModalTraining page={state.pageTraining} select={selectpage} />
       <ModalBlog lang={lang} />
       <ModalEvents lang={lang} />
       <ModalImpressum lang={lang} />
