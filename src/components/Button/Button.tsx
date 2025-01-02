@@ -78,7 +78,12 @@ const ButtonBody = styled.button<{
     }};
     padding-left: 5px;
     padding-right: 5px;
-
+    width: ${(props) => (props.size! - 1) * 30 + 90}px;
+    height: ${(props) => (props.size! - 1) * 5 + 20}px;
+    font-size: ${(props) => (props.size! - 1) * 3 + 12}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-image: ${(props) => props.disabled && 'linear-gradient(rgb(255 255 255/20%) 0 0)'};
 
     &:hover {

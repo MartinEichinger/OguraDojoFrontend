@@ -1,0 +1,237 @@
+import styled, { ThemeContext } from 'styled-components';
+import BookCard from '../Cards/BookCard';
+import TextField from '../TextField/TextField';
+import { useState, useContext } from 'react';
+import Button from '../Button/Button';
+
+const contentCards = [
+  {
+    img: 'panzigongII.jpg',
+    author: 'Ding HongYu',
+    title: 'Gesundheitsübung mit der Tellerdrehung',
+    sub_title: 'Panzi Gong II',
+    content:
+      'Die Gesundheitsübung mit der Tellerdrehung, die als PanZi Gong bezeichnet wird, erfreut sich in den letzten Jahren immer größerer Beliebtheit. Im Jahr 1998 entwickelte Professor Ding HongYu von der NanJing Universität (China) die erste Form des PanZi Gong. Im Jahr 2016 stellte er die zweite Form des PanZi Gong vor. Neben der ausführlichen Beschreibung und Darstellung der Form PanZi Gong II in drei Sprachen (Chinesisch, Deutsch und Englisch) werden auch die acht Übungen des PanZi Gong I als Übersicht dargestellt. Darüber hinaus erläutert Professor Ding in seinem Beitrag, wie man selber aktiv seine Gesundheit positiv beeinflussen kann. Das Buch hat 136 Seiten und ist mit zahlreichen Bildern illustriert.',
+    reading_sample: 'leseprobe_panzigongII.pdf',
+    publisher: 'Alexander Callegari',
+    book_detail: '136 S. Geb. 24,80 €',
+    iban: '978-3-96606-029-5',
+    price: 24.8,
+  },
+  {
+    img: 'panzigong.jpg',
+    author: 'Ding HongYu',
+    title: 'Gesundheitsübung mit der Tellerdrehung',
+    sub_title: 'Panzi Gong - Teller Gong',
+    content:
+      'Der menschliche Körper wird mit zunehmendem Alter immer schwächer und anfälliger. Dies ist ein Naturgesetz, das man nicht ändern kann. Aber man kann den Alterungsprozess nach hinten verschieben und somit die Geschwindigkeit des Alterns verlangsamen. Die Veranlagungen des Körpers wie z.B. Kraft, Geschwindigkeit, Sensibilität, Biegsamkeit, Scharfsinnigkeit hängen alle miteinander zusammen. Wenn z. B. die körperliche Biegsamkeit gut ist, dann sind die Bewegungsradien aller Gelenke im ganzen Körper dementsprechend groß. Muskeln, Sehnen und Bänder sind elastischer, können besser gedehnt werden. Diese Körperbewegungen sind als Grundlage für die Gesundheit sehr wichtig, daher auch sehr nützlich für jeden einzelnen Menschen. PanZi Gong, die Gesundheitsübung mit der Tellerdrehung ist eine Übung, um die Biegsamkeit des Körpers zu steigern und Gelenkerkrankungen vorzubeugen.',
+    reading_sample: 'leseprobe_panzigong.pdf',
+    publisher: 'Alexander Callegari',
+    book_detail: '100 S. Geb. 19,80 €',
+    iban: '978-3-934785-60-1',
+    price: 19.8,
+  },
+  {
+    img: 'gun.jpg',
+    author: 'Ding HongYu',
+    title: 'Gesundheitsübung mit der Stockdrehung',
+    sub_title: 'Üben mit Freude für ein glückliches und langes Leben',
+    content:
+      'Die Gesundheitsübung mit der Stockdrehung, kurz GunBang Cao genannt, ist eine aus zwei Übungen bestehende QiGong Form, die Professor Ding HongYu von der NanJing Universität (China) entwickelt hat. Professor Ding hat die QiGong-Entwicklung in Deutschland ab 1988 maßgeblich mit beeinflusst. Viele QiGong Lehrer in Deutschland haben bei ihm gelernt und unterrichten seine Formen.',
+    reading_sample: 'leseprobe_gun.pdf',
+    publisher: 'Alexander Callegari',
+    book_detail: '164 S. Geb. 26,80 €',
+    iban: '978-3-96606-011-0',
+    price: 26.8,
+  },
+  {
+    img: 'gesundheit.jpg',
+    author: 'Ding HongYu',
+    title: 'Lebe die Gesundheit',
+    sub_title: 'Das Leben braucht Bewegung',
+    content:
+      'Die Nieren schonen ‒ Das ist das Wichtigste für unsere Gesundheit und ein langes Leben Qi-Übungen im Alter für ein langes Leben Die hier vorliegenden Qi-Übungen im Alter für ein langes Leben sind speziell für ältere Men­schen konzipiert. Menschen nach einem Schlaganfall und viele andere, auch Jüngere, können diese Übungen zur Vorbeugung oder Rehabilitation nutzen. Neben der ausführlichen Darstel­lung der Übungen im Alter enthält das Buch ein Interview mit Professor Ding HongYu sowie seine wissenschaftlichen Erkenntnisse über Funktionen und Aufgaben der Nieren. Professor Ding (*1932) hat Sportwissenschaft und Sporttraining an der NanJing Universi­tät unterrichtet und in der Sportforschung gearbeitet. Während dieser langjährigen Tätigkeit hat Professor Ding Sport und Chinesische Medizin kombiniert. Er hat zur Vorbeugung gegen Krankheiten und Erhaltung der Gesundheit praktische und theoretische Ansatzpunkte erar­beitet. Auf der Grundlage von TaiJi und QiGong hat er viele gesundheitsfördernde Übungen und praktisch anwendbare Bewegungstrainings entwickelt und verfasst.',
+    reading_sample: 'leseprobe_gesundheit.pdf',
+    publisher: 'Alexander Callegari',
+    book_detail: '196 S. Geb. 29,80 €',
+    iban: '978-3-934785-76-2',
+    price: 29.8,
+  },
+  {
+    img: 'liebe.jpg',
+    author: 'Ding HongYu',
+    title: 'Liebe die Gesundheit',
+    sub_title: 'Schätze das Leben',
+    content:
+      'Gesundheitsübungen haben in China eine sehr lange Tradition. Zu den bekanntesten QiGong Formen gehören die Acht Brokate. Professor Ding hat 1996 die Neuen Acht Brokate konzipiert. Sie stärken die Beine und die inneren Organe, aktivieren die Gehirnfunktion und vieles mehr. Zudem wird das Sehnen- und Knochen-QiGong, eine medizinische QiGong Form, im Buch ausführlich dargestellt. Es ist eigens für Erwachsene und Senioren konzipiert. Ziel ist es, den Alterungsprozeß zu verlangsamen, die Lebensdauer zu verlängern und die Selbständigkeit im Alltagsleben zu verbessern.',
+    reading_sample: 'leseprobe_liebe.pdf',
+    publisher: 'Alexander Callegari',
+    book_detail: '152 S. Geb. 24,80 €',
+    iban: '978-3-934785-75-5',
+    price: 24.8,
+  },
+];
+
+export interface IArticle {
+  img: string;
+  name: string;
+  amount: number;
+  price: number;
+}
+
+export default function Bookshop() {
+  const [articles, setArticles] = useState<IArticle[]>([]);
+
+  const updateArticles = (newArticle: IArticle) => {
+    setArticles([...articles, newArticle]);
+  };
+
+  var themeContext = useContext(ThemeContext)!;
+
+  return (
+    <BookshopBody className="bookshopbody d-flex flex-row flex-wrap" articles={articles}>
+      <div className="booklist d-flex flex-row flex-wrap scroll_">
+        {contentCards.map((content: any, i: number) => {
+          return <BookCard props={content} setArticle={updateArticles} keys={i} key={i} />;
+        })}
+      </div>
+      {articles.length > 0 && (
+        <div className="checkout">
+          <CheckOut className="checkoutbody scroll_">
+            <div className="article">
+              <h3 className="blue">Artikel</h3>
+              {articles.map((item) => {
+                return (
+                  <Article className="d-flex flex-row justify-content-between">
+                    <img src={`./${item.img}`} alt={item.name} />
+                    <p className="name">{item.name}</p>
+                    <p className="amount">{item.amount}x</p>
+                  </Article>
+                );
+              })}
+            </div>
+            <div className="shippingdata">
+              <h3 className="blue">Versanddaten</h3>
+              <div className="d-flex flex-row justify-content-between">
+                <TextField id="name" label="Name" />
+                <TextField id="email" label="E-Mail" />
+              </div>
+              <TextField id="address" label="Adresse" multiline={true} fullWidth={true} />
+            </div>
+            <div className="summary">
+              <h3 className="blue">Zusammenfassung</h3>
+              <div className="d-flex flex-row justify-content-between">
+                <p className="article">Artikel: </p>
+                <p className="cost">
+                  {articles
+                    .reduce((sum: number, num: any) => {
+                      console.log(sum, num);
+                      return sum + num.price;
+                    }, 0)
+                    .toLocaleString('de-DE', {
+                      style: 'currency',
+                      currency: 'EUR',
+                      minimumFractionDigits: 2,
+                    })}
+                </p>
+              </div>
+              <div className="d-flex flex-row justify-content-between">
+                <p className="article">Verpackung & Versand: </p>
+                <p className="cost">
+                  {(10).toLocaleString('de-DE', {
+                    style: 'currency',
+                    currency: 'EUR',
+                    minimumFractionDigits: 2,
+                  })}
+                </p>
+              </div>
+              <div className="d-flex flex-row justify-content-between">
+                <h5 className="article">Gesamtbetrag: </h5>
+                <h5 className="cost">
+                  {(
+                    articles.reduce((sum: number, num: any) => {
+                      console.log(sum, num);
+                      return sum + num.price;
+                    }, 0) + 10
+                  ).toLocaleString('de-DE', {
+                    style: 'currency',
+                    currency: 'EUR',
+                    minimumFractionDigits: 2,
+                  })}
+                </h5>
+              </div>
+            </div>
+            <Button id="buy_now" color={themeContext.colors.bgGreen}>
+              Jetzt kaufen
+            </Button>
+          </CheckOut>
+        </div>
+      )}
+    </BookshopBody>
+  );
+}
+
+const Article = styled.div`
+  margin: 10px 0px;
+
+  & img {
+    height: 50px;
+  }
+
+  & .name {
+    margin: 0 20px;
+    width: 300px;
+  }
+
+  & .amount {
+    margin: 0 20px;
+  }
+`;
+
+const CheckOut = styled.div`
+  margin: 20px;
+  padding: 20px;
+  height: calc(100% - 40px);
+  width: calc(100% - 40px);
+  border: 1px solid black;
+  border-radius: 5px;
+
+  & .shippingdata {
+    & h3 {
+      margin-bottom: 25px;
+      margin-top: 25px;
+    }
+  }
+
+  & .summary {
+    margin-bottom: 50px;
+    & h3 {
+      margin-bottom: 25px;
+      margin-top: 25px;
+    }
+  }
+
+  & .article {
+    & h3 {
+      margin-bottom: 25px;
+    }
+  }
+
+  & .cost {
+    margin: 0 20px;
+  }
+`;
+
+const BookshopBody = styled.div<{ articles: IArticle[] }>`
+  height: calc(100% - 100px);
+
+  & .booklist {
+    height: 100%;
+    width: ${(props) => (props.articles.length > 0 ? '60%' : '100%')};
+  }
+
+  & .checkout {
+    height: 100%;
+    width: ${(props) => (props.articles.length > 0 ? '40%' : '0%')};
+  }
+`;
