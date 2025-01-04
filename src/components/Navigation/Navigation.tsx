@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import '../animation.css';
 import React, { useEffect, useState } from 'react';
+import Modal from '../Modal/Modal';
+import Bookshop from '../Bookshop/Bookshop';
 
 export default function Navigation({ select }: { select: Function }) {
   const debug = false;
@@ -107,6 +109,12 @@ export default function Navigation({ select }: { select: Function }) {
               <button data-bs-toggle="modal" data-bs-target="#idModalEvents">
                 Termine
               </button>
+              <Modal>
+                <Modal.Button>Bücher</Modal.Button>
+                <ModalContent title={'Büchershop'}>
+                  <Bookshop />
+                </ModalContent>
+              </Modal>
             </div>
           </div>
         </div>
@@ -115,6 +123,12 @@ export default function Navigation({ select }: { select: Function }) {
   );
 }
 
+const ModalContent = styled(Modal.Content)`
+  & h2 {
+    font-size: 96px;
+    color: ${(props) => props.theme.colors.typoBlue};
+  }
+`;
 const NavBar = styled.div`
   background-color: white;
   box-shadow: 10px 10px 25px 0px ${(props) => props.theme.colors.shadowGrey};
@@ -204,7 +218,7 @@ const NavBarCard = styled.div<{
   }
 
   & button {
-    width: 145px;
+    width: 135px;
     position: relative;
     background-color: ${(props) => props.theme.colors.bgWhite};
     color: ${(props) => props.theme.colors.bgRed};
@@ -234,16 +248,14 @@ const NavBarCard = styled.div<{
       padding: 1px 3px;
     }
 
-    &:hover: {
+    &:hover {
       background-color: rgba(121, 0, 0, 0.5);
       border: 1px solid ${(props) => props.theme.colors.bgRed};
       border-bottom-left-radius: 25px;
       border-bottom-right-radius: 25px;
     }
 
-    ,
-
-    &:active: {
+    &:active {
       font-weight: bold;
       background-color: ${(props) => props.theme.colors.bgRed};
       color: ${(props) => props.theme.colors.bgWhite};
@@ -286,6 +298,7 @@ const NavBarCard = styled.div<{
 
   & .text {
     height: 300px;
+    width: 100%;
     padding: 20px;
 
     ${(props) => props.theme.breakpoints.mq[2]} {

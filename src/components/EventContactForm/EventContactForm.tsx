@@ -86,7 +86,7 @@ export const EventContactForm = ({
           variant="contained"
           onClick={() => handleFormSubmit()}
           disabled={email === '' || !formIsValid()}
-          size={1}
+          size={2}
           color={themeContext.colors.bgGreen}
         >
           Anmelden

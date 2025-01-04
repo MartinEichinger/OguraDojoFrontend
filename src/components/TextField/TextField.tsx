@@ -18,7 +18,7 @@ import styled from 'styled-components';
 
 interface ITextField {
   className?: any;
-  value?: number;
+  value?: number | string;
   error?: boolean;
   fullWidth?: boolean;
   label?: string;
@@ -27,7 +27,9 @@ interface ITextField {
   color?: string;
   id: string;
   readonly?: any;
-  onChange?: React.MouseEventHandler<HTMLInputElement | HTMLAnchorElement>;
+  onChange?:
+    | React.MouseEventHandler<HTMLInputElement | HTMLAnchorElement>
+    | React.Dispatch<React.SetStateAction<string>>;
 }
 
 export default function TextField({
