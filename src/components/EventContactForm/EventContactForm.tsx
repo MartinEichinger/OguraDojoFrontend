@@ -20,7 +20,7 @@ export const EventContactForm = ({
   errors: any;
   formIsValid: any;
 }) => {
-  const debug = true;
+  const debug = false;
 
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -31,16 +31,15 @@ export const EventContactForm = ({
   const onChange = (name: string, val: string) => {
     if (name === 'email') setEmail(val);
     if (name === 'message') setMessage(val);
-    onChangeEvent(name, val);
+    //onChangeEvent(name, val);
   };
 
   const handleFormSubmit = () => {
     const query = `mutation {
       create_message_data_item(data: {
           email_address: "${email}",
-          message: "${email}: ich möchte mich zum Lehrgang: ${event} anmelden. ${
-      message && 'Weitere Nachricht: ' + message
-    }",
+          course: "${event}",
+          message: "${message ? message : 'keine Nachricht'}",
       }) 
       {
           id    
@@ -53,7 +52,7 @@ export const EventContactForm = ({
     setEvent(eventinput.seminar_title);
   }, [eventinput]);
 
-  if (debug) console.log('EventContactForm: ', eventinput);
+  if (debug) console.log('EventContactForm: ', eventinput, event);
 
   return (
     <React.Fragment>

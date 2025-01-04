@@ -29,17 +29,11 @@ export const useFormControls = ({ events, entries }) => {
   const changedDataDefaultEntry = idx > -1 ? events[idx] : defaultEntry;
 
   // STATES
-  const [editData, setEditData] = useState(false);
   const [entryData, setEntryData] = useState(events[0]);
   const [changedData, setChangedData] = useState(changedDataDefaultEntry); //events[idx]);
   const [errors, setErrors] = useState({});
 
-  if (debug) console.log('Events.controls: ', changedData);
-
-  /* useEffect(() => {
-    setChangedData(changedDataDefaultEntry);
-  }, []); */
-  //const dispatch = useDispatch();
+  if (debug) console.log('Events.controls: ', changedData, entryData);
 
   // EVENTS
   const newEvent = () => {
@@ -57,7 +51,6 @@ export const useFormControls = ({ events, entries }) => {
 
     if (debug) console.log('New event: ', item.title);
     setChangedData(item);
-    setEditData(true);
   };
 
   const selectEvent = (item) => {
@@ -65,28 +58,6 @@ export const useFormControls = ({ events, entries }) => {
     setEntryData(item);
     setChangedData(item);
   };
-
-  /*   const delEvent = (item) => {
-    //dispatch(deleteEvent(item));
-  }; */
-
-  // ENTRIES
-  /*   const saveFormData = (save) => {
-    setEditData(false);
-    if (save) {
-      if (debug) console.log('save data: ', changedData);
-      if (changedData['id'] === 'none') {
-        setEntryData(changedData);
-        //dispatch(createEvent(changedData));
-      } else {
-        setEntryData(changedData);
-        //dispatch(updateEvent(changedData));
-      }
-    } else {
-      if (debug) console.log('dont save data: ', entryData);
-      setChangedData(entryData);
-    }
-  }; */
 
   const onChangeEvent = (attr, val) => {
     if (debug) console.log('Events/onChangeEvent: ', attr, val);
@@ -159,13 +130,9 @@ export const useFormControls = ({ events, entries }) => {
   return {
     newEvent,
     selectEvent,
-    /*     delEvent,
-    saveFormData,
- */ onChangeEvent,
+    onChangeEvent,
     onChangeDate,
-    setEditData,
     formIsValid,
-    editData,
     entryData,
     changedData,
     errors,
