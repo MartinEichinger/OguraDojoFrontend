@@ -16,7 +16,8 @@ const Events = ({ events }: { events: any }) => {
   const entries = [
     // part I
     { name: 'seminar_title', label: 'Seminar', id: '#title', val_length: 80, required: 'true' },
-    { name: 'seminar_date', label: 'Termin', id: '#date' },
+    //{ name: 'seminar_date', label: 'Termin', id: '#date' },
+    { name: 'seminar_duration', label: 'Zeiten', id: '#duration' },
     { name: 'seminar_location', label: 'Ort', id: '#location', val_length: 80, required: 'true' },
     {
       name: 'seminar_trainer',

@@ -19,17 +19,19 @@ export default function ModalEvents({ lang }: { lang: string }) {
 
   var today = new Date();
   const query = `query {
-    event_data  (filter: {seminar_date: {_gt: "${today.toISOString()}"}}) {
+    event_data  (filter: {announcement_end: {_gt: "${today.toISOString()}"}}) {
         translations (filter: {languages_code: {code: {_eq: "${lang}"}}}) {
             seminar_title
         }
         seminar_date
+        seminar_duration
         seminar_location
         seminar_trainer
         seminar_organiser
         invitation_to_tender {
             id
         }
+        announcement_end
     }
   }`;
 
