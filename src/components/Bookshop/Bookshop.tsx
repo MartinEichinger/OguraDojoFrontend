@@ -3,6 +3,7 @@ import BookCard from '../Cards/BookCard';
 import TextField from '../TextField/TextField';
 import { useState, useContext } from 'react';
 import Button from '../Button/Button';
+import { sendData } from '../../helper/api-helper';
 
 const contentCards = [
   {
@@ -75,15 +76,36 @@ const contentCards = [
 export interface IArticle {
   img: string;
   name: string;
+  subname: string;
   amount: number;
   price: number;
 }
 
 export default function Bookshop() {
   const [articles, setArticles] = useState<IArticle[]>([]);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
 
   const updateArticles = (newArticle: IArticle) => {
     setArticles([...articles, newArticle]);
+  };
+
+  const orderArticles = () => {
+    const order = articles.map((item) => item.name + ' - ' + item.subname + ' (' + item.price + '€)');
+    const query = `mutation {
+      create_order_data_item(data: {
+        email: "${name} - ${email}",
+        order: "${order.join('<br/>')}",
+        address: "${address.replace(/\n/g, '<br/>')}"
+      })
+      {
+        id
+      }
+    }
+    `;
+
+    email && articles.length > 0 && sendData(query);
   };
 
   var themeContext = useContext(ThemeContext)!;
@@ -113,10 +135,30 @@ export default function Bookshop() {
             <div className="shippingdata">
               <h3 className="blue">Versanddaten</h3>
               <div className="d-flex flex-row justify-content-between">
-                <TextField id="name" label="Name" />
-                <TextField id="email" label="E-Mail" />
+                <TextField
+                  id="name"
+                  label="Name"
+                  onChange={(e: any) => setName(e.target.value)}
+                  value={name}
+                />
+                <TextField
+                  id="email"
+                  label="E-Mail"
+                  onChange={(e: any) => setEmail(e.target.value)}
+                  value={email}
+                />
               </div>
-              <TextField id="address" label="Adresse" multiline={true} fullWidth={true} />
+              <TextField
+                id="address"
+                label="Adresse"
+                multiline={true}
+                fullWidth={true}
+                onChange={(e: any) => {
+                  console.log('address: ', e.target.value);
+                  return setAddress(e.target.value);
+                }}
+                value={address}
+              />
             </div>
             <div className="summary">
               <h3 className="blue">Zusammenfassung</h3>
@@ -125,7 +167,6 @@ export default function Bookshop() {
                 <p className="cost">
                   {articles
                     .reduce((sum: number, num: any) => {
-                      console.log(sum, num);
                       return sum + num.price;
                     }, 0)
                     .toLocaleString('de-DE', {
@@ -150,7 +191,6 @@ export default function Bookshop() {
                 <h5 className="cost">
                   {(
                     articles.reduce((sum: number, num: any) => {
-                      console.log(sum, num);
                       return sum + num.price;
                     }, 0) + 10
                   ).toLocaleString('de-DE', {
@@ -161,7 +201,7 @@ export default function Bookshop() {
                 </h5>
               </div>
             </div>
-            <Button id="buy_now" color={themeContext.colors.bgGreen}>
+            <Button id="buy_now" color={themeContext.colors.bgGreen} onClick={orderArticles}>
               Jetzt kaufen
             </Button>
           </CheckOut>

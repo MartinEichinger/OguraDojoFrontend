@@ -41,7 +41,15 @@ export default function BookCard({
             id="order"
             size={2}
             color={themeContext.colors.bgGreen}
-            onClick={() => setArticle({ img: img, name: title, amount: 1, price: price } as IArticle)}
+            onClick={() =>
+              setArticle({
+                img: img,
+                name: title,
+                amount: 1,
+                price: price,
+                subname: sub_title,
+              } as IArticle)
+            }
           >
             Bestellen
           </Button>
