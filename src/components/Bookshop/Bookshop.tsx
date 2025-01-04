@@ -108,6 +108,7 @@ export default function Bookshop() {
     email && articles.length > 0 && sendData(query);
   };
 
+  // comment
   var themeContext = useContext(ThemeContext)!;
 
   return (
