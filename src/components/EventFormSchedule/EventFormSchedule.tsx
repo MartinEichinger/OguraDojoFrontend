@@ -5,20 +5,29 @@ const EventFormSchedule = ({
   events,
   month,
   selectEvent,
+  entryData,
 }: {
   events: any;
   month: any;
   selectEvent: any;
+  entryData: any;
 }) => {
   const debug = false;
-  if (debug) console.log('EventFormSchedule: ', events);
+  if (debug) console.log('EventFormSchedule: ', events, entryData);
   return (
     <>
       {events.map((item: any, i: number) => {
         var d = new Date(item.seminar_date);
         return (
           <ScheduleBody key={i}>
-            <div className="block d-flex flex-row" onClick={() => selectEvent(item)}>
+            <div
+              className={
+                entryData.seminar_title === item.seminar_title
+                  ? 'block d-flex flex-row active'
+                  : 'block d-flex flex-row'
+              }
+              onClick={() => selectEvent(item)}
+            >
               {i % 2 === 0 && (
                 <div className="date bgRed d-flex flex-column justify-content-center align-items-center">
                   <h1 className="big">{d.getDate()}</h1>
@@ -53,18 +62,40 @@ const EventFormSchedule = ({
 };
 
 const ScheduleBody = styled.div`
+  &:nth-child(even) {
+    & .active {
+      background-color: ${(props) => props.theme.colors.bgGreen50};
+    }
+
+    & .block {
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: ${(props) => props.theme.colors.bgGreen50};
+      }
+    }
+  }
+
+  &:nth-child(odd) {
+    & .active {
+      background-color: ${(props) => props.theme.colors.bgRed50};
+    }
+
+    & .block {
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: ${(props) => props.theme.colors.bgRed50};
+      }
+    }
+  }
+
   & .block {
     background-color: rgba(255, 255, 255, 0.5);
     margin-bottom: 2vh;
     border-radius: 5px;
     position: relative;
     cursor: pointer;
-
-    &:hover,
-    &:active,
-    &:focus {
-      background-color: ${(props) => props.theme.colors.bgGreen50};
-    }
 
     & .date {
       margin-left: 5%;

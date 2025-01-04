@@ -71,7 +71,12 @@ const Events = ({ events }: { events: any }) => {
     <>
       {1 && (
         <Schedule className="schedule d-flex flex-column scroll_">
-          <EventFormSchedule events={events} month={month} selectEvent={selectEvent} />
+          <EventFormSchedule
+            events={events}
+            month={month}
+            entryData={entryData}
+            selectEvent={selectEvent}
+          />
         </Schedule>
       )}
       <Detail className="detail d-flex flex-column scroll_">

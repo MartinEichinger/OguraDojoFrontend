@@ -1,7 +1,7 @@
 //import { TextField } from '@mui/material';
 import TextField from '../TextField/TextField';
 import Button from '../Button/Button';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { sendData } from '../../helper/api-helper';
 import { ThemeContext } from 'styled-components';
 
@@ -20,9 +20,11 @@ export const EventContactForm = ({
   errors: any;
   formIsValid: any;
 }) => {
+  const debug = true;
+
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [event] = useState(eventinput.seminar_title);
+  const [event, setEvent] = useState(eventinput.seminar_title);
 
   var themeContext = useContext(ThemeContext)!;
 
@@ -46,6 +48,12 @@ export const EventContactForm = ({
       }`;
     email && sendData(query);
   };
+
+  useEffect(() => {
+    setEvent(eventinput.seminar_title);
+  }, [eventinput]);
+
+  if (debug) console.log('EventContactForm: ', eventinput);
 
   return (
     <React.Fragment>

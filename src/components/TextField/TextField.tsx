@@ -63,7 +63,7 @@ export default function TextField({
     /* eslint-disable */
   }, []);
 
-  if (debug) console.log('TextField: ', value, error);
+  if (debug) console.log('TextField: ', value, error, readonly);
 
   return (
     <TextFieldBody>
@@ -76,8 +76,8 @@ export default function TextField({
           id={id}
           type="text"
           className={`inputstyle ${className}`}
-          value={readonly === true ? undefined : value}
-          defaultValue={readonly === true ? value : undefined}
+          value={value}
+          //defaultValue={readonly === true ? value : undefined}
           fullWidth={fullWidth}
           readOnly={readonly}
           error={error}
@@ -87,10 +87,11 @@ export default function TextField({
         <TextArea
           className={`textareastyle ${className}`}
           id={id}
-          value={readonly === true ? undefined : value}
-          defaultValue={readonly === true ? value : undefined}
+          value={value}
+          //defaultValue={readonly === true ? value : undefined}
           fullWidth={fullWidth}
           readOnly={readonly}
+          rows={3}
         />
       )}
     </TextFieldBody>
