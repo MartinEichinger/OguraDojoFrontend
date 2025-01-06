@@ -19,6 +19,7 @@ import styled from 'styled-components';
 interface ITextField {
   className?: any;
   value?: number | string;
+  placeholder?: string;
   error?: boolean;
   fullWidth?: boolean;
   label?: string;
@@ -35,6 +36,7 @@ interface ITextField {
 export default function TextField({
   className,
   value,
+  placeholder,
   error = false,
   fullWidth = false,
   label,
@@ -68,7 +70,7 @@ export default function TextField({
   if (debug) console.log('TextField: ', value, error);
 
   return (
-    <TextFieldBody>
+    <TextFieldBody className={`${className}`}>
       <Label error={error}>
         {label}
         {error && ' + Keine gültige E-Mail Adresse'}
@@ -77,9 +79,10 @@ export default function TextField({
         <InputField
           id={id}
           type="text"
-          className={`inputstyle ${className}`}
+          className={`inputstyle`}
           value={readonly === true ? undefined : value}
           defaultValue={readonly === true ? value : undefined}
+          placeholder={placeholder}
           fullWidth={fullWidth}
           readOnly={readonly}
           error={error}
@@ -91,6 +94,7 @@ export default function TextField({
           id={id}
           value={readonly === true ? undefined : value}
           defaultValue={readonly === true ? value : undefined}
+          placeholder={placeholder}
           fullWidth={fullWidth}
           readOnly={readonly}
         />

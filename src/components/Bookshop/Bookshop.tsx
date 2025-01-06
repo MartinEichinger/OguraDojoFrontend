@@ -4,6 +4,7 @@ import TextField from '../TextField/TextField';
 import { useState, useContext } from 'react';
 import Button from '../Button/Button';
 import { sendData } from '../../helper/api-helper';
+import PlusMinusButton from '../PlusMinusButton/PlusMinusButton';
 
 const contentCards = [
   {
@@ -82,17 +83,44 @@ export interface IArticle {
 }
 
 export default function Bookshop() {
+  const debug = true;
+
   const [articles, setArticles] = useState<IArticle[]>([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
 
   const updateArticles = (newArticle: IArticle) => {
-    setArticles([...articles, newArticle]);
+    console.log('update: ', articles);
+    const idx = articles.findIndex(
+      (item) => newArticle.name === item.name && newArticle.subname === item.subname
+    );
+
+    if (idx > -1) {
+      var count1 = articles[idx].amount + newArticle.amount;
+      count1 = count1 < 0 ? 0 : count1 >= 9 ? 9 : count1;
+      setArticles(articles.map((item, i) => ({ ...item, amount: i === idx ? count1 : item.amount })));
+    } else {
+      setArticles([...articles, newArticle]);
+    }
   };
 
   const orderArticles = () => {
-    const order = articles.map((item) => item.name + ' - ' + item.subname + ' (' + item.price + '€)');
+    const order = articles.map(
+      (item) =>
+        item.name +
+        ' - ' +
+        item.subname +
+        ' (' +
+        item.price.toLocaleString('de-DE', {
+          style: 'currency',
+          currency: 'EUR',
+          minimumFractionDigits: 2,
+        }) +
+        ' / ' +
+        item.amount +
+        'x )'
+    );
     const query = `mutation {
       create_order_data_item(data: {
         email: "${name} - ${email}",
@@ -106,10 +134,17 @@ export default function Bookshop() {
     `;
 
     email && articles.length > 0 && sendData(query);
+    setArticles([]);
+    setName('');
+    setEmail('');
+    setAddress('');
   };
 
   // comment
   var themeContext = useContext(ThemeContext)!;
+  var enabled = articles.length > 0 && name !== '' && email !== '' && address !== '';
+
+  if (debug) console.log('Bookshop: ', articles);
 
   return (
     <BookshopBody className="bookshopbody d-flex flex-row flex-wrap" articles={articles}>
@@ -123,12 +158,33 @@ export default function Bookshop() {
           <CheckOut className="checkoutbody scroll_">
             <div className="article">
               <h3 className="blue">Artikel</h3>
-              {articles.map((item) => {
+              {articles.map((item, idx) => {
+                console.log('item: ', item);
                 return (
-                  <Article className="d-flex flex-row justify-content-between">
+                  <Article className="d-flex flex-row justify-content-between" key={idx}>
                     <img src={`./${item.img}`} alt={item.name} />
-                    <p className="name">{item.name}</p>
-                    <p className="amount">{item.amount}x</p>
+                    <p className="name">
+                      {item.name} - {item.subname} -{' '}
+                      {item.price.toLocaleString('de-DE', {
+                        style: 'currency',
+                        currency: 'EUR',
+                        minimumFractionDigits: 2,
+                      })}
+                    </p>
+                    <PlusMinusButton
+                      value={item.amount}
+                      countUp={() => {
+                        var updItem = { ...item };
+                        updItem.amount = 1;
+                        return updateArticles(updItem);
+                      }}
+                      countDown={() => {
+                        var updItem = { ...item };
+                        updItem.amount = -1;
+                        return updateArticles(updItem);
+                      }}
+                    />
+                    {/* <p className="amount">{item.amount}x</p> */}
                   </Article>
                 );
               })}
@@ -136,22 +192,26 @@ export default function Bookshop() {
             <div className="shippingdata">
               <h3 className="blue">Versanddaten</h3>
               <div className="d-flex flex-row justify-content-between">
-                <TextField
+                <MyTextField
                   id="name"
-                  label="Name"
+                  label="Name *"
                   onChange={(e: any) => setName(e.target.value)}
                   value={name}
+                  placeholder={'Max Mustermann'}
+                  fullWidth
                 />
-                <TextField
+                <MyTextField
                   id="email"
-                  label="E-Mail"
+                  label="E-Mail *"
                   onChange={(e: any) => setEmail(e.target.value)}
                   value={email}
+                  placeholder={'max.mustermann@mail.de'}
+                  fullWidth
                 />
               </div>
               <TextField
                 id="address"
-                label="Adresse"
+                label="Adresse *"
                 multiline={true}
                 fullWidth={true}
                 onChange={(e: any) => {
@@ -159,6 +219,7 @@ export default function Bookshop() {
                   return setAddress(e.target.value);
                 }}
                 value={address}
+                placeholder={'Schillerstraße 3, 84130 Dingolfing'}
               />
             </div>
             <div className="summary">
@@ -168,7 +229,7 @@ export default function Bookshop() {
                 <p className="cost">
                   {articles
                     .reduce((sum: number, num: any) => {
-                      return sum + num.price;
+                      return sum + num.price * num.amount;
                     }, 0)
                     .toLocaleString('de-DE', {
                       style: 'currency',
@@ -192,7 +253,7 @@ export default function Bookshop() {
                 <h5 className="cost">
                   {(
                     articles.reduce((sum: number, num: any) => {
-                      return sum + num.price;
+                      return sum + num.price * num.amount;
                     }, 0) + 10
                   ).toLocaleString('de-DE', {
                     style: 'currency',
@@ -202,7 +263,12 @@ export default function Bookshop() {
                 </h5>
               </div>
             </div>
-            <Button id="buy_now" color={themeContext.colors.bgGreen} onClick={orderArticles}>
+            <Button
+              id="buy_now"
+              color={themeContext.colors.bgGreen}
+              onClick={orderArticles}
+              disabled={!enabled}
+            >
               Jetzt kaufen
             </Button>
           </CheckOut>
@@ -211,6 +277,10 @@ export default function Bookshop() {
     </BookshopBody>
   );
 }
+
+const MyTextField = styled(TextField)`
+  width: 48%;
+`;
 
 const Article = styled.div`
   margin: 10px 0px;

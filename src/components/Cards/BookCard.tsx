@@ -60,7 +60,7 @@ export default function BookCard({
 }
 
 const CardBody = styled.div<{ img: string }>`
-  width: 650px;
+  width: 640px;
   height: 420px;
   box-shadow: 10px 10px 25px 0px ${(props) => props.theme.colors.shadowGrey};
   border-radius: 5px;
@@ -97,7 +97,7 @@ const CardBody = styled.div<{ img: string }>`
     background-position: 50% 20%;
     background-size: cover;
     border-radius: 5px 0px 0px 5px;
-    min-width: 250px;
+    min-width: 240px;
     height: 420px;
     margin: 0px;
     padding: 0px;
